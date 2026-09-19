@@ -3,328 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#020807">
-
+    <meta name="theme-color" content="#071310">
+    <meta name="description" content="메피릿 캐릭터 아카이브. 인물의 초상과 기초 기록, 식별 정보를 탐색하세요.">
+    <link rel="icon" href="data:,">
     <title>MEPIRIT ARCHIVE</title>
-
     <link rel="stylesheet" href="./style.css">
     <script src="./script.js" defer></script>
 </head>
-
 <body>
-    <div class="archive-shell">
+    <a class="skip-link" href="#recordDetail">선택한 캐릭터 기록으로 이동</a>
+    <p class="sr-only" id="selectionAnnouncement" aria-live="polite" aria-atomic="true"></p>
+    <div class="archive archive-shell">
         <header class="topbar">
             <div class="brand-block">
-                <div class="brand-mark" aria-hidden="true">MEP</div>
-
+                <div class="brand-mark" aria-hidden="true">M<span>ARCHIVE</span></div>
                 <div>
-                    <p class="eyebrow">SECURE NODE / ENTITY RECORD</p>
-                    <h1>MEPIRIT ARCHIVE</h1>
-                    <p class="brand-subtitle">UNITED STATES INFANTRY EQUIPMENT</p>
+                    <p class="eyebrow">메피릿 인물 기록 보관소</p>
+                    <h1>MEPIRIT ARCHIVE<span class="brand-period">.</span></h1>
                 </div>
             </div>
-
             <div class="header-tools">
-                <label class="search-box" for="searchInput">
-                    <span aria-hidden="true">⌕</span>
-                    <input
-                        type="search"
-                        id="searchInput"
-                        placeholder="장비명, 식별 번호, 기록 검색"
-                        autocomplete="off"
-                    >
-                    <kbd>/</kbd>
-                </label>
-
-                <div class="header-status" aria-label="아카이브 상태">
-                    <span class="online-status">
-                        <i aria-hidden="true"></i>
-                        NODE ONLINE
-                    </span>
-                    <span id="headerRecordCount">05 RECORDS</span>
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg>
+                    <label class="sr-only" for="searchInput">캐릭터 이름, 식별 번호, 기록 검색</label>
+                    <input type="search" id="searchInput" placeholder="이름, 식별 번호, 기록 검색" autocomplete="off" spellcheck="false">
+                    <button id="clearSearch" type="button" aria-label="검색어 지우기" hidden>×</button>
+                    <kbd aria-hidden="true">/</kbd>
+                </div>
+                <div class="header-status">
+                    <span class="online-status"><i aria-hidden="true"></i> ARCHIVE READY</span>
                     <time id="systemClock">00 : 00 : 00</time>
                 </div>
             </div>
         </header>
 
-        <main class="workspace">
-            <aside class="index-panel panel">
+        <div class="collection-bar">
+            <p><span>COLLECTION 01</span><i aria-hidden="true">/</i> 미합중국 보병장비</p>
+            <div><span id="headerRecordCount">05 RECORDS</span><span class="collection-clearance">GENERAL ACCESS</span></div>
+        </div>
+
+        <main class="workspace main-layout">
+            <aside class="index-panel panel" aria-labelledby="indexTitle">
                 <div class="panel-heading">
-                    <div>
-                        <span class="panel-kicker">ENTITY INDEX</span>
-                        <strong id="indexCount">05 RECORDS</strong>
-                    </div>
-                    <span>US / INFANTRY</span>
+                    <div><span class="panel-kicker">01 / ENTITY INDEX</span><h2 id="indexTitle">인물 색인</h2></div>
+                    <span class="count-badge" id="indexCount" aria-live="polite" aria-atomic="true">05 / 05</span>
                 </div>
-
-                <div class="filter-tabs" role="group" aria-label="분류 필터">
-                    <button class="filter-button active" type="button" data-filter="all">
-                        전체 <span id="allFilterCount">05</span>
-                    </button>
-                    <button class="filter-button" type="button" data-filter="LANTERN">
-                        랜턴 <span id="lanternFilterCount">05</span>
-                    </button>
-                    <button class="filter-button" type="button" data-filter="LAMP">
-                        램프 <span id="lampFilterCount">00</span>
-                    </button>
+                <div class="filter-tabs" role="group" aria-label="캐릭터 분류 필터">
+                    <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">전체 <span id="allFilterCount">05</span></button>
+                    <button class="filter-button" type="button" data-filter="LANTERN" aria-pressed="false">랜턴 <span id="lanternFilterCount">05</span></button>
+                    <button class="filter-button" type="button" data-filter="LAMP" aria-pressed="false">램프 <span id="lampFilterCount">00</span></button>
                 </div>
-
-                <div class="character-list" id="characterList"></div>
-
+                <div class="character-list" id="characterList" aria-label="검색된 캐릭터"></div>
                 <div class="empty-result" id="emptyResult" hidden>
-                    <span>NO RECORD FOUND</span>
-                    <p>검색어나 분류를 다시 확인하십시오.</p>
+                    <span class="empty-symbol" aria-hidden="true">⌕</span>
+                    <strong>일치하는 기록이 없습니다</strong>
+                    <p>다른 검색어나 분류를 선택해 주세요.</p>
+                    <button class="reset-button" id="resetFilters" type="button">전체 기록 보기 <span aria-hidden="true">↗</span></button>
                 </div>
-
+                <p class="selection-hint" id="selectionHint" hidden></p>
                 <div class="index-footer">
-                    <div>
-                        <span>LOCAL ARCHIVE</span>
-                        <strong id="selectedRecordLabel">RECORD 01 / 05</strong>
-                    </div>
-                    <p>목록의 기록을 선택하면 복호화된 인물 문서가 표시됩니다.</p>
+                    <div><span>RECORD SELECTED</span><strong id="selectedRecordLabel">01 / 05</strong></div>
+                    <p>목록에서 인물을 선택하면<br>보관된 기록을 열람할 수 있습니다.</p>
+                    <div class="keyboard-guide"><span><kbd>↑</kbd><kbd>↓</kbd> 이동</span><span><kbd>/</kbd> 검색</span><span><kbd>Esc</kbd> 초기화</span></div>
                 </div>
             </aside>
 
             <section class="visual-panel panel" aria-labelledby="characterName">
                 <div class="panel-heading visual-heading">
-                    <div>
-                        <span class="panel-kicker" id="visualLogNumber">VISUAL LOG / 01</span>
-                        <strong>IDENTITY CAPTURE</strong>
-                    </div>
-                    <span>LANTERN ENCRYPTED</span>
+                    <span class="panel-kicker" id="visualLogNumber">VISUAL LOG / 01</span>
+                    <span class="visual-label">CHARACTER PORTRAIT</span>
                 </div>
-
                 <div class="image-frame" id="imageFrame">
                     <div class="image-backdrop" id="imageBackdrop" aria-hidden="true"></div>
                     <div class="image-grid" aria-hidden="true"></div>
-
-                    <span class="corner corner-tl" aria-hidden="true"></span>
-                    <span class="corner corner-tr" aria-hidden="true"></span>
-                    <span class="corner corner-bl" aria-hidden="true"></span>
-                    <span class="corner corner-br" aria-hidden="true"></span>
-
-                    <div class="frame-meta">
-                        <span id="frameRecordCode">US-IE-LN-1903</span>
-                        <span>VISUAL RECORD / GENERAL</span>
-                    </div>
-
-                    <div id="imagePlaceholder" class="image-placeholder">
-                        <strong>NO VISUAL DATA</strong>
-                        <span>IMAGE NOT ATTACHED</span>
-                    </div>
-
-                    <img
-                        id="characterImage"
-                        class="character-image"
-                        src=""
-                        alt="선택된 메피릿 캐릭터"
-                    >
-
-                    <button class="view-image-button" id="openImageButton" type="button">
-                        VIEW IMAGE
-                    </button>
+                    <span class="corner corner-tl" aria-hidden="true"></span><span class="corner corner-tr" aria-hidden="true"></span>
+                    <span class="corner corner-bl" aria-hidden="true"></span><span class="corner corner-br" aria-hidden="true"></span>
+                    <div id="imagePlaceholder" class="image-placeholder" hidden><strong>NO VISUAL DATA</strong><span>등록된 이미지를 불러올 수 없습니다.</span></div>
+                    <img id="characterImage" class="character-image" src="./images/m1903.png" alt="M1903 Springfield 메피릿 캐릭터" fetchpriority="high">
+                    <button class="view-image-button" id="openImageButton" type="button"><span aria-hidden="true">⤢</span> 원본 보기</button>
+                    <div class="frame-meta"><span id="frameRecordCode">US-IE-LN-1903</span><span>MEPIRIT / VISUAL ARCHIVE</span></div>
                 </div>
-
                 <div class="identity-block">
-                    <div class="identity-heading">
-                        <div>
-                            <p id="characterCode">US-IE-LN-1903</p>
-                            <h2 id="characterName">M1903 Springfield</h2>
-                        </div>
-
-                        <span class="entity-status">
-                            <i aria-hidden="true"></i>
-                            <span id="characterStatus">ACTIVE / LANTERN</span>
-                        </span>
-                    </div>
-
-                    <p id="characterDesignation">
-                        United States Rifle, Caliber .30-06, Model 1903
-                    </p>
-
+                    <div class="identity-heading"><p id="characterCode">US-IE-LN-1903</p><span class="entity-status"><i aria-hidden="true"></i><span id="characterStatus">ACTIVE / LANTERN</span></span></div>
+                    <h2 id="characterName">M1903 Springfield</h2>
+                    <p id="characterDesignation">United States Rifle, Caliber .30-06, Model 1903</p>
                     <div class="profile-grid" aria-label="주요 인물 정보">
-                        <div>
-                            <span>HEIGHT</span>
-                            <strong id="profileHeight">173 CM</strong>
-                        </div>
-                        <div>
-                            <span>EYES</span>
-                            <strong id="profileEyes">푸른색</strong>
-                        </div>
-                        <div>
-                            <span>HAIR</span>
-                            <strong id="profileHair">옅은 금빛 장발</strong>
-                        </div>
-                        <div>
-                            <span>ROLE</span>
-                            <strong id="profileRole">볼트액션 소총</strong>
-                        </div>
-                        <div>
-                            <span>ERA</span>
-                            <strong id="profileEra">WWI–WWII</strong>
-                        </div>
-                        <div>
-                            <span>CLASS</span>
-                            <strong id="profileClass">LANTERN</strong>
-                        </div>
-                    </div>
-
-                    <div class="trait-section">
-                        <span class="mini-label">TRAIT MAP</span>
-                        <div class="trait-tags" id="traitTags"></div>
-                    </div>
-
-                    <div class="field-note">
-                        <span>FIELD NOTE</span>
-                        <p id="fieldNote">바람과 바다가 가까운 장소에서 안정도가 높게 측정된다.</p>
+                        <div><span>HEIGHT <span>신장</span></span><strong id="profileHeight">173cm</strong></div>
+                        <div><span>CLASS <span>분류</span></span><strong id="profileClass">LANTERN</strong></div>
+                        <a href="#recordDetail" class="read-record-link">인물 기록 <span aria-hidden="true">↗</span></a>
                     </div>
                 </div>
             </section>
 
-            <article class="record-panel panel">
+            <article class="record-panel panel" id="recordDetail" tabindex="-1" aria-labelledby="recordTitle">
                 <div class="panel-heading record-heading">
-                    <div>
-                        <span class="panel-kicker">DECRYPTED OUTPUT</span>
-                        <strong id="recordSectionTitle">ENTITY / GENERAL</strong>
-                    </div>
+                    <div><span class="panel-kicker">03 / ENTITY DOSSIER</span><h2 id="recordTitle">인물 기록</h2></div>
                     <span id="recordSyncStatus">SYNC 01 / 05</span>
                 </div>
-
-                <nav class="record-tabs" role="tablist" aria-label="캐릭터 기록 분류">
-                    <button class="record-tab active" type="button" role="tab" aria-selected="true" data-tab="overview">개요</button>
-                    <button class="record-tab" type="button" role="tab" aria-selected="false" data-tab="history">운용 기록</button>
-                    <button class="record-tab" type="button" role="tab" aria-selected="false" data-tab="relations">관계</button>
-                    <button class="record-tab" type="button" role="tab" aria-selected="false" data-tab="management">관리 기록</button>
-                </nav>
-
                 <div class="record-content">
-                    <section class="tab-panel active" id="overviewPanel" data-panel="overview">
-                        <div class="terminal-query">
-                            <span id="queryText">&gt; query --entity m1903 --section overview</span>
-                            <small>Decrypting record... complete.</small>
-                        </div>
-
-                        <section class="record-section">
-                            <h3>기초 기록</h3>
-                            <p id="characterSummary">
-                                허리 아래까지 내려오는 옅은 금빛 장발 끝에 청록빛이 스민 차분한 성격의 고참 메피릿.
-                            </p>
-                        </section>
-
-                        <section class="record-section">
-                            <h3>식별 정보</h3>
-
-                            <dl class="record-table">
-                                <dt>식별 번호</dt>
-                                <dd id="recordCode">US-IE-LN-1903</dd>
-
-                                <dt>정식 명칭</dt>
-                                <dd id="recordDesignation">United States Rifle, Caliber .30-06, Model 1903</dd>
-
-                                <dt>분류</dt>
-                                <dd id="recordClass">LANTERN</dd>
-
-                                <dt>신장</dt>
-                                <dd id="recordHeight">173 CM</dd>
-
-                                <dt>외형</dt>
-                                <dd id="recordAppearance">옅은 금빛 장발 · 푸른 눈</dd>
-
-                                <dt>활동 시대</dt>
-                                <dd id="recordEra">제1·2차 세계대전기</dd>
-
-                                <dt>소속</dt>
-                                <dd id="recordAffiliation">미합중국 보병장비</dd>
-                            </dl>
-                        </section>
-
-                        <div class="archive-notice">
-                            <span>ARCHIVE NOTE</span>
-                            <p id="archiveNote">일반 열람 등급에서 공개 가능한 기록만 표시됩니다.</p>
-                        </div>
+                    <div class="document-heading"><span>ENTITY / GENERAL</span><span class="document-stamp">열람 가능</span></div>
+                    <section class="record-section summary-section">
+                        <h3><span>01</span> 기초 기록</h3>
+                        <p id="characterSummary">허리 아래까지 내려오는 옅은 금빛 장발 끝에 청록빛이 스민 차분한 성격의 고참 메피릿.</p>
                     </section>
-
-                    <section class="tab-panel" id="historyPanel" data-panel="history" hidden>
-                        <div class="terminal-query">
-                            <span>&gt; mount --operational-log</span>
-                            <small>Chronological data stream restored.</small>
-                        </div>
-                        <div class="timeline" id="historyList"></div>
+                    <section class="record-section">
+                        <h3><span>02</span> 식별 정보</h3>
+                        <dl class="record-table">
+                            <dt>식별 번호</dt><dd id="recordCode">US-IE-LN-1903</dd>
+                            <dt>정식 명칭</dt><dd id="recordDesignation">United States Rifle, Caliber .30-06, Model 1903</dd>
+                            <dt>분류</dt><dd id="recordClass">LANTERN</dd>
+                            <dt>신장</dt><dd id="recordHeight">173cm</dd>
+                        </dl>
                     </section>
-
-                    <section class="tab-panel" id="relationsPanel" data-panel="relations" hidden>
-                        <div class="terminal-query">
-                            <span>&gt; map --entity-relations</span>
-                            <small>Authorized connections found.</small>
-                        </div>
-                        <div class="relation-list" id="relationList"></div>
-                    </section>
-
-                    <section class="tab-panel" id="managementPanel" data-panel="management" hidden>
-                        <div class="terminal-query">
-                            <span>&gt; read --management-record</span>
-                            <small>Supervisor clearance accepted.</small>
-                        </div>
-
-                        <section class="record-section">
-                            <h3>관리 상태</h3>
-                            <dl class="record-table management-table">
-                                <dt>현재 상태</dt>
-                                <dd id="managementCondition">STABLE</dd>
-
-                                <dt>선호 환경</dt>
-                                <dd id="managementPreference">바람이 잘 드는 조용한 외부 공간</dd>
-
-                                <dt>배치 권고</dt>
-                                <dd id="managementAssignment">외부 관찰 및 후배 동행 배치</dd>
-
-                                <dt>유의 사항</dt>
-                                <dd id="managementCaution">장기 임무 뒤 충분한 휴식 시간을 배정할 것.</dd>
-                            </dl>
-                        </section>
-
-                        <div class="stability-meter">
-                            <div>
-                                <span>STABILITY INDEX</span>
-                                <strong id="stabilityValue">94%</strong>
-                            </div>
-                            <div class="meter-track" aria-hidden="true">
-                                <span id="stabilityBar" style="width: 94%"></span>
-                            </div>
-                        </div>
-                    </section>
+                    <div class="archive-notice"><span>ABOUT THIS RECORD</span><p>선택한 메피릿의 기초 기록과 식별 정보입니다. 초상화는 원본 보기로 자세히 열람할 수 있습니다.</p></div>
+                    <div class="document-end" aria-hidden="true"><span>END OF RECORD</span><span>///</span></div>
                 </div>
-
-                <div class="record-footer">
-                    <span><i aria-hidden="true"></i> DATA STREAM STABLE</span>
-                    <span id="recordFooterPosition">01 / 05</span>
-                </div>
+                <div class="record-footer"><span><i aria-hidden="true"></i> MEPIRIT ARCHIVE</span><span id="recordFooterPosition">01 / 05</span></div>
             </article>
         </main>
 
         <footer class="statusbar">
-            <div class="load-label">
-                <span>ARCHIVE LOAD</span>
-                <strong id="footerEntityName">M1903 SPRINGFIELD</strong>
-            </div>
-
-            <div class="load-progress" aria-label="아카이브 로딩 100퍼센트">
-                <span></span>
-            </div>
-
-            <strong class="load-percent">100%</strong>
-
-            <div class="footer-controls">
-                <button type="button" id="previousCharacter" title="이전 기록 (↑)">↑ PREV</button>
-                <span id="footerRecordPosition">01 / 05</span>
-                <button type="button" id="nextCharacter" title="다음 기록 (↓)">↓ NEXT</button>
-            </div>
+            <div class="load-label"><span class="status-indicator" aria-hidden="true"></span><span>NOW VIEWING</span><strong id="footerEntityName">M1903 SPRINGFIELD</strong></div>
+            <span class="footer-edition">ENTITY RECORD COLLECTION <span aria-hidden="true">/</span> 01</span>
+            <div class="footer-controls"><button type="button" id="previousCharacter" aria-label="이전 캐릭터" title="이전 캐릭터 (↑)">↑ <span>이전</span></button><span id="footerRecordPosition">01 / 05</span><button type="button" id="nextCharacter" aria-label="다음 캐릭터" title="다음 캐릭터 (↓)"><span>다음</span> ↓</button></div>
         </footer>
     </div>
-
-    <dialog class="image-modal" id="imageModal">
-        <button class="modal-close" id="closeImageButton" type="button" aria-label="이미지 닫기">×</button>
-        <img id="modalImage" src="" alt="선택된 메피릿 원본 이미지">
+    <noscript><p class="noscript-message">캐릭터 선택과 검색을 사용하려면 브라우저에서 JavaScript를 활성화해 주세요.</p></noscript>
+    <dialog class="image-modal" id="imageModal" aria-labelledby="modalCaption">
+        <button class="modal-close" id="closeImageButton" type="button" aria-label="이미지 닫기" autofocus>×</button>
+        <img id="modalImage" src="./images/m1903.png" alt="M1903 Springfield 원본 이미지">
         <p id="modalCaption">M1903 Springfield / VISUAL RECORD</p>
     </dialog>
 </body>
