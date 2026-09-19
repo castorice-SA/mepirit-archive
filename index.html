@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MEPIRIT ARCHIVE</title>
+
+    <!-- 디자인 파일 연결 -->
+    <link rel="stylesheet" href="./style.css">
+
+    <!-- 자바스크립트 파일 연결 -->
+    <script src="./script.js" defer></script>
+</head>
+
+<body>
+    <div class="archive">
+
+        <!-- 사이트 상단 -->
+        <header class="topbar">
+            <div>
+                <p>SECURE NODE / ENTITY RECORD</p>
+                <h1>MEPIRIT ARCHIVE</h1>
+            </div>
+
+            <input
+                type="search"
+                id="searchInput"
+                placeholder="장비명 또는 기록 검색"
+            >
+        </header>
+
+        <!-- 사이트 본체 -->
+        <main class="main-layout">
+
+            <!-- 왼쪽 캐릭터 목록 -->
+            <aside class="character-list">
+                <h2>ENTITY INDEX</h2>
+
+                <button class="character-button" data-character="m1903">
+                    M1903 Springfield
+                </button>
+
+                <button class="character-button" data-character="m1911">
+                    M1911 Colt
+                </button>
+
+                <button class="character-button" data-character="garand">
+                    M1 Garand
+                </button>
+
+                <button class="character-button" data-character="thompson">
+                    M1928 Thompson
+                </button>
+
+                <button class="character-button" data-character="carbine">
+                    M1 Carbine
+                </button>
+            </aside>
+
+            <!-- 가운데 캐릭터 이미지 -->
+            <section class="visual-panel">
+                <p>VISUAL LOG</p>
+
+                <div class="image-frame">
+                    <div id="imagePlaceholder">
+                        IMAGE NOT ATTACHED
+                    </div>
+
+                    <img
+                        id="characterImage"
+                        src=""
+                        alt="선택된 메피릿 캐릭터"
+                    >
+                </div>
+
+                <p id="characterCode">US-IE-LN-1903</p>
+                <h2 id="characterName">M1903 Springfield</h2>
+
+                <p id="characterDesignation">
+                    United States Rifle, Caliber .30-06, Model 1903
+                </p>
+            </section>
+
+            <!-- 오른쪽 캐릭터 문서 -->
+            <article class="record-panel">
+                <p>DECRYPTED OUTPUT</p>
+                <h2>ENTITY / GENERAL</h2>
+
+                <section>
+                    <h3>기초 기록</h3>
+
+                    <p id="characterSummary">
+                        허리 아래까지 내려오는 옅은 금빛 장발 끝에
+                        청록빛이 스민 차분한 성격의 고참 메피릿.
+                    </p>
+                </section>
+
+                <section>
+                    <h3>식별 정보</h3>
+
+                    <dl>
+                        <dt>식별 번호</dt>
+                        <dd id="recordCode">US-IE-LN-1903</dd>
+
+                        <dt>분류</dt>
+                        <dd id="recordClass">LANTERN</dd>
+
+                        <dt>신장</dt>
+                        <dd id="recordHeight">173cm</dd>
+                    </dl>
+                </section>
+            </article>
+
+        </main>
+    </div>
+</body>
+</html>

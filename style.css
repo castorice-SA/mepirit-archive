@@ -1,0 +1,344 @@
+/* 모든 요소에 공통 적용 */
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --background: #020807;
+    --panel: #06110f;
+    --panel-light: #0a1a16;
+
+    --line: #17483c;
+    --strong-line: #48e6bb;
+
+    --text: #d9f4ec;
+    --sub-text: #75a99a;
+    --point: #62f2c2;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background-color: var(--background);
+    color: var(--text);
+
+    font-family:
+        "Malgun Gothic",
+        "맑은 고딕",
+        Arial,
+        sans-serif;
+}
+
+/* 전체 사이트 */
+.archive {
+    min-height: 100vh;
+    padding: 12px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* 상단 영역 */
+.topbar {
+    min-height: 82px;
+    padding: 14px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    background-color: var(--panel);
+    border: 1px solid var(--line);
+}
+
+.topbar p {
+    margin: 0 0 5px;
+
+    color: var(--point);
+    font-family: Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.topbar h1 {
+    margin: 0;
+
+    font-family: Consolas, monospace;
+    font-size: 23px;
+    letter-spacing: 2px;
+}
+
+.topbar input {
+    width: 420px;
+    max-width: 45%;
+    padding: 12px 14px;
+
+    background-color: #020908;
+    color: var(--text);
+
+    border: 1px solid var(--line);
+    outline: none;
+}
+
+.topbar input:focus {
+    border-color: var(--point);
+}
+
+/* 메인 3단 구조 */
+.main-layout {
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: 260px minmax(400px, 1fr) 420px;
+    gap: 10px;
+}
+
+/* 공통 패널 */
+.character-list,
+.visual-panel,
+.record-panel {
+    background-color: var(--panel);
+    border: 1px solid var(--line);
+}
+
+/* 왼쪽 캐릭터 목록 */
+.character-list {
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.character-list h2 {
+    margin: 0 0 10px;
+
+    color: var(--point);
+    font-family: Consolas, monospace;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.character-button {
+    width: 100%;
+    min-height: 52px;
+    padding: 10px 12px;
+
+    background-color: var(--panel-light);
+    color: var(--text);
+
+    border: 1px solid transparent;
+
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+}
+
+.character-button:hover {
+    color: var(--point);
+    border-color: var(--strong-line);
+}
+
+/* 중앙 캐릭터 영역 */
+.visual-panel {
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.visual-panel > p:first-child {
+    margin: 0 0 12px;
+
+    color: var(--point);
+    font-family: Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.image-frame {
+    width: 100%;
+    min-height: 500px;
+
+    display: grid;
+    place-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            rgba(98, 242, 194, 0.05) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(98, 242, 194, 0.05) 1px,
+            transparent 1px
+        ),
+        #03100d;
+
+    background-size: 32px 32px;
+
+    border: 1px solid var(--strong-line);
+}
+
+#imagePlaceholder {
+    color: var(--sub-text);
+
+    font-family: Consolas, monospace;
+    font-size: 13px;
+    letter-spacing: 2px;
+}
+
+/* 이미지 주소가 비어 있을 때 숨김 */
+#characterImage[src=""] {
+    display: none;
+}
+
+#characterImage {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    inset: 0;
+
+    object-fit: contain;
+}
+
+#characterCode {
+    margin: 20px 0 7px;
+
+    color: var(--point);
+    font-family: Consolas, monospace;
+    font-size: 12px;
+}
+
+#characterName {
+    margin: 0;
+
+    font-size: 32px;
+}
+
+#characterDesignation {
+    margin: 8px 0 0;
+
+    color: var(--sub-text);
+    font-size: 14px;
+}
+
+/* 오른쪽 문서 영역 */
+.record-panel {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.record-panel > p:first-child {
+    margin: 0;
+
+    color: var(--point);
+    font-family: Consolas, monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.record-panel > h2 {
+    margin: 7px 0 30px;
+
+    font-family: Consolas, monospace;
+    font-size: 20px;
+}
+
+.record-panel section {
+    margin-bottom: 32px;
+}
+
+.record-panel h3 {
+    padding-bottom: 9px;
+
+    color: var(--point);
+    border-bottom: 1px solid var(--line);
+
+    font-size: 15px;
+}
+
+.record-panel p {
+    color: var(--text);
+    line-height: 1.8;
+}
+
+.record-panel dl {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+
+    margin: 0;
+}
+
+.record-panel dt,
+.record-panel dd {
+    margin: 0;
+    padding: 13px 0;
+
+    border-bottom: 1px dashed var(--line);
+}
+
+.record-panel dt {
+    color: var(--sub-text);
+}
+
+.record-panel dd {
+    color: var(--text);
+}
+
+/* 화면이 좁아졌을 때 */
+@media (max-width: 1100px) {
+    .main-layout {
+        grid-template-columns: 240px 1fr;
+    }
+
+    .record-panel {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 700px) {
+    .topbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .topbar input {
+        width: 100%;
+        max-width: none;
+    }
+
+    .main-layout {
+        display: block;
+    }
+
+    .character-list,
+    .visual-panel,
+    .record-panel {
+        margin-bottom: 10px;
+    }
+
+    .image-frame {
+        min-height: 420px;
+    }
+
+    /* 자바스크립트로 선택된 캐릭터 버튼 */
+.character-button.active {
+    color: var(--point);
+    border-color: var(--strong-line);
+    background-color: #0c211b;
+}
+
+.character-button.active {
+    color: var(--point);
+    border-color: var(--strong-line);
+    background-color: #0c211b;
+}
+}
