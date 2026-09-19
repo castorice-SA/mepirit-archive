@@ -7,8 +7,8 @@
     <meta name="description" content="메피릿 캐릭터 아카이브. 인물의 초상과 기초 기록, 식별 정보를 탐색하세요.">
     <link rel="icon" href="data:,">
     <title>MEPIRIT ARCHIVE</title>
-    <link rel="stylesheet" href="./style.css?v=16">
-    <script src="./script.js?v=16" defer></script>
+    <link rel="stylesheet" href="./style.css?v=17">
+    <script src="./script.js?v=17" defer></script>
 </head>
 <body class="is-locked">
     <section class="login-screen" id="loginScreen" aria-labelledby="loginTitle">
@@ -79,10 +79,12 @@
         <div class="collection-bar">
             <div class="collection-context">
                 <span class="collection-label">COLLECTION</span>
-                <div class="collection-switcher" role="group" aria-label="보병장비 국가별 기록 선택">
+                <div class="collection-switcher" role="group" aria-label="아카이브 상위 기록 선택">
                     <button class="collection-button active" type="button" data-collection="US" aria-pressed="true"><span>01</span> 미합중국 보병장비</button>
                     <i aria-hidden="true">/</i>
                     <button class="collection-button" type="button" data-collection="SWISS" aria-pressed="false"><span>02</span> 스위스 보병장비</button>
+                    <i aria-hidden="true">/</i>
+                    <button class="collection-button" type="button" data-collection="LOGS" aria-pressed="false"><span>03</span> 클레어 업무일지</button>
                 </div>
             </div>
             <div>
@@ -100,7 +102,7 @@
         <main class="workspace main-layout">
             <aside class="index-panel panel" aria-labelledby="indexTitle">
                 <div class="panel-heading">
-                    <div><span class="panel-kicker">01 / ENTITY INDEX</span><h2 id="indexTitle">인물 색인</h2></div>
+                    <div><span class="panel-kicker" id="indexKicker">01 / ENTITY INDEX</span><h2 id="indexTitle">인물 색인</h2></div>
                     <span class="count-badge" id="indexCount" aria-live="polite" aria-atomic="true">06 / 06</span>
                 </div>
                 <div class="filter-tabs" role="group" aria-label="선택한 보병장비의 하위 분류 필터">
@@ -108,6 +110,9 @@
                     <button class="filter-button" type="button" data-filter="LANTERN" aria-pressed="false">랜턴 <span id="lanternFilterCount">05</span></button>
                     <button class="filter-button" type="button" data-filter="LAMP" aria-pressed="false">램프 <span id="lampFilterCount">00</span></button>
                     <button class="filter-button" type="button" data-filter="ADMINISTRATOR" aria-pressed="false">관리관 <span id="administratorFilterCount">01</span></button>
+                    <button class="filter-button work-log-filter" type="button" data-filter="ROUTINE" aria-pressed="false" hidden>일상관리 <span id="routineFilterCount">01</span></button>
+                    <button class="filter-button work-log-filter" type="button" data-filter="DECISION" aria-pressed="false" hidden>상황판단 <span id="decisionFilterCount">01</span></button>
+                    <button class="filter-button work-log-filter" type="button" data-filter="FOLLOWUP" aria-pressed="false" hidden>후속조치 <span id="followupFilterCount">01</span></button>
                 </div>
                 <div class="character-list" id="characterList" aria-label="검색된 캐릭터"></div>
                 <div class="empty-result" id="emptyResult" hidden>
@@ -119,7 +124,7 @@
                 <p class="selection-hint" id="selectionHint" hidden></p>
                 <div class="index-footer">
                     <div><span>RECORD SELECTED</span><strong id="selectedRecordLabel">01 / 06</strong></div>
-                    <p>목록에서 인물을 선택하면<br>보관된 기록을 열람할 수 있습니다.</p>
+                    <p id="indexHelpText">목록에서 인물을 선택하면<br>보관된 기록을 열람할 수 있습니다.</p>
                     <div class="keyboard-guide"><span><kbd>↑</kbd><kbd>↓</kbd> 이동</span><span><kbd>/</kbd> 검색</span><span><kbd>Esc</kbd> 초기화</span></div>
                 </div>
             </aside>
@@ -127,7 +132,7 @@
             <section class="visual-panel panel" aria-labelledby="characterName">
                 <div class="panel-heading visual-heading">
                     <span class="panel-kicker" id="visualLogNumber">VISUAL LOG / 01</span>
-                    <span class="visual-label">CHARACTER PORTRAIT</span>
+                    <span class="visual-label" id="visualLabel">CHARACTER PORTRAIT</span>
                 </div>
                 <div class="image-frame" id="imageFrame">
                     <div class="image-backdrop" id="imageBackdrop" aria-hidden="true"></div>
@@ -145,20 +150,20 @@
                     <h2 id="characterName">M1903 Springfield</h2>
                     <p id="characterDesignation">United States Rifle, Caliber .30-06, Model 1903</p>
                     <div class="profile-grid" aria-label="주요 인물 정보">
-                        <div><span>HEIGHT <span>신장</span></span><strong id="profileHeight">173cm</strong></div>
-                        <div><span>CLASS <span>분류</span></span><strong id="profileClass">LANTERN</strong></div>
-                        <a href="#recordDetail" class="read-record-link">인물 기록 <span aria-hidden="true">↗</span></a>
+                        <div><span id="profilePrimaryLabel">HEIGHT <span>신장</span></span><strong id="profileHeight">173cm</strong></div>
+                        <div><span id="profileSecondaryLabel">CLASS <span>분류</span></span><strong id="profileClass">LANTERN</strong></div>
+                        <a href="#recordDetail" class="read-record-link"><span id="readRecordText">인물 기록</span> <span aria-hidden="true">↗</span></a>
                     </div>
                 </div>
             </section>
 
             <article class="record-panel panel" id="recordDetail" tabindex="-1" aria-labelledby="recordTitle">
                 <div class="panel-heading record-heading">
-                    <div><span class="panel-kicker">03 / ENTITY DOSSIER</span><h2 id="recordTitle">인물 기록</h2></div>
+                    <div><span class="panel-kicker" id="recordKicker">03 / ENTITY DOSSIER</span><h2 id="recordTitle">인물 기록</h2></div>
                     <span id="recordSyncStatus">SYNC 01 / 06</span>
                 </div>
                 <div class="record-content">
-                    <div class="document-heading"><span>ENTITY / GENERAL</span><span class="document-stamp">열람 가능</span></div>
+                    <div class="document-heading"><span id="documentTypeLabel">ENTITY / GENERAL</span><span class="document-stamp" id="documentStamp">열람 가능</span></div>
                     <div class="record-tabs" role="tablist" aria-label="인물 상세 기록 분류">
                         <button class="record-tab active" id="recordTabOverview" type="button" role="tab" aria-selected="true" aria-controls="recordOverview" data-record-tab="overview">개요</button>
                         <button class="record-tab" id="recordTabAppearance" type="button" role="tab" aria-selected="false" aria-controls="recordAppearance" data-record-tab="appearance">외형</button>
@@ -169,21 +174,21 @@
                     </div>
                     <div class="record-tab-panel active" id="recordOverview" role="tabpanel" aria-labelledby="recordTabOverview" data-record-panel="overview">
                         <section class="record-section summary-section">
-                            <h3><span>01</span> 기초 기록</h3>
+                            <h3><span>01</span> <span id="recordSummaryTitle">기초 기록</span></h3>
                             <p id="characterSummary">허리 아래까지 내려오는 옅은 금빛 장발 끝에 청록빛이 스민 차분한 성격의 고참 메피릿.</p>
                         </section>
                         <section class="record-section">
-                            <h3><span>02</span> 식별 정보</h3>
+                            <h3><span>02</span> <span id="recordInfoTitle">식별 정보</span></h3>
                             <dl class="record-table">
-                                <dt>식별 번호</dt><dd id="recordCode">US-IE-LN-1903</dd>
-                                <dt>정식 명칭</dt><dd id="recordDesignation">United States Rifle, Caliber .30-06, Model 1903</dd>
-                                <dt>성별</dt><dd id="recordSex">여성</dd>
+                                <dt id="recordCodeLabel">식별 번호</dt><dd id="recordCode">US-IE-LN-1903</dd>
+                                <dt id="recordDesignationLabel">정식 명칭</dt><dd id="recordDesignation">United States Rifle, Caliber .30-06, Model 1903</dd>
+                                <dt id="recordSexLabel">성별</dt><dd id="recordSex">여성</dd>
                                 <dt id="recordAgeLabel" hidden>연령</dt><dd id="recordAge" hidden></dd>
-                                <dt>신장</dt><dd id="recordHeight">173cm</dd>
+                                <dt id="recordHeightLabel">신장</dt><dd id="recordHeight">173cm</dd>
                                 <dt id="recordClassLabel">메피릿 분류</dt><dd id="recordClass">LANTERN</dd>
-                                <dt>병기 분류</dt><dd id="recordClassification">볼트액션 소총</dd>
-                                <dt>출신</dt><dd id="recordOrigin">미합중국, 매사추세츠주 스프링필드</dd>
-                                <dt>활동 시기</dt><dd id="recordPeriod">1903년 제식 채용 → 제1차 세계대전 운용 → 제2차 세계대전까지 지속 운용</dd>
+                                <dt id="recordClassificationLabel">병기 분류</dt><dd id="recordClassification">볼트액션 소총</dd>
+                                <dt id="recordOriginLabel">출신</dt><dd id="recordOrigin">미합중국, 매사추세츠주 스프링필드</dd>
+                                <dt id="recordPeriodLabel">활동 시기</dt><dd id="recordPeriod">1903년 제식 채용 → 제1차 세계대전 운용 → 제2차 세계대전까지 지속 운용</dd>
                             </dl>
                         </section>
                         <section class="record-section armament-section">
@@ -192,10 +197,10 @@
                         </section>
                     </div>
                     <div class="record-tab-panel" id="recordAppearance" role="tabpanel" aria-labelledby="recordTabAppearance" data-record-panel="appearance" hidden>
-                        <section class="record-section detail-section"><span class="detail-code">APPEARANCE PROFILE</span><h3 id="appearanceTitle"></h3><ul class="detail-list" id="appearanceList"></ul></section>
+                        <section class="record-section detail-section"><span class="detail-code" id="appearanceSectionCode">APPEARANCE PROFILE</span><h3 id="appearanceTitle"></h3><ul class="detail-list" id="appearanceList"></ul></section>
                     </div>
                     <div class="record-tab-panel" id="recordPersonality" role="tabpanel" aria-labelledby="recordTabPersonality" data-record-panel="personality" hidden>
-                        <section class="record-section detail-section"><span class="detail-code">PERSONALITY PROFILE</span><h3 id="personalityTitle"></h3><ul class="detail-list" id="personalityList"></ul></section>
+                        <section class="record-section detail-section"><span class="detail-code" id="personalitySectionCode">PERSONALITY PROFILE</span><h3 id="personalityTitle"></h3><ul class="detail-list" id="personalityList"></ul></section>
                     </div>
                     <div class="record-tab-panel" id="recordMemory" role="tabpanel" aria-labelledby="recordTabMemory" data-record-panel="memory" hidden>
                         <section class="record-section detail-section"><span class="detail-code" id="memorySectionCode">WAR MEMORY RECORD</span><h3 id="memoryTitle"></h3><ul class="detail-list" id="memoryList"></ul></section>
@@ -204,7 +209,7 @@
                         <section class="record-section detail-section"><span class="detail-code" id="overallSectionCode">GENERAL ASSESSMENT</span><h3 id="overallTitle"></h3><ul class="detail-list" id="overallList"></ul></section>
                     </div>
                     <div class="record-tab-panel" id="recordRelationships" role="tabpanel" aria-labelledby="recordTabRelationships" data-record-panel="relationships" hidden>
-                        <section class="record-section relationship-section">
+                        <section class="record-section relationship-section" id="relationshipSection">
                             <span class="detail-code">RELATIONSHIP NETWORK</span>
                             <h3 id="relationshipTitle">M1903 Springfield 관계 기록</h3>
                             <p class="relationship-lead" id="relationshipLead">선택 인물을 기준으로 호칭, 첫인상, 현재 평가와 상대 시점 기록을 연결합니다.</p>
@@ -218,6 +223,12 @@
                             </div>
                             <div class="relationship-cards" id="relationshipCards"></div>
                         </section>
+                        <section class="record-section detail-section work-log-actions" id="workLogActionsSection" hidden>
+                            <span class="detail-code">FOLLOW-UP ACTION / APPROVAL</span>
+                            <h3 id="workLogActionsTitle">후속 조치</h3>
+                            <ul class="detail-list" id="workLogActionsList"></ul>
+                            <div class="work-log-approval"><span>REPORTING OFFICER</span><strong>Claire 관리관</strong><i>전자결재 완료</i></div>
+                        </section>
                     </div>
                     <div class="archive-notice"><span id="archiveNoticeTitle">ARCHIVE SOURCE</span><p id="archiveNoticeText">미합중국 보병장비 인원 등록부를 바탕으로 정리한 인물 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.</p></div>
                     <div class="document-end" aria-hidden="true"><span>END OF RECORD</span><span>///</span></div>
@@ -229,7 +240,7 @@
         <footer class="statusbar">
             <div class="pda-transfer" aria-hidden="true"><span id="pdaTransferBar"></span></div>
             <div class="load-label"><span class="status-indicator" aria-hidden="true"></span><span>NOW VIEWING</span><strong id="footerEntityName">M1903 SPRINGFIELD</strong></div>
-            <span class="footer-edition">ENTITY RECORD COLLECTION <span aria-hidden="true">/</span> 01</span>
+            <span class="footer-edition" id="footerEdition">ENTITY RECORD COLLECTION <span aria-hidden="true">/</span> 01</span>
             <span class="creator-credit">CREATED BY <strong>Racor</strong><i aria-hidden="true">/</i><strong>soragoon</strong></span>
             <div class="footer-controls"><button type="button" id="previousCharacter" aria-label="이전 캐릭터" title="이전 캐릭터 (↑)">↑ <span>이전</span></button><span id="footerRecordPosition">01 / 06</span><button type="button" id="nextCharacter" aria-label="다음 캐릭터" title="다음 캐릭터 (↓)"><span>다음</span> ↓</button></div>
         </footer>

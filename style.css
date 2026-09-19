@@ -283,6 +283,14 @@ button:disabled { opacity: .35; cursor: default; }
 .archive-notice { padding: 17px; background: #151f2d; border-left: 2px solid #aa8a4d; }
 .archive-notice > span { color: var(--point); font: 9px var(--mono); letter-spacing: 1px; }
 .archive-notice p { margin: 9px 0 0; color: var(--sub-text); font-size: 11px; line-height: 1.9; word-break: keep-all; }
+.work-log-mode .visual-panel, .work-log-mode .record-panel { border-color: #665936; }
+.work-log-mode .record-content { background-image: linear-gradient(180deg, #e8c46f05, transparent 180px); }
+.work-log-mode .character-button[data-collection="LOGS"].active { border-color: var(--point); background: #28251f; }
+.work-log-actions .detail-list { margin-bottom: 18px; }
+.work-log-approval { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px 16px; padding: 15px 16px; border: 1px solid #6d5b39; background: #2a261f; }
+.work-log-approval span { color: var(--muted); font: 9px var(--mono); letter-spacing: 1px; }
+.work-log-approval strong { grid-row: 2; color: var(--bright); font-size: 14px; font-weight: 500; }
+.work-log-approval i { grid-row: 1 / 3; grid-column: 2; align-self: center; padding: 7px 9px; border: 1px solid var(--point); color: var(--point); font: 10px var(--sans); font-style: normal; }
 .document-end { display: flex; justify-content: space-between; gap: 12px; margin-top: 27px; color: var(--muted); font: 9px var(--mono); letter-spacing: 1.6px; }
 .record-footer { display: flex; align-items: center; justify-content: space-between; gap: 14px; min-height: 40px; padding: 10px 20px; border-top: 1px solid var(--line); color: var(--muted); font: 9px var(--mono); letter-spacing: .8px; }
 .record-footer i { width: 4px; height: 4px; }
@@ -435,6 +443,8 @@ body.ui-large .relation-node small,
 body.ui-large .relationship-reverse summary { font-size: 10px; }
 body.ui-large .relationship-meta { grid-template-columns: 90px minmax(0, 1fr); }
 body.ui-large .relationship-reverse p { font-size: 14px; }
+body.ui-large .work-log-approval span, body.ui-large .work-log-approval i { font-size: 11px; }
+body.ui-large .work-log-approval strong { font-size: 16px; }
 body.ui-large .affinity,
 body.ui-large .archive-notice > span,
 body.ui-large .document-end,
@@ -544,8 +554,11 @@ body.ui-large .footer-controls button > span { font-size: 13px; }
     .collection-bar { min-height: 48px; padding: 8px 0 10px; flex-wrap: wrap; gap: 5px 8px; font-size: 10px; }
     .collection-context { width: 100%; gap: 8px; }
     .collection-label { display: none; }
-    .collection-switcher { width: 100%; gap: 3px; }
-    .collection-button { flex: 1; padding-inline: 4px; font-size: 10px; }
+    .collection-switcher { width: 100%; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3px; }
+    .collection-switcher > i { display: none; }
+    .collection-button { min-width: 0; padding-inline: 4px; font-size: 10px; line-height: 1.35; white-space: normal; }
+    body:not(.ui-large) .collection-button { font-size: 10px; }
+    body.ui-large .collection-button { font-size: 11px; }
     .collection-bar > div:last-child { margin-left: auto; font-size: 9px; letter-spacing: .5px; }
     .pda-size-control { padding-right: 7px; }
     .pda-size-control > span { display: none; }
@@ -570,7 +583,8 @@ body.ui-large .footer-controls button > span { font-size: 13px; }
     .identity-block { padding: 22px 22px 0; }
     #characterName { font-size: 38px; }
     #characterDesignation { font-size: 11px; }
-    .record-content { display: block; padding: 22px; }
+    .record-panel { align-self: start; }
+    .record-content { display: block; flex: 0 0 auto; padding: 22px; }
     .record-tabs { display: flex; overflow-x: auto; overscroll-behavior-inline: contain; }
     .record-tab { flex: 0 0 auto; min-width: 84px; padding-inline: 12px; }
     .record-section > p { font-size: 14px; }

@@ -256,6 +256,117 @@ const characters = {
         },
         image: "./images/mp9-n.png",
         imagePosition: "center 16%"
+    },
+    logWeekly: {
+        name: "주간 인원 관리 결과",
+        code: "MGA-WL-260919-01",
+        designation: "클레어 업무일지 / 주간 관리 결심형 보고",
+        class: "ROUTINE",
+        displayClass: "일상관리",
+        group: "LOGS",
+        height: "2026.09.19",
+        summary: "미합중국 보병장비 소속 메피릿 5인의 주간 생활·정비 상태를 종합하고 차주 관리 방침을 결심하기 위한 내부 보고.",
+        sex: "Claire 관리관",
+        operationalPeriod: "2026.09.13 — 2026.09.19",
+        origin: "미합중국 보병장비 관리부",
+        classification: "주간 인원·생활 관리",
+        recordListTitle: "관련 근거",
+        status: "FILED / ROUTINE",
+        sectionCodes: { appearance: "01 / SITUATION", personality: "02 / ASSESSMENT", memory: "03 / COURSES OF ACTION", overall: "04 / DECISION" },
+        armament: ["관리국 보병장비 생활관리 기준 제4조", "전주 관리일지 MGA-WL-260912", "개별 면담 및 일일 점검 기록"],
+        appearance: {
+            title: "주간 생활 및 인원 상태",
+            items: ["스프링필드는 생활 리듬이 안정적이나 타인의 상태를 먼저 살피느라 본인의 휴식 시간을 뒤로 미루는 경향이 확인되었다.", "콜트와 카빈의 외출 빈도는 높았으나 복귀 보고와 상호 확인은 대체로 지켜졌다.", "개런드는 공용 정비와 인원 확인을 자발적으로 떠맡아 개인 업무 시간이 늘어났다.", "톰슨은 외부 일정 조정과 인원 간 분위기 환기에 기여했으며 중대한 규정 위반은 없었다."]
+        },
+        personality: {
+            title: "관리상 핵심 판단",
+            items: ["현재 인원 간 관계와 생활 안정도는 양호하며 획일적인 통제 강화가 필요한 상황은 아니다.", "다만 개런드와 스프링필드에게 책임이 집중되는 구조는 장기적으로 피로를 누적시킬 가능성이 있다.", "콜트·카빈의 자율성을 유지하되 외출 전후의 간단한 상호 확인 절차는 계속 필요하다."]
+        },
+        memory: {
+            title: "차주 관리 방책 비교",
+            items: ["1안 / 현행 유지: 행정 부담은 가장 적으나 책임 편중과 돌발 외출에 대한 보완이 부족하다.", "2안 / 사전 승인 강화: 통제는 쉽지만 자율성이 크게 줄어 생활구역 분위기와 신뢰에 부정적 영향이 예상된다.", "3안 / 자율 신고와 순환 담당제 병행: 외출 자유를 유지하면서 정비·확인 업무를 분산할 수 있다."]
+        },
+        overall: {
+            title: "3안 시행 결심",
+            items: ["차주부터 외출은 2인 이상 상호 확인 후 간단한 목적지와 예상 복귀 시각만 등록한다.", "공용 정비와 인원 확인 담당은 매일 순환하며 동일 인원이 연속 이틀 담당하지 않는다.", "관리관은 규정 준수 여부보다 피로 누적과 관계 변화 여부를 우선 관찰한다."]
+        },
+        followUp: ["순환 담당표를 작성해 생활구역 게시판과 PDA에 동시 등록한다.", "외출 신고 항목을 목적지·동행자·예상 복귀 시각의 세 항목으로 간소화한다.", "개런드와 스프링필드의 휴식 시간을 별도로 확보하고 주중 면담을 진행한다.", "7일간 시범 운용 후 인원 의견을 받아 유지 여부를 재판단한다."],
+        image: "./images/claire.png",
+        imagePosition: "center 18%"
+    },
+    logLeave: {
+        name: "외출 승인 절차 개선 검토",
+        code: "MGA-WL-260918-02",
+        designation: "클레어 업무일지 / 외출 관리 결심형 보고",
+        class: "DECISION",
+        displayClass: "상황판단",
+        group: "LOGS",
+        height: "2026.09.18",
+        summary: "즉흥적인 외출이 잦은 인원의 자율성을 보장하면서 실종·연락 두절 위험을 줄이기 위한 승인 절차 개선 보고.",
+        sex: "Claire 관리관",
+        operationalPeriod: "2026.09.20 시행 검토",
+        origin: "미합중국 보병장비 관리부",
+        classification: "외출·복귀 안전관리",
+        recordListTitle: "관련 근거",
+        status: "PENDING / DECISION",
+        sectionCodes: { appearance: "01 / SITUATION", personality: "02 / ASSESSMENT", memory: "03 / COURSES OF ACTION", overall: "04 / DECISION" },
+        armament: ["관리국 외출 및 복귀 확인 지침", "콜트·카빈·톰슨 외출 기록", "최근 30일 복귀 지연 사례 3건"],
+        appearance: {
+            title: "현행 절차와 문제점",
+            items: ["현행 절차는 목적지와 세부 일정을 사전에 확정하도록 요구해 즉흥적인 일정 변경을 제대로 반영하지 못한다.", "콜트와 카빈은 이동 중 계획을 자주 바꾸며 톰슨은 현장에서 다른 인원을 합류시키는 경우가 있다.", "복귀가 늦어질 때 연락 자체는 이루어졌으나 담당자가 여러 기록을 대조해야 현재 위치를 파악할 수 있었다."]
+        },
+        personality: {
+            title: "통제보다 확인 가능성 확보",
+            items: ["외출 자체를 제한하는 것보다 동행자 중 한 명이 현재 위치와 복귀 변경만 남기도록 하는 편이 현실적이다.", "세부 계획 제출을 강제하면 형식적인 보고가 늘고 실제 상황과 기록의 차이가 커질 가능성이 높다.", "스프링필드와 개런드를 상시 인솔자로 지정하면 두 사람에게 다시 책임이 집중된다."]
+        },
+        memory: {
+            title: "외출 관리 방책 비교",
+            items: ["1안 / 기존 사전 승인 유지: 행정상 명확하지만 일정 변경 대응이 늦다.", "2안 / 자유 외출 후 사후 보고: 자율성은 높지만 연락 두절 시 초동 확인이 어렵다.", "3안 / 시간대 단위 승인과 대표 연락자 지정: 계획 변경을 허용하면서 최소한의 추적 가능성을 확보한다."]
+        },
+        overall: {
+            title: "3안 조건부 시행",
+            items: ["외출 승인은 세부 장소가 아닌 오전·오후·야간 시간대 단위로 부여한다.", "동행자 중 대표 연락자 한 명만 지정하고 변경 사항은 한 줄 보고로 갈음한다.", "복귀 예정 시각을 30분 이상 넘길 경우에만 관리관에게 자동 알림이 전송되도록 한다."]
+        },
+        followUp: ["PDA 외출 등록 화면을 세 항목으로 단순화한다.", "대표 연락자 지정은 매 외출마다 자율적으로 결정한다.", "야간 외출은 첫 2주 동안 관리관의 개별 확인을 유지한다.", "시범 운용 중 복귀 지연 사례와 인원 만족도를 함께 기록한다."],
+        image: "./images/claire.png",
+        imagePosition: "center 18%"
+    },
+    logMaintenance: {
+        name: "공용 정비 일정 재조정",
+        code: "MGA-WL-260917-03",
+        designation: "클레어 업무일지 / 정비 운영 후속 보고",
+        class: "FOLLOWUP",
+        displayClass: "후속조치",
+        group: "LOGS",
+        height: "2026.09.17",
+        summary: "공용 정비 업무의 특정 인원 편중을 해소하고 개인 정비와 휴식 시간을 함께 보장하기 위한 일정 재조정 보고.",
+        sex: "Claire 관리관",
+        operationalPeriod: "2026.09.20 — 2026.09.26 시범",
+        origin: "미합중국 보병장비 관리부",
+        classification: "장비 정비·휴식 보장",
+        recordListTitle: "관련 근거",
+        status: "APPROVED / FOLLOW-UP",
+        sectionCodes: { appearance: "01 / SITUATION", personality: "02 / ASSESSMENT", memory: "03 / COURSES OF ACTION", overall: "04 / DECISION" },
+        armament: ["공용 정비구역 운영기록", "개런드 업무량 점검 결과", "개인 정비시간 보장 지침"],
+        appearance: {
+            title: "정비 업무 편중 현황",
+            items: ["개런드가 공용 장비 점검표 작성과 마감 확인을 반복적으로 맡아 개인 정비가 늦어졌다.", "스프링필드는 누락된 작업을 조용히 보완했으나 별도 기록을 남기지 않아 실제 업무량이 드러나지 않았다.", "콜트와 카빈은 요청받은 작업 수행은 빠르지만 고정 담당 구역이 없어 참여 시점이 불규칙했다.", "톰슨은 물자 배치와 외부 조달에 강점이 있어 현장 정리보다 보급 조정에 적합하다."]
+        },
+        personality: {
+            title: "강점에 맞춘 순환 배치 필요",
+            items: ["동일한 정비 업무를 균등 배분하는 방식보다 강점을 반영한 역할 순환이 효율적이다.", "마감 책임자를 매일 바꾸고 관리관이 최종 확인하면 개런드의 부담을 줄이면서 품질을 유지할 수 있다.", "업무 완료 여부뿐 아니라 개인 정비와 휴식 시간이 실제로 확보됐는지 함께 확인해야 한다."]
+        },
+        memory: {
+            title: "정비 운영 방책 비교",
+            items: ["1안 / 전원 동일 업무 순환: 형평성은 높지만 숙련 차이로 작업 시간이 늘어난다.", "2안 / 숙련자 고정 담당: 품질은 안정적이나 개런드와 스프링필드의 부담이 계속된다.", "3안 / 강점별 역할 순환과 관리관 최종 확인: 업무 효율과 부담 분산을 동시에 기대할 수 있다."]
+        },
+        overall: {
+            title: "3안 1주 시범 운용",
+            items: ["점검·정리·보급·마감 네 역할을 구분하고 매일 담당을 순환한다.", "개런드는 점검 기준 안내만 맡고 마감 책임은 다른 인원과 번갈아 수행한다.", "관리관이 최종 확인을 맡아 개인 간 지적과 책임 전가가 생기지 않도록 한다."]
+        },
+        followUp: ["역할별 체크리스트를 5개 항목 이하로 간소화한다.", "매일 종료 후 실제 소요 시간과 누락 항목만 기록한다.", "개런드와 스프링필드의 개인 정비시간을 일정표에 먼저 고정한다.", "시범 종료일에 전원 의견을 받아 역할 구분을 조정한다."],
+        image: "./images/claire.png",
+        imagePosition: "center 18%"
     }
 };
 
@@ -344,14 +455,22 @@ const elements = {
     selectionHint: document.querySelector("#selectionHint"),
     selectionAnnouncement: document.querySelector("#selectionAnnouncement"),
     indexCount: document.querySelector("#indexCount"),
+    indexKicker: document.querySelector("#indexKicker"),
+    indexTitle: document.querySelector("#indexTitle"),
+    indexHelpText: document.querySelector("#indexHelpText"),
+    filterTabs: document.querySelector(".filter-tabs"),
     headerRecordCount: document.querySelector("#headerRecordCount"),
     allFilterCount: document.querySelector("#allFilterCount"),
     lanternFilterCount: document.querySelector("#lanternFilterCount"),
     lampFilterCount: document.querySelector("#lampFilterCount"),
     administratorFilterCount: document.querySelector("#administratorFilterCount"),
+    routineFilterCount: document.querySelector("#routineFilterCount"),
+    decisionFilterCount: document.querySelector("#decisionFilterCount"),
+    followupFilterCount: document.querySelector("#followupFilterCount"),
     administratorFilterButton: document.querySelector('[data-filter="ADMINISTRATOR"]'),
     selectedRecordLabel: document.querySelector("#selectedRecordLabel"),
     visualLogNumber: document.querySelector("#visualLogNumber"),
+    visualLabel: document.querySelector("#visualLabel"),
     frameRecordCode: document.querySelector("#frameRecordCode"),
     imageFrame: document.querySelector("#imageFrame"),
     visualPanel: document.querySelector(".visual-panel"),
@@ -366,7 +485,23 @@ const elements = {
     characterStatus: document.querySelector("#characterStatus"),
     profileHeight: document.querySelector("#profileHeight"),
     profileClass: document.querySelector("#profileClass"),
+    profilePrimaryLabel: document.querySelector("#profilePrimaryLabel"),
+    profileSecondaryLabel: document.querySelector("#profileSecondaryLabel"),
+    readRecordText: document.querySelector("#readRecordText"),
     characterSummary: document.querySelector("#characterSummary"),
+    recordKicker: document.querySelector("#recordKicker"),
+    recordTitle: document.querySelector("#recordTitle"),
+    documentTypeLabel: document.querySelector("#documentTypeLabel"),
+    documentStamp: document.querySelector("#documentStamp"),
+    recordSummaryTitle: document.querySelector("#recordSummaryTitle"),
+    recordInfoTitle: document.querySelector("#recordInfoTitle"),
+    recordCodeLabel: document.querySelector("#recordCodeLabel"),
+    recordDesignationLabel: document.querySelector("#recordDesignationLabel"),
+    recordSexLabel: document.querySelector("#recordSexLabel"),
+    recordHeightLabel: document.querySelector("#recordHeightLabel"),
+    recordClassificationLabel: document.querySelector("#recordClassificationLabel"),
+    recordOriginLabel: document.querySelector("#recordOriginLabel"),
+    recordPeriodLabel: document.querySelector("#recordPeriodLabel"),
     recordCode: document.querySelector("#recordCode"),
     recordDesignation: document.querySelector("#recordDesignation"),
     recordSex: document.querySelector("#recordSex"),
@@ -382,8 +517,10 @@ const elements = {
     recordListTitle: document.querySelector("#recordListTitle"),
     appearanceTitle: document.querySelector("#appearanceTitle"),
     appearanceList: document.querySelector("#appearanceList"),
+    appearanceSectionCode: document.querySelector("#appearanceSectionCode"),
     personalityTitle: document.querySelector("#personalityTitle"),
     personalityList: document.querySelector("#personalityList"),
+    personalitySectionCode: document.querySelector("#personalitySectionCode"),
     memoryTitle: document.querySelector("#memoryTitle"),
     memoryList: document.querySelector("#memoryList"),
     memorySectionCode: document.querySelector("#memorySectionCode"),
@@ -392,6 +529,10 @@ const elements = {
     overallSectionCode: document.querySelector("#overallSectionCode"),
     memoryTabButton: document.querySelector("#recordTabMemory"),
     overallTabButton: document.querySelector("#recordTabOverall"),
+    overviewTabButton: document.querySelector("#recordTabOverview"),
+    appearanceTabButton: document.querySelector("#recordTabAppearance"),
+    personalityTabButton: document.querySelector("#recordTabPersonality"),
+    relationshipsTabButton: document.querySelector("#recordTabRelationships"),
     archiveNoticeTitle: document.querySelector("#archiveNoticeTitle"),
     archiveNoticeText: document.querySelector("#archiveNoticeText"),
     relationshipTitle: document.querySelector("#relationshipTitle"),
@@ -400,9 +541,14 @@ const elements = {
     relationshipCenter: document.querySelector("#relationshipCenter"),
     relationshipTargets: document.querySelector("#relationshipTargets"),
     relationshipCards: document.querySelector("#relationshipCards"),
+    relationshipSection: document.querySelector("#relationshipSection"),
+    workLogActionsSection: document.querySelector("#workLogActionsSection"),
+    workLogActionsTitle: document.querySelector("#workLogActionsTitle"),
+    workLogActionsList: document.querySelector("#workLogActionsList"),
     recordSyncStatus: document.querySelector("#recordSyncStatus"),
     recordFooterPosition: document.querySelector("#recordFooterPosition"),
     footerEntityName: document.querySelector("#footerEntityName"),
+    footerEdition: document.querySelector("#footerEdition"),
     footerRecordPosition: document.querySelector("#footerRecordPosition"),
     statusbar: document.querySelector(".statusbar"),
     previousCharacter: document.querySelector("#previousCharacter"),
@@ -419,6 +565,10 @@ const collectionButtons = Array.from(document.querySelectorAll(".collection-butt
 const recordTabButtons = Array.from(document.querySelectorAll(".record-tab"));
 const recordTabPanels = Array.from(document.querySelectorAll(".record-tab-panel"));
 const uiSizeButtons = Array.from(document.querySelectorAll("[data-ui-size]"));
+const workLogFilterButtons = filterButtons.filter(function (button) { return button.classList.contains("work-log-filter"); });
+const entityFilterButtons = filterButtons.filter(function (button) {
+    return button.dataset.filter !== "all" && !button.classList.contains("work-log-filter");
+});
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const uiSizeStorageKey = "mepirit-pda-type-size";
 const seoulClockFormatter = new Intl.DateTimeFormat("en-CA", {
@@ -437,7 +587,9 @@ function padNumber(number) {
 }
 
 function getCharacterCollection(character) {
-    return character.group === "SWISS" ? "SWISS" : "US";
+    if (character.group === "SWISS") return "SWISS";
+    if (character.group === "LOGS") return "LOGS";
+    return "US";
 }
 
 function getCollectionCharacterIds(collectionName = activeCollection) {
@@ -454,6 +606,53 @@ function renderList(element, items) {
         fragment.appendChild(listItem);
     });
     element.replaceChildren(fragment);
+}
+
+function updateCollectionPresentation(collectionName) {
+    const isWorkLog = collectionName === "LOGS";
+    document.body.classList.toggle("work-log-mode", isWorkLog);
+    elements.indexKicker.textContent = isWorkLog ? "01 / WORK LOG INDEX" : "01 / ENTITY INDEX";
+    elements.indexTitle.textContent = isWorkLog ? "업무일지 색인" : "인물 색인";
+    elements.indexHelpText.innerHTML = isWorkLog
+        ? "목록에서 업무일지를 선택하면<br>결심형 보고 기록을 열람할 수 있습니다."
+        : "목록에서 인물을 선택하면<br>보관된 기록을 열람할 수 있습니다.";
+    elements.characterList.setAttribute("aria-label", isWorkLog ? "클레어 업무일지" : "검색된 캐릭터");
+    elements.filterTabs.setAttribute("aria-label", isWorkLog ? "업무일지 기록 분류" : "선택한 보병장비의 하위 분류 필터");
+    elements.searchInput.placeholder = isWorkLog ? "일지 제목, 보고 번호, 내용 검색" : "이름, 식별 번호, 기록 검색";
+    elements.visualLabel.textContent = isWorkLog ? "ADMINISTRATOR RECORD" : "CHARACTER PORTRAIT";
+    elements.recordKicker.textContent = isWorkLog ? "03 / DECISION REPORT" : "03 / ENTITY DOSSIER";
+    elements.recordTitle.textContent = isWorkLog ? "결심형 보고" : "인물 기록";
+    elements.documentTypeLabel.textContent = isWorkLog ? "MANAGEMENT / DECISION" : "ENTITY / GENERAL";
+    elements.documentStamp.textContent = isWorkLog ? "결재 완료" : "열람 가능";
+    elements.recordSummaryTitle.textContent = isWorkLog ? "보고 목적" : "기초 기록";
+    elements.recordInfoTitle.textContent = isWorkLog ? "문서 정보" : "식별 정보";
+    elements.profilePrimaryLabel.innerHTML = isWorkLog ? "DATE <span>보고일</span>" : "HEIGHT <span>신장</span>";
+    elements.profileSecondaryLabel.innerHTML = isWorkLog ? "TYPE <span>구분</span>" : "CLASS <span>분류</span>";
+    elements.readRecordText.textContent = isWorkLog ? "업무 기록" : "인물 기록";
+    elements.recordCodeLabel.textContent = isWorkLog ? "문서 번호" : "식별 번호";
+    elements.recordDesignationLabel.textContent = isWorkLog ? "문서 명칭" : "정식 명칭";
+    elements.recordSexLabel.textContent = isWorkLog ? "작성자" : "성별";
+    elements.recordHeightLabel.textContent = isWorkLog ? "보고일" : "신장";
+    elements.recordClassificationLabel.textContent = isWorkLog ? "보고 분야" : "병기 분류";
+    elements.recordOriginLabel.textContent = isWorkLog ? "담당 부서" : "출신";
+    elements.recordPeriodLabel.textContent = isWorkLog ? "적용 기간" : "활동 시기";
+    elements.overviewTabButton.textContent = "개요";
+    elements.appearanceTabButton.textContent = isWorkLog ? "상황" : "외형";
+    elements.personalityTabButton.textContent = isWorkLog ? "판단" : "성향";
+    elements.memoryTabButton.textContent = isWorkLog ? "방책" : "전쟁 기억";
+    elements.overallTabButton.textContent = isWorkLog ? "결심" : "종합";
+    elements.relationshipsTabButton.textContent = isWorkLog ? "조치" : "관계";
+    elements.footerEdition.innerHTML = isWorkLog
+        ? 'MANAGEMENT DECISION ARCHIVE <span aria-hidden="true">/</span> 03'
+        : 'ENTITY RECORD COLLECTION <span aria-hidden="true">/</span> 01';
+    elements.previousCharacter.setAttribute("aria-label", isWorkLog ? "이전 업무일지" : "이전 캐릭터");
+    elements.nextCharacter.setAttribute("aria-label", isWorkLog ? "다음 업무일지" : "다음 캐릭터");
+    elements.previousCharacter.title = isWorkLog ? "이전 업무일지 (↑)" : "이전 캐릭터 (↑)";
+    elements.nextCharacter.title = isWorkLog ? "다음 업무일지 (↓)" : "다음 캐릭터 (↓)";
+    entityFilterButtons.forEach(function (button) {
+        button.hidden = isWorkLog || (collectionName === "SWISS" && button.dataset.filter === "ADMINISTRATOR");
+    });
+    workLogFilterButtons.forEach(function (button) { button.hidden = !isWorkLog; });
 }
 
 function getRelationshipDisplayName(characterId) {
@@ -583,21 +782,27 @@ function renderRelationships(characterId) {
 }
 
 function renderDetailedRecord(character, characterId) {
+    const isWorkLog = character.group === "LOGS";
     elements.recordSex.textContent = character.sex;
     const hasAge = Boolean(character.age);
     elements.recordAgeLabel.hidden = !hasAge;
     elements.recordAge.hidden = !hasAge;
     elements.recordAge.textContent = character.age || "";
-    elements.recordClassLabel.textContent = character.classificationLabel || "메피릿 분류";
+    elements.recordClassLabel.textContent = isWorkLog ? "보고 분류" : (character.classificationLabel || "메피릿 분류");
     elements.recordClassification.textContent = character.classification;
     elements.recordOrigin.textContent = character.origin;
     elements.recordPeriod.textContent = character.operationalPeriod;
     elements.recordListTitle.textContent = character.recordListTitle || "주요 무장";
-    elements.memoryTabButton.textContent = character.tabLabels?.memory || "전쟁 기억";
-    elements.overallTabButton.textContent = character.tabLabels?.overall || "종합";
+    elements.memoryTabButton.textContent = isWorkLog ? "방책" : (character.tabLabels?.memory || "전쟁 기억");
+    elements.overallTabButton.textContent = isWorkLog ? "결심" : (character.tabLabels?.overall || "종합");
+    elements.appearanceSectionCode.textContent = character.sectionCodes?.appearance || "APPEARANCE PROFILE";
+    elements.personalitySectionCode.textContent = character.sectionCodes?.personality || "PERSONALITY PROFILE";
     elements.memorySectionCode.textContent = character.sectionCodes?.memory || "WAR MEMORY RECORD";
     elements.overallSectionCode.textContent = character.sectionCodes?.overall || "GENERAL ASSESSMENT";
-    if (character.group === "SWISS") {
+    if (isWorkLog) {
+        elements.archiveNoticeTitle.textContent = "FICTIONAL MANAGEMENT RECORD";
+        elements.archiveNoticeText.textContent = "메피릿 세계관을 위한 허구의 관리국 내부 기록입니다. 공개된 결심형 보고의 표지·목적·관련 근거 구조를 PDA 기록 형식에 맞게 재구성했습니다.";
+    } else if (character.group === "SWISS") {
         elements.archiveNoticeTitle.textContent = "SWISS ARCHIVE SOURCE";
         elements.archiveNoticeText.textContent = "스위스 보병장비 등록부를 바탕으로 정리한 램프 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
     } else if (character.class === "ADMINISTRATOR") {
@@ -613,7 +818,14 @@ function renderDetailedRecord(character, characterId) {
         elements[`${sectionName}Title`].textContent = character[sectionName].title;
         renderList(elements[`${sectionName}List`], character[sectionName].items);
     });
-    renderRelationships(characterId);
+    elements.relationshipSection.hidden = isWorkLog;
+    elements.workLogActionsSection.hidden = !isWorkLog;
+    if (isWorkLog) {
+        elements.workLogActionsTitle.textContent = `${character.name} / 후속 조치`;
+        renderList(elements.workLogActionsList, character.followUp || []);
+    } else {
+        renderRelationships(characterId);
+    }
 }
 
 async function hashPassword(value) {
@@ -826,12 +1038,12 @@ function renderCharacterList() {
         button.type = "button";
         button.className = "character-button";
         button.dataset.character = characterId;
-        button.dataset.class = character.class;
+        button.dataset.class = character.filter || character.class;
         button.dataset.collection = getCharacterCollection(character);
-        button.setAttribute("aria-label", `${character.name} 기록 열기`);
+        button.setAttribute("aria-label", `${character.name} ${character.group === "LOGS" ? "업무일지" : "기록"} 열기`);
         thumbnail.className = "character-thumb";
         fallback.className = "thumbnail-fallback";
-        fallback.textContent = character.name.replace(/[^A-Za-z0-9]/g, "").slice(0, 3).toUpperCase();
+        fallback.textContent = character.group === "LOGS" ? "LOG" : character.name.replace(/[^A-Za-z0-9]/g, "").slice(0, 3).toUpperCase();
         image.alt = "";
         image.loading = index === 0 ? "eager" : "lazy";
         image.addEventListener("error", function () { image.hidden = true; });
@@ -844,10 +1056,13 @@ function renderCharacterList() {
         name.textContent = character.name;
         code.textContent = character.code;
         role.className = "button-role";
-        role.textContent = character.class;
+        role.textContent = character.displayClass || character.class;
         copy.append(name, code, role);
         number.className = "button-index";
-        number.textContent = padNumber(index + 1);
+        const displayIndex = character.group === "LOGS"
+            ? getCollectionCharacterIds("LOGS").indexOf(characterId) + 1
+            : index + 1;
+        number.textContent = padNumber(displayIndex);
         number.setAttribute("aria-hidden", "true");
         button.append(thumbnail, copy, number);
         button.addEventListener("click", function () { showCharacter(characterId, true); });
@@ -875,7 +1090,7 @@ function setCharacterImage(character) {
     }
     elements.characterImage.onload = showAvailableImage;
     elements.characterImage.onerror = showMissingImage;
-    elements.characterImage.alt = `${character.name} 메피릿 캐릭터`;
+    elements.characterImage.alt = character.group === "LOGS" ? `${character.name} 업무일지 표지 이미지` : `${character.name} 메피릿 캐릭터`;
     elements.characterImage.style.objectPosition = character.imagePosition || "";
     if (!character.image) {
         elements.characterImage.removeAttribute("src");
@@ -887,8 +1102,8 @@ function setCharacterImage(character) {
     }
     elements.characterImage.src = character.image;
     elements.modalImage.src = character.image;
-    elements.modalImage.alt = `${character.name} 원본 이미지`;
-    elements.modalCaption.textContent = `${character.name} / VISUAL RECORD`;
+    elements.modalImage.alt = character.group === "LOGS" ? `${character.name} 업무일지 이미지` : `${character.name} 원본 이미지`;
+    elements.modalCaption.textContent = `${character.name} / ${character.group === "LOGS" ? "WORK LOG RECORD" : "VISUAL RECORD"}`;
     if (elements.characterImage.complete) {
         if (elements.characterImage.naturalWidth > 0) showAvailableImage();
         else showMissingImage();
@@ -906,17 +1121,17 @@ function showCharacter(characterId, announce) {
     elements.characterCode.textContent = character.code;
     elements.characterName.textContent = character.name;
     elements.characterDesignation.textContent = character.designation;
-    elements.characterStatus.textContent = `ACTIVE / ${character.class}`;
+    elements.characterStatus.textContent = character.status || `ACTIVE / ${character.class}`;
     elements.profileHeight.textContent = character.height;
-    elements.profileClass.textContent = character.class;
+    elements.profileClass.textContent = character.displayClass || character.class;
     elements.characterSummary.textContent = character.summary;
     elements.recordCode.textContent = character.code;
     elements.recordDesignation.textContent = character.designation;
-    elements.recordClass.textContent = character.class;
+    elements.recordClass.textContent = character.displayClass || character.class;
     elements.recordHeight.textContent = character.height;
     renderDetailedRecord(character, characterId);
     elements.selectedRecordLabel.textContent = formattedPosition;
-    elements.visualLogNumber.textContent = `VISUAL LOG / ${padNumber(position)}`;
+    elements.visualLogNumber.textContent = `${character.group === "LOGS" ? "WORK LOG" : "VISUAL LOG"} / ${padNumber(position)}`;
     elements.recordSyncStatus.textContent = `SYNC ${formattedPosition}`;
     elements.recordFooterPosition.textContent = formattedPosition;
     elements.footerEntityName.textContent = character.name.toUpperCase();
@@ -931,7 +1146,7 @@ function showCharacter(characterId, announce) {
     updateSelectionHint();
     document.title = `${character.name} // MEPIRIT ARCHIVE`;
     if (announce) {
-        elements.selectionAnnouncement.textContent = `${character.name} 기록을 열었습니다.`;
+        elements.selectionAnnouncement.textContent = `${character.name} ${character.group === "LOGS" ? "업무일지를" : "기록을"} 열었습니다.`;
         triggerPdaTransition();
     }
 }
@@ -961,7 +1176,9 @@ function updateSelectionHint() {
     const isFilteredOut = activeButton && activeButton.hidden;
     elements.selectionHint.hidden = !isFilteredOut;
     if (isFilteredOut) {
-        elements.selectionHint.textContent = "현재 표시 중인 인물은 검색 결과에 포함되지 않습니다. 목록에서 다른 기록을 선택할 수 있습니다.";
+        elements.selectionHint.textContent = activeCollection === "LOGS"
+            ? "현재 열람 중인 업무일지는 검색 결과에 포함되지 않습니다. 목록에서 다른 일지를 선택할 수 있습니다."
+            : "현재 표시 중인 인물은 검색 결과에 포함되지 않습니다. 목록에서 다른 기록을 선택할 수 있습니다.";
     }
 }
 
@@ -971,9 +1188,10 @@ function applyFilters() {
     let visibleCount = 0;
     getCharacterButtons().forEach(function (button) {
         const character = characters[button.dataset.character];
+        const filterValue = character.filter || character.class;
         const isVisible = getCharacterCollection(character) === activeCollection &&
             buildSearchText(character, button.dataset.character).includes(searchWord) &&
-            (activeFilter === "all" || character.class === activeFilter);
+            (activeFilter === "all" || filterValue === activeFilter);
         button.hidden = !isVisible;
         if (isVisible) visibleCount += 1;
     });
@@ -1006,6 +1224,7 @@ function setCollection(collectionName, announce) {
     activeCollection = collectionName;
     activeFilter = "all";
     elements.searchInput.value = "";
+    updateCollectionPresentation(collectionName);
     collectionButtons.forEach(function (button) {
         const isActive = button.dataset.collection === collectionName;
         button.classList.toggle("active", isActive);
@@ -1016,7 +1235,6 @@ function setCollection(collectionName, announce) {
         button.classList.toggle("active", isActive);
         button.setAttribute("aria-pressed", String(isActive));
     });
-    elements.administratorFilterButton.hidden = collectionName === "SWISS";
     updateFilterCounts();
     applyFilters();
     const firstCharacterId = getCollectionCharacterIds()[0];
@@ -1041,14 +1259,19 @@ function moveCharacter(direction) {
 
 function updateFilterCounts() {
     const collectionCharacterIds = getCollectionCharacterIds();
-    const lanternCount = collectionCharacterIds.filter(function (id) { return characters[id].class === "LANTERN"; }).length;
-    const lampCount = collectionCharacterIds.filter(function (id) { return characters[id].class === "LAMP"; }).length;
-    const administratorCount = collectionCharacterIds.filter(function (id) { return characters[id].class === "ADMINISTRATOR"; }).length;
+    function countType(type) {
+        return collectionCharacterIds.filter(function (id) {
+            return (characters[id].filter || characters[id].class) === type;
+        }).length;
+    }
     elements.headerRecordCount.textContent = `${padNumber(collectionCharacterIds.length)} RECORDS`;
     elements.allFilterCount.textContent = padNumber(collectionCharacterIds.length);
-    elements.lanternFilterCount.textContent = padNumber(lanternCount);
-    elements.lampFilterCount.textContent = padNumber(lampCount);
-    elements.administratorFilterCount.textContent = padNumber(administratorCount);
+    elements.lanternFilterCount.textContent = padNumber(countType("LANTERN"));
+    elements.lampFilterCount.textContent = padNumber(countType("LAMP"));
+    elements.administratorFilterCount.textContent = padNumber(countType("ADMINISTRATOR"));
+    elements.routineFilterCount.textContent = padNumber(countType("ROUTINE"));
+    elements.decisionFilterCount.textContent = padNumber(countType("DECISION"));
+    elements.followupFilterCount.textContent = padNumber(countType("FOLLOWUP"));
 }
 
 function updateClock() {
@@ -1144,6 +1367,7 @@ document.addEventListener("keydown", function (event) {
     }
 });
 
+updateCollectionPresentation(activeCollection);
 renderCharacterList();
 applyUiSize(window.localStorage.getItem(uiSizeStorageKey) || "normal", false);
 updateFilterCounts();
