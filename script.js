@@ -7,15 +7,57 @@ const characters = {
         class: "LANTERN",
         height: "173cm",
         summary: "허리 아래까지 내려오는 옅은 금빛 장발 끝에 청록빛이 스민 차분한 성격의 고참 메피릿.",
+        sex: "여성",
+        operationalPeriod: "1903년 제식 채용 → 제1차 세계대전 운용 → 제2차 세계대전까지 지속 운용",
+        origin: "미합중국, 매사추세츠주 스프링필드",
+        classification: "볼트액션 소총",
+        armament: [".30-06 Springfield 탄약 사용", "5발 내부 탄창", "볼트액션 작동방식"],
+        appearance: {
+            title: "173cm의 길고 가느다란 체형",
+            items: ["허리 아래까지 내려오는 옅은 금빛 장발.", "머리카락 끝으로 갈수록 희미한 청록빛이 섞여 있다.", "맑고 옅은 푸른 눈동자.", "팔다리가 길고 선이 가늘어 실제 신장보다 조금 더 커 보이는 편.", "정돈된 미인상이지만 딱딱하거나 위압적인 분위기는 거의 없다.", "바람에 머리카락이 흐트러져도 일일이 정리하지 않는 편이다."]
+        },
+        personality: {
+            title: "차분하고 사색적인 성향",
+            items: ["타인을 큰 목소리로 통제하거나 강제로 끌고 가는 성격은 아니다.", "상황을 충분히 지켜본 뒤 꼭 필요한 말만 꺼내는 편.", "다른 사람이 실수하면 먼저 상황을 정리하고, 이후 조용히 잘못된 부분을 짚는다.", "책임감은 강하지만 그 책임감을 다른 사람에게 요구하지 않는다.", "자신의 피로나 불편함을 먼저 드러내지 않고 혼자 감당하려는 경향이 있다.", "평소 감정 변화가 크지 않아 차갑게 보일 수 있으나 실제 성격은 상당히 부드럽다.", "탁 트인 장소에서 보내는 시간을 좋아한다.", "특별한 목적 없이 바닷가나 창가에 앉아 수평선을 바라보는 것도 즐긴다.", "여행에서도 짧은 시간에 많은 장소를 보는 것보다 한 곳에 오래 머무는 쪽을 선호한다.", "자신의 의지로 이동하고 목적지를 선택하는 행위 자체에 큰 의미를 둔다."]
+        },
+        memory: {
+            title: "감각의 형태로 남아 있는 오래된 전장",
+            items: ["과거의 기억이 하나의 명확한 사건보다는 냄새와 소리, 온도와 촉감처럼 남아 있는 경우가 많다.", "젖은 흙냄새나 먼 곳의 포성, 얼굴을 스쳐 지나가는 차가운 바람 등이 오래된 기억을 자극하기도 한다.", "오랜 기간 제식소총으로 사용되며 여러 세대의 손을 거쳐온 탓에 특정 개인 한 사람보다는 수많은 사용자의 단편적인 감각이 뒤섞여 있다.", "자신에게 남은 기억을 부정하지 않지만, 그것만으로 현재의 자신을 규정하는 것도 원하지 않는다."]
+        },
+        overall: {
+            title: "안정성과 신뢰성을 중시하는 고참 랜턴",
+            items: ["급격한 변화보다는 확실하고 검증된 방법을 선호한다.", "위험한 상황에서도 쉽게 동요하지 않는다.", "먼저 행동하기보다 상황을 읽은 뒤 정확한 선택을 하는 데 강하다.", "평화로운 시대에는 전투 능력보다 관찰력과 인내심, 안정적인 성격이 더욱 두드러진다."]
+        },
         image: "./images/m1903.png"
     },
     m1911: {
         name: "M1911 Colt",
         code: "US-IE-LN-1911",
-        designation: "United States Pistol, Caliber .45, M1911",
+        designation: "Pistol, Caliber .45, Automatic, M1911",
         class: "LANTERN",
         height: "153cm",
         summary: "짙은 갈색 장발과 큼직한 갈색 눈을 지닌 활발하고 즉흥적인 메피릿. 평소에는 장난이 많지만 위험할 때는 빠르게 냉정해진다.",
+        sex: "여성",
+        operationalPeriod: "1911년 제식 채용 → 제1차 세계대전 → 제2차 세계대전 및 이후까지 장기간 운용",
+        origin: "미합중국, 코네티컷주 하트퍼드",
+        classification: "반자동 제식권총",
+        armament: [".45 ACP 탄약 사용", "7발 탄창", "쇼트 리코일 방식 반자동 권총"],
+        appearance: {
+            title: "153cm의 매우 작은 체구",
+            items: ["짙은 갈색의 긴 머리카락.", "크고 둥근 갈색 눈.", "랜턴들 사이에서도 상당히 작은 편이며 외모 역시 어려 보인다.", "표정 변화가 매우 풍부해 감정이 얼굴에 쉽게 드러난다.", "머리를 정돈해놓아도 얼마 지나지 않아 다시 흐트러지는 일이 많다.", "가만히 서 있을 때조차 시선이 계속 주변을 돌아다닌다.", "작은 체격에 비해 움직임은 빠르고 민첩하다."]
+        },
+        personality: {
+            title: "즉흥적이고 호기심이 강한 행동파",
+            items: ["관심이 생기면 고민보다 행동이 먼저 나온다.", "처음 보는 장소나 음식, 물건에 쉽게 시선을 빼앗긴다.", "계획을 세워도 더 재미있는 것이 생기면 금방 원래 일정을 잊는다.", "규칙을 완전히 무시하는 것은 아니지만 상황에 따라 얼마든지 융통성 있게 해석한다.", "문제를 발견하면 가장 빠르고 단순한 해결법부터 떠올리는 경향이 있다.", "결과적으로 관리국 입장에서 그 해결법이 더 큰 문제가 되는 경우가 적지 않다.", "평소에는 시끄럽고 장난기가 많다.", "실제 위험을 감지하면 표정과 목소리가 빠르게 가라앉는다.", "주변의 작은 움직임이나 소리를 평소보다 훨씬 세밀하게 인식한다.", "판단이 빠르고 망설임이 적다.", "자신의 체격이나 외형 때문에 약하게 보이는 것을 크게 신경 쓰지는 않지만, 실제 능력까지 낮게 평가받는 것은 싫어한다."]
+        },
+        memory: {
+            title: "가까운 거리의 전투와 사람에게 남은 기억",
+            items: ["먼 거리의 풍경보다 손과 숨, 총성과 긴장처럼 가까운 거리의 감각이 강하게 남아 있다.", "사람의 손에 직접 쥐어진 채 움직였다는 기억의 비중이 상당히 크다.", "좁은 공간이나 갑작스럽게 터지는 소리에 몸이 먼저 반응할 때가 있다.", "전쟁에 대한 기억을 일상적으로 무겁게 꺼내지는 않지만, 실제 위험에서는 오래된 경험이 즉시 되살아난다."]
+        },
+        overall: {
+            title: "작고 빠르며 위험에 강한 랜턴",
+            items: ["일상적인 생활에서는 대표적인 사고뭉치.", "위험한 상황에서는 빠른 판단과 근거리 상황 인식 능력이 크게 두드러진다.", "새로운 환경에 대한 적응력이 높고 낯선 장소에서도 쉽게 위축되지 않는다.", "평화로운 시대에는 여행, 음식, 새로운 경험처럼 이전에는 누리기 어려웠던 것에 강한 관심을 보인다."]
+        },
         image: "./images/m1911.png"
     },
     garand: {
@@ -23,17 +65,59 @@ const characters = {
         code: "US-IE-LN-1936",
         designation: "United States Rifle, Caliber .30, M1",
         class: "LANTERN",
-        height: "170cm",
-        summary: "밝은 갈색과 금발 사이의 머리카락을 단정히 묶은 성실한 반장. 책임감이 강하며 다른 메피릿들을 세심하게 챙긴다.",
+        height: "171cm",
+        summary: "짙은 적갈색 머리와 밝은 갈색 눈을 지닌 책임감 강한 메피릿. 스스로 할 일을 찾고 주변을 챙기는 데 익숙하다.",
+        sex: "여성",
+        operationalPeriod: "1930년대 제식 채용 → 제2차 세계대전 본격 운용 → 전후까지 지속 사용",
+        origin: "미합중국, 매사추세츠주 스프링필드",
+        classification: "반자동 소총",
+        armament: [".30-06 Springfield 탄약 사용", "8발 엔블록 클립", "가스 작동식 반자동 방식"],
+        appearance: {
+            title: "171cm의 건강하고 균형 잡힌 체격",
+            items: ["짙은 적갈색 머리.", "밝은 갈색 눈.", "지나치게 마르거나 육중하지 않은 탄탄한 체형.", "평소 머리는 움직임을 방해하지 않도록 단정하게 정리한다.", "반듯한 인상이 강하지만 군인처럼 지나치게 딱딱하게 보이지는 않는다.", "평상복에서는 의외로 편안하고 활동적인 옷차림을 선호한다."]
+        },
+        personality: {
+            title: "높은 책임감과 자기확신",
+            items: ["자신에게 맡겨진 일을 남에게 미루는 것을 좋아하지 않는다.", "지시를 기다리기보다 자신이 할 일을 먼저 찾아서 움직인다.", "일정이나 준비가 엉키면 자연스럽게 정리를 시작한다.", "자신이 잘하는 것을 굳이 못한다고 낮추지 않는 편이며 능력에 대한 자신감도 상당하다.", "그 자신감이 다른 사람을 무시하는 방향으로 이어지는 경우는 드물다.", "한번 옳다고 생각한 판단은 쉽게 바꾸지 않아 고집스럽게 보일 때가 있다.", "자신보다 경험이 적거나 작은 사람을 챙기는 것을 자연스럽게 생각한다.", "문제는 상대가 원하지 않아도 먼저 도와주려 한다는 점.", "모든 일을 자신이 책임져야 한다고 생각하는 경향이 있어 필요 이상으로 부담을 짊어질 때가 있다.", "평화로운 생활에서도 목적이나 역할이 없으면 조금 불안해하는 모습을 보인다."]
+        },
+        memory: {
+            title: "수많은 사람에게 신뢰받았다는 기억",
+            items: ["‘주력 제식소총’이라는 위치에 있었던 경험이 자아에 큰 영향을 남겼다.", "많은 사람이 자신에게 의지했던 기억은 강한 자부심이기도 하지만 동시에 부담이기도 하다.", "전쟁이 끝난 뒤에도 자신이 누군가에게 필요한 존재여야 한다는 생각을 완전히 버리지 못했다.", "자신을 단순히 성공적인 무기로 기억하는 것보다 맡은 역할을 끝까지 수행했던 존재로 보는 경향이 강하다."]
+        },
+        overall: {
+            title: "안정적이고 책임감 강한 랜턴",
+            items: ["상황 정리와 인원 관리에 능숙하다.", "긴급 상황에서도 맡은 역할을 쉽게 포기하지 않는다.", "다른 사람의 신뢰를 받는 환경에서 가장 안정적인 모습을 보인다.", "전쟁이 사라진 지금은 자신이 어떤 새로운 책임과 목적을 가질 수 있는지를 조금씩 배우는 중이다.", "휴가나 외출 자체를 싫어하지 않으며 평범한 놀이와 여행도 즐기지만, 주변 사람이 흩어지면 습관적으로 인원부터 확인한다."]
+        },
         image: "./images/garand.png"
     },
     thompson: {
-        name: "M1928 Thompson",
+        name: "M1928A1 Thompson",
         code: "US-IE-LN-1928",
-        designation: "Thompson Submachine Gun, Model of 1928",
+        designation: "Submachine Gun, Caliber .45, Thompson, Model of 1928",
         class: "LANTERN",
-        height: "168cm",
-        summary: "짙은 갈색 웨이브 머리와 녹갈색 눈을 지닌 메피릿. 자존심이 강하고 품위와 단정한 차림을 중요하게 생각한다.",
+        height: "166cm",
+        summary: "짙은 흑갈색 웨이브 머리와 선명한 청록색 눈을 지닌 사교적인 메피릿. 화려하고 세련된 분위기와 강한 존재감을 지녔다.",
+        sex: "여성",
+        operationalPeriod: "1920년대 후반 등장 → 제2차 세계대전 전후 본격 운용",
+        origin: "미합중국",
+        classification: "기관단총",
+        armament: [".45 ACP 탄약 사용", "20발·30발 박스탄창 및 드럼탄창 운용", "블로우백 방식 자동화기"],
+        appearance: {
+            title: "166cm의 균형 잡힌 체형",
+            items: ["짙은 흑갈색의 굵은 웨이브 머리.", "선명한 청록색 눈.", "자세가 좋고 움직임에 자신감이 묻어난다.", "실제 체격보다 존재감이 크게 느껴지는 타입.", "외출이나 휴가에서는 다른 랜턴보다 복장과 머리 모양에 신경을 많이 쓴다.", "화려하고 세련된 분위기가 강하며 자신의 외모를 어떻게 표현할지 잘 알고 있다."]
+        },
+        personality: {
+            title: "사교적이고 자신감이 강함",
+            items: ["낯선 사람과도 자연스럽게 대화를 시작한다.", "분위기가 조용하면 먼저 이야기를 꺼내 흐름을 만드는 경우가 많다.", "타인의 시선을 두려워하지 않으며 오히려 어느 정도 즐기는 편.", "꾸미는 일이나 새로운 유행, 분위기 좋은 장소에 관심이 많다.", "약간의 허세가 있지만 실제 행동력이 뒤따르기 때문에 단순한 허풍으로 끝나는 경우는 드물다.", "장난기가 많지만 장난과 실제 위험을 구별하는 기준은 분명하다.", "옷이나 액세서리를 선택할 때 단순한 편의성만 고려하지 않는다.", "여행을 가면 유명 관광지뿐 아니라 현지의 상점이나 카페에도 관심을 보인다.", "평화로운 시대에 자신을 꾸미고 원하는 모습으로 살아가는 것을 상당히 즐긴다."]
+        },
+        memory: {
+            title: "화려한 이미지 뒤에 남은 실전 경험",
+            items: ["자신의 유명세나 상징적인 이미지와 실제 전장에서의 경험을 구분한다.", "과거를 지나치게 무겁게 이야기하지 않지만 가볍게 희화화되는 것도 선호하지 않는다.", "위험 상황에서는 평소의 장난스러운 태도가 빠르게 사라지고 상당히 현실적인 판단을 내린다.", "자신감은 단순한 허세가 아니라 실제 경험에서 비롯된 부분이 크다."]
+        },
+        overall: {
+            title: "높은 사교성과 강한 존재감을 가진 랜턴",
+            items: ["새로운 장소에 쉽게 적응한다.", "사람을 모으고 분위기를 움직이는 능력이 뛰어나다.", "필요할 때는 대담하게 앞으로 나설 수 있다.", "평시에는 패션과 여행, 사교 활동 등 전쟁과 무관한 생활에 강한 관심을 보인다.", "과거의 상징성보다는 현재 자신이 원하는 모습으로 기억되기를 선호한다."]
+        },
         image: "./images/thompson.png"
     },
     carbine: {
@@ -41,18 +125,40 @@ const characters = {
         code: "US-IE-LN-1941",
         designation: "United States Carbine, Caliber .30, M1",
         class: "LANTERN",
-        height: "159cm",
-        summary: "복슬한 밀빛 단발과 밝고 둥근 연갈색 눈을 지닌 메피릿. 붙임성이 좋고 장난이 많으며 혼자 남겨지는 것을 싫어한다.",
+        height: "158cm",
+        summary: "밝은 밤색과 밀빛이 섞인 단발, 호박색 눈을 지닌 붙임성 좋은 메피릿. 사람과 분위기를 빠르게 읽고 자연스럽게 어울린다.",
+        sex: "여성",
+        operationalPeriod: "1940년대 초반 제식 채용 → 제2차 세계대전 본격 운용 → 전후까지 광범위하게 사용",
+        origin: "미합중국 / 미국 내 다수 생산업체",
+        classification: "반자동 카빈",
+        armament: [".30 Carbine 탄약 사용", "15발 박스탄창", "가스 작동식 반자동 방식"],
+        appearance: {
+            title: "158cm의 작고 가벼운 체형",
+            items: ["밝은 밤색 또는 밀빛이 섞인 연갈색 단발.", "밝은 호박색 눈.", "몸선이 가볍고 민첩한 인상.", "눈웃음이 잘 드러나 전체적으로 접근하기 쉬운 분위기를 가진다.", "랜턴 사이에서는 작은 축에 속해 램프로 착각받는 경우도 있다.", "작은 신체를 콤플렉스로 생각하지는 않으며 오히려 필요할 때 적극적으로 이용한다."]
+        },
+        personality: {
+            title: "밝고 붙임성이 좋은 사교형",
+            items: ["낯선 사람과도 쉽게 대화를 시작한다.", "주변 사람이 대화에서 겉돌고 있으면 빠르게 알아채고 자연스럽게 끌어들인다.", "사람의 감정과 분위기를 읽는 능력이 상당히 좋다.", "문제를 정면으로 밀어붙이기보다는 상황에 맞춰 방법을 바꾸는 것을 선호한다.", "필요할 경우 다른 사람에게 도움을 부탁하는 것에도 거리낌이 없다.", "혼자 있는 것보다는 여러 사람이 함께 있는 공간을 선호한다.", "발걸음이 빠르고 가만히 있는 것을 크게 좋아하지 않는다.", "목적 없는 산책이나 가게 구경도 즐긴다.", "장난기가 있고 다른 사람의 장난에 쉽게 휩쓸리기도 한다.", "다만 주변 분위기를 읽는 능력이 좋아 일이 정말 위험해지기 전에 빠르게 태도를 바꾸는 편이다.", "작다는 이유로 약하게 취급하는 것은 싫어한다."]
+        },
+        memory: {
+            title: "사람들과 함께 빠르게 움직였던 기억",
+            items: ["무겁고 긴 전투보다 사람을 따라 이동하고 필요한 장소를 오갔던 기억의 비중이 크다.", "전쟁의 기억에서도 이동, 동료, 사람의 목소리와 같은 요소가 강하게 남아 있다.", "혼자서 무엇인가를 해냈다는 기억보다 누군가 곁에서 함께 움직였다는 감각에 익숙하다.", "이런 경험 때문에 전후에도 사람이 많은 생활공간을 편안하게 느낀다."]
+        },
+        overall: {
+            title: "높은 적응력과 뛰어난 친화력을 가진 랜턴",
+            items: ["낯선 장소와 새로운 사람에 쉽게 적응한다.", "압박이 심하지 않은 상황에서는 매우 유연하게 행동한다.", "사람과 사람 사이를 이어주는 데 능숙하다.", "체격과 물리적인 힘보다는 움직임과 판단, 상황 적응으로 문제를 해결한다.", "평화로운 시대의 생활에 가장 자연스럽게 녹아든 랜턴 가운데 하나로, 카페나 상점, 공원 같은 평범한 공간에서도 특별한 위화감 없이 시간을 보낸다."]
+        },
         image: "./images/carbine.png"
     }
 };
 
 const characterOrder = Object.keys(characters);
 const totalRecords = characterOrder.length;
-const passwordHash = "acfee4ec2d3918bc905df30f6d55394df66d6168835d7b44dd9668b4fef5184d";
+const passwordHash = "72ab994fa2eb426c051ef59cad617750bfe06d7cf6311285ff79c19c32afd236";
 const accessSessionKey = "mepirit-archive-authorized";
 let selectedCharacterId = characterOrder[0];
 let activeFilter = "all";
+let activeRecordTab = "overview";
 
 const elements = {
     loginScreen: document.querySelector("#loginScreen"),
@@ -92,8 +198,21 @@ const elements = {
     characterSummary: document.querySelector("#characterSummary"),
     recordCode: document.querySelector("#recordCode"),
     recordDesignation: document.querySelector("#recordDesignation"),
+    recordSex: document.querySelector("#recordSex"),
     recordClass: document.querySelector("#recordClass"),
     recordHeight: document.querySelector("#recordHeight"),
+    recordClassification: document.querySelector("#recordClassification"),
+    recordOrigin: document.querySelector("#recordOrigin"),
+    recordPeriod: document.querySelector("#recordPeriod"),
+    recordArmament: document.querySelector("#recordArmament"),
+    appearanceTitle: document.querySelector("#appearanceTitle"),
+    appearanceList: document.querySelector("#appearanceList"),
+    personalityTitle: document.querySelector("#personalityTitle"),
+    personalityList: document.querySelector("#personalityList"),
+    memoryTitle: document.querySelector("#memoryTitle"),
+    memoryList: document.querySelector("#memoryList"),
+    overallTitle: document.querySelector("#overallTitle"),
+    overallList: document.querySelector("#overallList"),
     recordSyncStatus: document.querySelector("#recordSyncStatus"),
     recordFooterPosition: document.querySelector("#recordFooterPosition"),
     footerEntityName: document.querySelector("#footerEntityName"),
@@ -108,10 +227,51 @@ const elements = {
 };
 
 const filterButtons = Array.from(document.querySelectorAll(".filter-button"));
+const recordTabButtons = Array.from(document.querySelectorAll(".record-tab"));
+const recordTabPanels = Array.from(document.querySelectorAll(".record-tab-panel"));
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function padNumber(number) {
     return String(number).padStart(2, "0");
+}
+
+function renderList(element, items) {
+    const fragment = document.createDocumentFragment();
+    items.forEach(function (item) {
+        const listItem = document.createElement("li");
+        listItem.textContent = item;
+        fragment.appendChild(listItem);
+    });
+    element.replaceChildren(fragment);
+}
+
+function showRecordTab(tabName, focusTab) {
+    activeRecordTab = tabName;
+    recordTabButtons.forEach(function (button) {
+        const isActive = button.dataset.recordTab === tabName;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-selected", String(isActive));
+        button.tabIndex = isActive ? 0 : -1;
+        if (isActive && focusTab) button.focus();
+    });
+    recordTabPanels.forEach(function (panel) {
+        const isActive = panel.dataset.recordPanel === tabName;
+        panel.hidden = !isActive;
+        panel.classList.toggle("active", isActive);
+    });
+}
+
+function renderDetailedRecord(character) {
+    elements.recordSex.textContent = character.sex;
+    elements.recordClassification.textContent = character.classification;
+    elements.recordOrigin.textContent = character.origin;
+    elements.recordPeriod.textContent = character.operationalPeriod;
+    renderList(elements.recordArmament, character.armament);
+
+    ["appearance", "personality", "memory", "overall"].forEach(function (sectionName) {
+        elements[`${sectionName}Title`].textContent = character[sectionName].title;
+        renderList(elements[`${sectionName}List`], character[sectionName].items);
+    });
 }
 
 async function hashPassword(value) {
@@ -323,6 +483,7 @@ function showCharacter(characterId, announce) {
     elements.recordDesignation.textContent = character.designation;
     elements.recordClass.textContent = character.class;
     elements.recordHeight.textContent = character.height;
+    renderDetailedRecord(character);
     elements.selectedRecordLabel.textContent = formattedPosition;
     elements.visualLogNumber.textContent = `VISUAL LOG / ${padNumber(position)}`;
     elements.recordSyncStatus.textContent = `SYNC ${formattedPosition}`;
@@ -342,7 +503,12 @@ function showCharacter(characterId, announce) {
 }
 
 function buildSearchText(character) {
-    return [character.name, character.code, character.designation, character.class, character.height, character.summary]
+    function flatten(value) {
+        if (Array.isArray(value)) return value.flatMap(flatten);
+        if (value && typeof value === "object") return Object.values(value).flatMap(flatten);
+        return String(value ?? "");
+    }
+    return flatten(character)
         .join(" ")
         .toLocaleLowerCase("ko");
 }
@@ -447,6 +613,16 @@ function closeImageModal() {
 filterButtons.forEach(function (button) {
     button.addEventListener("click", function () { setFilter(button.dataset.filter); });
 });
+recordTabButtons.forEach(function (button, index) {
+    button.addEventListener("click", function () { showRecordTab(button.dataset.recordTab, false); });
+    button.addEventListener("keydown", function (event) {
+        if (event.key !== "ArrowLeft" && event.key !== "ArrowRight") return;
+        event.preventDefault();
+        const direction = event.key === "ArrowRight" ? 1 : -1;
+        const nextIndex = (index + direction + recordTabButtons.length) % recordTabButtons.length;
+        showRecordTab(recordTabButtons[nextIndex].dataset.recordTab, true);
+    });
+});
 elements.searchInput.addEventListener("input", applyFilters);
 elements.clearSearch.addEventListener("click", function () {
     elements.searchInput.value = "";
@@ -494,6 +670,7 @@ renderCharacterList();
 updateFilterCounts();
 applyFilters();
 showCharacter(selectedCharacterId, false);
+showRecordTab(activeRecordTab, false);
 updateClock();
 window.setInterval(updateClock, 1000);
 initializeLogin();
