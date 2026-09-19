@@ -49,10 +49,20 @@ const characters = {
 
 const characterOrder = Object.keys(characters);
 const totalRecords = characterOrder.length;
+const passwordHash = "acfee4ec2d3918bc905df30f6d55394df66d6168835d7b44dd9668b4fef5184d";
+const accessSessionKey = "mepirit-archive-authorized";
 let selectedCharacterId = characterOrder[0];
 let activeFilter = "all";
 
 const elements = {
+    loginScreen: document.querySelector("#loginScreen"),
+    loginForm: document.querySelector("#loginForm"),
+    loginCard: document.querySelector(".login-card"),
+    passwordInput: document.querySelector("#passwordInput"),
+    togglePassword: document.querySelector("#togglePassword"),
+    loginMessage: document.querySelector("#loginMessage"),
+    welcomeMessage: document.querySelector("#welcomeMessage"),
+    archiveApp: document.querySelector("#archiveApp"),
     searchInput: document.querySelector("#searchInput"),
     clearSearch: document.querySelector("#clearSearch"),
     resetFilters: document.querySelector("#resetFilters"),
@@ -101,6 +111,93 @@ const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)
 
 function padNumber(number) {
     return String(number).padStart(2, "0");
+}
+
+async function hashPassword(value) {
+    const bytes = new TextEncoder().encode(value);
+    const digest = await window.crypto.subtle.digest("SHA-256", bytes);
+    return Array.from(new Uint8Array(digest), function (byte) {
+        return byte.toString(16).padStart(2, "0");
+    }).join("");
+}
+
+function unlockArchive(skipWelcome) {
+    elements.archiveApp.removeAttribute("inert");
+    elements.archiveApp.setAttribute("aria-hidden", "false");
+    document.body.classList.remove("is-locked");
+
+    if (skipWelcome) {
+        elements.loginScreen.hidden = true;
+        return;
+    }
+
+    elements.loginCard.hidden = true;
+    elements.welcomeMessage.hidden = false;
+    window.setTimeout(function () {
+        elements.loginScreen.classList.add("is-closing");
+        window.setTimeout(function () {
+            elements.loginScreen.hidden = true;
+            elements.characterList.querySelector(".character-button.active")?.focus();
+        }, 520);
+    }, 1150);
+}
+
+async function handleLogin(event) {
+    event.preventDefault();
+    const submittedPassword = elements.passwordInput.value;
+
+    if (!submittedPassword) {
+        elements.loginMessage.textContent = "비밀번호를 입력해 주세요.";
+        elements.loginMessage.classList.add("is-error");
+        elements.passwordInput.focus();
+        return;
+    }
+
+    elements.loginMessage.textContent = "VERIFYING ACCESS...";
+    elements.loginMessage.classList.remove("is-error");
+    const submittedHash = await hashPassword(submittedPassword);
+
+    if (submittedHash !== passwordHash) {
+        elements.loginMessage.textContent = "ACCESS DENIED / 비밀번호를 확인해 주세요.";
+        elements.loginMessage.classList.add("is-error");
+        elements.loginCard.classList.remove("has-error");
+        void elements.loginCard.offsetWidth;
+        elements.loginCard.classList.add("has-error");
+        elements.passwordInput.select();
+        return;
+    }
+
+    window.sessionStorage.setItem(accessSessionKey, "true");
+    elements.loginMessage.textContent = "ACCESS GRANTED";
+    unlockArchive(false);
+}
+
+function initializeLogin() {
+    if (window.sessionStorage.getItem(accessSessionKey) === "true") {
+        unlockArchive(true);
+        return;
+    }
+
+    elements.loginForm.addEventListener("submit", function (event) {
+        handleLogin(event).catch(function () {
+            elements.loginMessage.textContent = "인증 처리 중 오류가 발생했습니다.";
+            elements.loginMessage.classList.add("is-error");
+        });
+    });
+    elements.passwordInput.addEventListener("input", function () {
+        elements.loginMessage.textContent = "AUTHORIZATION REQUIRED";
+        elements.loginMessage.classList.remove("is-error");
+    });
+    elements.togglePassword.addEventListener("click", function () {
+        const showPassword = elements.passwordInput.type === "password";
+        elements.passwordInput.type = showPassword ? "text" : "password";
+        elements.togglePassword.textContent = showPassword ? "숨김" : "보기";
+        elements.togglePassword.setAttribute("aria-label", showPassword ? "비밀번호 숨기기" : "비밀번호 표시");
+        elements.passwordInput.focus();
+    });
+    window.requestAnimationFrame(function () {
+        elements.passwordInput.focus();
+    });
 }
 
 function renderCharacterList() {
@@ -336,6 +433,7 @@ document.addEventListener("keydown", function (event) {
     const target = event.target;
     const isTyping = target instanceof HTMLInputElement || target instanceof HTMLTextAreaElement || target.isContentEditable;
     if (event.ctrlKey || event.metaKey || event.altKey) return;
+    if (document.body.classList.contains("is-locked")) return;
     if (modalIsOpen()) {
         if (event.key === "Escape") {
             event.preventDefault();
@@ -364,3 +462,4 @@ applyFilters();
 showCharacter(selectedCharacterId, false);
 updateClock();
 window.setInterval(updateClock, 1000);
+initializeLogin();
