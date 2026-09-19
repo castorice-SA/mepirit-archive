@@ -290,9 +290,7 @@ const characters = {
             title: "3안 시행 결심",
             items: ["차주부터 외출은 2인 이상 상호 확인 후 간단한 목적지와 예상 복귀 시각만 등록한다.", "공용 정비와 인원 확인 담당은 매일 순환하며 동일 인원이 연속 이틀 담당하지 않는다.", "관리관은 규정 준수 여부보다 피로 누적과 관계 변화 여부를 우선 관찰한다."]
         },
-        followUp: ["순환 담당표를 작성해 생활구역 게시판과 PDA에 동시 등록한다.", "외출 신고 항목을 목적지·동행자·예상 복귀 시각의 세 항목으로 간소화한다.", "개런드와 스프링필드의 휴식 시간을 별도로 확보하고 주중 면담을 진행한다.", "7일간 시범 운용 후 인원 의견을 받아 유지 여부를 재판단한다."],
-        image: "./images/claire.png",
-        imagePosition: "center 18%"
+        followUp: ["순환 담당표를 작성해 생활구역 게시판과 PDA에 동시 등록한다.", "외출 신고 항목을 목적지·동행자·예상 복귀 시각의 세 항목으로 간소화한다.", "개런드와 스프링필드의 휴식 시간을 별도로 확보하고 주중 면담을 진행한다.", "7일간 시범 운용 후 인원 의견을 받아 유지 여부를 재판단한다."]
     },
     logLeave: {
         name: "외출 승인 절차 개선 검토",
@@ -327,9 +325,7 @@ const characters = {
             title: "3안 조건부 시행",
             items: ["외출 승인은 세부 장소가 아닌 오전·오후·야간 시간대 단위로 부여한다.", "동행자 중 대표 연락자 한 명만 지정하고 변경 사항은 한 줄 보고로 갈음한다.", "복귀 예정 시각을 30분 이상 넘길 경우에만 관리관에게 자동 알림이 전송되도록 한다."]
         },
-        followUp: ["PDA 외출 등록 화면을 세 항목으로 단순화한다.", "대표 연락자 지정은 매 외출마다 자율적으로 결정한다.", "야간 외출은 첫 2주 동안 관리관의 개별 확인을 유지한다.", "시범 운용 중 복귀 지연 사례와 인원 만족도를 함께 기록한다."],
-        image: "./images/claire.png",
-        imagePosition: "center 18%"
+        followUp: ["PDA 외출 등록 화면을 세 항목으로 단순화한다.", "대표 연락자 지정은 매 외출마다 자율적으로 결정한다.", "야간 외출은 첫 2주 동안 관리관의 개별 확인을 유지한다.", "시범 운용 중 복귀 지연 사례와 인원 만족도를 함께 기록한다."]
     },
     logMaintenance: {
         name: "공용 정비 일정 재조정",
@@ -364,9 +360,7 @@ const characters = {
             title: "3안 1주 시범 운용",
             items: ["점검·정리·보급·마감 네 역할을 구분하고 매일 담당을 순환한다.", "개런드는 점검 기준 안내만 맡고 마감 책임은 다른 인원과 번갈아 수행한다.", "관리관이 최종 확인을 맡아 개인 간 지적과 책임 전가가 생기지 않도록 한다."]
         },
-        followUp: ["역할별 체크리스트를 5개 항목 이하로 간소화한다.", "매일 종료 후 실제 소요 시간과 누락 항목만 기록한다.", "개런드와 스프링필드의 개인 정비시간을 일정표에 먼저 고정한다.", "시범 종료일에 전원 의견을 받아 역할 구분을 조정한다."],
-        image: "./images/claire.png",
-        imagePosition: "center 18%"
+        followUp: ["역할별 체크리스트를 5개 항목 이하로 간소화한다.", "매일 종료 후 실제 소요 시간과 누락 항목만 기록한다.", "개런드와 스프링필드의 개인 정비시간을 일정표에 먼저 고정한다.", "시범 종료일에 전원 의견을 받아 역할 구분을 조정한다."]
     }
 };
 
@@ -545,6 +539,25 @@ const elements = {
     workLogActionsSection: document.querySelector("#workLogActionsSection"),
     workLogActionsTitle: document.querySelector("#workLogActionsTitle"),
     workLogActionsList: document.querySelector("#workLogActionsList"),
+    workLogDocument: document.querySelector("#workLogDocument"),
+    workLogDocumentCode: document.querySelector("#workLogDocumentCode"),
+    workLogDocumentDate: document.querySelector("#workLogDocumentDate"),
+    workLogDocumentTitle: document.querySelector("#workLogDocumentTitle"),
+    workLogDocumentAuthor: document.querySelector("#workLogDocumentAuthor"),
+    workLogDocumentDepartment: document.querySelector("#workLogDocumentDepartment"),
+    workLogDocumentCategory: document.querySelector("#workLogDocumentCategory"),
+    workLogDocumentPeriod: document.querySelector("#workLogDocumentPeriod"),
+    workLogDocumentSummary: document.querySelector("#workLogDocumentSummary"),
+    workLogDocumentBasis: document.querySelector("#workLogDocumentBasis"),
+    workLogDocumentSituationTitle: document.querySelector("#workLogDocumentSituationTitle"),
+    workLogDocumentSituation: document.querySelector("#workLogDocumentSituation"),
+    workLogDocumentAssessmentTitle: document.querySelector("#workLogDocumentAssessmentTitle"),
+    workLogDocumentAssessment: document.querySelector("#workLogDocumentAssessment"),
+    workLogDocumentCoursesTitle: document.querySelector("#workLogDocumentCoursesTitle"),
+    workLogDocumentCourses: document.querySelector("#workLogDocumentCourses"),
+    workLogDocumentDecisionTitle: document.querySelector("#workLogDocumentDecisionTitle"),
+    workLogDocumentDecision: document.querySelector("#workLogDocumentDecision"),
+    workLogDocumentFollowUp: document.querySelector("#workLogDocumentFollowUp"),
     recordSyncStatus: document.querySelector("#recordSyncStatus"),
     recordFooterPosition: document.querySelector("#recordFooterPosition"),
     footerEntityName: document.querySelector("#footerEntityName"),
@@ -823,6 +836,24 @@ function renderDetailedRecord(character, characterId) {
     if (isWorkLog) {
         elements.workLogActionsTitle.textContent = `${character.name} / 후속 조치`;
         renderList(elements.workLogActionsList, character.followUp || []);
+        elements.workLogDocumentCode.textContent = character.code;
+        elements.workLogDocumentDate.textContent = character.height;
+        elements.workLogDocumentTitle.textContent = character.name;
+        elements.workLogDocumentAuthor.textContent = character.sex;
+        elements.workLogDocumentDepartment.textContent = character.origin;
+        elements.workLogDocumentCategory.textContent = character.classification;
+        elements.workLogDocumentPeriod.textContent = character.operationalPeriod;
+        elements.workLogDocumentSummary.textContent = character.summary;
+        elements.workLogDocumentSituationTitle.textContent = character.appearance.title;
+        elements.workLogDocumentAssessmentTitle.textContent = character.personality.title;
+        elements.workLogDocumentCoursesTitle.textContent = character.memory.title;
+        elements.workLogDocumentDecisionTitle.textContent = character.overall.title;
+        renderList(elements.workLogDocumentBasis, character.armament);
+        renderList(elements.workLogDocumentSituation, character.appearance.items);
+        renderList(elements.workLogDocumentAssessment, character.personality.items);
+        renderList(elements.workLogDocumentCourses, character.memory.items);
+        renderList(elements.workLogDocumentDecision, character.overall.items);
+        renderList(elements.workLogDocumentFollowUp, character.followUp || []);
     } else {
         renderRelationships(characterId);
     }
