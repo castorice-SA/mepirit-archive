@@ -395,6 +395,7 @@ const elements = {
     archiveNoticeTitle: document.querySelector("#archiveNoticeTitle"),
     archiveNoticeText: document.querySelector("#archiveNoticeText"),
     relationshipTitle: document.querySelector("#relationshipTitle"),
+    relationshipLead: document.querySelector("#relationshipLead"),
     relationshipMap: document.querySelector("#relationshipMap"),
     relationshipCenter: document.querySelector("#relationshipCenter"),
     relationshipTargets: document.querySelector("#relationshipTargets"),
@@ -478,26 +479,51 @@ function renderRelationships(characterId) {
     const cardFragment = document.createDocumentFragment();
 
     elements.relationshipTitle.textContent = `${character.name} 관계 기록`;
+    elements.relationshipLead.textContent = `${character.name}의 시점을 기준으로 한 상호 관계 기록입니다. 관계도에서 대상을 선택하면 해당 기록으로 이동합니다.`;
     elements.relationshipCenter.textContent = character.name;
     elements.relationshipMap.setAttribute("aria-label", `${character.name} 중심 관계도`);
     elements.relationshipMap.classList.toggle("has-five", entries.length === 5);
+    elements.relationshipMap.classList.toggle("is-pair", entries.length === 1);
 
-    entries.forEach(function (entry) {
+    entries.forEach(function (entry, index) {
         const target = characters[entry.target];
+        const reverseEntry = (relationships[entry.target] || []).find(function (candidate) {
+            return candidate.target === characterId;
+        });
         const cardId = `relationship-card-${entry.target}`;
         const mapButton = document.createElement("button");
+        const mapName = document.createElement("span");
+        const mapAffinity = document.createElement("small");
         const card = document.createElement("article");
         const header = document.createElement("div");
         const name = document.createElement("strong");
         const affinity = document.createElement("span");
         const details = document.createElement("dl");
         const quote = document.createElement("p");
+        const reverseRecord = document.createElement("details");
+        const reverseSummary = document.createElement("summary");
+        const reverseBody = document.createElement("div");
+        const reverseEvaluation = document.createElement("p");
+        const reverseQuote = document.createElement("p");
 
         mapButton.type = "button";
         mapButton.className = "relation-node";
-        mapButton.textContent = target.name;
+        mapButton.classList.toggle("active", index === 0);
+        mapButton.setAttribute("aria-pressed", String(index === 0));
+        mapButton.style.setProperty("--affinity", `${entry.affinity}%`);
+        mapName.textContent = target.name;
+        mapAffinity.textContent = `유대 ${entry.affinity}%`;
+        mapButton.append(mapName, mapAffinity);
         mapButton.setAttribute("aria-label", `${target.name} 관계 상세 보기`);
         mapButton.addEventListener("click", function () {
+            elements.relationshipTargets.querySelectorAll(".relation-node").forEach(function (node) {
+                const isActive = node === mapButton;
+                node.classList.toggle("active", isActive);
+                node.setAttribute("aria-pressed", String(isActive));
+            });
+            elements.relationshipCards.querySelectorAll(".relationship-card").forEach(function (relationshipCard) {
+                relationshipCard.classList.toggle("active", relationshipCard.id === cardId);
+            });
             document.querySelector(`#${cardId}`)?.scrollIntoView({
                 block: "nearest",
                 behavior: prefersReducedMotion.matches ? "auto" : "smooth"
@@ -505,15 +531,22 @@ function renderRelationships(characterId) {
         });
 
         card.className = "relationship-card";
+        card.classList.toggle("active", index === 0);
         card.id = cardId;
         header.className = "relationship-card-head";
         name.textContent = target.name;
         affinity.className = "affinity";
         affinity.textContent = `AFFINITY ${entry.affinity}%`;
+        affinity.style.setProperty("--affinity", `${entry.affinity}%`);
         header.append(name, affinity);
 
         details.className = "relationship-meta";
-        [["호칭", entry.address], ["첫인상", entry.firstImpression], ["현재 평가", entry.evaluation]].forEach(function (row) {
+        [
+            ["내 호칭", entry.address],
+            ["상대 호칭", reverseEntry ? reverseEntry.address : "기록 없음"],
+            ["첫인상", entry.firstImpression],
+            ["현재 평가", entry.evaluation]
+        ].forEach(function (row) {
             const term = document.createElement("dt");
             const description = document.createElement("dd");
             term.textContent = row[0];
@@ -523,7 +556,18 @@ function renderRelationships(characterId) {
 
         quote.className = "relationship-quote";
         quote.textContent = `“${entry.quote}”`;
+
         card.append(header, details, quote);
+        if (reverseEntry) {
+            reverseRecord.className = "relationship-reverse";
+            reverseSummary.textContent = `${target.name} 시점 기록`;
+            reverseEvaluation.textContent = reverseEntry.evaluation;
+            reverseQuote.className = "relationship-reverse-quote";
+            reverseQuote.textContent = `“${reverseEntry.quote}”`;
+            reverseBody.append(reverseEvaluation, reverseQuote);
+            reverseRecord.append(reverseSummary, reverseBody);
+            card.appendChild(reverseRecord);
+        }
         targetFragment.appendChild(mapButton);
         cardFragment.appendChild(card);
     });

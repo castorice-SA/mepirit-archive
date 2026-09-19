@@ -243,8 +243,12 @@ button:disabled { opacity: .35; cursor: default; }
 .relation-center, .relation-node { position: absolute; z-index: 1; display: grid; place-items: center; min-width: 92px; min-height: 44px; padding: 7px 9px; border: 1px solid var(--point); background: #25242a; color: var(--bright); text-align: center; font: 10px/1.35 var(--mono); }
 .relation-center { top: 50%; left: 50%; transform: translate(-50%, -50%); box-shadow: 0 0 0 5px #e8c46f0a; }
 .relation-targets { position: absolute; inset: 0; }
-.relation-node { min-width: 80px; min-height: 38px; border-color: #526981; background: #101c2a; color: var(--text); cursor: pointer; }
-.relation-node:hover { border-color: var(--point); color: var(--bright); }
+.relation-node { min-width: 86px; min-height: 46px; overflow: hidden; border-color: #526981; background: #101c2a; color: var(--text); cursor: pointer; transition: border-color 160ms ease, background 160ms ease, box-shadow 160ms ease; }
+.relation-node::after { content: ""; position: absolute; left: 0; bottom: 0; width: var(--affinity); height: 2px; background: linear-gradient(90deg, var(--signal), var(--point)); opacity: .8; }
+.relation-node span { position: relative; z-index: 1; }
+.relation-node small { position: relative; z-index: 1; margin-top: 3px; color: var(--muted); font: 8px var(--mono); }
+.relation-node:hover, .relation-node.active { border-color: var(--point); color: var(--bright); background: #27262b; }
+.relation-node.active { box-shadow: 0 0 0 3px #e8c46f12, 0 0 20px #69c6d512; }
 .relation-node:nth-child(1) { top: 9%; left: 50%; transform: translateX(-50%); }
 .relation-node:nth-child(2) { top: 50%; right: 3%; transform: translateY(-50%); }
 .relation-node:nth-child(3) { bottom: 9%; left: 50%; transform: translateX(-50%); }
@@ -254,16 +258,28 @@ button:disabled { opacity: .35; cursor: default; }
 .relationship-map.has-five .relation-node:nth-child(3) { right: 7%; bottom: 8%; top: auto; left: auto; transform: none; }
 .relationship-map.has-five .relation-node:nth-child(4) { left: 7%; bottom: 8%; top: auto; right: auto; transform: none; }
 .relationship-map.has-five .relation-node:nth-child(5) { top: 27%; left: 3%; right: auto; bottom: auto; transform: none; }
+.relationship-map.is-pair { min-height: 180px; }
+.relationship-map.is-pair .relation-axis:not(.relation-axis-horizontal) { display: none; }
+.relationship-map.is-pair .relation-center { left: 27%; }
+.relationship-map.is-pair .relation-node:nth-child(1) { top: 50%; right: 8%; bottom: auto; left: auto; transform: translateY(-50%); }
 .relationship-cards { display: grid; gap: 10px; }
-.relationship-card { padding: 16px; border: 1px solid var(--line); background: #101a27; scroll-margin-top: 12px; }
+.relationship-card { padding: 16px; border: 1px solid var(--line); background: #101a27; scroll-margin-top: 12px; transition: border-color 160ms ease, box-shadow 160ms ease; }
+.relationship-card.active { border-color: #8e794d; box-shadow: inset 3px 0 var(--point); }
 .relationship-card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); }
 .relationship-card-head strong { color: var(--bright); font-size: 14px; font-weight: 500; }
-.affinity { color: var(--point); font: 9px var(--mono); white-space: nowrap; }
-.relationship-meta { display: grid; grid-template-columns: 62px minmax(0, 1fr); gap: 9px 10px; margin: 13px 0; }
+.affinity { position: relative; padding-bottom: 7px; color: var(--point); font: 9px var(--mono); white-space: nowrap; }
+.affinity::after { content: ""; position: absolute; right: 0; bottom: 0; width: 72px; max-width: 100%; height: 2px; background: linear-gradient(90deg, var(--signal) var(--affinity), var(--line-soft) var(--affinity)); }
+.relationship-meta { display: grid; grid-template-columns: 80px minmax(0, 1fr); gap: 9px 10px; margin: 13px 0; }
 .relationship-meta dt, .relationship-meta dd { margin: 0; font-size: 11px; line-height: 1.7; }
 .relationship-meta dt { color: var(--muted); }
 .relationship-meta dd { color: #d4dae2; word-break: keep-all; }
 .relationship-quote { margin: 0; padding: 12px 13px; border-left: 2px solid var(--signal); background: #0b1420; color: var(--text); font-size: 12px; line-height: 1.75; word-break: keep-all; }
+.relationship-reverse { margin-top: 12px; border-top: 1px solid var(--line-soft); }
+.relationship-reverse summary { padding: 12px 2px 2px; color: var(--signal); font: 10px var(--mono); cursor: pointer; }
+.relationship-reverse summary::marker { color: var(--point); }
+.relationship-reverse > div { padding: 12px 13px; background: #0b1420; }
+.relationship-reverse p { margin: 0; color: var(--sub-text); font-size: 11px; line-height: 1.8; word-break: keep-all; }
+.relationship-reverse-quote { margin-top: 9px !important; padding-top: 9px; border-top: 1px solid var(--line-soft); color: var(--text) !important; }
 .archive-notice { padding: 17px; background: #151f2d; border-left: 2px solid #aa8a4d; }
 .archive-notice > span { color: var(--point); font: 9px var(--mono); letter-spacing: 1px; }
 .archive-notice p { margin: 9px 0 0; color: var(--sub-text); font-size: 11px; line-height: 1.9; word-break: keep-all; }
@@ -415,6 +431,10 @@ body.ui-large .relationship-lead,
 body.ui-large .archive-notice p { font-size: 14px; }
 body.ui-large .relation-center,
 body.ui-large .relation-node { font-size: 11px; }
+body.ui-large .relation-node small,
+body.ui-large .relationship-reverse summary { font-size: 10px; }
+body.ui-large .relationship-meta { grid-template-columns: 90px minmax(0, 1fr); }
+body.ui-large .relationship-reverse p { font-size: 14px; }
 body.ui-large .affinity,
 body.ui-large .archive-notice > span,
 body.ui-large .document-end,
@@ -559,7 +579,7 @@ body.ui-large .footer-controls button > span { font-size: 13px; }
     .relationship-map { min-height: 245px; }
     .relation-center { min-width: 82px; font-size: 9px; }
     .relation-node { min-width: 70px; padding-inline: 6px; font-size: 8px; }
-    .relationship-meta { grid-template-columns: 56px minmax(0, 1fr); }
+    .relationship-meta { grid-template-columns: 80px minmax(0, 1fr); }
     .statusbar { flex-wrap: wrap; gap: 16px; padding: 18px 0; }
     .load-label { width: 100%; }
     .footer-controls { width: 100%; justify-content: space-between; }
