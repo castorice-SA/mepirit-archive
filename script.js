@@ -150,6 +150,41 @@ const characters = {
             items: ["낯선 장소와 새로운 사람에 쉽게 적응한다.", "압박이 심하지 않은 상황에서는 매우 유연하게 행동한다.", "사람과 사람 사이를 이어주는 데 능숙하다.", "체격과 물리적인 힘보다는 움직임과 판단, 상황 적응으로 문제를 해결한다.", "평화로운 시대의 생활에 가장 자연스럽게 녹아든 랜턴 가운데 하나로, 카페나 상점, 공원 같은 평범한 공간에서도 특별한 위화감 없이 시간을 보낸다."]
         },
         image: "./images/carbine.png"
+    },
+    claire: {
+        name: "Claire Evelyn Whitmore",
+        code: "USMA-IEO-0247",
+        designation: "United States Infantry Equipment Administrative Officer",
+        class: "ADMINISTRATOR",
+        height: "166cm",
+        age: "29세",
+        summary: "미합중국 보병장비 랜턴과 램프의 생활·행정·상담·외부활동을 총괄하는 전담 관리관. 온화하지만 안전과 원칙에 대해서는 확실하게 선을 긋는다.",
+        sex: "여성",
+        operationalPeriod: "현직 / 미합중국 메피릿 관리국 보병장비 관리부",
+        origin: "미합중국, 버지니아주 알링턴",
+        classification: "인간 관리요원",
+        classificationLabel: "인원 분류",
+        recordListTitle: "핵심 업무",
+        tabLabels: { memory: "주요 업무", overall: "관리 방침" },
+        armament: ["랜턴·램프 개체등록과 생활기록 관리", "기숙사 배정과 외출·외박·해외 방문 일정 승인", "상담·생활분쟁 중재와 신규 램프 적응 지원", "관리국 본부 및 외부기관과의 행정 연락"],
+        appearance: {
+            title: "166cm의 단정하고 온화한 인상",
+            items: ["희고 깨끗한 피부와 허리 아래까지 흘러내리는 짙은 흑갈색 장발.", "머리카락 아래쪽에는 금빛이 희미하게 섞이며 빛에 따라 청록빛이나 보랏빛 광택이 비친다.", "오른쪽 머리에 금색 머리핀과 짙은 적갈색 리본을 착용한다.", "양쪽 눈동자 색이 서로 달라 한쪽은 적색, 다른 한쪽은 선명한 황금빛을 띤다.", "웃을 때에는 온화하지만 업무 중 표정이 굳으면 제법 냉정한 분위기가 드러난다.", "크림색 블라우스나 셔츠, 짙은 색 치마와 버건디 계열 카디건을 개인적인 근무복처럼 즐겨 입는다."]
+        },
+        personality: {
+            title: "온화하지만 선을 확실하게 긋는 관리관",
+            items: ["처음 만나는 사람에게도 예의를 갖추며 메피릿을 군사장비가 아닌 동등한 인격체로 대한다.", "명령보다 설명을 선호하고, 규칙이 필요한 이유를 당사자가 납득할 때까지 차분히 이야기한다.", "상대가 이유를 알면서 고의로 규칙을 어겼다고 판단하면 태도가 단호해진다.", "화를 내더라도 목소리를 높이기보다 말수가 줄고 평소의 미소가 사라지는 편이다.", "경험 많은 랜턴과 계보별 선후배에게 중재를 부탁하는 등 메피릿 내부 관계를 적극적으로 활용한다.", "자신을 통제자가 아니라 메피릿이 사회 안에서 살아가도록 행정적으로 돕는 사람이라고 생각한다."]
+        },
+        memory: {
+            title: "현장을 직접 확인하는 보병장비 전담 관리 업무",
+            items: ["미합중국 보병장비 메피릿의 행정과 생활관리를 총괄한다.", "개인 신상·생활기록 갱신, 기숙사 배정, 외부활동 승인과 여행 일정 접수를 담당한다.", "정기 건강검진과 상태점검 일정을 관리하고 생활분쟁과 계보별 멘토링 상황을 확인한다.", "사고 및 규정 위반 보고서 작성, 외부기관 면담, 각국 정부기관과의 행정협조도 맡는다.", "책상에서 보고서만 받기보다 기숙사·식당·교육시설·관리동을 직접 돌며 현장을 확인한다.", "대부분의 랜턴과 램프의 이름, 생활습관, 주요 기피사항을 직접 기억하고 있다."]
+        },
+        overall: {
+            title: "보호와 자율을 우선하는 관리 방침",
+            items: ["제식번호와 운용이력은 과거를 이해하는 자료일 뿐 현재의 인격 전체를 뜻하지 않는다고 본다.", "본인이 원하지 않는 전장경험 진술이나 불필요한 전투능력 재현을 요구하지 않는다.", "랜턴과 램프 사이의 선후배 체계는 관리국이 일률적으로 정하기보다 자연스럽게 형성된 관계를 존중한다.", "규정 위반에는 비교적 관대하지만 타인의 안전을 고의로 위험에 빠뜨리는 행동에는 양보하지 않는다.", "직접적인 군사 지휘권은 없으나 관리구역의 안전을 위해 외출 일시정지, 위험지역 접근금지, 별도 면담을 요청할 수 있다.", "메피릿을 ‘무기였던 사람들’이 아니라 ‘무기에서 태어나 이제는 사람으로 살아가는 이들’로 받아들이며, 전쟁의 목적 없이 살아가도록 돕는 것을 자신의 역할로 여긴다."]
+        },
+        image: "./images/claire.png",
+        imagePosition: "center 6%"
     }
 };
 
@@ -159,31 +194,43 @@ const relationships = {
         { target: "m1911", address: "콜트", affinity: 82, firstImpression: "작고 부산스러워 잠시도 눈을 떼기 어려운 인물.", evaluation: "돌발 행동은 많지만 실제 위험에서 내리는 빠른 판단은 신뢰한다.", quote: "콜트, 먼저 뛰어들기 전에는 한 번만 뒤를 봐줘." },
         { target: "garand", address: "개런드", affinity: 91, firstImpression: "반듯하고 준비가 철저한 믿음직한 후배.", evaluation: "책임을 혼자 지려는 점이 자신과 닮아 있어 자주 쉬게 하려 한다.", quote: "개런드, 이번 일은 혼자 짊어지지 않아도 돼." },
         { target: "thompson", address: "톰슨", affinity: 77, firstImpression: "목소리와 차림새 모두 한눈에 들어오는 인물.", evaluation: "화려한 겉모습보다 사람을 움직이는 힘과 현실적인 판단을 높게 본다.", quote: "톰슨이 앞에 서면 분위기가 금세 달라지는구나." },
-        { target: "carbine", address: "카빈", affinity: 86, firstImpression: "가볍고 빠르며 누구에게나 자연스럽게 다가가는 인물.", evaluation: "사람 사이의 빈틈을 메우는 능력을 소중하게 생각한다.", quote: "카빈, 네가 있어서 모두가 조금 더 편해 보여." }
+        { target: "carbine", address: "카빈", affinity: 86, firstImpression: "가볍고 빠르며 누구에게나 자연스럽게 다가가는 인물.", evaluation: "사람 사이의 빈틈을 메우는 능력을 소중하게 생각한다.", quote: "카빈, 네가 있어서 모두가 조금 더 편해 보여." },
+        { target: "claire", address: "휘트모어 관리관", affinity: 89, firstImpression: "말보다 먼저 사람의 상태를 살피는 차분한 관리관.", evaluation: "과거를 억지로 묻지 않고 현재의 선택을 존중해 신뢰하고 있다.", quote: "관리관님이라면 우리가 무엇을 지키고 싶은지 이해해 주실 거예요." }
     ],
     m1911: [
         { target: "m1903", address: "스프링필드 선배님", affinity: 85, firstImpression: "조용해서 무서운 사람인 줄 알았지만 생각보다 아주 부드러웠다.", evaluation: "사고를 쳐도 끝까지 이야기를 들어주는 가장 믿음직한 고참.", quote: "선배님, 이번에는 진짜 계획대로 움직였다니까요!" },
         { target: "garand", address: "개런드", affinity: 76, firstImpression: "규칙과 일정을 너무 좋아하는 답답한 모범생.", evaluation: "잔소리는 많지만 가장 먼저 도와주러 오는 사람이라는 걸 알고 있다.", quote: "개런드, 딱 한 번만 내 방식대로 해보면 안 돼?" },
         { target: "thompson", address: "톰슨 언니", affinity: 83, firstImpression: "화려하고 멋져서 곁에 있으면 재미있는 일이 생길 것 같았다.", evaluation: "장난을 받아주면서도 위험한 순간에는 정확히 멈춰 세워주는 언니.", quote: "톰슨 언니, 오늘은 어디로 놀러 갈 거야?" },
-        { target: "carbine", address: "카빈", affinity: 94, firstImpression: "처음부터 오래 알고 지낸 것처럼 말이 잘 통했다.", evaluation: "함께 돌아다니기 가장 편하고 사고를 수습할 때도 호흡이 잘 맞는다.", quote: "카빈, 저쪽에 재밌는 거 있어. 같이 가자!" }
+        { target: "carbine", address: "카빈", affinity: 94, firstImpression: "처음부터 오래 알고 지낸 것처럼 말이 잘 통했다.", evaluation: "함께 돌아다니기 가장 편하고 사고를 수습할 때도 호흡이 잘 맞는다.", quote: "카빈, 저쪽에 재밌는 거 있어. 같이 가자!" },
+        { target: "claire", address: "클레어 관리관님", affinity: 86, firstImpression: "웃는 얼굴로 규칙을 설명해 방심하기 쉬운 사람.", evaluation: "웬만한 장난은 받아주지만 미소가 사라지면 즉시 멈춰야 한다는 것을 안다.", quote: "관리관님, 이번 건 보고서까지 쓸 일은 아니지 않을까요?" }
     ],
     garand: [
         { target: "m1903", address: "스프링필드 선배", affinity: 92, firstImpression: "말수가 적어도 상황 전체를 놓치지 않는 노련한 선배.", evaluation: "자신이 흔들릴 때 판단을 맡길 수 있는 중요한 기준점으로 여긴다.", quote: "선배가 그렇게 판단했다면 저도 따르겠습니다." },
         { target: "m1911", address: "콜트", affinity: 79, firstImpression: "계획에서 가장 먼저 벗어날 것 같은 요주의 인물.", evaluation: "행동을 통제하기는 어렵지만 순발력과 위기 대처 능력은 인정한다.", quote: "콜트, 출발하기 전에 인원 확인부터 하자." },
         { target: "thompson", address: "톰슨", affinity: 74, firstImpression: "꾸밈과 즉흥적인 선택을 지나치게 중시한다고 느꼈다.", evaluation: "사람을 이끄는 방식은 다르지만 결과를 만들어내는 능력을 존중한다.", quote: "톰슨, 일정만 지켜준다면 그 계획도 나쁘지 않아." },
-        { target: "carbine", address: "카빈", affinity: 89, firstImpression: "작고 가벼워 보여 자연스럽게 챙겨야겠다고 생각했다.", evaluation: "도움이 필요할 때 먼저 말해주고 주변까지 살피는 믿음직한 동료.", quote: "카빈, 다녀오면 꼭 나한테 먼저 알려줘." }
+        { target: "carbine", address: "카빈", affinity: 89, firstImpression: "작고 가벼워 보여 자연스럽게 챙겨야겠다고 생각했다.", evaluation: "도움이 필요할 때 먼저 말해주고 주변까지 살피는 믿음직한 동료.", quote: "카빈, 다녀오면 꼭 나한테 먼저 알려줘." },
+        { target: "claire", address: "휘트모어 관리관", affinity: 93, firstImpression: "역할과 책임의 경계를 분명히 아는 신뢰할 만한 담당자.", evaluation: "혼자 책임을 떠안으려 할 때 일을 나누도록 설득해 주는 중요한 협력자.", quote: "관리관님, 현장 확인은 제가 함께하겠습니다." }
     ],
     thompson: [
         { target: "m1903", address: "스프링필드", affinity: 79, firstImpression: "조용한 태도 안에 쉽게 흔들리지 않는 품위가 보였다.", evaluation: "자신과 방식은 다르지만 가장 정확한 조언을 주는 사람이라고 생각한다.", quote: "스프링필드, 오늘만큼은 조금 화려하게 즐겨보자고." },
         { target: "m1911", address: "콜트", affinity: 84, firstImpression: "작은 체구에 비해 에너지가 넘쳐 금세 눈에 들어왔다.", evaluation: "장난을 함께 즐기면서도 위험할 때는 반드시 곁에 두고 살핀다.", quote: "콜트, 재미는 좋지만 퇴로 정도는 확인하고 가자." },
         { target: "garand", address: "개런드", affinity: 75, firstImpression: "빈틈없이 반듯해 장난을 걸어보고 싶은 상대.", evaluation: "융통성은 부족해도 맡은 일을 끝까지 책임지는 태도를 높게 평가한다.", quote: "개런드, 표정 좀 풀어. 준비는 이미 충분하잖아." },
-        { target: "carbine", address: "카빈", affinity: 88, firstImpression: "사람과 장소를 빠르게 읽는 감각이 무척 좋은 인물.", evaluation: "외출과 사교 활동에서 가장 호흡이 잘 맞는 동행자.", quote: "카빈, 이번엔 네가 고른 가게부터 가보자." }
+        { target: "carbine", address: "카빈", affinity: 88, firstImpression: "사람과 장소를 빠르게 읽는 감각이 무척 좋은 인물.", evaluation: "외출과 사교 활동에서 가장 호흡이 잘 맞는 동행자.", quote: "카빈, 이번엔 네가 고른 가게부터 가보자." },
+        { target: "claire", address: "클레어", affinity: 82, firstImpression: "단정한 차림과 부드러운 태도 속에 단호함을 숨긴 사람.", evaluation: "서류보다 현장을 이해해 대화가 통하지만, 일정에는 예상보다 엄격하다.", quote: "클레어, 외출 계획은 완벽해. 결재만 남았다고." }
     ],
     carbine: [
         { target: "m1903", address: "스프링필드 언니", affinity: 87, firstImpression: "차분해서 다가가기 어려워 보였지만 곁에 있으면 편안했다.", evaluation: "말없이 기다려주고 필요한 순간에 정확한 말을 해주는 든든한 언니.", quote: "언니, 오늘은 창가 말고 밖에서 같이 걸어요." },
         { target: "m1911", address: "콜트", affinity: 95, firstImpression: "첫 대화부터 속도가 잘 맞아 금세 가까워졌다.", evaluation: "함께 움직일 때 가장 즐겁고 서로의 돌발 행동에도 빠르게 대응한다.", quote: "콜트, 뛰어가기 전에 나도 같이 간다고 말해줘!" },
         { target: "garand", address: "개런드 언니", affinity: 90, firstImpression: "자신을 먼저 챙겨주는 마음이 조금 과할 만큼 따뜻했다.", evaluation: "걱정이 많다는 걸 알기에 외출 뒤에는 가장 먼저 돌아왔다고 알린다.", quote: "언니, 인원 확인 끝났으면 이제 같이 놀아요." },
-        { target: "thompson", address: "톰슨 언니", affinity: 89, firstImpression: "화려하지만 주변 사람을 놓치지 않는 모습이 인상적이었다.", evaluation: "새로운 장소를 함께 탐색하고 사람들 사이를 누비기 좋은 파트너.", quote: "톰슨 언니, 골목 안쪽에도 재미있는 가게가 있어요." }
+        { target: "thompson", address: "톰슨 언니", affinity: 89, firstImpression: "화려하지만 주변 사람을 놓치지 않는 모습이 인상적이었다.", evaluation: "새로운 장소를 함께 탐색하고 사람들 사이를 누비기 좋은 파트너.", quote: "톰슨 언니, 골목 안쪽에도 재미있는 가게가 있어요." },
+        { target: "claire", address: "클레어 관리관님", affinity: 92, firstImpression: "이름과 습관을 빠르게 기억해 주어 처음부터 편하게 다가갈 수 있었다.", evaluation: "도움을 요청해도 부담을 주지 않고 함께 해결책을 찾는 믿음직한 관리관.", quote: "관리관님, 이번 외출 명단은 제가 다 확인했어요!" }
+    ],
+    claire: [
+        { target: "m1903", address: "스프링필드", affinity: 91, firstImpression: "상황을 오래 관찰한 뒤 꼭 필요한 말만 건네는 안정적인 고참.", evaluation: "후배들을 맡길 수 있는 조용한 협력자이며, 혼자 감당하려는 습관은 세심히 살핀다.", quote: "스프링필드, 이번에는 당신도 쉬는 일정에 포함이에요." },
+        { target: "m1911", address: "콜트", affinity: 87, firstImpression: "호기심과 행동이 생각보다 먼저 움직이는 예측하기 어려운 인물.", evaluation: "사고는 잦아도 위험을 읽는 감각과 솔직함을 신뢰하며 설명으로 납득시키려 한다.", quote: "콜트, 이유를 설명해 줄 테니 우선 의자에 앉아요." },
+        { target: "garand", address: "개런드", affinity: 94, firstImpression: "별도의 지시 없이도 필요한 일을 찾아 움직이는 책임감 강한 인물.", evaluation: "관리 업무를 가장 안정적으로 돕지만 과한 책임감으로 지치지 않도록 제지한다.", quote: "개런드, 맡은 일은 끝났어요. 나머지는 제가 할게요." },
+        { target: "thompson", address: "톰슨", affinity: 84, firstImpression: "사람과 분위기를 움직일 줄 아는 자신감 넘치는 인물.", evaluation: "사교성과 현장 판단을 높게 평가하지만 일정 변경은 미리 알리도록 단단히 약속받는다.", quote: "톰슨, 좋은 계획이에요. 승인서가 먼저라는 점만 빼면요." },
+        { target: "carbine", address: "카빈", affinity: 93, firstImpression: "낯선 사람도 자연스럽게 대화 안으로 이끄는 친화력 좋은 인물.", evaluation: "생활구역의 분위기와 작은 변화를 빠르게 전해주는 소중한 관찰자이자 조력자.", quote: "카빈, 오늘 식당 분위기는 어땠는지 들려줄래요?" }
     ]
 };
 
@@ -217,6 +264,7 @@ const elements = {
     allFilterCount: document.querySelector("#allFilterCount"),
     lanternFilterCount: document.querySelector("#lanternFilterCount"),
     lampFilterCount: document.querySelector("#lampFilterCount"),
+    administratorFilterCount: document.querySelector("#administratorFilterCount"),
     selectedRecordLabel: document.querySelector("#selectedRecordLabel"),
     visualLogNumber: document.querySelector("#visualLogNumber"),
     frameRecordCode: document.querySelector("#frameRecordCode"),
@@ -234,20 +282,28 @@ const elements = {
     recordCode: document.querySelector("#recordCode"),
     recordDesignation: document.querySelector("#recordDesignation"),
     recordSex: document.querySelector("#recordSex"),
+    recordAgeLabel: document.querySelector("#recordAgeLabel"),
+    recordAge: document.querySelector("#recordAge"),
+    recordClassLabel: document.querySelector("#recordClassLabel"),
     recordClass: document.querySelector("#recordClass"),
     recordHeight: document.querySelector("#recordHeight"),
     recordClassification: document.querySelector("#recordClassification"),
     recordOrigin: document.querySelector("#recordOrigin"),
     recordPeriod: document.querySelector("#recordPeriod"),
     recordArmament: document.querySelector("#recordArmament"),
+    recordListTitle: document.querySelector("#recordListTitle"),
     appearanceTitle: document.querySelector("#appearanceTitle"),
     appearanceList: document.querySelector("#appearanceList"),
     personalityTitle: document.querySelector("#personalityTitle"),
     personalityList: document.querySelector("#personalityList"),
     memoryTitle: document.querySelector("#memoryTitle"),
     memoryList: document.querySelector("#memoryList"),
+    memorySectionCode: document.querySelector("#memorySectionCode"),
     overallTitle: document.querySelector("#overallTitle"),
     overallList: document.querySelector("#overallList"),
+    overallSectionCode: document.querySelector("#overallSectionCode"),
+    memoryTabButton: document.querySelector("#recordTabMemory"),
+    overallTabButton: document.querySelector("#recordTabOverall"),
     relationshipTitle: document.querySelector("#relationshipTitle"),
     relationshipMap: document.querySelector("#relationshipMap"),
     relationshipCenter: document.querySelector("#relationshipCenter"),
@@ -310,6 +366,7 @@ function renderRelationships(characterId) {
     elements.relationshipTitle.textContent = `${character.name} 관계 기록`;
     elements.relationshipCenter.textContent = character.name;
     elements.relationshipMap.setAttribute("aria-label", `${character.name} 중심 관계도`);
+    elements.relationshipMap.classList.toggle("has-five", entries.length === 5);
 
     entries.forEach(function (entry) {
         const target = characters[entry.target];
@@ -363,9 +420,19 @@ function renderRelationships(characterId) {
 
 function renderDetailedRecord(character, characterId) {
     elements.recordSex.textContent = character.sex;
+    const hasAge = Boolean(character.age);
+    elements.recordAgeLabel.hidden = !hasAge;
+    elements.recordAge.hidden = !hasAge;
+    elements.recordAge.textContent = character.age || "";
+    elements.recordClassLabel.textContent = character.classificationLabel || "메피릿 분류";
     elements.recordClassification.textContent = character.classification;
     elements.recordOrigin.textContent = character.origin;
     elements.recordPeriod.textContent = character.operationalPeriod;
+    elements.recordListTitle.textContent = character.recordListTitle || "주요 무장";
+    elements.memoryTabButton.textContent = character.tabLabels?.memory || "전쟁 기억";
+    elements.overallTabButton.textContent = character.tabLabels?.overall || "종합";
+    elements.memorySectionCode.textContent = character.tabLabels ? "ADMINISTRATIVE DUTIES" : "WAR MEMORY RECORD";
+    elements.overallSectionCode.textContent = character.tabLabels ? "MANAGEMENT POLICY" : "GENERAL ASSESSMENT";
     renderList(elements.recordArmament, character.armament);
 
     ["appearance", "personality", "memory", "overall"].forEach(function (sectionName) {
@@ -511,6 +578,7 @@ function renderCharacterList() {
         button.type = "button";
         button.className = "character-button";
         button.dataset.character = characterId;
+        button.dataset.class = character.class;
         button.setAttribute("aria-label", `${character.name} 기록 열기`);
         thumbnail.className = "character-thumb";
         fallback.className = "thumbnail-fallback";
@@ -685,10 +753,12 @@ function moveCharacter(direction) {
 function updateFilterCounts() {
     const lanternCount = characterOrder.filter(function (id) { return characters[id].class === "LANTERN"; }).length;
     const lampCount = characterOrder.filter(function (id) { return characters[id].class === "LAMP"; }).length;
+    const administratorCount = characterOrder.filter(function (id) { return characters[id].class === "ADMINISTRATOR"; }).length;
     elements.headerRecordCount.textContent = `${padNumber(totalRecords)} RECORDS`;
     elements.allFilterCount.textContent = padNumber(totalRecords);
     elements.lanternFilterCount.textContent = padNumber(lanternCount);
     elements.lampFilterCount.textContent = padNumber(lampCount);
+    elements.administratorFilterCount.textContent = padNumber(administratorCount);
 }
 
 function updateClock() {
