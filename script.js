@@ -456,6 +456,10 @@ function renderList(element, items) {
     element.replaceChildren(fragment);
 }
 
+function getRelationshipDisplayName(characterId) {
+    return characterId === "claire" ? "Claire 관리관" : characters[characterId].name;
+}
+
 function showRecordTab(tabName, focusTab) {
     activeRecordTab = tabName;
     recordTabButtons.forEach(function (button) {
@@ -474,19 +478,21 @@ function showRecordTab(tabName, focusTab) {
 
 function renderRelationships(characterId) {
     const character = characters[characterId];
+    const characterDisplayName = getRelationshipDisplayName(characterId);
     const entries = relationships[characterId] || [];
     const targetFragment = document.createDocumentFragment();
     const cardFragment = document.createDocumentFragment();
 
-    elements.relationshipTitle.textContent = `${character.name} 관계 기록`;
-    elements.relationshipLead.textContent = `${character.name}의 시점을 기준으로 한 상호 관계 기록입니다. 관계도에서 대상을 선택하면 해당 기록으로 이동합니다.`;
-    elements.relationshipCenter.textContent = character.name;
-    elements.relationshipMap.setAttribute("aria-label", `${character.name} 중심 관계도`);
+    elements.relationshipTitle.textContent = `${characterDisplayName} 관계 기록`;
+    elements.relationshipLead.textContent = `${characterDisplayName}의 시점을 기준으로 한 상호 관계 기록입니다. 관계도에서 대상을 선택하면 해당 기록으로 이동합니다.`;
+    elements.relationshipCenter.textContent = characterDisplayName;
+    elements.relationshipMap.setAttribute("aria-label", `${characterDisplayName} 중심 관계도`);
     elements.relationshipMap.classList.toggle("has-five", entries.length === 5);
     elements.relationshipMap.classList.toggle("is-pair", entries.length === 1);
 
     entries.forEach(function (entry, index) {
         const target = characters[entry.target];
+        const targetDisplayName = getRelationshipDisplayName(entry.target);
         const reverseEntry = (relationships[entry.target] || []).find(function (candidate) {
             return candidate.target === characterId;
         });
@@ -511,10 +517,10 @@ function renderRelationships(characterId) {
         mapButton.classList.toggle("active", index === 0);
         mapButton.setAttribute("aria-pressed", String(index === 0));
         mapButton.style.setProperty("--affinity", `${entry.affinity}%`);
-        mapName.textContent = target.name;
+        mapName.textContent = targetDisplayName;
         mapAffinity.textContent = `유대 ${entry.affinity}%`;
         mapButton.append(mapName, mapAffinity);
-        mapButton.setAttribute("aria-label", `${target.name} 관계 상세 보기`);
+        mapButton.setAttribute("aria-label", `${targetDisplayName} 관계 상세 보기`);
         mapButton.addEventListener("click", function () {
             elements.relationshipTargets.querySelectorAll(".relation-node").forEach(function (node) {
                 const isActive = node === mapButton;
@@ -534,7 +540,7 @@ function renderRelationships(characterId) {
         card.classList.toggle("active", index === 0);
         card.id = cardId;
         header.className = "relationship-card-head";
-        name.textContent = target.name;
+        name.textContent = targetDisplayName;
         affinity.className = "affinity";
         affinity.textContent = `AFFINITY ${entry.affinity}%`;
         affinity.style.setProperty("--affinity", `${entry.affinity}%`);
@@ -560,7 +566,7 @@ function renderRelationships(characterId) {
         card.append(header, details, quote);
         if (reverseEntry) {
             reverseRecord.className = "relationship-reverse";
-            reverseSummary.textContent = `${target.name} 시점 기록`;
+            reverseSummary.textContent = `${targetDisplayName} 시점 기록`;
             reverseEvaluation.textContent = reverseEntry.evaluation;
             reverseQuote.className = "relationship-reverse-quote";
             reverseQuote.textContent = `“${reverseEntry.quote}”`;
