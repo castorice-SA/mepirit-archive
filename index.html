@@ -7,8 +7,8 @@
     <meta name="description" content="메피릿 캐릭터 아카이브. 인물의 초상과 기초 기록, 식별 정보를 탐색하세요.">
     <link rel="icon" href="data:,">
     <title>MEPIRIT ARCHIVE</title>
-    <link rel="stylesheet" href="./style.css?v=12">
-    <script src="./script.js?v=12" defer></script>
+    <link rel="stylesheet" href="./style.css?v=13">
+    <script src="./script.js?v=13" defer></script>
 </head>
 <body class="is-locked">
     <section class="login-screen" id="loginScreen" aria-labelledby="loginTitle">
@@ -33,15 +33,25 @@
             <p class="login-message" id="loginMessage" aria-live="polite">AUTHORIZATION REQUIRED</p>
             <div class="login-meta"><span>NODE / 01</span><span>SECURITY LEVEL / GENERAL</span></div>
         </div>
-        <div class="welcome-message" id="welcomeMessage" aria-live="assertive" hidden>
-            <span>ACCESS GRANTED</span>
-            <strong>관리관님, 환영합니다.</strong>
-            <p>인물 기록 보관소를 개방합니다.</p>
+        <div class="pda-boot" id="pdaBoot" hidden>
+            <div class="pda-boot-head"><span>MGA // PDA-01</span><span>SECURE LINK</span></div>
+            <div class="welcome-message" id="welcomeMessage" aria-live="assertive" hidden>
+                <span>ACCESS GRANTED</span>
+                <strong>관리관님, 환영합니다.</strong>
+                <p>관리국 인물 기록망에 접속합니다.</p>
+            </div>
+            <div class="pda-boot-console" aria-live="polite">
+                <span id="pdaBootStep">보안 채널을 초기화하는 중...</span>
+                <strong id="pdaBootPercent">000%</strong>
+            </div>
+            <div class="pda-boot-track" aria-hidden="true"><span id="pdaBootBar"></span></div>
+            <button class="pda-boot-skip" id="skipBootButton" type="button">부팅 건너뛰기 <span aria-hidden="true">↗</span></button>
         </div>
     </section>
     <a class="skip-link" href="#recordDetail">선택한 캐릭터 기록으로 이동</a>
     <p class="sr-only" id="selectionAnnouncement" aria-live="polite" aria-atomic="true"></p>
     <div class="archive archive-shell" id="archiveApp" inert aria-hidden="true">
+        <div class="pda-effects" aria-hidden="true"><span class="pda-screen-grid"></span><span class="pda-scanlines"></span><span class="pda-vignette"></span></div>
         <header class="topbar">
             <div class="brand-block">
                 <div class="brand-mark" aria-hidden="true">M<span>ARCHIVE</span></div>
@@ -59,6 +69,7 @@
                     <kbd aria-hidden="true">/</kbd>
                 </div>
                 <div class="header-status">
+                    <span class="device-status">MGA-PDA / 01 <b>▮▮▮</b></span>
                     <span class="online-status"><i aria-hidden="true"></i> ARCHIVE READY</span>
                     <time id="systemClock">00 : 00 : 00</time>
                 </div>
@@ -75,6 +86,11 @@
                 </div>
             </div>
             <div>
+                <div class="pda-size-control" role="group" aria-label="화면 글자 크기">
+                    <span>TYPE</span>
+                    <button class="active" type="button" data-ui-size="normal" aria-pressed="true">보통</button>
+                    <button type="button" data-ui-size="large" aria-pressed="false">크게</button>
+                </div>
                 <span id="headerRecordCount">06 RECORDS</span>
                 <span class="collection-clearance">GENERAL ACCESS</span>
                 <button class="logout-button" id="logoutButton" type="button"><span aria-hidden="true">↙</span> 로그아웃</button>
@@ -116,6 +132,7 @@
                 <div class="image-frame" id="imageFrame">
                     <div class="image-backdrop" id="imageBackdrop" aria-hidden="true"></div>
                     <div class="image-grid" aria-hidden="true"></div>
+                    <div class="portrait-scan" id="portraitScan" aria-hidden="true"></div>
                     <span class="corner corner-tl" aria-hidden="true"></span><span class="corner corner-tr" aria-hidden="true"></span>
                     <span class="corner corner-bl" aria-hidden="true"></span><span class="corner corner-br" aria-hidden="true"></span>
                     <div id="imagePlaceholder" class="image-placeholder" hidden><strong>NO VISUAL DATA</strong><span>등록된 이미지를 불러올 수 없습니다.</span></div>
@@ -210,6 +227,7 @@
         </main>
 
         <footer class="statusbar">
+            <div class="pda-transfer" aria-hidden="true"><span id="pdaTransferBar"></span></div>
             <div class="load-label"><span class="status-indicator" aria-hidden="true"></span><span>NOW VIEWING</span><strong id="footerEntityName">M1903 SPRINGFIELD</strong></div>
             <span class="footer-edition">ENTITY RECORD COLLECTION <span aria-hidden="true">/</span> 01</span>
             <span class="creator-credit">CREATED BY <strong>Racor</strong><i aria-hidden="true">/</i><strong>soragoon</strong></span>

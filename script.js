@@ -319,6 +319,7 @@ let selectedCharacterId = characterOrder[0];
 let activeCollection = "US";
 let activeFilter = "all";
 let activeRecordTab = "overview";
+let bootSequenceToken = 0;
 
 const elements = {
     loginScreen: document.querySelector("#loginScreen"),
@@ -329,6 +330,11 @@ const elements = {
     logoutButton: document.querySelector("#logoutButton"),
     loginMessage: document.querySelector("#loginMessage"),
     welcomeMessage: document.querySelector("#welcomeMessage"),
+    pdaBoot: document.querySelector("#pdaBoot"),
+    pdaBootStep: document.querySelector("#pdaBootStep"),
+    pdaBootPercent: document.querySelector("#pdaBootPercent"),
+    pdaBootBar: document.querySelector("#pdaBootBar"),
+    skipBootButton: document.querySelector("#skipBootButton"),
     archiveApp: document.querySelector("#archiveApp"),
     searchInput: document.querySelector("#searchInput"),
     clearSearch: document.querySelector("#clearSearch"),
@@ -347,6 +353,9 @@ const elements = {
     selectedRecordLabel: document.querySelector("#selectedRecordLabel"),
     visualLogNumber: document.querySelector("#visualLogNumber"),
     frameRecordCode: document.querySelector("#frameRecordCode"),
+    imageFrame: document.querySelector("#imageFrame"),
+    visualPanel: document.querySelector(".visual-panel"),
+    recordPanel: document.querySelector(".record-panel"),
     imageBackdrop: document.querySelector("#imageBackdrop"),
     characterImage: document.querySelector("#characterImage"),
     imagePlaceholder: document.querySelector("#imagePlaceholder"),
@@ -394,6 +403,7 @@ const elements = {
     recordFooterPosition: document.querySelector("#recordFooterPosition"),
     footerEntityName: document.querySelector("#footerEntityName"),
     footerRecordPosition: document.querySelector("#footerRecordPosition"),
+    statusbar: document.querySelector(".statusbar"),
     previousCharacter: document.querySelector("#previousCharacter"),
     nextCharacter: document.querySelector("#nextCharacter"),
     systemClock: document.querySelector("#systemClock"),
@@ -407,7 +417,9 @@ const filterButtons = Array.from(document.querySelectorAll(".filter-button"));
 const collectionButtons = Array.from(document.querySelectorAll(".collection-button"));
 const recordTabButtons = Array.from(document.querySelectorAll(".record-tab"));
 const recordTabPanels = Array.from(document.querySelectorAll(".record-tab-panel"));
+const uiSizeButtons = Array.from(document.querySelectorAll("[data-ui-size]"));
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+const uiSizeStorageKey = "mepirit-pda-type-size";
 
 function padNumber(number) {
     return String(number).padStart(2, "0");
@@ -552,6 +564,83 @@ async function hashPassword(value) {
     }).join("");
 }
 
+function finishPdaBoot(token = bootSequenceToken) {
+    if (token !== bootSequenceToken || elements.loginScreen.hidden) return;
+    bootSequenceToken += 1;
+    elements.pdaBootBar.style.width = "100%";
+    elements.pdaBootPercent.textContent = "100%";
+    elements.pdaBootStep.textContent = "인물 기록망 연결 완료.";
+    window.setTimeout(function () {
+        elements.loginScreen.classList.add("is-closing");
+        window.setTimeout(function () {
+            elements.loginScreen.hidden = true;
+            elements.pdaBoot.hidden = true;
+            elements.welcomeMessage.hidden = true;
+            elements.characterList.querySelector(".character-button.active")?.focus();
+        }, prefersReducedMotion.matches ? 0 : 520);
+    }, prefersReducedMotion.matches ? 0 : 180);
+}
+
+function startPdaBoot() {
+    const token = ++bootSequenceToken;
+    const steps = [
+        { progress: 8, text: "PDA 보안 채널을 초기화하는 중...", delay: 0 },
+        { progress: 34, text: "관리관 접근 권한을 확인하는 중...", delay: 320 },
+        { progress: 63, text: "국가별 보병장비 명단을 동기화하는 중...", delay: 670 },
+        { progress: 86, text: "초상 및 관계 기록을 복호화하는 중...", delay: 1020 }
+    ];
+
+    elements.loginCard.hidden = true;
+    elements.pdaBoot.hidden = false;
+    elements.welcomeMessage.hidden = false;
+    elements.pdaBootBar.style.width = "0";
+    elements.pdaBootPercent.textContent = "000%";
+    elements.pdaBootStep.textContent = steps[0].text;
+
+    if (prefersReducedMotion.matches) {
+        finishPdaBoot(token);
+        return;
+    }
+
+    steps.forEach(function (step) {
+        window.setTimeout(function () {
+            if (token !== bootSequenceToken) return;
+            elements.pdaBootBar.style.width = `${step.progress}%`;
+            elements.pdaBootPercent.textContent = `${String(step.progress).padStart(3, "0")}%`;
+            elements.pdaBootStep.textContent = step.text;
+        }, step.delay);
+    });
+    window.setTimeout(function () { finishPdaBoot(token); }, 1370);
+}
+
+function applyUiSize(size, persist = true) {
+    const selectedSize = size === "large" ? "large" : "normal";
+    document.body.classList.toggle("ui-large", selectedSize === "large");
+    uiSizeButtons.forEach(function (button) {
+        const isActive = button.dataset.uiSize === selectedSize;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+    });
+    if (persist) window.localStorage.setItem(uiSizeStorageKey, selectedSize);
+}
+
+function triggerPdaTransition() {
+    if (prefersReducedMotion.matches) return;
+    const animatedElements = [
+        [elements.imageFrame, "is-scanning"],
+        [elements.visualPanel, "is-decoding"],
+        [elements.recordPanel, "is-decrypting"],
+        [elements.statusbar, "is-transferring"]
+    ];
+    animatedElements.forEach(function (entry) {
+        const [element, className] = entry;
+        element.classList.remove(className);
+        void element.offsetWidth;
+        element.classList.add(className);
+        window.setTimeout(function () { element.classList.remove(className); }, 760);
+    });
+}
+
 function unlockArchive(skipWelcome) {
     elements.archiveApp.removeAttribute("inert");
     elements.archiveApp.setAttribute("aria-hidden", "false");
@@ -559,21 +648,16 @@ function unlockArchive(skipWelcome) {
 
     if (skipWelcome) {
         elements.loginScreen.hidden = true;
+        elements.pdaBoot.hidden = true;
+        elements.welcomeMessage.hidden = true;
         return;
     }
 
-    elements.loginCard.hidden = true;
-    elements.welcomeMessage.hidden = false;
-    window.setTimeout(function () {
-        elements.loginScreen.classList.add("is-closing");
-        window.setTimeout(function () {
-            elements.loginScreen.hidden = true;
-            elements.characterList.querySelector(".character-button.active")?.focus();
-        }, 520);
-    }, 1150);
+    startPdaBoot();
 }
 
 function lockArchive() {
+    bootSequenceToken += 1;
     window.sessionStorage.removeItem(accessSessionKey);
     if (modalIsOpen()) {
         if (typeof elements.imageModal.close === "function") elements.imageModal.close();
@@ -584,7 +668,10 @@ function lockArchive() {
     elements.archiveApp.setAttribute("aria-hidden", "true");
     document.body.classList.add("is-locked");
     elements.loginCard.hidden = false;
+    elements.pdaBoot.hidden = true;
     elements.welcomeMessage.hidden = true;
+    elements.pdaBootBar.style.width = "0";
+    elements.pdaBootPercent.textContent = "000%";
     elements.passwordInput.value = "";
     elements.passwordInput.type = "password";
     elements.togglePassword.textContent = "보기";
@@ -636,11 +723,6 @@ async function handleLogin(event) {
 }
 
 function initializeLogin() {
-    if (window.sessionStorage.getItem(accessSessionKey) === "true") {
-        unlockArchive(true);
-        return;
-    }
-
     elements.loginForm.addEventListener("submit", function (event) {
         handleLogin(event).catch(function () {
             elements.loginMessage.textContent = "인증 처리 중 오류가 발생했습니다.";
@@ -658,6 +740,10 @@ function initializeLogin() {
         elements.togglePassword.setAttribute("aria-label", showPassword ? "비밀번호 숨기기" : "비밀번호 표시");
         elements.passwordInput.focus();
     });
+    if (window.sessionStorage.getItem(accessSessionKey) === "true") {
+        unlockArchive(true);
+        return;
+    }
     window.requestAnimationFrame(function () {
         elements.passwordInput.focus();
     });
@@ -784,7 +870,10 @@ function showCharacter(characterId, announce) {
     setCharacterImage(character);
     updateSelectionHint();
     document.title = `${character.name} // MEPIRIT ARCHIVE`;
-    if (announce) elements.selectionAnnouncement.textContent = `${character.name} 기록을 열었습니다.`;
+    if (announce) {
+        elements.selectionAnnouncement.textContent = `${character.name} 기록을 열었습니다.`;
+        triggerPdaTransition();
+    }
 }
 
 function buildSearchText(character, characterId) {
@@ -929,6 +1018,9 @@ function closeImageModal() {
 filterButtons.forEach(function (button) {
     button.addEventListener("click", function () { setFilter(button.dataset.filter); });
 });
+uiSizeButtons.forEach(function (button) {
+    button.addEventListener("click", function () { applyUiSize(button.dataset.uiSize); });
+});
 collectionButtons.forEach(function (button) {
     button.addEventListener("click", function () { setCollection(button.dataset.collection, true); });
 });
@@ -949,6 +1041,7 @@ elements.clearSearch.addEventListener("click", function () {
     elements.searchInput.focus();
 });
 elements.resetFilters.addEventListener("click", resetFilters);
+elements.skipBootButton.addEventListener("click", function () { finishPdaBoot(); });
 elements.logoutButton.addEventListener("click", lockArchive);
 elements.previousCharacter.addEventListener("click", function () { moveCharacter(-1); });
 elements.nextCharacter.addEventListener("click", function () { moveCharacter(1); });
@@ -986,6 +1079,7 @@ document.addEventListener("keydown", function (event) {
 });
 
 renderCharacterList();
+applyUiSize(window.localStorage.getItem(uiSizeStorageKey) || "normal", false);
 updateFilterCounts();
 applyFilters();
 showCharacter(selectedCharacterId, false);
