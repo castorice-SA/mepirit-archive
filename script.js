@@ -262,14 +262,14 @@ const characters = {
 // 기존 인물 기록의 성격과 행동 양식을 바탕으로 구성한 관계 기록 초안
 const relationships = {
     m1903: [
-        { target: "m1911", address: "콜트", affinity: 82, firstImpression: "작고 부산스러워 잠시도 눈을 떼기 어려운 인물.", evaluation: "돌발 행동은 많지만 실제 위험에서 내리는 빠른 판단은 신뢰한다.", quote: "콜트, 먼저 뛰어들기 전에는 한 번만 뒤를 봐줘." },
+        { target: "m1911", address: "콜트", affinity: 88, firstImpression: "가만히 있지 못하고 눈앞의 흥미를 따라 곧장 움직이는 활기찬 동료.", evaluation: "계획이 다음 골목에서 바뀔 것을 알 만큼 콜트의 즉흥성을 잘 안다. 그 활기가 과거의 기억에 머물던 자신을 현재의 여행으로 자연스럽게 이끌어 준다고 느낀다.", quote: "콜트, 지도대로 가는 건 다음 골목까지겠구나." },
         { target: "garand", address: "개런드", affinity: 91, firstImpression: "반듯하고 준비가 철저한 믿음직한 후배.", evaluation: "책임을 혼자 지려는 점이 자신과 닮아 있어 자주 쉬게 하려 한다.", quote: "개런드, 이번 일은 혼자 짊어지지 않아도 돼." },
         { target: "thompson", address: "톰슨", affinity: 77, firstImpression: "목소리와 차림새 모두 한눈에 들어오는 인물.", evaluation: "화려한 겉모습보다 사람을 움직이는 힘과 현실적인 판단을 높게 본다.", quote: "톰슨이 앞에 서면 분위기가 금세 달라지는구나." },
         { target: "carbine", address: "카빈", affinity: 86, firstImpression: "가볍고 빠르며 누구에게나 자연스럽게 다가가는 인물.", evaluation: "사람 사이의 빈틈을 메우는 능력을 소중하게 생각한다.", quote: "카빈, 네가 있어서 모두가 조금 더 편해 보여." },
         { target: "claire", address: "휘트모어 관리관", affinity: 89, firstImpression: "말보다 먼저 사람의 상태를 살피는 차분한 관리관.", evaluation: "과거를 억지로 묻지 않고 현재의 선택을 존중해 신뢰하고 있다.", quote: "관리관님이라면 우리가 무엇을 지키고 싶은지 이해해 주실 거예요." }
     ],
     m1911: [
-        { target: "m1903", address: "스프링필드 선배님", affinity: 85, firstImpression: "조용해서 무서운 사람인 줄 알았지만 생각보다 아주 부드러웠다.", evaluation: "사고를 쳐도 끝까지 이야기를 들어주는 가장 믿음직한 고참.", quote: "선배님, 이번에는 진짜 계획대로 움직였다니까요!" },
+        { target: "m1903", address: "스프링필드", affinity: 88, firstImpression: "낯선 풍경을 오래 바라보며 쉽게 걸음을 떼지 않는 조용하고 섬세한 동료.", evaluation: "생각에 잠긴 스프링필드를 마냥 기다리기보다 직접 불러 함께 움직인다. 격식 없이 이름을 부르고 여행의 속도로 끌어낼 만큼 편하고 가까운 사이다.", quote: "스프링필드! 너 거기서 하루 종일 서 있을 거야?" },
         { target: "garand", address: "개런드", affinity: 76, firstImpression: "규칙과 일정을 너무 좋아하는 답답한 모범생.", evaluation: "잔소리는 많지만 가장 먼저 도와주러 오는 사람이라는 걸 알고 있다.", quote: "개런드, 딱 한 번만 내 방식대로 해보면 안 돼?" },
         { target: "thompson", address: "톰슨 언니", affinity: 83, firstImpression: "화려하고 멋져서 곁에 있으면 재미있는 일이 생길 것 같았다.", evaluation: "장난을 받아주면서도 위험한 순간에는 정확히 멈춰 세워주는 언니.", quote: "톰슨 언니, 오늘은 어디로 놀러 갈 거야?" },
         { target: "carbine", address: "카빈", affinity: 94, firstImpression: "처음부터 오래 알고 지낸 것처럼 말이 잘 통했다.", evaluation: "함께 돌아다니기 가장 편하고 사고를 수습할 때도 호흡이 잘 맞는다.", quote: "카빈, 저쪽에 재밌는 거 있어. 같이 가자!" },
