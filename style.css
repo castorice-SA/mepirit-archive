@@ -336,12 +336,97 @@ button:disabled { opacity: .35; cursor: default; }
 .pda-transfer span { display: block; width: 0; height: 100%; background: linear-gradient(90deg, var(--signal), var(--point)); box-shadow: 0 0 10px var(--signal); }
 .statusbar.is-transferring .pda-transfer span { animation: pda-transfer 720ms ease; }
 
-body.ui-large .button-copy strong { font-size: 16px; }
-body.ui-large .button-copy small, body.ui-large .button-role { font-size: 11px; }
-body.ui-large .filter-button, body.ui-large .collection-button { font-size: 13px; }
-body.ui-large .record-section > p, body.ui-large .detail-list li { font-size: 16px; }
-body.ui-large .record-table dt, body.ui-large .record-table dd, body.ui-large .relationship-meta, body.ui-large .relationship-quote { font-size: 14px; }
-body.ui-large .archive-notice p { font-size: 13px; }
+/* The default type scale now matches the former large mode. The large mode also
+   enlarges the PDA chrome, labels, controls, codes, and footer information. */
+body:not(.ui-large) .button-copy strong { font-size: 16px; }
+body:not(.ui-large) .button-copy small,
+body:not(.ui-large) .button-role { font-size: 11px; }
+body:not(.ui-large) .filter-button,
+body:not(.ui-large) .collection-button { font-size: 13px; }
+body:not(.ui-large) .record-section > p,
+body:not(.ui-large) .detail-list li { font-size: 16px; }
+body:not(.ui-large) .record-table dt,
+body:not(.ui-large) .record-table dd,
+body:not(.ui-large) .relationship-meta dt,
+body:not(.ui-large) .relationship-meta dd,
+body:not(.ui-large) .relationship-quote { font-size: 14px; }
+body:not(.ui-large) .archive-notice p { font-size: 13px; }
+
+body.ui-large { font-size: 16px; }
+body.ui-large .topbar { min-height: 112px; }
+body.ui-large .brand-block h1 { font-size: clamp(25px, 2.05vw, 34px); }
+body.ui-large .eyebrow,
+body.ui-large .search-box input { font-size: 14px; }
+body.ui-large .header-status { font-size: 12px; gap: 8px; }
+body.ui-large #systemClock { font-size: 13px; letter-spacing: 1.4px; white-space: nowrap; }
+body.ui-large .collection-bar { min-height: 60px; font-size: 13px; }
+body.ui-large .collection-label,
+body.ui-large .collection-button > span,
+body.ui-large .collection-bar > div:last-child { font-size: 11px; }
+body.ui-large .collection-button,
+body.ui-large .filter-button { min-height: 42px; font-size: 14px; }
+body.ui-large .filter-button span { font-size: 11px; }
+body.ui-large .logout-button { min-height: 38px; padding-inline: 12px; font-size: 12px; }
+body.ui-large .pda-size-control > span { font-size: 10px; }
+body.ui-large .pda-size-control button { min-height: 34px; padding-inline: 9px; font-size: 12px; }
+body.ui-large .panel-heading { min-height: 96px; padding: 22px; }
+body.ui-large .panel-heading h2 { font-size: 23px; }
+body.ui-large .panel-kicker,
+body.ui-large .count-badge,
+body.ui-large #recordSyncStatus { font-size: 12px; }
+body.ui-large .character-button { min-height: 108px; padding: 12px; }
+body.ui-large .character-thumb { width: 68px; height: 80px; }
+body.ui-large .button-copy strong { font-size: 17px; }
+body.ui-large .button-copy small,
+body.ui-large .button-role,
+body.ui-large .button-index { font-size: 12px; }
+body.ui-large .selection-hint,
+body.ui-large .index-footer p { font-size: 14px; }
+body.ui-large .index-footer > div:first-child,
+body.ui-large .keyboard-guide,
+body.ui-large .keyboard-guide kbd { font-size: 11px; }
+body.ui-large .frame-meta,
+body.ui-large #characterCode,
+body.ui-large .entity-status { font-size: 11px; }
+body.ui-large #characterDesignation { font-size: 13px; }
+body.ui-large .profile-grid > div > span,
+body.ui-large .profile-grid > div > span > span { font-size: 11px; }
+body.ui-large .profile-grid strong { font-size: 17px; }
+body.ui-large .read-record-link { font-size: 14px; }
+body.ui-large .document-heading,
+body.ui-large .document-stamp { font-size: 12px; }
+body.ui-large .record-tab { min-height: 48px; font-size: 13px; }
+body.ui-large .record-section h3 { font-size: 16px; }
+body.ui-large .record-section h3 > span:first-child,
+body.ui-large .detail-code,
+body.ui-large .detail-list li::before { font-size: 11px; }
+body.ui-large .record-section > p,
+body.ui-large .detail-list li { font-size: 17px; }
+body.ui-large .detail-list.compact li { font-size: 16px; }
+body.ui-large .record-table dt,
+body.ui-large .record-table dd,
+body.ui-large .relationship-meta dt,
+body.ui-large .relationship-meta dd,
+body.ui-large .relationship-quote { font-size: 15px; }
+body.ui-large #recordCode,
+body.ui-large #recordDesignation,
+body.ui-large #recordClass { font-size: 13px; }
+body.ui-large .relationship-lead,
+body.ui-large .archive-notice p { font-size: 14px; }
+body.ui-large .relation-center,
+body.ui-large .relation-node { font-size: 11px; }
+body.ui-large .affinity,
+body.ui-large .archive-notice > span,
+body.ui-large .document-end,
+body.ui-large .record-footer { font-size: 11px; }
+body.ui-large .load-label,
+body.ui-large .footer-edition,
+body.ui-large .creator-credit { font-size: 12px; }
+body.ui-large .load-label strong,
+body.ui-large .creator-credit strong,
+body.ui-large .footer-controls > span { font-size: 13px; }
+body.ui-large .footer-controls button { min-height: 42px; padding-inline: 15px; font-size: 14px; }
+body.ui-large .footer-controls button > span { font-size: 13px; }
 
 @keyframes portrait-sweep {
     0% { transform: translateY(0); opacity: 0; }
@@ -408,8 +493,9 @@ body.ui-large .archive-notice p { font-size: 13px; }
     .document-heading, .record-tabs, .record-tab-panel, .document-end { grid-column: 1 / -1; }
     .archive-notice { grid-column: 1 / -1; }
     .image-frame { min-height: 480px; }
-    .header-status { display: none; }
-    .header-tools { max-width: 420px; }
+    .header-tools { max-width: 420px; flex-wrap: wrap; }
+    .header-status { width: 100%; flex-direction: row; justify-content: flex-end; align-items: center; gap: 14px; }
+    .header-status .device-status { display: none; }
     .footer-edition { display: none; }
     .relationship-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -432,6 +518,8 @@ body.ui-large .archive-notice p { font-size: 13px; }
     .brand-block h1 { font-size: 24px; }
     .eyebrow { font-size: 10px; letter-spacing: 1.6px; }
     .header-tools { max-width: none; }
+    .header-status { justify-content: flex-start; }
+    .header-status .online-status { display: none; }
     .search-box { width: 100%; min-height: 48px; }
     .collection-bar { min-height: 48px; padding: 8px 0 10px; flex-wrap: wrap; gap: 5px 8px; font-size: 10px; }
     .collection-context { width: 100%; gap: 8px; }
@@ -451,6 +539,7 @@ body.ui-large .archive-notice p { font-size: 13px; }
     .filter-tabs { padding: 8px 12px; }
     .filter-button { min-height: 40px; }
     .character-list { display: grid; grid-auto-flow: column; grid-auto-columns: 218px; overflow-x: auto; overflow-y: hidden; padding: 12px; gap: 8px; scroll-padding-inline: 12px; }
+    body.ui-large .character-list { grid-auto-columns: 250px; }
     .character-button { grid-template-columns: 48px minmax(0, 1fr) auto; min-height: 88px; }
     .character-thumb { width: 48px; height: 62px; }
     .index-footer { display: none; }

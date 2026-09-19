@@ -420,6 +420,16 @@ const recordTabPanels = Array.from(document.querySelectorAll(".record-tab-panel"
 const uiSizeButtons = Array.from(document.querySelectorAll("[data-ui-size]"));
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const uiSizeStorageKey = "mepirit-pda-type-size";
+const seoulClockFormatter = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Asia/Seoul",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23"
+});
 
 function padNumber(number) {
     return String(number).padStart(2, "0");
@@ -993,8 +1003,14 @@ function updateFilterCounts() {
 
 function updateClock() {
     const now = new Date();
-    elements.systemClock.textContent = [now.getHours(), now.getMinutes(), now.getSeconds()].map(padNumber).join(" : ");
-    elements.systemClock.dateTime = now.toISOString();
+    const parts = Object.fromEntries(seoulClockFormatter.formatToParts(now)
+        .filter(function (part) { return part.type !== "literal"; })
+        .map(function (part) { return [part.type, part.value]; }));
+    const seoulDate = `${parts.year}.${parts.month}.${parts.day}`;
+    const seoulTime = `${parts.hour} : ${parts.minute} : ${parts.second}`;
+    elements.systemClock.textContent = `${seoulDate} / ${seoulTime} KST`;
+    elements.systemClock.dateTime = `${parts.year}-${parts.month}-${parts.day}T${parts.hour}:${parts.minute}:${parts.second}+09:00`;
+    elements.systemClock.title = `서울 기준 ${seoulDate} ${seoulTime}`;
 }
 
 function modalIsOpen() {
