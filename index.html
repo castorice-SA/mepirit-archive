@@ -7,8 +7,8 @@
     <meta name="description" content="메피릿 캐릭터 아카이브. 인물의 초상과 기초 기록, 식별 정보를 탐색하세요.">
     <link rel="icon" href="data:,">
     <title>MEPIRIT ARCHIVE</title>
-    <link rel="stylesheet" href="./style.css?v=8">
-    <script src="./script.js?v=8" defer></script>
+    <link rel="stylesheet" href="./style.css?v=9">
+    <script src="./script.js?v=9" defer></script>
 </head>
 <body class="is-locked">
     <section class="login-screen" id="loginScreen" aria-labelledby="loginTitle">
@@ -66,9 +66,9 @@
         </header>
 
         <div class="collection-bar">
-            <p><span>COLLECTION 01</span><i aria-hidden="true">/</i> 미합중국 보병장비</p>
+            <p><span>COLLECTION 01</span><i aria-hidden="true">/</i> 보병장비 통합 기록</p>
             <div>
-                <span id="headerRecordCount">06 RECORDS</span>
+                <span id="headerRecordCount">08 RECORDS</span>
                 <span class="collection-clearance">GENERAL ACCESS</span>
                 <button class="logout-button" id="logoutButton" type="button"><span aria-hidden="true">↙</span> 로그아웃</button>
             </div>
@@ -78,13 +78,14 @@
             <aside class="index-panel panel" aria-labelledby="indexTitle">
                 <div class="panel-heading">
                     <div><span class="panel-kicker">01 / ENTITY INDEX</span><h2 id="indexTitle">인물 색인</h2></div>
-                    <span class="count-badge" id="indexCount" aria-live="polite" aria-atomic="true">06 / 06</span>
+                    <span class="count-badge" id="indexCount" aria-live="polite" aria-atomic="true">08 / 08</span>
                 </div>
                 <div class="filter-tabs" role="group" aria-label="캐릭터 분류 필터">
-                    <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">전체 <span id="allFilterCount">06</span></button>
+                    <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">전체 <span id="allFilterCount">08</span></button>
                     <button class="filter-button" type="button" data-filter="LANTERN" aria-pressed="false">랜턴 <span id="lanternFilterCount">05</span></button>
-                    <button class="filter-button" type="button" data-filter="LAMP" aria-pressed="false">램프 <span id="lampFilterCount">00</span></button>
+                    <button class="filter-button" type="button" data-filter="LAMP" aria-pressed="false">램프 <span id="lampFilterCount">02</span></button>
                     <button class="filter-button" type="button" data-filter="ADMINISTRATOR" aria-pressed="false">관리관 <span id="administratorFilterCount">01</span></button>
+                    <button class="filter-button" type="button" data-filter="SWISS" aria-pressed="false" title="스위스 보병장비">스위스 <span id="swissFilterCount">02</span></button>
                 </div>
                 <div class="character-list" id="characterList" aria-label="검색된 캐릭터"></div>
                 <div class="empty-result" id="emptyResult" hidden>
@@ -95,7 +96,7 @@
                 </div>
                 <p class="selection-hint" id="selectionHint" hidden></p>
                 <div class="index-footer">
-                    <div><span>RECORD SELECTED</span><strong id="selectedRecordLabel">01 / 06</strong></div>
+                    <div><span>RECORD SELECTED</span><strong id="selectedRecordLabel">01 / 08</strong></div>
                     <p>목록에서 인물을 선택하면<br>보관된 기록을 열람할 수 있습니다.</p>
                     <div class="keyboard-guide"><span><kbd>↑</kbd><kbd>↓</kbd> 이동</span><span><kbd>/</kbd> 검색</span><span><kbd>Esc</kbd> 초기화</span></div>
                 </div>
@@ -131,7 +132,7 @@
             <article class="record-panel panel" id="recordDetail" tabindex="-1" aria-labelledby="recordTitle">
                 <div class="panel-heading record-heading">
                     <div><span class="panel-kicker">03 / ENTITY DOSSIER</span><h2 id="recordTitle">인물 기록</h2></div>
-                    <span id="recordSyncStatus">SYNC 01 / 06</span>
+                    <span id="recordSyncStatus">SYNC 01 / 08</span>
                 </div>
                 <div class="record-content">
                     <div class="document-heading"><span>ENTITY / GENERAL</span><span class="document-stamp">열람 가능</span></div>
@@ -195,10 +196,10 @@
                             <div class="relationship-cards" id="relationshipCards"></div>
                         </section>
                     </div>
-                    <div class="archive-notice"><span>ARCHIVE SOURCE</span><p>미합중국 보병장비 인원 등록부를 바탕으로 정리한 인물 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.</p></div>
+                    <div class="archive-notice"><span id="archiveNoticeTitle">ARCHIVE SOURCE</span><p id="archiveNoticeText">미합중국 보병장비 인원 등록부를 바탕으로 정리한 인물 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.</p></div>
                     <div class="document-end" aria-hidden="true"><span>END OF RECORD</span><span>///</span></div>
                 </div>
-                <div class="record-footer"><span><i aria-hidden="true"></i> MEPIRIT ARCHIVE</span><span id="recordFooterPosition">01 / 06</span></div>
+                <div class="record-footer"><span><i aria-hidden="true"></i> MEPIRIT ARCHIVE</span><span id="recordFooterPosition">01 / 08</span></div>
             </article>
         </main>
 
@@ -206,7 +207,7 @@
             <div class="load-label"><span class="status-indicator" aria-hidden="true"></span><span>NOW VIEWING</span><strong id="footerEntityName">M1903 SPRINGFIELD</strong></div>
             <span class="footer-edition">ENTITY RECORD COLLECTION <span aria-hidden="true">/</span> 01</span>
             <span class="creator-credit">CREATED BY <strong>Racor</strong><i aria-hidden="true">/</i><strong>soragoon</strong></span>
-            <div class="footer-controls"><button type="button" id="previousCharacter" aria-label="이전 캐릭터" title="이전 캐릭터 (↑)">↑ <span>이전</span></button><span id="footerRecordPosition">01 / 06</span><button type="button" id="nextCharacter" aria-label="다음 캐릭터" title="다음 캐릭터 (↓)"><span>다음</span> ↓</button></div>
+            <div class="footer-controls"><button type="button" id="previousCharacter" aria-label="이전 캐릭터" title="이전 캐릭터 (↑)">↑ <span>이전</span></button><span id="footerRecordPosition">01 / 08</span><button type="button" id="nextCharacter" aria-label="다음 캐릭터" title="다음 캐릭터 (↓)"><span>다음</span> ↓</button></div>
         </footer>
     </div>
     <noscript><p class="noscript-message">캐릭터 선택과 검색을 사용하려면 브라우저에서 JavaScript를 활성화해 주세요.</p></noscript>

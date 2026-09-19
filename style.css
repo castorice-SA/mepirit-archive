@@ -114,7 +114,7 @@ button:disabled { opacity: .35; cursor: default; }
 
 /* Index: portrait thumbnails, explicit selected state, and usable empty results. */
 .index-panel { display: flex; flex-direction: column; }
-.filter-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 13px 12px; gap: 4px; border-bottom: 1px solid var(--line); }
+.filter-tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); padding: 13px 12px; gap: 4px; border-bottom: 1px solid var(--line); }
 .filter-button { min-height: 36px; padding: 6px 3px; border: 1px solid transparent; background: transparent; color: var(--sub-text); font-size: 12px; }
 .filter-button span { margin-left: 3px; font: 10px var(--mono); opacity: .7; }
 .filter-button:hover { background: var(--panel-hover); }
@@ -326,6 +326,8 @@ button:disabled { opacity: .35; cursor: default; }
     .identity-block { padding: 22px 20px 0; }
     .entity-status { font-size: 8px; }
     .index-footer { padding: 18px 16px; }
+    .filter-button { font-size: 10px; }
+    .filter-button span { font-size: 8px; }
 }
 @media (max-width: 1199px) {
     .workspace { grid-template-columns: 270px minmax(0, 1fr); }

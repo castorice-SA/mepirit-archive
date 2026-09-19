@@ -158,7 +158,7 @@ const characters = {
         class: "ADMINISTRATOR",
         height: "166cm",
         age: "29세",
-        summary: "미합중국 보병장비 랜턴과 램프의 생활·행정·상담·외부활동을 총괄하는 전담 관리관. 온화하지만 안전과 원칙에 대해서는 확실하게 선을 긋는다.",
+        summary: "미합중국 보병장비 (랜턴/램프)의 생활·행정·상담·외부활동을 총괄하는 전담 관리관. 온화하지만 안전과 원칙에 대해서는 확실하게 선을 긋는다.",
         sex: "여성",
         operationalPeriod: "현직 / 미합중국 메피릿 관리국 보병장비 관리부",
         origin: "미합중국, 버지니아주 알링턴",
@@ -166,7 +166,8 @@ const characters = {
         classificationLabel: "인원 분류",
         recordListTitle: "핵심 업무",
         tabLabels: { memory: "주요 업무", overall: "관리 방침" },
-        armament: ["랜턴·램프 개체등록과 생활기록 관리", "기숙사 배정과 외출·외박·해외 방문 일정 승인", "상담·생활분쟁 중재와 신규 램프 적응 지원", "관리국 본부 및 외부기관과의 행정 연락"],
+        sectionCodes: { memory: "ADMINISTRATIVE DUTIES", overall: "MANAGEMENT POLICY" },
+        armament: ["미합중국 보병장비 (랜턴/램프) 개체등록과 생활기록 관리", "기숙사 배정과 외출·외박·해외 방문 일정 승인", "상담·생활분쟁 중재와 신규 램프 적응 지원", "관리국 본부 및 외부기관과의 행정 연락"],
         appearance: {
             title: "166cm의 단정하고 온화한 인상",
             items: ["희고 깨끗한 피부와 허리 아래까지 흘러내리는 짙은 흑갈색 장발.", "머리카락 아래쪽에는 금빛이 희미하게 섞이며 빛에 따라 청록빛이나 보랏빛 광택이 비친다.", "오른쪽 머리에 금색 머리핀과 짙은 적갈색 리본을 착용한다.", "양쪽 눈동자 색이 서로 달라 한쪽은 적색, 다른 한쪽은 선명한 황금빛을 띤다.", "웃을 때에는 온화하지만 업무 중 표정이 굳으면 제법 냉정한 분위기가 드러난다.", "크림색 블라우스나 셔츠, 짙은 색 치마와 버건디 계열 카디건을 개인적인 근무복처럼 즐겨 입는다."]
@@ -177,14 +178,83 @@ const characters = {
         },
         memory: {
             title: "현장을 직접 확인하는 보병장비 전담 관리 업무",
-            items: ["미합중국 보병장비 메피릿의 행정과 생활관리를 총괄한다.", "개인 신상·생활기록 갱신, 기숙사 배정, 외부활동 승인과 여행 일정 접수를 담당한다.", "정기 건강검진과 상태점검 일정을 관리하고 생활분쟁과 계보별 멘토링 상황을 확인한다.", "사고 및 규정 위반 보고서 작성, 외부기관 면담, 각국 정부기관과의 행정협조도 맡는다.", "책상에서 보고서만 받기보다 기숙사·식당·교육시설·관리동을 직접 돌며 현장을 확인한다.", "대부분의 랜턴과 램프의 이름, 생활습관, 주요 기피사항을 직접 기억하고 있다."]
+            items: ["미합중국 보병장비 (랜턴/램프)의 행정과 생활관리를 총괄한다.", "개인 신상·생활기록 갱신, 기숙사 배정, 외부활동 승인과 여행 일정 접수를 담당한다.", "정기 건강검진과 상태점검 일정을 관리하고 생활분쟁과 계보별 멘토링 상황을 확인한다.", "사고 및 규정 위반 보고서 작성, 외부기관 면담, 각국 정부기관과의 행정협조도 맡는다.", "책상에서 보고서만 받기보다 기숙사·식당·교육시설·관리동을 직접 돌며 현장을 확인한다.", "대부분의 랜턴과 램프의 이름, 생활습관, 주요 기피사항을 직접 기억하고 있다."]
         },
         overall: {
             title: "보호와 자율을 우선하는 관리 방침",
             items: ["제식번호와 운용이력은 과거를 이해하는 자료일 뿐 현재의 인격 전체를 뜻하지 않는다고 본다.", "본인이 원하지 않는 전장경험 진술이나 불필요한 전투능력 재현을 요구하지 않는다.", "랜턴과 램프 사이의 선후배 체계는 관리국이 일률적으로 정하기보다 자연스럽게 형성된 관계를 존중한다.", "규정 위반에는 비교적 관대하지만 타인의 안전을 고의로 위험에 빠뜨리는 행동에는 양보하지 않는다.", "직접적인 군사 지휘권은 없으나 관리구역의 안전을 위해 외출 일시정지, 위험지역 접근금지, 별도 면담을 요청할 수 있다.", "메피릿을 ‘무기였던 사람들’이 아니라 ‘무기에서 태어나 이제는 사람으로 살아가는 이들’로 받아들이며, 전쟁의 목적 없이 살아가도록 돕는 것을 자신의 역할로 여긴다."]
         },
         image: "./images/claire.png",
-        imagePosition: "center 6%"
+        imagePosition: "center 18%"
+    },
+    mp9: {
+        name: "MP9",
+        code: "CH-IE-LP-MP9",
+        designation: "Brügger & Thomet MaschinenPistole 9mm",
+        class: "LAMP",
+        group: "SWISS",
+        height: "155cm",
+        summary: "작고 가벼운 체구에 활발한 호기심을 지닌 스위스 보병장비 램프. 생각보다 행동이 한 박자 빠르지만 주변 분위기와 상대가 싫어하는 선은 빠르게 알아차린다.",
+        sex: "여성",
+        operationalPeriod: "현대 / B&T 제작",
+        origin: "스위스",
+        classification: "PDW / 기관단총",
+        recordListTitle: "기본 정보",
+        tabLabels: { memory: "특징", overall: "취향" },
+        sectionCodes: { memory: "CHARACTERISTICS", overall: "PREFERENCES" },
+        armament: ["제조사 / B&T", "유럽 보병장비 / 스위스 보병장비", "메피릿 분류 / LAMP"],
+        appearance: {
+            title: "155cm의 작고 가벼운 체구",
+            items: ["짙은 회색 머리카락을 길게 기르며 평소에는 높은 양갈래로 묶는다.", "머리끝이 가볍게 바깥으로 뻗어 움직일 때마다 함께 튄다.", "밝은 청록빛이 감도는 회색 눈은 둥글고 또렷하며 표정 변화가 빠르다.", "가만히 서 있을 때도 몸의 중심이 앞으로 기울어 금방이라도 뛰어나갈 듯한 인상을 준다.", "MP9-N보다 조금 더 작고 가느다란 체격과 앳된 인상을 지녔지만 눈매에는 당돌한 기색이 있다."]
+        },
+        personality: {
+            title: "활발하고 호기심 많은 행동파",
+            items: ["새로운 물건이나 처음 보는 사람을 발견하면 고민보다 먼저 다가간다.", "가만히 기다리는 것을 어려워하며 심심해지면 주변에 말을 걸거나 스스로 할 일을 만든다.", "장난을 좋아하지만 상대가 정말 싫어하는 선은 의외로 빠르게 알아차린다.", "분위기를 읽고도 재미있을 것 같으면 한 번 건드려보는 것이 문제다.", "작은 체격을 콤플렉스로 여기지 않고 좁은 곳과 빠른 움직임에서 장점으로 활용한다."]
+        },
+        memory: {
+            title: "언니지만 더 철없어 보이는 빠른 램프",
+            items: ["생각보다 행동이 한 박자 빠르다.", "자기 물건을 여기저기 놓아두고 잊는 일이 많다.", "주머니에 사탕이나 작은 간식을 넣어두는 버릇이 있다.", "누군가 뛰기 시작하면 이유를 묻기 전에 함께 뛰어간다.", "자신의 키를 놀리는 것보다 MP9-N을 건드리는 일에 훨씬 민감하다.", "동생이 보이지 않으면 가장 먼저 찾으러 다닌다."]
+        },
+        overall: {
+            title: "빠른 움직임과 즉흥적인 외출을 좋아함",
+            items: ["빠르게 움직이는 것, 산책, 새로운 장소, 작은 전자기기, 간식, 사람 많은 곳과 즉흥적인 외출을 좋아한다.", "긴 대기시간, 지나치게 엄격한 일정표, 아무것도 하지 않고 가만히 있어야 하는 상황을 싫어한다.", "MP9-N을 지나치게 모범생으로만 취급하는 것도 좋아하지 않는다."]
+        },
+        image: "./images/mp9.webp",
+        imagePosition: "center 9%"
+    },
+    mp9n: {
+        name: "MP9-N",
+        code: "CH-IE-LP-MP9N",
+        designation: "Brügger & Thomet MaschinenPistole 9mm N",
+        class: "LAMP",
+        group: "SWISS",
+        height: "160cm",
+        summary: "MP9과 같은 계열의 스위스 보병장비 램프. 밝고 활동적이지만 행동하기 전에 상황을 확인하며, 정리정돈과 일정 관리에 강한 차분한 여동생이다.",
+        sex: "여성",
+        operationalPeriod: "현대 / B&T 제작",
+        origin: "스위스",
+        classification: "PDW / 기관단총",
+        recordListTitle: "기본 정보",
+        tabLabels: { memory: "특징", overall: "취향" },
+        sectionCodes: { memory: "CHARACTERISTICS", overall: "PREFERENCES" },
+        armament: ["제조사 / B&T", "유럽 보병장비 / 스위스 보병장비", "메피릿 분류 / LAMP"],
+        appearance: {
+            title: "160cm의 작고 가느다란 체구",
+            items: ["전체적인 생김새가 MP9과 상당히 닮아 같은 계열임을 쉽게 알아볼 수 있다.", "푸른빛이 은은하게 감도는 회색 머리카락을 어깨 아래까지 기른다.", "평소에는 낮은 반묶음이나 단정한 사이드 포니테일로 정리한다.", "맑은 청록회색 눈과 MP9보다 조금 가늘고 차분한 눈매를 지녔다.", "작은 얼굴과 앳된 이목구비에도 자세와 행동이 단정해 언니보다 성숙한 인상을 준다.", "검은색이나 짙은 회색 헤어핀과 얇은 금속 장식처럼 기능적인 소품을 선호한다."]
+        },
+        personality: {
+            title: "밝고 활동적이지만 한 번 생각하는 성격",
+            items: ["MP9이 곧바로 달려나가면 잠시 상황을 확인한 뒤 따라가는 편이다.", "정리정돈에 강하고 물건의 위치와 약속시간을 잘 기억한다.", "MP9이 잃어버린 물건을 찾아주는 일도 대부분 MP9-N의 몫이다.", "언니를 말리는 척하다가 결국 함께 재미있는 일에 참가하는 경우가 많다.", "기분이 나쁠수록 목소리를 높이기보다 말수가 줄고 표정이 차분해진다.", "자신을 단순히 MP9의 개량형이나 동생으로만 취급하는 것을 좋아하지 않는다.", "언니와 닮았어도 분명히 서로 다른 사람이라고 생각한다."]
+        },
+        memory: {
+            title: "정돈과 일정 관리에 강한 MP9 자매의 여동생",
+            items: ["자신이 사용하는 물건은 항상 정해진 자리에 둔다.", "낯선 사람 앞에서는 MP9보다 훨씬 얌전하다.", "익숙해지면 숨겨둔 장난기가 상당히 드러난다.", "언니를 말리면서도 결국 함께 사고에 휘말린다.", "MP9과 다투는 것은 괜찮지만 다른 사람이 언니를 심하게 몰아붙이는 것은 싫어한다.", "혼자 행동할 수 있지만 MP9이 오래 보이지 않으면 자연스럽게 찾으러 간다."]
+        },
+        overall: {
+            title: "정돈된 일상과 언니와의 시간을 좋아함",
+            items: ["정돈된 공간, 작은 액세서리, 기계와 장비 손질, 계획이 있는 외출, 조용한 카페와 창가 자리를 좋아한다.", "새로운 전자기기와 MP9과 둘이 돌아다니는 시간을 즐긴다.", "물건을 아무 곳에 놓는 행동, 약속시간을 지키지 않는 것, 계획 없이 일을 크게 벌이는 것을 싫어한다.", "자신을 MP9의 복제품처럼 취급하거나 MP9이 연락 없이 사라지는 상황을 싫어한다."]
+        },
+        image: ""
     }
 };
 
@@ -231,6 +301,12 @@ const relationships = {
         { target: "garand", address: "개런드", affinity: 94, firstImpression: "별도의 지시 없이도 필요한 일을 찾아 움직이는 책임감 강한 인물.", evaluation: "관리 업무를 가장 안정적으로 돕지만 과한 책임감으로 지치지 않도록 제지한다.", quote: "개런드, 맡은 일은 끝났어요. 나머지는 제가 할게요." },
         { target: "thompson", address: "톰슨", affinity: 84, firstImpression: "사람과 분위기를 움직일 줄 아는 자신감 넘치는 인물.", evaluation: "사교성과 현장 판단을 높게 평가하지만 일정 변경은 미리 알리도록 단단히 약속받는다.", quote: "톰슨, 좋은 계획이에요. 승인서가 먼저라는 점만 빼면요." },
         { target: "carbine", address: "카빈", affinity: 93, firstImpression: "낯선 사람도 자연스럽게 대화 안으로 이끄는 친화력 좋은 인물.", evaluation: "생활구역의 분위기와 작은 변화를 빠르게 전해주는 소중한 관찰자이자 조력자.", quote: "카빈, 오늘 식당 분위기는 어땠는지 들려줄래요?" }
+    ],
+    mp9: [
+        { target: "mp9n", address: "MP9-N", affinity: 98, firstImpression: "자신과 가장 닮았지만 훨씬 차분하고 정돈된 동생.", evaluation: "늘 자신이 언니라고 주장하지만 생활에서는 동생에게 챙김을 받는 일이 더 많다. 다투어도 MP9-N이 보이지 않으면 가장 먼저 찾으러 간다.", quote: "내가 언니니까 먼저 갈게. 넌 바로 따라와!" }
+    ],
+    mp9n: [
+        { target: "mp9", address: "언니", affinity: 98, firstImpression: "생각보다 행동이 먼저 나가지만 혼자 두고 볼 수 없는 가장 가까운 가족.", evaluation: "말리고 뒷정리하는 일이 많아도 결국 함께 움직이는 친구이자 자매다. 언니가 곤란해지면 누구보다 먼저 나선다.", quote: "언니, 잠깐만요. 적어도 어디로 가는지는 말하고 뛰어가요." }
     ]
 };
 
@@ -265,6 +341,7 @@ const elements = {
     lanternFilterCount: document.querySelector("#lanternFilterCount"),
     lampFilterCount: document.querySelector("#lampFilterCount"),
     administratorFilterCount: document.querySelector("#administratorFilterCount"),
+    swissFilterCount: document.querySelector("#swissFilterCount"),
     selectedRecordLabel: document.querySelector("#selectedRecordLabel"),
     visualLogNumber: document.querySelector("#visualLogNumber"),
     frameRecordCode: document.querySelector("#frameRecordCode"),
@@ -304,6 +381,8 @@ const elements = {
     overallSectionCode: document.querySelector("#overallSectionCode"),
     memoryTabButton: document.querySelector("#recordTabMemory"),
     overallTabButton: document.querySelector("#recordTabOverall"),
+    archiveNoticeTitle: document.querySelector("#archiveNoticeTitle"),
+    archiveNoticeText: document.querySelector("#archiveNoticeText"),
     relationshipTitle: document.querySelector("#relationshipTitle"),
     relationshipMap: document.querySelector("#relationshipMap"),
     relationshipCenter: document.querySelector("#relationshipCenter"),
@@ -431,8 +510,18 @@ function renderDetailedRecord(character, characterId) {
     elements.recordListTitle.textContent = character.recordListTitle || "주요 무장";
     elements.memoryTabButton.textContent = character.tabLabels?.memory || "전쟁 기억";
     elements.overallTabButton.textContent = character.tabLabels?.overall || "종합";
-    elements.memorySectionCode.textContent = character.tabLabels ? "ADMINISTRATIVE DUTIES" : "WAR MEMORY RECORD";
-    elements.overallSectionCode.textContent = character.tabLabels ? "MANAGEMENT POLICY" : "GENERAL ASSESSMENT";
+    elements.memorySectionCode.textContent = character.sectionCodes?.memory || "WAR MEMORY RECORD";
+    elements.overallSectionCode.textContent = character.sectionCodes?.overall || "GENERAL ASSESSMENT";
+    if (character.group === "SWISS") {
+        elements.archiveNoticeTitle.textContent = "SWISS ARCHIVE SOURCE";
+        elements.archiveNoticeText.textContent = "스위스 보병장비 등록부를 바탕으로 정리한 램프 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
+    } else if (character.class === "ADMINISTRATOR") {
+        elements.archiveNoticeTitle.textContent = "PERSONNEL RECORD SOURCE";
+        elements.archiveNoticeText.textContent = "미합중국 메피릿 관리국 보병장비 관리부 인원기록을 바탕으로 정리한 관리요원 기록입니다.";
+    } else {
+        elements.archiveNoticeTitle.textContent = "ARCHIVE SOURCE";
+        elements.archiveNoticeText.textContent = "미합중국 보병장비 인원 등록부를 바탕으로 정리한 인물 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
+    }
     renderList(elements.recordArmament, character.armament);
 
     ["appearance", "personality", "memory", "overall"].forEach(function (sectionName) {
@@ -583,11 +672,14 @@ function renderCharacterList() {
         thumbnail.className = "character-thumb";
         fallback.className = "thumbnail-fallback";
         fallback.textContent = character.name.replace(/[^A-Za-z0-9]/g, "").slice(0, 3).toUpperCase();
-        image.src = character.image;
         image.alt = "";
         image.loading = index === 0 ? "eager" : "lazy";
         image.addEventListener("error", function () { image.hidden = true; });
-        thumbnail.append(fallback, image);
+        thumbnail.append(fallback);
+        if (character.image) {
+            image.src = character.image;
+            thumbnail.append(image);
+        }
         copy.className = "button-copy";
         name.textContent = character.name;
         code.textContent = character.code;
@@ -625,6 +717,14 @@ function setCharacterImage(character) {
     elements.characterImage.onerror = showMissingImage;
     elements.characterImage.alt = `${character.name} 메피릿 캐릭터`;
     elements.characterImage.style.objectPosition = character.imagePosition || "";
+    if (!character.image) {
+        elements.characterImage.removeAttribute("src");
+        elements.modalImage.removeAttribute("src");
+        elements.modalImage.alt = "";
+        elements.modalCaption.textContent = `${character.name} / NO VISUAL DATA`;
+        showMissingImage();
+        return;
+    }
     elements.characterImage.src = character.image;
     elements.modalImage.src = character.image;
     elements.modalImage.alt = `${character.name} 원본 이미지`;
@@ -707,7 +807,7 @@ function applyFilters() {
     getCharacterButtons().forEach(function (button) {
         const character = characters[button.dataset.character];
         const isVisible = buildSearchText(character, button.dataset.character).includes(searchWord) &&
-            (activeFilter === "all" || character.class === activeFilter);
+            (activeFilter === "all" || character.class === activeFilter || character.group === activeFilter);
         button.hidden = !isVisible;
         if (isVisible) visibleCount += 1;
     });
@@ -754,11 +854,13 @@ function updateFilterCounts() {
     const lanternCount = characterOrder.filter(function (id) { return characters[id].class === "LANTERN"; }).length;
     const lampCount = characterOrder.filter(function (id) { return characters[id].class === "LAMP"; }).length;
     const administratorCount = characterOrder.filter(function (id) { return characters[id].class === "ADMINISTRATOR"; }).length;
+    const swissCount = characterOrder.filter(function (id) { return characters[id].group === "SWISS"; }).length;
     elements.headerRecordCount.textContent = `${padNumber(totalRecords)} RECORDS`;
     elements.allFilterCount.textContent = padNumber(totalRecords);
     elements.lanternFilterCount.textContent = padNumber(lanternCount);
     elements.lampFilterCount.textContent = padNumber(lampCount);
     elements.administratorFilterCount.textContent = padNumber(administratorCount);
+    elements.swissFilterCount.textContent = padNumber(swissCount);
 }
 
 function updateClock() {
