@@ -60,6 +60,7 @@ const elements = {
     loginCard: document.querySelector(".login-card"),
     passwordInput: document.querySelector("#passwordInput"),
     togglePassword: document.querySelector("#togglePassword"),
+    logoutButton: document.querySelector("#logoutButton"),
     loginMessage: document.querySelector("#loginMessage"),
     welcomeMessage: document.querySelector("#welcomeMessage"),
     archiveApp: document.querySelector("#archiveApp"),
@@ -140,6 +141,38 @@ function unlockArchive(skipWelcome) {
             elements.characterList.querySelector(".character-button.active")?.focus();
         }, 520);
     }, 1150);
+}
+
+function lockArchive() {
+    window.sessionStorage.removeItem(accessSessionKey);
+    if (modalIsOpen()) {
+        if (typeof elements.imageModal.close === "function") elements.imageModal.close();
+        else elements.imageModal.removeAttribute("open");
+    }
+
+    elements.archiveApp.setAttribute("inert", "");
+    elements.archiveApp.setAttribute("aria-hidden", "true");
+    document.body.classList.add("is-locked");
+    elements.loginCard.hidden = false;
+    elements.welcomeMessage.hidden = true;
+    elements.passwordInput.value = "";
+    elements.passwordInput.type = "password";
+    elements.togglePassword.textContent = "보기";
+    elements.togglePassword.setAttribute("aria-label", "비밀번호 표시");
+    elements.loginMessage.textContent = "AUTHORIZATION REQUIRED";
+    elements.loginMessage.classList.remove("is-error");
+    elements.loginCard.classList.remove("has-error");
+    elements.loginScreen.classList.add("is-closing");
+    elements.loginScreen.hidden = false;
+
+    window.requestAnimationFrame(function () {
+        window.requestAnimationFrame(function () {
+            elements.loginScreen.classList.remove("is-closing");
+            window.setTimeout(function () {
+                elements.passwordInput.focus();
+            }, 180);
+        });
+    });
 }
 
 async function handleLogin(event) {
@@ -421,6 +454,7 @@ elements.clearSearch.addEventListener("click", function () {
     elements.searchInput.focus();
 });
 elements.resetFilters.addEventListener("click", resetFilters);
+elements.logoutButton.addEventListener("click", lockArchive);
 elements.previousCharacter.addEventListener("click", function () { moveCharacter(-1); });
 elements.nextCharacter.addEventListener("click", function () { moveCharacter(1); });
 elements.openImageButton.addEventListener("click", openImageModal);
