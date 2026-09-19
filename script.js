@@ -58,7 +58,8 @@ const characters = {
             title: "작고 빠르며 위험에 강한 랜턴",
             items: ["일상적인 생활에서는 대표적인 사고뭉치.", "위험한 상황에서는 빠른 판단과 근거리 상황 인식 능력이 크게 두드러진다.", "새로운 환경에 대한 적응력이 높고 낯선 장소에서도 쉽게 위축되지 않는다.", "평화로운 시대에는 여행, 음식, 새로운 경험처럼 이전에는 누리기 어려웠던 것에 강한 관심을 보인다."]
         },
-        image: "./images/m1911.png"
+        image: "./images/m1911.png",
+        imagePosition: "center 6%"
     },
     garand: {
         name: "M1 Garand",
@@ -555,6 +556,7 @@ function setCharacterImage(character) {
     elements.characterImage.onload = showAvailableImage;
     elements.characterImage.onerror = showMissingImage;
     elements.characterImage.alt = `${character.name} 메피릿 캐릭터`;
+    elements.characterImage.style.objectPosition = character.imagePosition || "";
     elements.characterImage.src = character.image;
     elements.modalImage.src = character.image;
     elements.modalImage.alt = `${character.name} 원본 이미지`;
