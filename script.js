@@ -315,6 +315,7 @@ const totalRecords = characterOrder.length;
 const passwordHash = "72ab994fa2eb426c051ef59cad617750bfe06d7cf6311285ff79c19c32afd236";
 const accessSessionKey = "mepirit-archive-authorized";
 let selectedCharacterId = characterOrder[0];
+let activeCollection = "US";
 let activeFilter = "all";
 let activeRecordTab = "overview";
 
@@ -341,7 +342,7 @@ const elements = {
     lanternFilterCount: document.querySelector("#lanternFilterCount"),
     lampFilterCount: document.querySelector("#lampFilterCount"),
     administratorFilterCount: document.querySelector("#administratorFilterCount"),
-    swissFilterCount: document.querySelector("#swissFilterCount"),
+    administratorFilterButton: document.querySelector('[data-filter="ADMINISTRATOR"]'),
     selectedRecordLabel: document.querySelector("#selectedRecordLabel"),
     visualLogNumber: document.querySelector("#visualLogNumber"),
     frameRecordCode: document.querySelector("#frameRecordCode"),
@@ -402,12 +403,23 @@ const elements = {
 };
 
 const filterButtons = Array.from(document.querySelectorAll(".filter-button"));
+const collectionButtons = Array.from(document.querySelectorAll(".collection-button"));
 const recordTabButtons = Array.from(document.querySelectorAll(".record-tab"));
 const recordTabPanels = Array.from(document.querySelectorAll(".record-tab-panel"));
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
 function padNumber(number) {
     return String(number).padStart(2, "0");
+}
+
+function getCharacterCollection(character) {
+    return character.group === "SWISS" ? "SWISS" : "US";
+}
+
+function getCollectionCharacterIds(collectionName = activeCollection) {
+    return characterOrder.filter(function (id) {
+        return getCharacterCollection(characters[id]) === collectionName;
+    });
 }
 
 function renderList(element, items) {
@@ -668,6 +680,7 @@ function renderCharacterList() {
         button.className = "character-button";
         button.dataset.character = characterId;
         button.dataset.class = character.class;
+        button.dataset.collection = getCharacterCollection(character);
         button.setAttribute("aria-label", `${character.name} 기록 열기`);
         thumbnail.className = "character-thumb";
         fallback.className = "thumbnail-fallback";
@@ -739,8 +752,9 @@ function showCharacter(characterId, announce) {
     const character = characters[characterId];
     if (!character) return;
     selectedCharacterId = characterId;
-    const position = characterOrder.indexOf(characterId) + 1;
-    const formattedPosition = `${padNumber(position)} / ${padNumber(totalRecords)}`;
+    const collectionCharacterIds = getCollectionCharacterIds();
+    const position = collectionCharacterIds.indexOf(characterId) + 1;
+    const formattedPosition = `${padNumber(position)} / ${padNumber(collectionCharacterIds.length)}`;
     elements.frameRecordCode.textContent = character.code;
     elements.characterCode.textContent = character.code;
     elements.characterName.textContent = character.name;
@@ -803,15 +817,17 @@ function updateSelectionHint() {
 
 function applyFilters() {
     const searchWord = elements.searchInput.value.trim().toLocaleLowerCase("ko");
+    const collectionTotal = getCollectionCharacterIds().length;
     let visibleCount = 0;
     getCharacterButtons().forEach(function (button) {
         const character = characters[button.dataset.character];
-        const isVisible = buildSearchText(character, button.dataset.character).includes(searchWord) &&
-            (activeFilter === "all" || character.class === activeFilter || character.group === activeFilter);
+        const isVisible = getCharacterCollection(character) === activeCollection &&
+            buildSearchText(character, button.dataset.character).includes(searchWord) &&
+            (activeFilter === "all" || character.class === activeFilter);
         button.hidden = !isVisible;
         if (isVisible) visibleCount += 1;
     });
-    elements.indexCount.textContent = `${padNumber(visibleCount)} / ${padNumber(totalRecords)}`;
+    elements.indexCount.textContent = `${padNumber(visibleCount)} / ${padNumber(collectionTotal)}`;
     elements.emptyResult.hidden = visibleCount !== 0;
     elements.clearSearch.hidden = elements.searchInput.value.length === 0;
     elements.previousCharacter.disabled = visibleCount === 0;
@@ -835,6 +851,29 @@ function resetFilters() {
     elements.searchInput.focus();
 }
 
+function setCollection(collectionName, announce) {
+    if (!collectionButtons.some(function (button) { return button.dataset.collection === collectionName; })) return;
+    activeCollection = collectionName;
+    activeFilter = "all";
+    elements.searchInput.value = "";
+    collectionButtons.forEach(function (button) {
+        const isActive = button.dataset.collection === collectionName;
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+    });
+    filterButtons.forEach(function (button) {
+        const isActive = button.dataset.filter === "all";
+        button.classList.toggle("active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+    });
+    elements.administratorFilterButton.hidden = collectionName === "SWISS";
+    updateFilterCounts();
+    applyFilters();
+    const firstCharacterId = getCollectionCharacterIds()[0];
+    if (firstCharacterId) showCharacter(firstCharacterId, announce);
+    showRecordTab("overview", false);
+}
+
 function moveCharacter(direction) {
     const visibleIds = getVisibleCharacterIds();
     if (visibleIds.length === 0) return;
@@ -851,16 +890,15 @@ function moveCharacter(direction) {
 }
 
 function updateFilterCounts() {
-    const lanternCount = characterOrder.filter(function (id) { return characters[id].class === "LANTERN"; }).length;
-    const lampCount = characterOrder.filter(function (id) { return characters[id].class === "LAMP"; }).length;
-    const administratorCount = characterOrder.filter(function (id) { return characters[id].class === "ADMINISTRATOR"; }).length;
-    const swissCount = characterOrder.filter(function (id) { return characters[id].group === "SWISS"; }).length;
-    elements.headerRecordCount.textContent = `${padNumber(totalRecords)} RECORDS`;
-    elements.allFilterCount.textContent = padNumber(totalRecords);
+    const collectionCharacterIds = getCollectionCharacterIds();
+    const lanternCount = collectionCharacterIds.filter(function (id) { return characters[id].class === "LANTERN"; }).length;
+    const lampCount = collectionCharacterIds.filter(function (id) { return characters[id].class === "LAMP"; }).length;
+    const administratorCount = collectionCharacterIds.filter(function (id) { return characters[id].class === "ADMINISTRATOR"; }).length;
+    elements.headerRecordCount.textContent = `${padNumber(collectionCharacterIds.length)} RECORDS`;
+    elements.allFilterCount.textContent = padNumber(collectionCharacterIds.length);
     elements.lanternFilterCount.textContent = padNumber(lanternCount);
     elements.lampFilterCount.textContent = padNumber(lampCount);
     elements.administratorFilterCount.textContent = padNumber(administratorCount);
-    elements.swissFilterCount.textContent = padNumber(swissCount);
 }
 
 function updateClock() {
@@ -889,6 +927,9 @@ function closeImageModal() {
 
 filterButtons.forEach(function (button) {
     button.addEventListener("click", function () { setFilter(button.dataset.filter); });
+});
+collectionButtons.forEach(function (button) {
+    button.addEventListener("click", function () { setCollection(button.dataset.collection, true); });
 });
 recordTabButtons.forEach(function (button, index) {
     button.addEventListener("click", function () { showRecordTab(button.dataset.recordTab, false); });
