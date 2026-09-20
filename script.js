@@ -260,12 +260,12 @@ const characters = {
     logWeekly: {
         name: "주간 인원 관리 결과",
         code: "MGA-WL-260919-01",
-        designation: "클레어 업무일지 / 주간 관리 결심형 보고",
+        designation: "클레어 업무일지 / 주간 관리 보고",
         class: "ROUTINE",
         displayClass: "일상관리",
         group: "LOGS",
         height: "2026.09.19",
-        summary: "미합중국 보병장비 소속 메피릿 5인의 주간 생활·정비 상태를 종합하고 차주 관리 방침을 결심하기 위한 내부 보고.",
+        summary: "미합중국 보병장비 소속 메피릿 5인의 주간 생활·정비 상태를 종합하고 차주 관리 방침을 확정하기 위한 내부 보고.",
         sex: "Claire 관리관",
         operationalPeriod: "2026.09.13 — 2026.09.19",
         origin: "미합중국 보병장비 관리부",
@@ -287,7 +287,7 @@ const characters = {
             items: ["1안 / 현행 유지: 행정 부담은 가장 적으나 책임 편중과 돌발 외출에 대한 보완이 부족하다.", "2안 / 사전 승인 강화: 통제는 쉽지만 자율성이 크게 줄어 생활구역 분위기와 신뢰에 부정적 영향이 예상된다.", "3안 / 자율 신고와 순환 담당제 병행: 외출 자유를 유지하면서 정비·확인 업무를 분산할 수 있다."]
         },
         overall: {
-            title: "3안 시행 결심",
+            title: "3안 시행 방침",
             items: ["차주부터 외출은 2인 이상 상호 확인 후 간단한 목적지와 예상 복귀 시각만 등록한다.", "공용 정비와 인원 확인 담당은 매일 순환하며 동일 인원이 연속 이틀 담당하지 않는다.", "관리관은 규정 준수 여부보다 피로 누적과 관계 변화 여부를 우선 관찰한다."]
         },
         followUp: ["순환 담당표를 작성해 생활구역 게시판과 PDA에 동시 등록한다.", "외출 신고 항목을 목적지·동행자·예상 복귀 시각의 세 항목으로 간소화한다.", "개런드와 스프링필드의 휴식 시간을 별도로 확보하고 주중 면담을 진행한다.", "7일간 시범 운용 후 인원 의견을 받아 유지 여부를 재판단한다."]
@@ -295,7 +295,7 @@ const characters = {
     logLeave: {
         name: "외출 승인 절차 개선 검토",
         code: "MGA-WL-260918-02",
-        designation: "클레어 업무일지 / 외출 관리 결심형 보고",
+        designation: "클레어 업무일지 / 외출 관리 개선 보고",
         class: "DECISION",
         displayClass: "상황판단",
         group: "LOGS",
@@ -627,15 +627,15 @@ function updateCollectionPresentation(collectionName) {
     elements.indexKicker.textContent = isWorkLog ? "01 / WORK LOG INDEX" : "01 / ENTITY INDEX";
     elements.indexTitle.textContent = isWorkLog ? "업무일지 색인" : "인물 색인";
     elements.indexHelpText.innerHTML = isWorkLog
-        ? "목록에서 업무일지를 선택하면<br>결심형 보고 기록을 열람할 수 있습니다."
+        ? "목록에서 업무일지를 선택하면<br>관리 업무 보고서를 열람할 수 있습니다."
         : "목록에서 인물을 선택하면<br>보관된 기록을 열람할 수 있습니다.";
     elements.characterList.setAttribute("aria-label", isWorkLog ? "클레어 업무일지" : "검색된 캐릭터");
     elements.filterTabs.setAttribute("aria-label", isWorkLog ? "업무일지 기록 분류" : "선택한 보병장비의 하위 분류 필터");
     elements.searchInput.placeholder = isWorkLog ? "일지 제목, 보고 번호, 내용 검색" : "이름, 식별 번호, 기록 검색";
     elements.visualLabel.textContent = isWorkLog ? "ADMINISTRATOR RECORD" : "CHARACTER PORTRAIT";
-    elements.recordKicker.textContent = isWorkLog ? "03 / DECISION REPORT" : "03 / ENTITY DOSSIER";
-    elements.recordTitle.textContent = isWorkLog ? "결심형 보고" : "인물 기록";
-    elements.documentTypeLabel.textContent = isWorkLog ? "MANAGEMENT / DECISION" : "ENTITY / GENERAL";
+    elements.recordKicker.textContent = isWorkLog ? "03 / MANAGEMENT REPORT" : "03 / ENTITY DOSSIER";
+    elements.recordTitle.textContent = isWorkLog ? "업무 보고" : "인물 기록";
+    elements.documentTypeLabel.textContent = isWorkLog ? "MANAGEMENT / REPORT" : "ENTITY / GENERAL";
     elements.documentStamp.textContent = isWorkLog ? "결재 완료" : "열람 가능";
     elements.recordSummaryTitle.textContent = isWorkLog ? "보고 목적" : "기초 기록";
     elements.recordInfoTitle.textContent = isWorkLog ? "문서 정보" : "식별 정보";
@@ -653,10 +653,10 @@ function updateCollectionPresentation(collectionName) {
     elements.appearanceTabButton.textContent = isWorkLog ? "상황" : "외형";
     elements.personalityTabButton.textContent = isWorkLog ? "판단" : "성향";
     elements.memoryTabButton.textContent = isWorkLog ? "방책" : "전쟁 기억";
-    elements.overallTabButton.textContent = isWorkLog ? "결심" : "종합";
+    elements.overallTabButton.textContent = isWorkLog ? "최종 방침" : "종합";
     elements.relationshipsTabButton.textContent = isWorkLog ? "조치" : "관계";
     elements.footerEdition.innerHTML = isWorkLog
-        ? 'MANAGEMENT DECISION ARCHIVE <span aria-hidden="true">/</span> 03'
+        ? 'MANAGEMENT REPORT ARCHIVE <span aria-hidden="true">/</span> 03'
         : 'ENTITY RECORD COLLECTION <span aria-hidden="true">/</span> 01';
     elements.previousCharacter.setAttribute("aria-label", isWorkLog ? "이전 업무일지" : "이전 캐릭터");
     elements.nextCharacter.setAttribute("aria-label", isWorkLog ? "다음 업무일지" : "다음 캐릭터");
@@ -807,14 +807,14 @@ function renderDetailedRecord(character, characterId) {
     elements.recordPeriod.textContent = character.operationalPeriod;
     elements.recordListTitle.textContent = character.recordListTitle || "주요 무장";
     elements.memoryTabButton.textContent = isWorkLog ? "방책" : (character.tabLabels?.memory || "전쟁 기억");
-    elements.overallTabButton.textContent = isWorkLog ? "결심" : (character.tabLabels?.overall || "종합");
+    elements.overallTabButton.textContent = isWorkLog ? "최종 방침" : (character.tabLabels?.overall || "종합");
     elements.appearanceSectionCode.textContent = character.sectionCodes?.appearance || "APPEARANCE PROFILE";
     elements.personalitySectionCode.textContent = character.sectionCodes?.personality || "PERSONALITY PROFILE";
     elements.memorySectionCode.textContent = character.sectionCodes?.memory || "WAR MEMORY RECORD";
     elements.overallSectionCode.textContent = character.sectionCodes?.overall || "GENERAL ASSESSMENT";
     if (isWorkLog) {
         elements.archiveNoticeTitle.textContent = "FICTIONAL MANAGEMENT RECORD";
-        elements.archiveNoticeText.textContent = "메피릿 세계관을 위한 허구의 관리국 내부 기록입니다. 공개된 결심형 보고의 표지·목적·관련 근거 구조를 PDA 기록 형식에 맞게 재구성했습니다.";
+        elements.archiveNoticeText.textContent = "메피릿 세계관을 위한 허구의 관리국 내부 기록입니다. 업무 보고 양식의 표지·목적·관련 근거 구조를 PDA 기록 형식에 맞게 재구성했습니다.";
     } else if (character.group === "SWISS") {
         elements.archiveNoticeTitle.textContent = "SWISS ARCHIVE SOURCE";
         elements.archiveNoticeText.textContent = "스위스 보병장비 등록부를 바탕으로 정리한 램프 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
