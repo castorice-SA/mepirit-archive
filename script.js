@@ -418,6 +418,19 @@ const relationships = {
 
 const characterOrder = Object.keys(characters);
 const totalRecords = characterOrder.length;
+const characterThemes = Object.freeze({
+    m1903: { accent: "#63d7d2", bright: "#bcfffa", rgb: "99 215 210" },
+    m1911: { accent: "#e9826c", bright: "#ffd0c6", rgb: "233 130 108" },
+    garand: { accent: "#e59a54", bright: "#ffd4a7", rgb: "229 154 84" },
+    thompson: { accent: "#b994e8", bright: "#e3d0ff", rgb: "185 148 232" },
+    carbine: { accent: "#9dbc72", bright: "#d8efb9", rgb: "157 188 114" },
+    claire: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
+    mp9: { accent: "#70cde9", bright: "#c5f2ff", rgb: "112 205 233" },
+    mp9n: { accent: "#929fec", bright: "#d7ddff", rgb: "146 159 236" },
+    logWeekly: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
+    logLeave: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
+    logMaintenance: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" }
+});
 const passwordSalt = "mepirit-archive-v21-client-guard";
 const passwordHash = "9794bc307b4ff47ef2591c0f5bcdce6178b1ba23df43a1a3677627975b6cf65b";
 const accessSessionKey = "mepirit-archive-authorized";
@@ -1276,6 +1289,10 @@ function renderCharacterList() {
         button.dataset.character = characterId;
         button.dataset.class = character.filter || character.class;
         button.dataset.collection = getCharacterCollection(character);
+        const theme = characterThemes[characterId] || characterThemes.claire;
+        button.style.setProperty("--card-accent", theme.accent);
+        button.style.setProperty("--card-accent-bright", theme.bright);
+        button.style.setProperty("--card-accent-rgb", theme.rgb);
         button.setAttribute("aria-label", `${character.name} ${character.group === "LOGS" ? "업무일지" : "기록"} 열기`);
         thumbnail.className = "character-thumb";
         fallback.className = "thumbnail-fallback";
@@ -1349,7 +1366,11 @@ function setCharacterImage(character) {
 function showCharacter(characterId, announce) {
     const character = characters[characterId];
     if (!character) return;
+    const theme = characterThemes[characterId] || characterThemes.claire;
     selectedCharacterId = characterId;
+    elements.archiveApp.style.setProperty("--entity-accent", theme.accent);
+    elements.archiveApp.style.setProperty("--entity-accent-bright", theme.bright);
+    elements.archiveApp.style.setProperty("--entity-accent-rgb", theme.rgb);
     const collectionCharacterIds = getCollectionCharacterIds();
     const position = collectionCharacterIds.indexOf(characterId) + 1;
     const formattedPosition = `${padNumber(position)} / ${padNumber(collectionCharacterIds.length)}`;
