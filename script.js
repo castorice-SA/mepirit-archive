@@ -151,6 +151,37 @@ const characters = {
         },
         image: "./images/carbine.png"
     },
+    m1897: {
+        name: "M1897 Trench Gun",
+        code: "US-IE-LN-1897",
+        designation: "Winchester Model 1897 Trench Gun, 12 Gauge",
+        class: "LANTERN",
+        height: "169cm",
+        summary: "옅은 은회색 장발과 흐린 금색 눈, 잔잔한 미소를 지닌 온화하고 친절한 최고참 랜턴. 후배들을 자연스럽게 돌보며 필요할 때에만 조용히 엄격해진다.",
+        sex: "여성",
+        operationalPeriod: "1897년 모델 도입 → 제1차 세계대전 참호전형 운용 → 이후 전시기까지 군용 산탄총으로 사용",
+        origin: "미합중국, 코네티컷주 뉴헤이븐",
+        classification: "펌프액션 산탄총",
+        armament: ["12 게이지 산탄 사용", "슬라이드 액션과 외부 해머 구조", "참호전형 단축 총열·방열판·총검 장착부"],
+        appearance: {
+            title: "169cm의 고풍스럽고 부드러운 인상",
+            items: ["옅은 은회색 장발을 목 아래에서 느슨하게 묶는다.", "앞머리는 눈썹 가까이에서 가지런히 내려오며 얼굴 주변의 머리카락은 부드럽게 흐른다.", "흐린 금색 눈동자와 가늘게 뜬 눈매를 지녔다.", "입가에는 잔잔한 미소가 머무는 경우가 많다.", "전체적으로 고풍스럽고 부드러운 인상이 강하다.", "검은색 터틀넥과 푸른 데님처럼 단정하면서도 편안한 옷차림을 선호한다."]
+        },
+        personality: {
+            title: "온화하고 친절한 최고참",
+            items: ["후배들을 자연스럽게 돌보며 곁에 있는 사람이 불편해하지 않는지 조용히 살핀다.", "대부분의 실수에는 부드럽게 조언하고 스스로 바로잡을 시간을 준다.", "반드시 제지해야 하는 상황에서만 목소리를 낮추고 조용히 엄격해진다.", "자신이 최고참이라는 사실을 내세우지 않지만 후배들은 자연스럽게 그녀의 판단을 따른다.", "상대의 말을 재촉하지 않고 끝까지 들은 뒤 짧고 분명하게 답한다.", "누군가 혼자 책임을 짊어지려 하면 말없이 곁에 남아 일을 나눈다."]
+        },
+        memory: {
+            title: "좁고 어두운 참호에 남은 기억",
+            items: ["참호전의 기억 때문에 좁고 어두우며 눅눅한 장소를 싫어한다.", "젖은 흙냄새와 빛이 거의 들지 않는 통로에서는 평소보다 말수가 줄어든다.", "답답한 공간에 오래 머무르면 출입구와 바깥으로 이어지는 길을 먼저 확인한다.", "과거의 별칭이나 위력을 과장해 말하기보다 당시 곁에 있던 사람들의 긴장과 피로를 먼저 떠올린다."]
+        },
+        overall: {
+            title: "햇볕과 정원을 아끼는 다정한 최고참",
+            items: ["햇볕이 잘 드는 밝고 탁 트인 장소를 좋아한다.", "정원 가꾸기를 즐기며 식물의 상태를 살피고 흙을 정리하는 시간을 편안하게 느낀다.", "후배들을 세세하게 통제하기보다 지켜보다가 도움이 필요한 순간에 자연스럽게 나선다.", "온화한 태도를 유지하지만 타인의 안전이 걸린 문제에는 단호하게 선을 긋는다."]
+        },
+        image: "./images/m1897.png",
+        imagePosition: "center 22%"
+    },
     claire: {
         name: "Claire Evelyn Whitmore",
         code: "USMA-IEO-0247",
@@ -371,6 +402,7 @@ const relationships = {
         { target: "garand", address: "개런드", affinity: 91, firstImpression: "반듯하고 준비가 철저한 믿음직한 후배.", evaluation: "책임을 혼자 지려는 점이 자신과 닮아 있어 자주 쉬게 하려 한다.", quote: "개런드, 이번 일은 혼자 짊어지지 않아도 돼." },
         { target: "thompson", address: "톰슨", affinity: 77, firstImpression: "목소리와 차림새 모두 한눈에 들어오는 인물.", evaluation: "화려한 겉모습보다 사람을 움직이는 힘과 현실적인 판단을 높게 본다.", quote: "톰슨이 앞에 서면 분위기가 금세 달라지는구나." },
         { target: "carbine", address: "카빈", affinity: 86, firstImpression: "가볍고 빠르며 누구에게나 자연스럽게 다가가는 인물.", evaluation: "사람 사이의 빈틈을 메우는 능력을 소중하게 생각한다.", quote: "카빈, 네가 있어서 모두가 조금 더 편해 보여." },
+        { target: "m1897", address: "윈체스터", affinity: 84, firstImpression: "느긋해 보여도 주변의 작은 소리를 놓치지 않는 오래된 선배.", evaluation: "말없이 퇴로와 사람의 위치를 먼저 살피는 태도에서 깊은 경험을 느낀다.", quote: "윈체스터, 당신이 뒤를 보고 있으면 마음이 놓여요." },
         { target: "claire", address: "휘트모어 관리관", affinity: 89, firstImpression: "말보다 먼저 사람의 상태를 살피는 차분한 관리관.", evaluation: "과거를 억지로 묻지 않고 현재의 선택을 존중해 신뢰하고 있다.", quote: "관리관님이라면 우리가 무엇을 지키고 싶은지 이해해 주실 거예요." }
     ],
     m1911: [
@@ -378,6 +410,7 @@ const relationships = {
         { target: "garand", address: "개런드", affinity: 76, firstImpression: "규칙과 일정을 너무 좋아하는 답답한 모범생.", evaluation: "잔소리는 많지만 가장 먼저 도와주러 오는 사람이라는 걸 알고 있다.", quote: "개런드, 딱 한 번만 내 방식대로 해보면 안 돼?" },
         { target: "thompson", address: "톰슨 언니", affinity: 83, firstImpression: "화려하고 멋져서 곁에 있으면 재미있는 일이 생길 것 같았다.", evaluation: "장난을 받아주면서도 위험한 순간에는 정확히 멈춰 세워주는 언니.", quote: "톰슨 언니, 오늘은 어디로 놀러 갈 거야?" },
         { target: "carbine", address: "카빈", affinity: 94, firstImpression: "처음부터 오래 알고 지낸 것처럼 말이 잘 통했다.", evaluation: "함께 돌아다니기 가장 편하고 사고를 수습할 때도 호흡이 잘 맞는다.", quote: "카빈, 저쪽에 재밌는 거 있어. 같이 가자!" },
+        { target: "m1897", address: "트렌치", affinity: 81, firstImpression: "느긋한 얼굴로 자신이 벌인 소란을 전부 알아채는 묘한 선배.", evaluation: "장난을 조용히 받아주다가 위험한 선을 넘기 전에 정확히 붙잡아 주는 사람.", quote: "트렌치, 이번에는 진짜 잠깐만 다녀올게!" },
         { target: "claire", address: "클레어 관리관님", affinity: 86, firstImpression: "웃는 얼굴로 규칙을 설명해 방심하기 쉬운 사람.", evaluation: "웬만한 장난은 받아주지만 미소가 사라지면 즉시 멈춰야 한다는 것을 안다.", quote: "관리관님, 이번 건 보고서까지 쓸 일은 아니지 않을까요?" }
     ],
     garand: [
@@ -385,6 +418,7 @@ const relationships = {
         { target: "m1911", address: "콜트", affinity: 79, firstImpression: "계획에서 가장 먼저 벗어날 것 같은 요주의 인물.", evaluation: "행동을 통제하기는 어렵지만 순발력과 위기 대처 능력은 인정한다.", quote: "콜트, 출발하기 전에 인원 확인부터 하자." },
         { target: "thompson", address: "톰슨", affinity: 74, firstImpression: "꾸밈과 즉흥적인 선택을 지나치게 중시한다고 느꼈다.", evaluation: "사람을 이끄는 방식은 다르지만 결과를 만들어내는 능력을 존중한다.", quote: "톰슨, 일정만 지켜준다면 그 계획도 나쁘지 않아." },
         { target: "carbine", address: "카빈", affinity: 89, firstImpression: "작고 가벼워 보여 자연스럽게 챙겨야겠다고 생각했다.", evaluation: "도움이 필요할 때 먼저 말해주고 주변까지 살피는 믿음직한 동료.", quote: "카빈, 다녀오면 꼭 나한테 먼저 알려줘." },
+        { target: "m1897", address: "M1897 선배", affinity: 87, firstImpression: "지시하지 않아도 안전한 위치와 필요한 준비를 먼저 확보하는 선배.", evaluation: "현장 판단을 믿고 의지하지만 혼자 뒤를 맡으려는 습관은 함께 나누려 한다.", quote: "선배, 후방 확인은 제가 교대하겠습니다." },
         { target: "claire", address: "휘트모어 관리관", affinity: 93, firstImpression: "역할과 책임의 경계를 분명히 아는 신뢰할 만한 담당자.", evaluation: "혼자 책임을 떠안으려 할 때 일을 나누도록 설득해 주는 중요한 협력자.", quote: "관리관님, 현장 확인은 제가 함께하겠습니다." }
     ],
     thompson: [
@@ -392,6 +426,7 @@ const relationships = {
         { target: "m1911", address: "콜트", affinity: 84, firstImpression: "작은 체구에 비해 에너지가 넘쳐 금세 눈에 들어왔다.", evaluation: "장난을 함께 즐기면서도 위험할 때는 반드시 곁에 두고 살핀다.", quote: "콜트, 재미는 좋지만 퇴로 정도는 확인하고 가자." },
         { target: "garand", address: "개런드", affinity: 75, firstImpression: "빈틈없이 반듯해 장난을 걸어보고 싶은 상대.", evaluation: "융통성은 부족해도 맡은 일을 끝까지 책임지는 태도를 높게 평가한다.", quote: "개런드, 표정 좀 풀어. 준비는 이미 충분하잖아." },
         { target: "carbine", address: "카빈", affinity: 88, firstImpression: "사람과 장소를 빠르게 읽는 감각이 무척 좋은 인물.", evaluation: "외출과 사교 활동에서 가장 호흡이 잘 맞는 동행자.", quote: "카빈, 이번엔 네가 고른 가게부터 가보자." },
+        { target: "m1897", address: "윈체스터", affinity: 83, firstImpression: "차분한 태도와 오래된 물건을 다루는 손길에서 품위를 느꼈다.", evaluation: "자신과 표현 방식은 달라도 사람의 시선을 읽고 움직이는 감각을 높게 평가한다.", quote: "윈체스터, 오늘은 내가 고른 옷도 한 번 입어보는 게 어때?" },
         { target: "claire", address: "클레어", affinity: 82, firstImpression: "단정한 차림과 부드러운 태도 속에 단호함을 숨긴 사람.", evaluation: "서류보다 현장을 이해해 대화가 통하지만, 일정에는 예상보다 엄격하다.", quote: "클레어, 외출 계획은 완벽해. 결재만 남았다고." }
     ],
     carbine: [
@@ -399,6 +434,7 @@ const relationships = {
         { target: "m1911", address: "콜트", affinity: 95, firstImpression: "첫 대화부터 속도가 잘 맞아 금세 가까워졌다.", evaluation: "함께 움직일 때 가장 즐겁고 서로의 돌발 행동에도 빠르게 대응한다.", quote: "콜트, 뛰어가기 전에 나도 같이 간다고 말해줘!" },
         { target: "garand", address: "개런드 언니", affinity: 90, firstImpression: "자신을 먼저 챙겨주는 마음이 조금 과할 만큼 따뜻했다.", evaluation: "걱정이 많다는 걸 알기에 외출 뒤에는 가장 먼저 돌아왔다고 알린다.", quote: "언니, 인원 확인 끝났으면 이제 같이 놀아요." },
         { target: "thompson", address: "톰슨 언니", affinity: 89, firstImpression: "화려하지만 주변 사람을 놓치지 않는 모습이 인상적이었다.", evaluation: "새로운 장소를 함께 탐색하고 사람들 사이를 누비기 좋은 파트너.", quote: "톰슨 언니, 골목 안쪽에도 재미있는 가게가 있어요." },
+        { target: "m1897", address: "트렌치 언니", affinity: 88, firstImpression: "조용히 쉬고 있어도 자신이 다가오는 것을 먼저 알아채는 신기한 언니.", evaluation: "함께 걸으면 서두르지 않아 편하고 사람이 많은 곳에서는 자연스럽게 길을 내준다.", quote: "트렌치 언니, 오늘은 물가 쪽으로 같이 걸어요." },
         { target: "claire", address: "클레어 관리관님", affinity: 92, firstImpression: "이름과 습관을 빠르게 기억해 주어 처음부터 편하게 다가갈 수 있었다.", evaluation: "도움을 요청해도 부담을 주지 않고 함께 해결책을 찾는 믿음직한 관리관.", quote: "관리관님, 이번 외출 명단은 제가 다 확인했어요!" }
     ],
     claire: [
@@ -406,7 +442,16 @@ const relationships = {
         { target: "m1911", address: "콜트", affinity: 87, firstImpression: "호기심과 행동이 생각보다 먼저 움직이는 예측하기 어려운 인물.", evaluation: "사고는 잦아도 위험을 읽는 감각과 솔직함을 신뢰하며 설명으로 납득시키려 한다.", quote: "콜트, 이유를 설명해 줄 테니 우선 의자에 앉아요." },
         { target: "garand", address: "개런드", affinity: 94, firstImpression: "별도의 지시 없이도 필요한 일을 찾아 움직이는 책임감 강한 인물.", evaluation: "관리 업무를 가장 안정적으로 돕지만 과한 책임감으로 지치지 않도록 제지한다.", quote: "개런드, 맡은 일은 끝났어요. 나머지는 제가 할게요." },
         { target: "thompson", address: "톰슨", affinity: 84, firstImpression: "사람과 분위기를 움직일 줄 아는 자신감 넘치는 인물.", evaluation: "사교성과 현장 판단을 높게 평가하지만 일정 변경은 미리 알리도록 단단히 약속받는다.", quote: "톰슨, 좋은 계획이에요. 승인서가 먼저라는 점만 빼면요." },
-        { target: "carbine", address: "카빈", affinity: 93, firstImpression: "낯선 사람도 자연스럽게 대화 안으로 이끄는 친화력 좋은 인물.", evaluation: "생활구역의 분위기와 작은 변화를 빠르게 전해주는 소중한 관찰자이자 조력자.", quote: "카빈, 오늘 식당 분위기는 어땠는지 들려줄래요?" }
+        { target: "carbine", address: "카빈", affinity: 93, firstImpression: "낯선 사람도 자연스럽게 대화 안으로 이끄는 친화력 좋은 인물.", evaluation: "생활구역의 분위기와 작은 변화를 빠르게 전해주는 소중한 관찰자이자 조력자.", quote: "카빈, 오늘 식당 분위기는 어땠는지 들려줄래요?" },
+        { target: "m1897", address: "M1897", affinity: 90, firstImpression: "온화한 표정과 달리 출입구와 인원 위치를 먼저 확인하는 습관이 뚜렷했다.", evaluation: "안전 감각을 신뢰하지만 오래된 기억을 혼자 감당하지 않도록 정기적으로 상태를 확인한다.", quote: "M1897, 오늘 점검은 여기까지예요. 남은 시간은 쉬어도 됩니다." }
+    ],
+    m1897: [
+        { target: "m1903", address: "스프링필드", affinity: 85, firstImpression: "조용히 풍경을 바라보면서도 주변 사람의 상태를 놓치지 않는 후배.", evaluation: "말이 적어도 침묵의 의미를 이해해 함께 오래 머물기 편한 동료.", quote: "스프링필드, 서두르지 않아도 괜찮아. 나는 여기 있을게." },
+        { target: "m1911", address: "콜트", affinity: 82, firstImpression: "발소리보다 목소리가 먼저 들려오는 작고 빠른 후배.", evaluation: "사고를 일으킬 때도 있지만 위험 앞에서 판단이 빠른 점은 확실히 신뢰한다.", quote: "콜트, 다녀와도 좋아. 대신 돌아올 길부터 기억해 둬." },
+        { target: "garand", address: "개런드", affinity: 88, firstImpression: "자신이 해야 할 일을 끊임없이 찾는 지나치게 성실한 후배.", evaluation: "책임감과 준비성을 높게 보며 때로는 일을 내려놓게 하는 것도 선배의 역할이라 생각한다.", quote: "개런드, 뒤는 내가 볼 테니 잠깐 쉬어." },
+        { target: "thompson", address: "톰슨", affinity: 84, firstImpression: "어디에 있어도 시선을 모으면서 주변의 분위기까지 움직이는 인물.", evaluation: "화려한 말보다 위기에서 보이는 현실적인 판단과 배려를 더 신뢰한다.", quote: "톰슨, 네가 앞을 열면 나는 뒤를 정리할게." },
+        { target: "carbine", address: "카빈", affinity: 89, firstImpression: "조용한 틈을 발견하면 자연스럽게 말을 걸어오는 붙임성 좋은 후배.", evaluation: "사람 사이의 긴장을 빠르게 풀어주며 복잡한 장소에서도 동선을 잘 읽는다고 본다.", quote: "카빈, 천천히 걸어도 돼. 오늘은 시간이 많으니까." },
+        { target: "claire", address: "클레어 관리관", affinity: 91, firstImpression: "기록보다 먼저 현재의 상태와 선택을 물어보는 사람.", evaluation: "과거의 별칭을 강요하지 않고 필요한 거리를 존중해 편안하게 신뢰한다.", quote: "클레어 관리관, 점검이 끝나면 물가를 조금 걷고 와도 될까요?" }
     ],
     mp9: [
         { target: "mp9n", address: "MP9-N", affinity: 98, firstImpression: "자신과 가장 닮았지만 훨씬 차분하고 정돈된 동생.", evaluation: "늘 자신이 언니라고 주장하지만 생활에서는 동생에게 챙김을 받는 일이 더 많다. 다투어도 MP9-N이 보이지 않으면 가장 먼저 찾으러 간다.", quote: "내가 언니니까 먼저 갈게. 넌 바로 따라와!" }
@@ -424,6 +469,7 @@ const characterThemes = Object.freeze({
     garand: { accent: "#e59a54", bright: "#ffd4a7", rgb: "229 154 84" },
     thompson: { accent: "#b994e8", bright: "#e3d0ff", rgb: "185 148 232" },
     carbine: { accent: "#9dbc72", bright: "#d8efb9", rgb: "157 188 114" },
+    m1897: { accent: "#b7add8", bright: "#e5dfff", rgb: "183 173 216" },
     claire: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
     mp9: { accent: "#70cde9", bright: "#c5f2ff", rgb: "112 205 233" },
     mp9n: { accent: "#929fec", bright: "#d7ddff", rgb: "146 159 236" },
@@ -723,6 +769,7 @@ function renderRelationships(characterId) {
     elements.relationshipCenter.textContent = characterDisplayName;
     elements.relationshipMap.setAttribute("aria-label", `${characterDisplayName} 중심 관계도`);
     elements.relationshipMap.classList.toggle("has-five", entries.length === 5);
+    elements.relationshipMap.classList.toggle("has-six", entries.length === 6);
     elements.relationshipMap.classList.toggle("is-pair", entries.length === 1);
 
     entries.forEach(function (entry, index) {

@@ -263,6 +263,12 @@ button:disabled { opacity: .35; cursor: default; }
 .relationship-map.has-five .relation-node:nth-child(3) { right: 7%; bottom: 8%; top: auto; left: auto; transform: none; }
 .relationship-map.has-five .relation-node:nth-child(4) { left: 7%; bottom: 8%; top: auto; right: auto; transform: none; }
 .relationship-map.has-five .relation-node:nth-child(5) { top: 27%; left: 3%; right: auto; bottom: auto; transform: none; }
+.relationship-map.has-six .relation-node:nth-child(1) { top: 6%; left: 50%; right: auto; bottom: auto; transform: translateX(-50%); }
+.relationship-map.has-six .relation-node:nth-child(2) { top: 22%; right: 3%; left: auto; bottom: auto; transform: none; }
+.relationship-map.has-six .relation-node:nth-child(3) { right: 3%; bottom: 13%; top: auto; left: auto; transform: none; }
+.relationship-map.has-six .relation-node:nth-child(4) { bottom: 6%; left: 50%; right: auto; top: auto; transform: translateX(-50%); }
+.relationship-map.has-six .relation-node:nth-child(5) { left: 3%; bottom: 13%; top: auto; right: auto; transform: none; }
+.relationship-map.has-six .relation-node:nth-child(6) { top: 22%; left: 3%; right: auto; bottom: auto; transform: none; }
 .relationship-map.is-pair { min-height: 180px; }
 .relationship-map.is-pair .relation-axis:not(.relation-axis-horizontal) { display: none; }
 .relationship-map.is-pair .relation-center { left: 27%; }
