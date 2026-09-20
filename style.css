@@ -72,10 +72,7 @@ button:disabled { opacity: .35; cursor: default; }
 .login-message.is-error { color: #ee8b87; }
 .login-card.has-error { animation: login-error 280ms ease; }
 @keyframes login-error { 30% { transform: translateX(-6px); } 65% { transform: translateX(5px); } }
-.login-security-policy { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; margin-top: 16px; }
-.login-security-policy span { min-width: 0; padding: 9px 7px; border: 1px solid var(--line-soft); background: #0c1521; color: #7e91a6; text-align: center; font: 8px/1.55 var(--sans); word-break: keep-all; }
-.login-security-policy b { color: var(--signal); font: 9px var(--mono); font-weight: 400; }
-.login-meta { display: flex; justify-content: space-between; gap: 16px; margin-top: 30px; padding-top: 17px; border-top: 1px solid var(--line-soft); color: #61748a; font: 8px var(--mono); letter-spacing: .7px; }
+.login-meta { display: flex; justify-content: space-between; gap: 16px; margin-top: 22px; padding-top: 17px; border-top: 1px solid var(--line-soft); color: #61748a; font: 8px var(--mono); letter-spacing: .7px; }
 .welcome-message { position: relative; z-index: 2; text-align: center; }
 .welcome-message > span { color: var(--signal); font: 10px var(--mono); letter-spacing: 3px; }
 .welcome-message strong { display: block; margin-top: 18px; font-family: Georgia, "Times New Roman", serif; font-size: clamp(34px, 5vw, 68px); font-weight: 400; color: var(--bright); }
@@ -615,8 +612,6 @@ body.ui-large .footer-controls button > span { font-size: 13px; }
     .login-card h1 { font-size: 28px; }
     .login-intro { margin: 14px 0 24px; }
     .login-meta { flex-direction: column; gap: 7px; }
-    .login-security-policy { grid-template-columns: 1fr; }
-    .login-security-policy span { padding-block: 7px; }
     .archive-shell { padding: 0 14px; }
     .topbar { padding: 24px 0 18px; flex-direction: column; align-items: stretch; gap: 24px; }
     .brand-mark { width: 44px; height: 49px; font-size: 31px; }
