@@ -418,13 +418,21 @@ const relationships = {
 
 const characterOrder = Object.keys(characters);
 const totalRecords = characterOrder.length;
-const passwordHash = "72ab994fa2eb426c051ef59cad617750bfe06d7cf6311285ff79c19c32afd236";
+const passwordSalt = "mepirit-archive-v21-client-guard";
+const passwordHash = "9794bc307b4ff47ef2591c0f5bcdce6178b1ba23df43a1a3677627975b6cf65b";
 const accessSessionKey = "mepirit-archive-authorized";
+const loginSecurityKey = "mepirit-archive-login-security";
+const securityPolicy = Object.freeze({ maxAttempts: 5, initialLockMs: 30000, maxLockMs: 300000, idleTimeoutMs: 900000, sessionTimeoutMs: 3600000 });
 let selectedCharacterId = characterOrder[0];
 let activeCollection = "US";
 let activeFilter = "all";
 let activeRecordTab = "overview";
 let bootSequenceToken = 0;
+let lockoutTimerId = 0;
+let sessionTimerId = 0;
+let idleTimerId = 0;
+let sessionExpiresAt = 0;
+let lastActivityAt = 0;
 
 const elements = {
     loginScreen: document.querySelector("#loginScreen"),
@@ -432,6 +440,7 @@ const elements = {
     loginCard: document.querySelector(".login-card"),
     passwordInput: document.querySelector("#passwordInput"),
     togglePassword: document.querySelector("#togglePassword"),
+    loginSubmit: document.querySelector("#loginSubmit"),
     logoutButton: document.querySelector("#logoutButton"),
     loginMessage: document.querySelector("#loginMessage"),
     welcomeMessage: document.querySelector("#welcomeMessage"),
@@ -567,6 +576,7 @@ const elements = {
     previousCharacter: document.querySelector("#previousCharacter"),
     nextCharacter: document.querySelector("#nextCharacter"),
     systemClock: document.querySelector("#systemClock"),
+    sessionStatus: document.querySelector("#sessionStatus"),
     imageModal: document.querySelector("#imageModal"),
     modalImage: document.querySelector("#modalImage"),
     modalCaption: document.querySelector("#modalCaption"),
@@ -860,11 +870,193 @@ function renderDetailedRecord(character, characterId) {
 }
 
 async function hashPassword(value) {
-    const bytes = new TextEncoder().encode(value);
-    const digest = await window.crypto.subtle.digest("SHA-256", bytes);
-    return Array.from(new Uint8Array(digest), function (byte) {
+    const encoder = new TextEncoder();
+    const keyMaterial = await window.crypto.subtle.importKey("raw", encoder.encode(value), "PBKDF2", false, ["deriveBits"]);
+    const derivedBits = await window.crypto.subtle.deriveBits({
+        name: "PBKDF2",
+        hash: "SHA-256",
+        salt: encoder.encode(passwordSalt),
+        iterations: 120000
+    }, keyMaterial, 256);
+    return Array.from(new Uint8Array(derivedBits), function (byte) {
         return byte.toString(16).padStart(2, "0");
     }).join("");
+}
+
+function hashesMatch(first, second) {
+    if (first.length !== second.length) return false;
+    let difference = 0;
+    for (let index = 0; index < first.length; index += 1) {
+        difference |= first.charCodeAt(index) ^ second.charCodeAt(index);
+    }
+    return difference === 0;
+}
+
+function readJsonStorage(storage, key) {
+    try {
+        const value = storage.getItem(key);
+        return value ? JSON.parse(value) : null;
+    } catch {
+        return null;
+    }
+}
+
+function writeJsonStorage(storage, key, value) {
+    try {
+        storage.setItem(key, JSON.stringify(value));
+        return true;
+    } catch {
+        return false;
+    }
+}
+
+function getLoginSecurityState() {
+    const stored = readJsonStorage(window.localStorage, loginSecurityKey);
+    if (!stored || typeof stored !== "object") return { attempts: 0, lockLevel: 0, lockUntil: 0, updatedAt: 0 };
+    if (Date.now() - Number(stored.updatedAt || 0) > 86400000) return { attempts: 0, lockLevel: 0, lockUntil: 0, updatedAt: 0 };
+    return {
+        attempts: Math.max(0, Number(stored.attempts) || 0),
+        lockLevel: Math.max(0, Number(stored.lockLevel) || 0),
+        lockUntil: Math.max(0, Number(stored.lockUntil) || 0),
+        updatedAt: Math.max(0, Number(stored.updatedAt) || 0)
+    };
+}
+
+function saveLoginSecurityState(state) {
+    state.updatedAt = Date.now();
+    writeJsonStorage(window.localStorage, loginSecurityKey, state);
+}
+
+function clearLoginSecurityState() {
+    window.clearInterval(lockoutTimerId);
+    lockoutTimerId = 0;
+    try { window.localStorage.removeItem(loginSecurityKey); } catch { /* Storage access may be disabled. */ }
+    elements.passwordInput.disabled = false;
+    elements.togglePassword.disabled = false;
+    elements.loginSubmit.disabled = false;
+}
+
+function formatRemainingTime(milliseconds) {
+    const totalSeconds = Math.max(0, Math.ceil(milliseconds / 1000));
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = totalSeconds % 60;
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+function updateLoginLockout() {
+    const state = getLoginSecurityState();
+    const remaining = state.lockUntil - Date.now();
+    const locked = remaining > 0;
+    elements.passwordInput.disabled = locked;
+    elements.togglePassword.disabled = locked;
+    elements.loginSubmit.disabled = locked;
+    if (locked) {
+        elements.loginMessage.textContent = `SECURITY LOCK / ${formatRemainingTime(remaining)} 후 다시 시도하세요.`;
+        elements.loginMessage.classList.add("is-error");
+        return true;
+    }
+    if (state.lockUntil) {
+        state.lockUntil = 0;
+        saveLoginSecurityState(state);
+        elements.loginMessage.textContent = "잠금이 해제되었습니다. 비밀번호를 다시 입력해 주세요.";
+        elements.loginMessage.classList.remove("is-error");
+    }
+    window.clearInterval(lockoutTimerId);
+    lockoutTimerId = 0;
+    return false;
+}
+
+function startLoginLockoutCountdown() {
+    window.clearInterval(lockoutTimerId);
+    if (!updateLoginLockout()) return;
+    lockoutTimerId = window.setInterval(updateLoginLockout, 1000);
+}
+
+function recordFailedLogin() {
+    const state = getLoginSecurityState();
+    state.attempts += 1;
+    if (state.attempts >= securityPolicy.maxAttempts) {
+        state.attempts = 0;
+        state.lockLevel += 1;
+        const lockDuration = Math.min(securityPolicy.initialLockMs * (2 ** (state.lockLevel - 1)), securityPolicy.maxLockMs);
+        state.lockUntil = Date.now() + lockDuration;
+        saveLoginSecurityState(state);
+        startLoginLockoutCountdown();
+        return;
+    }
+    saveLoginSecurityState(state);
+    const remainingAttempts = securityPolicy.maxAttempts - state.attempts;
+    elements.loginMessage.textContent = `ACCESS DENIED / 남은 시도 ${remainingAttempts}회`;
+    elements.loginMessage.classList.add("is-error");
+    elements.loginSubmit.disabled = false;
+    elements.passwordInput.select();
+}
+
+function readAccessSession() {
+    const session = readJsonStorage(window.sessionStorage, accessSessionKey);
+    if (!session || typeof session.expiresAt !== "number" || session.expiresAt <= Date.now()) {
+        try { window.sessionStorage.removeItem(accessSessionKey); } catch { /* Storage access may be disabled. */ }
+        return null;
+    }
+    return session;
+}
+
+function createAccessSession() {
+    const issuedAt = Date.now();
+    const session = { issuedAt, expiresAt: issuedAt + securityPolicy.sessionTimeoutMs };
+    writeJsonStorage(window.sessionStorage, accessSessionKey, session);
+    return session;
+}
+
+function stopSessionMonitoring() {
+    window.clearInterval(sessionTimerId);
+    window.clearTimeout(idleTimerId);
+    sessionTimerId = 0;
+    idleTimerId = 0;
+    sessionExpiresAt = 0;
+    lastActivityAt = 0;
+    elements.sessionStatus.textContent = "SESSION LOCKED";
+}
+
+function scheduleIdleLock() {
+    window.clearTimeout(idleTimerId);
+    const remaining = securityPolicy.idleTimeoutMs - (Date.now() - lastActivityAt);
+    if (remaining <= 0) {
+        lockArchive("SESSION LOCKED / 15분 동안 활동이 없어 자동 로그아웃되었습니다.");
+        return;
+    }
+    idleTimerId = window.setTimeout(function () {
+        lockArchive("SESSION LOCKED / 15분 동안 활동이 없어 자동 로그아웃되었습니다.");
+    }, remaining);
+}
+
+function updateSessionSecurity() {
+    if (document.body.classList.contains("is-locked")) return;
+    const now = Date.now();
+    if (now >= sessionExpiresAt) {
+        lockArchive("SESSION EXPIRED / 60분 세션이 만료되었습니다.");
+        return;
+    }
+    if (now - lastActivityAt >= securityPolicy.idleTimeoutMs) {
+        lockArchive("SESSION LOCKED / 15분 동안 활동이 없어 자동 로그아웃되었습니다.");
+        return;
+    }
+    elements.sessionStatus.textContent = `SESSION ${formatRemainingTime(sessionExpiresAt - now)}`;
+}
+
+function noteSessionActivity() {
+    if (document.body.classList.contains("is-locked")) return;
+    lastActivityAt = Date.now();
+    scheduleIdleLock();
+}
+
+function startSessionMonitoring(expiresAt) {
+    stopSessionMonitoring();
+    sessionExpiresAt = expiresAt;
+    lastActivityAt = Date.now();
+    scheduleIdleLock();
+    updateSessionSecurity();
+    sessionTimerId = window.setInterval(updateSessionSecurity, 1000);
 }
 
 function finishPdaBoot(token = bootSequenceToken) {
@@ -944,10 +1136,11 @@ function triggerPdaTransition() {
     });
 }
 
-function unlockArchive(skipWelcome) {
+function unlockArchive(skipWelcome, expiresAt) {
     elements.archiveApp.removeAttribute("inert");
     elements.archiveApp.setAttribute("aria-hidden", "false");
     document.body.classList.remove("is-locked");
+    startSessionMonitoring(expiresAt);
 
     if (skipWelcome) {
         elements.loginScreen.hidden = true;
@@ -959,9 +1152,10 @@ function unlockArchive(skipWelcome) {
     startPdaBoot();
 }
 
-function lockArchive() {
+function lockArchive(message = "AUTHORIZATION REQUIRED") {
     bootSequenceToken += 1;
-    window.sessionStorage.removeItem(accessSessionKey);
+    stopSessionMonitoring();
+    try { window.sessionStorage.removeItem(accessSessionKey); } catch { /* Storage access may be disabled. */ }
     if (modalIsOpen()) {
         if (typeof elements.imageModal.close === "function") elements.imageModal.close();
         else elements.imageModal.removeAttribute("open");
@@ -979,7 +1173,7 @@ function lockArchive() {
     elements.passwordInput.type = "password";
     elements.togglePassword.textContent = "보기";
     elements.togglePassword.setAttribute("aria-label", "비밀번호 표시");
-    elements.loginMessage.textContent = "AUTHORIZATION REQUIRED";
+    elements.loginMessage.textContent = typeof message === "string" ? message : "AUTHORIZATION REQUIRED";
     elements.loginMessage.classList.remove("is-error");
     elements.loginCard.classList.remove("has-error");
     elements.loginScreen.classList.add("is-closing");
@@ -997,6 +1191,7 @@ function lockArchive() {
 
 async function handleLogin(event) {
     event.preventDefault();
+    if (updateLoginLockout()) return;
     const submittedPassword = elements.passwordInput.value;
 
     if (!submittedPassword) {
@@ -1008,21 +1203,21 @@ async function handleLogin(event) {
 
     elements.loginMessage.textContent = "VERIFYING ACCESS...";
     elements.loginMessage.classList.remove("is-error");
+    elements.loginSubmit.disabled = true;
     const submittedHash = await hashPassword(submittedPassword);
 
-    if (submittedHash !== passwordHash) {
-        elements.loginMessage.textContent = "ACCESS DENIED / 비밀번호를 확인해 주세요.";
-        elements.loginMessage.classList.add("is-error");
+    if (!hashesMatch(submittedHash, passwordHash)) {
         elements.loginCard.classList.remove("has-error");
         void elements.loginCard.offsetWidth;
         elements.loginCard.classList.add("has-error");
-        elements.passwordInput.select();
+        recordFailedLogin();
         return;
     }
 
-    window.sessionStorage.setItem(accessSessionKey, "true");
+    clearLoginSecurityState();
+    const session = createAccessSession();
     elements.loginMessage.textContent = "ACCESS GRANTED";
-    unlockArchive(false);
+    unlockArchive(false, session.expiresAt);
 }
 
 function initializeLogin() {
@@ -1030,9 +1225,11 @@ function initializeLogin() {
         handleLogin(event).catch(function () {
             elements.loginMessage.textContent = "인증 처리 중 오류가 발생했습니다.";
             elements.loginMessage.classList.add("is-error");
+            if (!updateLoginLockout()) elements.loginSubmit.disabled = false;
         });
     });
     elements.passwordInput.addEventListener("input", function () {
+        if (updateLoginLockout()) return;
         elements.loginMessage.textContent = "AUTHORIZATION REQUIRED";
         elements.loginMessage.classList.remove("is-error");
     });
@@ -1043,12 +1240,20 @@ function initializeLogin() {
         elements.togglePassword.setAttribute("aria-label", showPassword ? "비밀번호 숨기기" : "비밀번호 표시");
         elements.passwordInput.focus();
     });
-    if (window.sessionStorage.getItem(accessSessionKey) === "true") {
-        unlockArchive(true);
+    ["pointerdown", "keydown", "touchstart", "scroll"].forEach(function (eventName) {
+        document.addEventListener(eventName, noteSessionActivity, { passive: true });
+    });
+    document.addEventListener("visibilitychange", function () {
+        if (!document.hidden) updateSessionSecurity();
+    });
+    const session = readAccessSession();
+    if (session) {
+        unlockArchive(true, session.expiresAt);
         return;
     }
+    startLoginLockoutCountdown();
     window.requestAnimationFrame(function () {
-        elements.passwordInput.focus();
+        if (!elements.passwordInput.disabled) elements.passwordInput.focus();
     });
 }
 
@@ -1362,7 +1567,7 @@ elements.clearSearch.addEventListener("click", function () {
 });
 elements.resetFilters.addEventListener("click", resetFilters);
 elements.skipBootButton.addEventListener("click", function () { finishPdaBoot(); });
-elements.logoutButton.addEventListener("click", lockArchive);
+elements.logoutButton.addEventListener("click", function () { lockArchive("AUTHORIZATION REQUIRED"); });
 elements.previousCharacter.addEventListener("click", function () { moveCharacter(-1); });
 elements.nextCharacter.addEventListener("click", function () { moveCharacter(1); });
 elements.openImageButton.addEventListener("click", openImageModal);
