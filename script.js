@@ -297,7 +297,7 @@ const characters = {
         displayClass: "일상관리",
         group: "LOGS",
         height: "2026.09.19",
-        summary: "미합중국 보병장비 소속 랜턴 22명의 주간 생활·정비 상태 가운데 중점 관리 대상을 종합하고 차주 관리 방침을 확정하기 위한 내부 보고.",
+        summary: "미합중국 보병장비 소속 랜턴 6명의 주간 생활·정비 상태 가운데 중점 관리 대상을 종합하고 차주 관리 방침을 확정하기 위한 내부 보고.",
         sex: "Claire 관리관",
         operationalPeriod: "2026.09.13 — 2026.09.19",
         origin: "미합중국 보병장비 관리부",
@@ -396,192 +396,6 @@ const characters = {
     }
 };
 
-// 메피릿 프로젝트의 미합중국 보병장비 랜턴 반 명단.
-// 아직 일러스트가 등록되지 않은 인물은 색인과 상세 기록에 식별 코드가 표시됩니다.
-function createRegistryCharacter(record) {
-    return {
-        name: record.name,
-        code: record.code,
-        designation: record.designation,
-        class: "LANTERN",
-        height: record.height,
-        summary: record.summary,
-        sex: "여성",
-        operationalPeriod: record.period,
-        origin: record.origin || "미합중국",
-        classification: record.classification,
-        armament: record.armament,
-        appearance: {
-            title: record.appearanceTitle,
-            items: record.appearance
-        },
-        personality: {
-            title: record.personalityTitle,
-            items: record.personality
-        },
-        memory: {
-            title: record.memoryTitle || "장비 계보와 전시 운용의 기억",
-            items: record.memory || [
-                `${record.period}의 운용 경험이 소리와 장소, 동료에 관한 단편적인 감각으로 남아 있다.`,
-                "과거의 역할은 자신의 일부로 받아들이되 현재의 생활과 선택을 더 중요하게 여긴다."
-            ]
-        },
-        overall: {
-            title: record.overallTitle,
-            items: record.overall
-        }
-    };
-}
-
-Object.assign(characters, {
-    m1917enfield: createRegistryCharacter({
-        name: "M1917 Enfield", code: "US-IE-LN-1917E", designation: "United States Rifle, Caliber .30-06, Model of 1917", height: "176cm",
-        summary: "짙은 회갈색 장발과 회청색 눈을 지닌 과묵하고 성실한 실무형 메피릿. 맡은 일은 말없이 끝까지 해낸다.",
-        period: "1917년 제식 채용 → 제1차 세계대전 주력 운용 → 제2차 세계대전기 보조 운용", origin: "미합중국 / 영국 P14 계열",
-        classification: "볼트액션 소총", armament: [".30-06 Springfield 탄약 사용", "5발 내부 탄창", "볼트액션 작동방식"],
-        appearanceTitle: "176cm의 반듯하고 탄탄한 체형", appearance: ["짙은 회갈색의 풍성한 장발을 낮게 묶는다.", "차분한 회청색 눈과 반듯한 어깨를 지녔다.", "움직임과 복장이 단정해 믿음직한 실무자의 인상을 준다."],
-        personalityTitle: "과묵하고 성실한 실무형", personality: ["맡은 일은 설명보다 결과로 보여준다.", "쉽게 불평하지 않고 정해진 일을 끝까지 수행한다.", "Springfield와는 오래된 동료처럼 말없이도 잘 통한다."],
-        overallTitle: "묵묵히 자리를 지키는 고참 랜턴", overall: ["준비와 마감이 정확하다.", "혼란스러운 상황에서 우선순위를 빠르게 정리한다.", "신뢰를 말보다 꾸준한 행동으로 쌓는다."]
-    }),
-    m1917revolver: createRegistryCharacter({
-        name: "M1917 Revolver", code: "US-IE-LN-1917R", designation: "United States Revolver, Caliber .45, M1917", height: "164cm",
-        summary: "짙은 남색 단발과 회갈색 눈을 지닌 침착한 권총 계열 선배. 정갈한 말투 안에 빈정거리는 재치가 숨어 있다.",
-        period: "1917년 채용 → 제1차 세계대전 → 제2차 세계대전기까지 운용", origin: "미합중국",
-        classification: "더블액션 제식 리볼버", armament: [".45 ACP 탄약 사용", "6발 실린더", "문 클립 운용"],
-        appearanceTitle: "164cm의 고전적이고 정갈한 체형", appearance: ["검은빛이 도는 짙은 남색 단발 또는 중단발.", "회갈색 눈과 차분하게 정돈된 눈매.", "고전적이고 절제된 분위기가 강하다."],
-        personalityTitle: "침착하고 재치 있는 권총 계열 선배", personality: ["급한 상황에서도 목소리와 표정이 크게 흔들리지 않는다.", "담담한 말투로 은근히 상대를 찌르는 재치가 있다.", "M1911의 충동을 나무라면서도 실제 판단력은 인정한다."],
-        overallTitle: "균형과 절제를 중시하는 고참 랜턴", overall: ["갈등이 커지기 전에 짧은 말로 흐름을 정리한다.", "후배를 어린아이처럼 다루지 않는다.", "오래된 방식의 장점과 한계를 모두 현실적으로 받아들인다."]
-    }),
-    m1917browning: createRegistryCharacter({
-        name: "M1917 Browning", code: "US-IE-LN-1917B", designation: "Browning Machine Gun, Caliber .30, M1917", height: "175cm",
-        summary: "어두운 갈색 장발과 녹회색 눈을 지닌 느긋하고 끈기 있는 중기관총 고참. 웬만한 소란에는 흔들리지 않는다.",
-        period: "1917년 채용 → 제1·2차 세계대전 운용", origin: "미합중국",
-        classification: "수랭식 중기관총", armament: [".30-06 Springfield 탄약 사용", "벨트 급탄", "수랭식 브라우닝 중기관총"],
-        appearanceTitle: "175cm의 묵직하고 안정적인 체형", appearance: ["어두운 갈색 장발을 편안하게 정리한다.", "녹회색 눈과 크고 안정적인 골격.", "느린 움직임에도 쉽게 빈틈을 보이지 않는다."],
-        personalityTitle: "느긋하고 인내심 강한 중화기 고참", personality: ["소란이 커져도 먼저 지켜본 뒤 필요한 말만 한다.", "긴 시간 같은 일을 반복하는 데 강하다.", "M1919와 M2 Browning 계열을 자연스럽게 돌본다."],
-        overallTitle: "기관총 계보의 든든한 출발점", overall: ["지속력과 안정성을 가장 중요하게 본다.", "힘을 과시하기보다 버티는 역할을 택한다.", "후배들이 곁에서 긴장을 풀 수 있는 큰언니 같은 존재다."]
-    }),
-    m1918bar: createRegistryCharacter({
-        name: "M1918 B.A.R.", code: "US-IE-LN-1918", designation: "Browning Automatic Rifle, Caliber .30, M1918", height: "174cm",
-        summary: "짙은 밤색 머리와 황갈색 눈을 지닌 솔직하고 과감한 행동파. 앞장서 움직이면서도 후배를 잘 챙긴다.",
-        period: "1918년 채용 → 제1차 세계대전 말기 → 제2차 세계대전 및 이후 운용", origin: "미합중국",
-        classification: "자동소총", armament: [".30-06 Springfield 탄약 사용", "20발 분리식 탄창", "가스 작동식 자동소총"],
-        appearanceTitle: "174cm의 길고 단단한 체형", appearance: ["짙은 밤색 머리를 어깨 부근에서 단정히 정리한다.", "황갈색 눈과 단단한 팔다리.", "오래 서 있거나 움직여도 흐트러짐이 적은 인상이다."],
-        personalityTitle: "솔직하고 과감한 행동파", personality: ["필요한 순간에는 망설이기보다 먼저 움직인다.", "무모함보다는 자신의 체력과 능력에 대한 확신이 강하다.", "후배가 뒤처지면 가장 먼저 돌아가 손을 내민다."],
-        overallTitle: "전진과 보호를 함께 맡는 고참 랜턴", overall: ["체력과 행동력이 뛰어나다.", "복잡한 지시보다 분명한 목표를 선호한다.", "M1919와는 자매처럼 서로의 속도를 보완한다."]
-    }),
-    m1919browning: createRegistryCharacter({
-        name: "M1919 Browning", code: "US-IE-LN-1919", designation: "Browning Machine Gun, Caliber .30, M1919", height: "177cm",
-        summary: "거의 검은 짙은 갈색 머리와 녹회색 눈을 지닌 침착한 정리역. 무덤덤해 보여도 정이 깊다.",
-        period: "1919년 계열 등장 → 제2차 세계대전 및 전후까지 장기 운용", origin: "미합중국",
-        classification: "공랭식 중기관총", armament: [".30-06 Springfield 탄약 사용", "벨트 급탄", "공랭식 브라우닝 기관총"],
-        appearanceTitle: "177cm의 큰 체격과 반듯한 자세", appearance: ["거의 검은색에 가까운 짙은 갈색 머리를 단정히 묶는다.", "차분한 녹회색 눈.", "큰 체격에도 움직임이 절제되어 있다."],
-        personalityTitle: "침착하고 현실적인 정리역", personality: ["감정보다 현재 상황과 해야 할 일을 먼저 본다.", "하나의 일에 오래 집중하는 힘이 강하다.", "표현은 적지만 동료의 필요를 조용히 기억한다."],
-        overallTitle: "기관총 계보를 이어주는 실무형 랜턴", overall: ["M1917 Browning의 안정감과 M2 Browning의 힘 사이를 잇는다.", "복잡한 상황을 단계별로 정리한다.", "필요한 순간에는 짧고 단호하게 결론을 내린다."]
-    }),
-    model12: createRegistryCharacter({
-        name: "Winchester Model 12", code: "US-IE-LN-W12", designation: "Winchester Model 1912 Shotgun", height: "166cm",
-        summary: "회금색 머리와 황갈색 눈을 지닌 예의 바른 산탄총 계열 랜턴. M1897과 닮았다는 말은 부정하지만 습관은 꽤 비슷하다.",
-        period: "1912년 등장 → 양차 세계대전 및 전후까지 운용", origin: "미합중국, 코네티컷주 뉴헤이븐",
-        classification: "펌프액션 산탄총", armament: ["12게이지 산탄 사용", "관형 탄창", "펌프액션 작동방식"],
-        appearanceTitle: "166cm의 단아하고 부드러운 체형", appearance: ["부드러운 회금색 또는 연갈색 머리를 단정히 정리한다.", "맑은 황갈색 눈.", "고전적이면서도 접근하기 쉬운 인상이다."],
-        personalityTitle: "얌전하고 예의 바른 산탄총 계열 랜턴", personality: ["말과 행동의 순서를 지키며 상대를 세심히 배려한다.", "M1897과 닮았다는 말에는 곧바로 선을 긋는다.", "그러면서도 정원과 햇빛을 대하는 습관은 선배와 많이 닮았다."],
-        overallTitle: "산탄총 계보를 잇는 단정한 후배", overall: ["M1897을 존경하지만 그대로 따라 하는 사람으로 보이기는 싫어한다.", "실내 질서와 공동생활 예절을 잘 지킨다.", "조용한 정원과 차분한 오후를 선호한다."]
-    }),
-    m1mortar: createRegistryCharacter({
-        name: "M1 81mm Mortar", code: "US-IE-LN-M1M", designation: "Mortar, 81mm, M1", height: "165cm",
-        summary: "잿빛 갈색 머리와 회갈색 눈을 지닌 침착하고 계산적인 지원화기 메피릿. 필요한 곳을 먼저 살핀다.",
-        period: "1930년대 채용 → 제2차 세계대전 및 전후 운용", origin: "미합중국",
-        classification: "81mm 박격포", armament: ["81mm 박격포탄 사용", "간접사격 지원화기", "분해 운반식 운용"],
-        appearanceTitle: "165cm의 안정감 있는 체형", appearance: ["잿빛이 감도는 갈색 머리를 단정히 묶는다.", "차분한 회갈색 눈.", "시선과 자세에 계산적인 침착함이 배어 있다."],
-        personalityTitle: "침착하고 계산적인 지원화기 타입", personality: ["자신이 앞에 드러나는 것보다 필요한 곳을 정확히 돕는 것을 선호한다.", "감정 표현은 적지만 주변의 변화는 빠르게 알아챈다.", "M2 60mm Mortar에게 거리와 순서를 차분히 가르친다."],
-        overallTitle: "보이지 않는 곳에서 흐름을 받치는 랜턴", overall: ["위치와 시간을 계산하는 데 강하다.", "동료가 요청하기 전에 필요한 지원을 준비한다.", "실수를 줄이기 위해 확인 절차를 꾸준히 지킨다."]
-    }),
-    m1a1bazooka: createRegistryCharacter({
-        name: "M1A1 Bazooka", code: "US-IE-LN-M1A1", designation: "Rocket Launcher, 2.36-inch, M1A1", height: "172cm",
-        summary: "길고 활동적인 체형과 자신감 있는 눈매를 지닌 호쾌한 대전차 장비 메피릿. 큰 상대 앞에서도 위축되지 않는다.",
-        period: "1942년 개량형 등장 → 제2차 세계대전 운용", origin: "미합중국",
-        classification: "휴대용 대전차 로켓 발사기", armament: ["2.36인치 로켓 사용", "견착식 발사기", "2인 운용 대전차 장비"],
-        appearanceTitle: "172cm의 길고 활동적인 체형", appearance: ["짙은 갈색 또는 흑갈색 머리.", "자신감 있고 시원한 눈매.", "가만히 있기보다 금방이라도 앞으로 나설 듯한 자세다."],
-        personalityTitle: "호쾌하고 당당한 보호자", personality: ["큰 문제일수록 오히려 단순하고 분명하게 접근한다.", "동료를 지키는 일에는 망설임 없이 앞으로 나선다.", "M9 Bazooka와 방식은 달라도 서로의 결과를 신뢰한다."],
-        overallTitle: "대전차 계보의 직선적인 선배", overall: ["압박이 클수록 목소리와 태도가 분명해진다.", "어려운 설명보다 실행 가능한 답을 먼저 찾는다.", "후배에게 실패보다 재시도를 가르친다."]
-    }),
-    m2mortar: createRegistryCharacter({
-        name: "M2 60mm Mortar", code: "US-IE-LN-M2M", designation: "Mortar, 60mm, M2", height: "157cm",
-        summary: "연회색 단발과 맑은 회색 눈을 지닌 작고 민첩한 지원화기 메피릿. 뒤에서 정확하게 돕는 일에 능숙하다.",
-        period: "1940년대 채용 → 제2차 세계대전 및 이후 운용", origin: "미합중국",
-        classification: "60mm 경박격포", armament: ["60mm 박격포탄 사용", "경량 간접사격 지원화기", "분대·중대급 운용"],
-        appearanceTitle: "157cm의 작고 빠른 체구", appearance: ["연회색 또는 연갈색의 짧은 머리.", "맑은 회색 눈.", "작은 동작도 빠르고 야무진 인상을 준다."],
-        personalityTitle: "작고 정확한 지원화기 타입", personality: ["눈에 띄는 자리를 고집하지 않는다.", "맡은 일의 순서와 시간을 정확히 지킨다.", "M1 81mm Mortar의 계산 방식을 배우면서도 자신만의 빠른 호흡을 유지한다."],
-        overallTitle: "빠른 대응에 강한 경량 지원 랜턴", overall: ["짧은 시간 안에 준비를 마친다.", "작은 체구를 기동성으로 바꿔 쓴다.", "동료의 움직임을 방해하지 않는 지원을 중요하게 본다."]
-    }),
-    m2flamethrower: createRegistryCharacter({
-        name: "M2 Flamethrower", code: "US-IE-LN-M2F", designation: "Flamethrower, Portable, M2", height: "168cm",
-        summary: "숯빛 장발과 탁한 주황빛 눈을 지닌 조용하고 신중한 메피릿. 불의 위험성을 알기에 함부로 다루는 일을 싫어한다.",
-        period: "1943년 채용 → 제2차 세계대전 태평양 전선 중심 운용", origin: "미합중국",
-        classification: "휴대용 화염방사기", armament: ["연료 탱크와 압축가스식 분사", "휴대용 화염방사 장비", "2차대전기 공병·보병 운용"],
-        appearanceTitle: "168cm의 단단하고 조금 지친 체형", appearance: ["숯빛 회색 또는 적갈색 장발.", "탁한 주황빛 눈.", "어깨와 허리가 단단하지만 표정에는 오래된 피로가 남아 있다."],
-        personalityTitle: "불의 위험을 아는 조용한 신중파", personality: ["함부로 불을 다루거나 위험을 과장하는 행동을 싫어한다.", "난로나 모닥불 앞에서는 말수가 더 줄어든다.", "식물과 정원을 돌볼 때 가장 편안한 표정을 보인다."],
-        memoryTitle: "선명하게 남은 열기와 태평양 전선", memory: ["태평양 전선의 열기와 냄새가 매우 선명한 감각으로 남아 있다.", "과거를 자세히 말하기보다 안전한 불과 살아 있는 식물을 돌보며 현재를 확인한다."],
-        overallTitle: "위험을 알기에 절제를 선택한 랜턴", overall: ["화재와 연료 관리 규칙을 철저히 지킨다.", "M1897과 말없이 정원을 돌보는 시간을 좋아한다.", "필요한 순간 외에는 자신의 힘을 드러내지 않는다."]
-    }),
-    m2browning: createRegistryCharacter({
-        name: "M2 Browning", code: "US-IE-LN-M2B", designation: "Browning Machine Gun, Caliber .50, M2", height: "179cm",
-        summary: "짙은 흑갈색 장발과 깊은 금갈색 눈을 지닌 반 최장신. 과묵하고 묵직해 후배들이 자연스럽게 의지한다.",
-        period: "1930년대 채용 → 제2차 세계대전부터 현대까지 장기 운용", origin: "미합중국",
-        classification: ".50구경 중기관총", armament: [".50 BMG 탄약 사용", "벨트 급탄", "중기관총·대물 화기"],
-        appearanceTitle: "179cm의 압도적이고 안정적인 골격", appearance: ["짙은 흑갈색 장발.", "깊은 금갈색 또는 녹갈색 눈.", "크고 묵직한 체격이지만 행동은 조심스럽다."],
-        personalityTitle: "과묵하고 묵직한 큰언니", personality: ["쉽게 나서지 않지만 한 번 결정하면 끝까지 움직인다.", "힘 조절을 신경 쓰며 주변 물건을 조심스럽게 다룬다.", "후배의 부탁을 말없이 들어주는 일이 많다."],
-        overallTitle: "기관총 계보의 가장 무거운 버팀목", overall: ["압도적인 존재감을 과시하지 않는다.", "M1917과 M1919 Browning을 계보의 선배로 존중한다.", "문제가 커질수록 침착하게 중심을 잡는다."]
-    }),
-    m3grease: createRegistryCharacter({
-        name: "M3 Grease Gun", code: "US-IE-LN-M3", designation: "United States Submachine Gun, Caliber .45, M3", height: "162cm",
-        summary: "탁한 은갈색 단발과 회색 눈을 지닌 느긋하고 담백한 메피릿. 복잡한 것을 싫어하고 손재주가 좋다.",
-        period: "1942년 채용 → 제2차 세계대전 및 전후 운용", origin: "미합중국",
-        classification: "기관단총", armament: [".45 ACP 탄약 사용", "30발 분리식 탄창", "블로우백 방식 기관단총"],
-        appearanceTitle: "162cm의 수수하고 실용적인 체형", appearance: ["탁한 은갈색 또는 회색빛 짧은 머리.", "담담한 회색 눈.", "꾸밈보다 편안함과 실용성을 우선하는 인상이다."],
-        personalityTitle: "느긋하고 핵심만 짚는 실용파", personality: ["복잡한 설명보다 가장 간단한 해결책을 찾는다.", "손재주가 좋아 생활 장비를 고치는 일을 잘한다.", "Thompson을 귀찮아하면서도 선배로서 깊이 존경한다."],
-        overallTitle: "단순함을 강점으로 삼는 후배 랜턴", overall: ["적은 말과 짧은 동작으로 일을 끝낸다.", "화려한 평가보다 실제로 작동하는지를 중요하게 본다.", "M50 Reising의 불안을 조용히 이해한다."]
-    }),
-    m9bazooka: createRegistryCharacter({
-        name: "M9 Bazooka", code: "US-IE-LN-M9", designation: "Rocket Launcher, 2.36-inch, M9", height: "170cm",
-        summary: "어두운 갈색 머리와 날카로운 눈매를 지닌 냉정하고 실전적인 대전차 장비 메피릿. 말보다 결과를 중시한다.",
-        period: "1944년 등장 → 제2차 세계대전 후반 운용", origin: "미합중국",
-        classification: "휴대용 대전차 로켓 발사기", armament: ["2.36인치 로켓 사용", "분리식 견착 발사기", "개량형 조준·점화 체계"],
-        appearanceTitle: "170cm의 정돈되고 실전적인 체형", appearance: ["어두운 갈색 머리를 움직임에 방해되지 않게 정리한다.", "날카롭고 침착한 눈매.", "M1A1보다 정돈되고 군더더기 없는 인상이다."],
-        personalityTitle: "냉정하고 결과를 중시하는 실전파", personality: ["자신감은 강하지만 감정적으로 앞서 나가지 않는다.", "계획과 결과를 짧게 대조하며 다음 행동을 정한다.", "M1A1 Bazooka의 호쾌함을 인정하면서도 확인 절차를 강조한다."],
-        overallTitle: "대전차 계보의 침착한 개량형", overall: ["불필요한 동작과 말을 줄인다.", "큰 문제 앞에서도 관찰과 조준을 먼저 한다.", "선배와 경쟁하기보다 서로 다른 장점을 결과로 증명한다."]
-    }),
-    johnson: createRegistryCharacter({
-        name: "M1941 Johnson Rifle", code: "US-IE-LN-1941J", designation: "Johnson Semiautomatic Rifle, Model of 1941", height: "170cm",
-        summary: "갈금색 머리와 청회색 눈을 지닌 세련된 메피릿. 여유로운 겉모습 안에 강한 경쟁심과 자존심이 있다.",
-        period: "1941년 채용 → 제2차 세계대전 제한 운용", origin: "미합중국",
-        classification: "반자동 소총", armament: [".30-06 Springfield 탄약 사용", "10발 회전식 탄창", "쇼트 리코일 작동방식"],
-        appearanceTitle: "170cm의 유연하고 세련된 체형", appearance: ["부드러운 갈금색 장발 또는 중장발.", "선명한 청회색 눈.", "가볍게 웃어도 단단한 자존심이 느껴진다."],
-        personalityTitle: "여유로운 겉모습과 강한 경쟁심", personality: ["비교당하지 않을 때는 느긋하고 말이 부드럽다.", "Garand와 성능이나 채택 이야기가 나오면 즉시 예민해진다.", "자신이 비주류였다는 사실보다 가능성을 제대로 인정받지 못했다고 느낀다."],
-        overallTitle: "주류와 다른 길을 선택한 경쟁자", overall: ["Garand를 라이벌로 의식하면서 능력은 인정한다.", "낯선 방식과 새로운 아이디어를 두려워하지 않는다.", "한정된 운용 이력을 약점이 아닌 독자성으로 받아들이려 한다."]
-    }),
-    m50reising: createRegistryCharacter({
-        name: "M50 Reising", code: "US-IE-LN-M50", designation: "Reising Submachine Gun, Model 50", height: "161cm",
-        summary: "밝은 갈색 머리와 섬세한 인상을 지닌 조심스러운 메피릿. 신뢰성 평가에 콤플렉스가 있지만 밝게 행동하려 한다.",
-        period: "1940년 등장 → 제2차 세계대전 제한 운용", origin: "미합중국",
-        classification: "기관단총", armament: [".45 ACP 탄약 사용", "분리식 박스탄창", "지연 블로우백 방식 기관단총"],
-        appearanceTitle: "161cm의 가볍고 섬세한 체형", appearance: ["밝은 갈색 또는 연한 밤색 머리.", "조심스럽게 상대를 살피는 눈매.", "단정하지만 긴장하면 표정이 쉽게 굳는다."],
-        personalityTitle: "밝게 굴려 하지만 평가에 예민한 성격", personality: ["평소에는 먼저 웃고 대화를 이어가려 노력한다.", "신뢰성이나 채택 실패를 농담으로 다루는 일을 싫어한다.", "M3가 자신을 놀리지 않고 담담하게 대하는 것을 편안하게 느낀다."],
-        overallTitle: "자신의 가치를 다시 세우는 비주류 랜턴", overall: ["과거의 평가가 현재의 전부가 아니라는 사실을 배우는 중이다.", "섬세한 관찰과 조심스러운 준비에 강점이 있다.", "존중받는 환경에서는 능력과 밝은 성격이 자연스럽게 드러난다."]
-    }),
-    m18recoilless: createRegistryCharacter({
-        name: "M18 57mm Recoilless Rifle", code: "US-IE-LN-M18", designation: "Rifle, Recoilless, 57mm, M18", height: "159cm",
-        summary: "밝은 잿빛 머리와 어린 인상을 지닌 랜턴 반의 막내 축. 전쟁 경험이 짧아 선배의 이야기를 학생처럼 듣는다.",
-        period: "1945년 채용 → 제2차 세계대전 말기 및 한국전쟁 운용", origin: "미합중국",
-        classification: "57mm 무반동총", armament: ["57mm 무반동탄 사용", "견착·삼각대 운용", "후폭풍을 이용한 무반동 발사 방식"],
-        appearanceTitle: "159cm의 작고 아직 풋내가 남은 체형", appearance: ["밝은 잿빛 또는 옅은 갈색 머리.", "호기심이 쉽게 드러나는 어린 눈매.", "랜턴이지만 램프로 오해받을 만큼 앳된 인상이다."],
-        personalityTitle: "선배의 경험을 배우는 막내 랜턴", personality: ["모르는 일을 숨기기보다 곧바로 질문한다.", "전쟁 경험이 짧아 오래된 기억을 말하는 선배를 진지하게 듣는다.", "어린 취급은 싫어하지만 도움을 받는 일 자체는 솔직하게 받아들인다."],
-        overallTitle: "다음 세대로 넘어가는 경계의 랜턴", overall: ["랜턴의 기억과 램프의 분위기를 함께 지녔다.", "새로운 방식과 장비에 대한 적응이 빠르다.", "M1A1과 M9 Bazooka의 경험을 배우며 자신의 역할을 찾는다."]
-    })
-});
-
-// 기존 인물 기록의 성격과 행동 양식을 바탕으로 구성한 관계 기록 초안
 const relationships = {
     m1903: [
         { target: "m1911", address: "콜트", affinity: 88, firstImpression: "가만히 있지 못하고 눈앞의 흥미를 따라 곧장 움직이는 활기찬 동료.", evaluation: "계획이 다음 골목에서 바뀔 것을 알 만큼 콜트의 즉흥성을 잘 안다. 그 활기가 과거의 기억에 머물던 자신을 현재의 여행으로 자연스럽게 이끌어 준다고 느낀다.", quote: "콜트, 지도대로 가는 건 다음 골목까지겠구나." },
@@ -647,79 +461,8 @@ const relationships = {
     ]
 };
 
-function registryRelation(target, address, affinity, relationType, firstImpression, evaluation, quote) {
-    return { target, address, affinity, relationType, firstImpression, evaluation, quote };
-}
-
-Object.assign(relationships, {
-    m1917enfield: [
-        registryRelation("m1903", "스프링필드", 92, "오랜 동료", "말수가 적어도 주변을 살피는 방식이 자신과 닮은 오래된 동료.", "긴 설명 없이도 서로의 판단 순서를 이해한다. 스프링필드가 혼자 책임을 떠안으려 할 때는 말없이 옆자리를 지킨다.", "스프링필드, 말하지 않아도 돼. 내가 같이 할 테니까.")
-    ],
-    m1917revolver: [
-        registryRelation("m1911", "콜트", 86, "권총 계열 후배", "작은 체구로 가장 먼저 움직이는 소란스러운 후배.", "충동적인 행동은 자주 지적하지만 위험을 읽는 감각과 솔직함은 높게 평가한다.", "콜트, 빠른 것과 서두르는 건 다른 말이란다.")
-    ],
-    m1917browning: [
-        registryRelation("m1919browning", "1919", 94, "기관총 계보", "자신보다 가볍고 건조하지만 집중력이 깊은 후배.", "오래 버티는 힘과 침착함을 믿으며 기관총 계보의 다음 자리를 맡길 수 있다고 생각한다.", "1919, 네 호흡대로 계속하면 돼.")
-    ],
-    m1918bar: [
-        registryRelation("m1919browning", "1919", 93, "자매 같은 동료", "조용히 뒤따르면서도 필요한 순간에는 멈추지 않는 동료.", "자신이 앞으로 나갈 때 뒤를 안정적으로 받쳐주는 가장 가까운 동료로 여긴다.", "1919, 뒤는 부탁할게. 끝나면 같이 돌아가자."),
-        registryRelation("m1917browning", "브라우닝 선배", 88, "계보 선배", "느긋한 태도 안에 오랜 인내가 쌓여 있는 선배.", "힘을 오래 유지하는 법과 후배를 기다리는 법을 배운다.", "선배, 이번에는 제가 먼저 움직일게요.")
-    ],
-    m1919browning: [
-        registryRelation("m1917browning", "1917 선배", 94, "기관총 계보", "말을 재촉하지 않고 기다려 주는 묵직한 선배.", "자신의 집중 방식을 가장 잘 이해하며 필요할 때 방향을 잡아주는 사람으로 신뢰한다.", "선배가 말하면 들을게. 지금은 이것부터 끝낼게."),
-        registryRelation("m1918bar", "BAR", 93, "자매 같은 동료", "생각이 끝나기 전에 몸이 먼저 앞으로 나가는 밝은 동료.", "자신과 정반대의 속도를 지녔지만 함께 있으면 앞과 뒤가 자연스럽게 맞는다.", "BAR, 너무 멀리 가지 마. 따라가고 있으니까."),
-        registryRelation("m2browning", "M2", 90, "기관총 계보 후배", "큰 힘을 조심스럽게 다루려는 과묵한 후배.", "말이 적어도 책임의 무게를 아는 후배라 생각하며 실무를 믿고 맡긴다.", "M2, 힘을 줄일 필요는 없어. 방향만 맞추면 돼.")
-    ],
-    model12: [
-        registryRelation("m1897", "윈체스터 선배", 91, "산탄총 계보", "부드럽게 웃으면서도 모든 출입구를 먼저 살피는 오래된 선배.", "닮았다는 말을 듣는 건 민망하지만 사람을 돌보는 방식과 정원을 좋아하는 마음은 존경한다.", "선배와 닮은 건 아니에요. 다만 오늘 물은 제가 줄게요.")
-    ],
-    m1mortar: [
-        registryRelation("m2mortar", "M2", 92, "지원화기 후배", "작고 빠르며 지시를 기다리기 전에 준비를 끝내는 후배.", "계산과 절차를 가르치면서도 M2만의 빠른 대응력을 배우고 있다.", "M2, 각도는 맞았어. 이번에는 네 판단대로 해봐.")
-    ],
-    m1a1bazooka: [
-        registryRelation("m9bazooka", "M9", 91, "대전차 계보", "자신보다 차분하고 모든 확인을 끝낸 뒤 움직이는 후배.", "속도는 달라도 큰 문제 앞에서 물러서지 않는 태도를 신뢰한다.", "M9, 계산은 맡길게. 결론이 나면 같이 가자.")
-    ],
-    m2mortar: [
-        registryRelation("m1mortar", "M1 선배", 92, "지원화기 선배", "항상 거리와 순서를 먼저 계산하는 안정적인 선배.", "자신의 빠른 행동을 정확한 지원으로 바꾸는 법을 가르쳐 주는 선배로 존경한다.", "M1 선배, 계산 확인했어요. 바로 준비할게요.")
-    ],
-    m2flamethrower: [
-        registryRelation("m1897", "윈체스터", 89, "정원 동료", "오래된 기억을 캐묻지 않고 햇볕과 흙을 함께 돌보는 고참.", "말이 없어도 불편하지 않은 사람이다. 정원에서 살아 있는 것을 돌보는 시간이 둘 모두에게 안정을 준다.", "윈체스터, 오늘은 그늘 쪽 화분을 옮길게.")
-    ],
-    m2browning: [
-        registryRelation("m1919browning", "1919 선배", 90, "기관총 계보", "자신보다 작지만 한 번 시작한 일을 끝까지 놓지 않는 선배.", "힘보다 지속과 판단이 먼저라는 점을 배운다. 짧은 지시만으로도 움직일 수 있을 만큼 신뢰한다.", "1919 선배, 방향만 알려줘. 나머지는 내가 할게.")
-    ],
-    m3grease: [
-        registryRelation("thompson", "톰슨 선배", 89, "기관단총 계보", "화려하고 말이 많지만 실제 상황에서는 누구보다 현실적인 선배.", "자신이 대신하기 위해 만들어진 계보를 알고 있으며, 표현하지 않아도 톰슨을 깊이 존경한다.", "톰슨 선배, 옷은 안 갈아입어. 그래도 같이 갈게."),
-        registryRelation("m50reising", "라이징", 84, "비주류 동료", "자신의 평가를 계속 신경 쓰는 섬세한 동료.", "쓸데없는 비교 없이 실제로 필요한 일에 함께 집중하면 편안해지는 사람이라고 생각한다.", "라이징, 지난 평가는 됐어. 지금 잘 되면 그걸로 충분해.")
-    ],
-    m9bazooka: [
-        registryRelation("m1a1bazooka", "M1A1 선배", 91, "대전차 계보", "크게 웃고 곧바로 앞으로 나서는 직선적인 선배.", "확인 절차는 자신이 맡고 마지막 행동은 함께한다. 서로 다른 속도가 오히려 안정적이라고 본다.", "선배, 점검 끝났어요. 이제 같이 가죠.")
-    ],
-    johnson: [
-        registryRelation("garand", "개런드", 82, "라이벌", "어떤 자리에서도 정답처럼 보이는 반듯한 경쟁자.", "비교당하는 일은 싫지만 책임감과 능력은 인정한다. 언젠가는 자신을 별개의 기준으로 평가받고 싶다.", "개런드, 이번에는 네 방식 말고 내 방식도 보겠어?")
-    ],
-    m50reising: [
-        registryRelation("m3grease", "M3", 84, "비주류 동료", "평가를 묻지 않고 필요한 일만 담담하게 말하는 후배.", "자신을 불쌍하게 보거나 놀리지 않아 함께 있으면 긴장이 줄어든다.", "M3, 고마워. 이번 점검은 내가 먼저 해볼게."),
-        registryRelation("thompson", "톰슨", 78, "기관단총 선배", "자신감과 유명세를 자연스럽게 다루는 눈부신 선배.", "비교가 두렵지만 사람을 챙기는 태도와 위기에서의 현실감은 배우고 싶어 한다.", "톰슨, 오늘은 비교 말고 그냥 같이 걸어도 될까?")
-    ],
-    m18recoilless: [
-        registryRelation("m1a1bazooka", "M1A1 선배", 87, "지원화기 선배", "큰 문제를 단순한 말로 정리하고 먼저 움직이는 든든한 선배.", "전쟁 경험과 생활 모두에서 배울 점이 많다고 생각하며 질문을 숨기지 않는다.", "M1A1 선배, 이번에는 제가 먼저 준비해 봐도 돼요?"),
-        registryRelation("m9bazooka", "M9 선배", 86, "지원화기 선배", "확인할 것을 빠뜨리지 않는 날카롭고 침착한 선배.", "자신의 풋내를 놀리지 않고 정확한 기준을 알려 주어 편하게 따른다.", "M9 선배, 점검표 다시 봤어요. 이제 맞죠?")
-    ]
-});
-
-relationships.m1903.push(registryRelation("m1917enfield", "엔필드", 92, "오랜 동료", "과묵하지만 해야 할 일을 정확히 끝내는 믿음직한 동료.", "말없이도 판단이 잘 맞으며 서로가 감당하는 무게를 굳이 설명하지 않아도 안다.", "엔필드, 이번에는 내가 함께 갈게."));
-relationships.m1911.push(registryRelation("m1917revolver", "리볼버 선배", 86, "권총 계열 선배", "자신보다 차분하고 오래된 방식의 여유를 지닌 선배.", "잔소리 속에 인정과 배려가 있다는 걸 알기에 투덜대면서도 조언을 듣는다.", "선배, 이번 건 서두른 게 아니라 빠르게 판단한 거야."));
-relationships.garand.push(registryRelation("johnson", "존슨", 82, "라이벌", "여유로운 척하면서 자신을 세밀하게 관찰하는 경쟁자.", "끊임없이 비교되는 관계는 부담스럽지만 다른 방식의 가능성과 실력은 분명히 인정한다.", "존슨, 네 방식을 무시한 적은 없어. 같이 확인해 보자."));
-relationships.thompson.push(registryRelation("m3grease", "M3", 89, "기관단총 계보 후배", "옷과 말 모두 군더더기가 없는 무심한 후배.", "자신을 귀찮아해도 내심 존경한다는 걸 알고 있어 더 세심하게 챙긴다.", "M3, 편한 건 좋은데 오늘은 코트 정도는 입어."));
-relationships.thompson.push(registryRelation("m50reising", "라이징", 78, "기관단총 후배", "자기 평가를 의식해 먼저 물러나는 조심스러운 후배.", "비교보다 현재의 장점을 보여줄 기회를 주는 편이 더 필요하다고 생각한다.", "라이징, 오늘은 네 얘기만 하자. 다른 이름은 꺼내지 않을게."));
-relationships.m1897.push(registryRelation("model12", "모델 12", 91, "산탄총 계보 후배", "예의 바르고 단정하면서도 자신과 닮았다는 말에는 즉시 선을 긋는 후배.", "독립적인 성격을 존중하며 정원과 생활 습관을 함께 나누는 후배로 아낀다.", "모델 12, 닮았다는 말은 안 할게. 차는 같이 마실래?"));
-relationships.m1897.push(registryRelation("m2flamethrower", "M2", 89, "정원 동료", "불보다 살아 있는 식물을 조심스럽게 만지는 조용한 동료.", "과거를 말로 꺼내지 않아도 이해할 수 있어 정원에서 함께 보내는 시간을 소중히 여긴다.", "M2, 오늘 새싹이 났어. 네가 먼저 볼래?"));
-
 const characterOrder = [
-    "m1903", "m1911", "garand", "thompson", "carbine", "m1897", "m1917enfield", "m1917revolver", "m1917browning", "m1918bar", "m1919browning",
-    "model12", "m1mortar", "m1a1bazooka", "m2mortar", "m2flamethrower",
-    "m2browning", "m3grease", "m9bazooka", "johnson", "m50reising", "m18recoilless", "claire",
+    "m1903", "m1911", "garand", "thompson", "carbine", "m1897", "claire",
     "mp9", "mp9n", "logWeekly", "logLeave", "logMaintenance"
 ];
 const totalRecords = characterOrder.length;
@@ -730,22 +473,6 @@ const characterThemes = Object.freeze({
     thompson: { accent: "#b994e8", bright: "#e3d0ff", rgb: "185 148 232" },
     carbine: { accent: "#9dbc72", bright: "#d8efb9", rgb: "157 188 114" },
     m1897: { accent: "#b7add8", bright: "#e5dfff", rgb: "183 173 216" },
-    m1917enfield: { accent: "#8fa5b9", bright: "#d6e6f2", rgb: "143 165 185" },
-    m1917revolver: { accent: "#8d8fb2", bright: "#d9daf5", rgb: "141 143 178" },
-    m1917browning: { accent: "#8e9b75", bright: "#d9e7bd", rgb: "142 155 117" },
-    m1918bar: { accent: "#c28a62", bright: "#f4c5a4", rgb: "194 138 98" },
-    m1919browning: { accent: "#83968c", bright: "#cfe1d8", rgb: "131 150 140" },
-    model12: { accent: "#c7ad72", bright: "#f3dfae", rgb: "199 173 114" },
-    m1mortar: { accent: "#9c9482", bright: "#ddd4c1", rgb: "156 148 130" },
-    m1a1bazooka: { accent: "#ce765e", bright: "#ffbdab", rgb: "206 118 94" },
-    m2mortar: { accent: "#a9b2bd", bright: "#e2e9f2", rgb: "169 178 189" },
-    m2flamethrower: { accent: "#b86f57", bright: "#f2b29d", rgb: "184 111 87" },
-    m2browning: { accent: "#b19463", bright: "#e8d2a8", rgb: "177 148 99" },
-    m3grease: { accent: "#8d9a9d", bright: "#d4dee0", rgb: "141 154 157" },
-    m9bazooka: { accent: "#9b7b67", bright: "#ddc0ad", rgb: "155 123 103" },
-    johnson: { accent: "#819fbd", bright: "#c7e2fb", rgb: "129 159 189" },
-    m50reising: { accent: "#b98f83", bright: "#efd0c7", rgb: "185 143 131" },
-    m18recoilless: { accent: "#a6a284", bright: "#e2dec1", rgb: "166 162 132" },
     claire: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
     mp9: { accent: "#70cde9", bright: "#c5f2ff", rgb: "112 205 233" },
     mp9n: { accent: "#929fec", bright: "#d7ddff", rgb: "146 159 236" },
