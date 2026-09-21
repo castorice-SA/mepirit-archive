@@ -219,6 +219,43 @@ const characters = {
         image: "./images/claire.png",
         imagePosition: "center 18%"
     },
+    ivan: {
+        name: "IVAN",
+        code: "RU-ADM-IVAN",
+        designation: "Russian Dispatched Administrative Officer",
+        class: "ADMINISTRATOR",
+        group: "ADMIN",
+        height: "기록 비공개",
+        age: "기록 비공개",
+        summary: "러시아에서 파견된 다회 참전 경력의 관리관. 자신의 권한과 직급의 한계를 정확히 파악하며, 메피릿을 우호 대상보다 관리 대상으로 대한다.",
+        sex: "남성",
+        operationalPeriod: "다수 전쟁 참전 경력 / 현직 관리국 파견 근무",
+        origin: "러시아",
+        classification: "파견 관리요원",
+        classificationLabel: "인원 분류",
+        recordListTitle: "관리 기록",
+        tabLabels: { memory: "상담 기록", overall: "관리 방식" },
+        sectionCodes: { memory: "COUNSELING RECORD", overall: "MANAGEMENT PROTOCOL" },
+        armament: ["메피릿 생활 규율·면담·분쟁 대응", "세계대전기 개인화기를 호신용으로 순환 패용", "관리 대상별 실효성 있는 통제 방식 적용", "아침 시간대 단독 안정 시간을 확보한 뒤 업무 개시"],
+        appearance: {
+            title: "검은 머리와 옅은 회보라색 눈의 파견 관리관",
+            items: ["짧고 거칠게 흐트러진 검은 머리카락과 창백한 피부.", "옅은 회보라색 눈과 피로가 남은 날카로운 눈매.", "검은 정장과 넥타이, 긴 의복과 장갑을 주로 착용한다.", "좌측 측복부와 우측 하지, 양 손바닥에 총상 반흔이 있으며 평소 복장으로 이를 가린다.", "감정이 격해지면 표정과 말투가 빠르게 냉각되고 시선이 더욱 날카로워진다."]
+        },
+        personality: {
+            title: "권한의 한계를 알면서도 사용을 주저하지 않는 실무형",
+            items: ["자신의 직급과 권한 범위를 정확히 파악하고 필요할 때에는 직권 사용을 꺼리지 않는다.", "메피릿을 친교 대상보다 관리 대상으로 인식하며 감정보다 질서와 결과를 우선한다.", "직권보다 효과적인 관리법을 찾으면 체면에 얽매이지 않고 그 방법을 채택한다.", "주의와 면담으로도 과한 소란이 멈추지 않을 때를 대비해 간식 주머니를 따로 챙긴다.", "연륜 있는 랜턴과 다른 관리관에게는 자주 존댓말을 사용하지만 감정이 격해지거나 존중할 가치가 없다고 판단하면 하대로 바뀐다.", "대면 경고가 통하지 않는 대상에게 압박 면담과 공개 처벌을 사용한 기록이 있어 관리 방식에 대한 지속적인 감찰이 필요하다."]
+        },
+        memory: {
+            title: "전장이 끝난 뒤에도 이어지는 과각성",
+            items: ["기상 직후 과각성, 과민한 경계와 분노 표출 등 전형적인 외상 후 스트레스 증상을 보인다.", "밤마다 서로 다른 전장이 뒤섞인 악몽과 총탄, 피 냄새, 화약 냄새를 생생하게 경험한다고 진술했다.", "흉터의 통증과 바람 소리에도 과거의 전장을 떠올리며, 갑작스러운 비명과 피 맛이 현재의 감각처럼 되살아난다.", "상담 도중 거친 호흡과 감정 격양을 보였으나 스스로 진정한 뒤 업무 복귀를 선택했다.", "아침에는 처벌 수위가 강해질 수 있음을 인식해 얼굴을 비추지 않고 방에서 혼자 시간을 보내는 방식으로 조절하고 있다.", "치료와 추가 상담의 필요성은 확인되었으나 본인은 대화만으로 해결될 문제라는 관점에 강한 거부감을 보인다."]
+        },
+        overall: {
+            title: "IVAN 관리관의 세 가지 경고",
+            items: ["하나. 경고받은 내용은 잊지 말고 기억할 것.", "둘. 최소 세 번 생각하고, 할 만한 질문이라고 판단될 때 질문할 것.", "셋. 시비를 걸어오는 행위는 면담 요청으로 간주한다.", "세계대전기 무기를 주기적으로 교체해 패용하며, 자신의 감정이 특정 무기에 고착되어 새로운 메피릿의 탄생으로 이어지는 상황을 경계한다.", "‘무기는 그저 무기로 있는 것이 이롭다’고 말해 메피릿과 관련된 부정적 경험이나 트라우마가 있는 것으로 판단되며 추가 조사가 필요하다."]
+        },
+        image: "./images/ivan.png",
+        imagePosition: "center 28%"
+    },
     mp9: {
         name: "MP9",
         code: "CH-IE-LP-MP9",
@@ -443,7 +480,11 @@ const relationships = {
         { target: "garand", address: "개런드", affinity: 94, firstImpression: "별도의 지시 없이도 필요한 일을 찾아 움직이는 책임감 강한 인물.", evaluation: "관리 업무를 가장 안정적으로 돕지만 과한 책임감으로 지치지 않도록 제지한다.", quote: "개런드, 맡은 일은 끝났어요. 나머지는 제가 할게요." },
         { target: "thompson", address: "톰슨", affinity: 84, firstImpression: "사람과 분위기를 움직일 줄 아는 자신감 넘치는 인물.", evaluation: "사교성과 현장 판단을 높게 평가하지만 일정 변경은 미리 알리도록 단단히 약속받는다.", quote: "톰슨, 좋은 계획이에요. 승인서가 먼저라는 점만 빼면요." },
         { target: "carbine", address: "카빈", affinity: 93, firstImpression: "낯선 사람도 자연스럽게 대화 안으로 이끄는 친화력 좋은 인물.", evaluation: "생활구역의 분위기와 작은 변화를 빠르게 전해주는 소중한 관찰자이자 조력자.", quote: "카빈, 오늘 식당 분위기는 어땠는지 들려줄래요?" },
-        { target: "m1897", address: "M1897", affinity: 90, firstImpression: "온화한 표정과 달리 출입구와 인원 위치를 먼저 확인하는 습관이 뚜렷했다.", evaluation: "안전 감각을 신뢰하지만 오래된 기억을 혼자 감당하지 않도록 정기적으로 상태를 확인한다.", quote: "M1897, 오늘 점검은 여기까지예요. 남은 시간은 쉬어도 됩니다." }
+        { target: "m1897", address: "M1897", affinity: 90, firstImpression: "온화한 표정과 달리 출입구와 인원 위치를 먼저 확인하는 습관이 뚜렷했다.", evaluation: "안전 감각을 신뢰하지만 오래된 기억을 혼자 감당하지 않도록 정기적으로 상태를 확인한다.", quote: "M1897, 오늘 점검은 여기까지예요. 남은 시간은 쉬어도 됩니다." },
+        { target: "ivan", address: "IVAN 관리관", affinity: 64, relationType: "관리 업무 협조", firstImpression: "권한의 범위와 현장 질서를 냉정하게 구분하는 경험 많은 파견 관리관.", evaluation: "강압적인 방식을 경계하면서도 위기 대응 능력과 실무 판단은 인정한다. 아침 과각성과 공개 처벌 기록은 지속해서 확인할 필요가 있다고 본다.", quote: "IVAN 관리관, 결과뿐 아니라 과정도 관리 기록에 남겨야 합니다." }
+    ],
+    ivan: [
+        { target: "claire", address: "Claire 관리관", affinity: 64, relationType: "관리 업무 협조", firstImpression: "메피릿의 자율과 설명을 우선하는 방식이 지나치게 온건해 보이는 관리관.", evaluation: "방식에는 이견이 있지만 현장 정보와 생활 기록의 정확성은 신뢰한다. 자신의 처벌 방식을 감시하려는 태도 역시 상대의 직무라고 받아들인다.", quote: "Claire 관리관. 당신 방식이 통한다면 굳이 내 방식을 고집할 이유는 없습니다." }
     ],
     m1897: [
         { target: "m1903", address: "스프링필드", affinity: 85, firstImpression: "조용히 풍경을 바라보면서도 주변 사람의 상태를 놓치지 않는 후배.", evaluation: "말이 적어도 침묵의 의미를 이해해 함께 오래 머물기 편한 동료.", quote: "스프링필드, 서두르지 않아도 괜찮아. 나는 여기 있을게." },
@@ -462,7 +503,7 @@ const relationships = {
 };
 
 const characterOrder = [
-    "m1903", "m1911", "garand", "thompson", "carbine", "m1897", "claire",
+    "m1903", "m1911", "garand", "thompson", "carbine", "m1897", "claire", "ivan",
     "mp9", "mp9n", "logWeekly", "logLeave", "logMaintenance"
 ];
 const totalRecords = characterOrder.length;
@@ -474,19 +515,24 @@ const characterThemes = Object.freeze({
     carbine: { accent: "#9dbc72", bright: "#d8efb9", rgb: "157 188 114" },
     m1897: { accent: "#b7add8", bright: "#e5dfff", rgb: "183 173 216" },
     claire: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
+    ivan: { accent: "#8f9eb9", bright: "#dce6f8", rgb: "143 158 185" },
     mp9: { accent: "#70cde9", bright: "#c5f2ff", rgb: "112 205 233" },
     mp9n: { accent: "#929fec", bright: "#d7ddff", rgb: "146 159 236" },
     logWeekly: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
     logLeave: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
     logMaintenance: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" }
 });
+const passwordSalt = "mepirit-archive-v21-client-guard";
+const passwordHash = "9794bc307b4ff47ef2591c0f5bcdce6178b1ba23df43a1a3677627975b6cf65b";
 const accessSessionKey = "mepirit-archive-authorized";
-const securityPolicy = Object.freeze({ idleTimeoutMs: 900000, sessionTimeoutMs: 3600000 });
+const loginSecurityKey = "mepirit-archive-login-security";
+const securityPolicy = Object.freeze({ maxAttempts: 5, initialLockMs: 30000, maxLockMs: 300000, idleTimeoutMs: 900000, sessionTimeoutMs: 3600000 });
 let selectedCharacterId = characterOrder[0];
 let activeCollection = "US";
 let activeFilter = "all";
 let activeRecordTab = "overview";
 let bootSequenceToken = 0;
+let lockoutTimerId = 0;
 let sessionTimerId = 0;
 let idleTimerId = 0;
 let sessionExpiresAt = 0;
@@ -496,6 +542,8 @@ const elements = {
     loginScreen: document.querySelector("#loginScreen"),
     loginForm: document.querySelector("#loginForm"),
     loginCard: document.querySelector(".login-card"),
+    passwordInput: document.querySelector("#passwordInput"),
+    togglePassword: document.querySelector("#togglePassword"),
     loginSubmit: document.querySelector("#loginSubmit"),
     logoutButton: document.querySelector("#logoutButton"),
     loginMessage: document.querySelector("#loginMessage"),
@@ -972,6 +1020,29 @@ function renderDetailedRecord(character, characterId) {
     }
 }
 
+async function hashPassword(value) {
+    const encoder = new TextEncoder();
+    const keyMaterial = await window.crypto.subtle.importKey("raw", encoder.encode(value), "PBKDF2", false, ["deriveBits"]);
+    const derivedBits = await window.crypto.subtle.deriveBits({
+        name: "PBKDF2",
+        hash: "SHA-256",
+        salt: encoder.encode(passwordSalt),
+        iterations: 120000
+    }, keyMaterial, 256);
+    return Array.from(new Uint8Array(derivedBits), function (byte) {
+        return byte.toString(16).padStart(2, "0");
+    }).join("");
+}
+
+function hashesMatch(first, second) {
+    if (first.length !== second.length) return false;
+    let difference = 0;
+    for (let index = 0; index < first.length; index += 1) {
+        difference |= first.charCodeAt(index) ^ second.charCodeAt(index);
+    }
+    return difference === 0;
+}
+
 function readJsonStorage(storage, key) {
     try {
         const value = storage.getItem(key);
@@ -990,11 +1061,86 @@ function writeJsonStorage(storage, key, value) {
     }
 }
 
+function getLoginSecurityState() {
+    const stored = readJsonStorage(window.localStorage, loginSecurityKey);
+    if (!stored || typeof stored !== "object") return { attempts: 0, lockLevel: 0, lockUntil: 0, updatedAt: 0 };
+    if (Date.now() - Number(stored.updatedAt || 0) > 86400000) return { attempts: 0, lockLevel: 0, lockUntil: 0, updatedAt: 0 };
+    return {
+        attempts: Math.max(0, Number(stored.attempts) || 0),
+        lockLevel: Math.max(0, Number(stored.lockLevel) || 0),
+        lockUntil: Math.max(0, Number(stored.lockUntil) || 0),
+        updatedAt: Math.max(0, Number(stored.updatedAt) || 0)
+    };
+}
+
+function saveLoginSecurityState(state) {
+    state.updatedAt = Date.now();
+    writeJsonStorage(window.localStorage, loginSecurityKey, state);
+}
+
+function clearLoginSecurityState() {
+    window.clearInterval(lockoutTimerId);
+    lockoutTimerId = 0;
+    try { window.localStorage.removeItem(loginSecurityKey); } catch { /* Storage access may be disabled. */ }
+    elements.passwordInput.disabled = false;
+    elements.togglePassword.disabled = false;
+    elements.loginSubmit.disabled = false;
+}
+
 function formatRemainingTime(milliseconds) {
     const totalSeconds = Math.max(0, Math.ceil(milliseconds / 1000));
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
     return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+}
+
+function updateLoginLockout() {
+    const state = getLoginSecurityState();
+    const remaining = state.lockUntil - Date.now();
+    const locked = remaining > 0;
+    elements.passwordInput.disabled = locked;
+    elements.togglePassword.disabled = locked;
+    elements.loginSubmit.disabled = locked;
+    if (locked) {
+        elements.loginMessage.textContent = `SECURITY LOCK / ${formatRemainingTime(remaining)} 후 다시 시도하세요.`;
+        elements.loginMessage.classList.add("is-error");
+        return true;
+    }
+    if (state.lockUntil) {
+        state.lockUntil = 0;
+        saveLoginSecurityState(state);
+        elements.loginMessage.textContent = "잠금이 해제되었습니다. 비밀번호를 다시 입력해 주세요.";
+        elements.loginMessage.classList.remove("is-error");
+    }
+    window.clearInterval(lockoutTimerId);
+    lockoutTimerId = 0;
+    return false;
+}
+
+function startLoginLockoutCountdown() {
+    window.clearInterval(lockoutTimerId);
+    if (!updateLoginLockout()) return;
+    lockoutTimerId = window.setInterval(updateLoginLockout, 1000);
+}
+
+function recordFailedLogin() {
+    const state = getLoginSecurityState();
+    state.attempts += 1;
+    if (state.attempts >= securityPolicy.maxAttempts) {
+        state.attempts = 0;
+        state.lockLevel += 1;
+        const lockDuration = Math.min(securityPolicy.initialLockMs * (2 ** (state.lockLevel - 1)), securityPolicy.maxLockMs);
+        state.lockUntil = Date.now() + lockDuration;
+        saveLoginSecurityState(state);
+        startLoginLockoutCountdown();
+        return;
+    }
+    saveLoginSecurityState(state);
+    const remainingAttempts = securityPolicy.maxAttempts - state.attempts;
+    elements.loginMessage.textContent = `ACCESS DENIED / 남은 시도 ${remainingAttempts}회`;
+    elements.loginMessage.classList.add("is-error");
+    elements.loginSubmit.disabled = false;
+    elements.passwordInput.select();
 }
 
 function readAccessSession() {
@@ -1085,7 +1231,7 @@ function startPdaBoot() {
     const token = ++bootSequenceToken;
     const steps = [
         { progress: 8, text: "PDA 보안 채널을 초기화하는 중...", delay: 0 },
-        { progress: 34, text: "관리국 접속 절차를 확인하는 중...", delay: 320 },
+        { progress: 34, text: "관리관 접근 권한을 확인하는 중...", delay: 320 },
         { progress: 63, text: "국가별 보병장비 명단을 동기화하는 중...", delay: 670 },
         { progress: 86, text: "초상 및 관계 기록을 복호화하는 중...", delay: 1020 }
     ];
@@ -1157,7 +1303,7 @@ function unlockArchive(skipWelcome, expiresAt) {
     startPdaBoot();
 }
 
-function lockArchive(message = "ACCESS TERMINAL READY") {
+function lockArchive(message = "AUTHORIZATION REQUIRED") {
     bootSequenceToken += 1;
     stopSessionMonitoring();
     try { window.sessionStorage.removeItem(accessSessionKey); } catch { /* Storage access may be disabled. */ }
@@ -1174,8 +1320,14 @@ function lockArchive(message = "ACCESS TERMINAL READY") {
     elements.welcomeMessage.hidden = true;
     elements.pdaBootBar.style.width = "0";
     elements.pdaBootPercent.textContent = "000%";
+    elements.passwordInput.value = "";
+    elements.passwordInput.type = "password";
+    elements.togglePassword.textContent = "보기";
+    elements.togglePassword.setAttribute("aria-label", "비밀번호 표시");
     elements.loginSubmit.disabled = false;
-    elements.loginMessage.textContent = typeof message === "string" ? message : "ACCESS TERMINAL READY";
+    elements.loginMessage.textContent = typeof message === "string" ? message : "AUTHORIZATION REQUIRED";
+    elements.loginMessage.classList.remove("is-error");
+    elements.loginCard.classList.remove("has-error");
     elements.loginScreen.classList.add("is-closing");
     elements.loginScreen.hidden = false;
 
@@ -1183,23 +1335,63 @@ function lockArchive(message = "ACCESS TERMINAL READY") {
         window.requestAnimationFrame(function () {
             elements.loginScreen.classList.remove("is-closing");
             window.setTimeout(function () {
-                elements.loginSubmit.focus();
+                elements.passwordInput.focus();
             }, 180);
         });
     });
 }
 
-function handleLogin(event) {
+async function handleLogin(event) {
     event.preventDefault();
-    elements.loginMessage.textContent = "CONNECTING ARCHIVE...";
+    if (updateLoginLockout()) return;
+    const submittedPassword = elements.passwordInput.value;
+
+    if (!submittedPassword) {
+        elements.loginMessage.textContent = "비밀번호를 입력해 주세요.";
+        elements.loginMessage.classList.add("is-error");
+        elements.passwordInput.focus();
+        return;
+    }
+
+    elements.loginMessage.textContent = "VERIFYING ACCESS...";
+    elements.loginMessage.classList.remove("is-error");
     elements.loginSubmit.disabled = true;
+    const submittedHash = await hashPassword(submittedPassword);
+
+    if (!hashesMatch(submittedHash, passwordHash)) {
+        elements.loginCard.classList.remove("has-error");
+        void elements.loginCard.offsetWidth;
+        elements.loginCard.classList.add("has-error");
+        recordFailedLogin();
+        return;
+    }
+
+    clearLoginSecurityState();
     const session = createAccessSession();
     elements.loginMessage.textContent = "ACCESS GRANTED";
     unlockArchive(false, session.expiresAt);
 }
 
 function initializeLogin() {
-    elements.loginForm.addEventListener("submit", handleLogin);
+    elements.loginForm.addEventListener("submit", function (event) {
+        handleLogin(event).catch(function () {
+            elements.loginMessage.textContent = "인증 처리 중 오류가 발생했습니다.";
+            elements.loginMessage.classList.add("is-error");
+            if (!updateLoginLockout()) elements.loginSubmit.disabled = false;
+        });
+    });
+    elements.passwordInput.addEventListener("input", function () {
+        if (updateLoginLockout()) return;
+        elements.loginMessage.textContent = "AUTHORIZATION REQUIRED";
+        elements.loginMessage.classList.remove("is-error");
+    });
+    elements.togglePassword.addEventListener("click", function () {
+        const showPassword = elements.passwordInput.type === "password";
+        elements.passwordInput.type = showPassword ? "text" : "password";
+        elements.togglePassword.textContent = showPassword ? "숨김" : "보기";
+        elements.togglePassword.setAttribute("aria-label", showPassword ? "비밀번호 숨기기" : "비밀번호 표시");
+        elements.passwordInput.focus();
+    });
     ["pointerdown", "keydown", "touchstart", "scroll"].forEach(function (eventName) {
         document.addEventListener(eventName, noteSessionActivity, { passive: true });
     });
@@ -1211,8 +1403,9 @@ function initializeLogin() {
         unlockArchive(true, session.expiresAt);
         return;
     }
+    startLoginLockoutCountdown();
     window.requestAnimationFrame(function () {
-        elements.loginSubmit.focus();
+        if (!elements.passwordInput.disabled) elements.passwordInput.focus();
     });
 }
 
@@ -1532,7 +1725,7 @@ elements.clearSearch.addEventListener("click", function () {
 });
 elements.resetFilters.addEventListener("click", resetFilters);
 elements.skipBootButton.addEventListener("click", function () { finishPdaBoot(); });
-elements.logoutButton.addEventListener("click", function () { lockArchive("ACCESS TERMINAL READY"); });
+elements.logoutButton.addEventListener("click", function () { lockArchive("AUTHORIZATION REQUIRED"); });
 elements.previousCharacter.addEventListener("click", function () { moveCharacter(-1); });
 elements.nextCharacter.addEventListener("click", function () { moveCharacter(1); });
 elements.openImageButton.addEventListener("click", openImageModal);

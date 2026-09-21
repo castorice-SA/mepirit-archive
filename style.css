@@ -58,12 +58,20 @@ button:disabled { opacity: .35; cursor: default; }
 .login-kicker { margin: 0 0 12px; color: var(--signal); font: 9px var(--mono); letter-spacing: 1.8px; }
 .login-card h1 { margin: 0; font-size: 32px; font-weight: 500; letter-spacing: -1px; }
 .login-intro { margin: 18px 0 30px; color: var(--sub-text); font-size: 13px; line-height: 1.85; }
-.login-access-note { min-height: 52px; margin: 0; display: flex; align-items: center; gap: 11px; padding: 0 13px; border: 1px solid var(--line); background: #070c15; color: var(--muted); font: 10px var(--mono); letter-spacing: 1.4px; }
-.login-access-note > span { color: var(--signal); font-size: 8px; }
+.login-form > label { display: block; margin-bottom: 9px; color: var(--muted); font: 9px var(--mono); letter-spacing: 1.4px; }
+.password-field { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 11px; min-height: 52px; padding: 0 13px; border: 1px solid var(--line); background: #070c15; transition: border-color 160ms ease, box-shadow 160ms ease; }
+.password-field:focus-within { border-color: var(--point); box-shadow: 0 0 0 3px #e8c46f12; }
+.password-field > span { color: var(--signal); font-size: 8px; }
+.password-field input { min-width: 0; width: 100%; padding: 14px 0; border: 0; outline: 0; background: transparent; color: var(--text); font: 17px var(--mono); letter-spacing: 4px; }
+.password-field button { min-height: 32px; padding: 0 6px; border: 0; background: transparent; color: var(--muted); font-size: 10px; }
+.password-field button:hover { color: var(--bright); }
 .login-submit { width: 100%; min-height: 50px; margin-top: 13px; display: flex; align-items: center; justify-content: space-between; padding: 0 17px; border: 1px solid var(--point); background: #e8c46f12; color: var(--bright); font-size: 12px; }
 .login-submit:hover { background: var(--point); color: #13100a; }
 .login-submit:disabled { border-color: var(--line); background: #111925; color: var(--muted); }
 .login-message { min-height: 18px; margin: 14px 0 0; color: var(--muted); font: 9px var(--mono); letter-spacing: 1px; }
+.login-message.is-error { color: #ee8b87; }
+.login-card.has-error { animation: login-error 280ms ease; }
+@keyframes login-error { 30% { transform: translateX(-6px); } 65% { transform: translateX(5px); } }
 .login-meta { display: flex; justify-content: space-between; gap: 16px; margin-top: 22px; padding-top: 17px; border-top: 1px solid var(--line-soft); color: #61748a; font: 8px var(--mono); letter-spacing: .7px; }
 .welcome-message { position: relative; z-index: 2; text-align: center; }
 .welcome-message > span { color: var(--signal); font: 10px var(--mono); letter-spacing: 3px; }
