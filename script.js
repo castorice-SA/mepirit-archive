@@ -40,7 +40,7 @@ const characters = {
         sex: "여성",
         operationalPeriod: "1911년 제식 채용 → 제1차 세계대전 → 제2차 세계대전 및 이후까지 장기간 운용",
         origin: "미합중국, 코네티컷주 하트퍼드",
-        classification: "반자동 제식권총",
+        classification: "반자동 권총",
         armament: [".45 ACP 탄약 사용", "7발 탄창", "쇼트 리코일 방식 반자동 권총"],
         appearance: {
             title: "153cm의 매우 작은 체구",
@@ -684,7 +684,10 @@ const elements = {
     imageModal: document.querySelector("#imageModal"),
     modalImage: document.querySelector("#modalImage"),
     modalCaption: document.querySelector("#modalCaption"),
-    closeImageButton: document.querySelector("#closeImageButton")
+    closeImageButton: document.querySelector("#closeImageButton"),
+    collectionEmpty: document.querySelector("#collectionEmpty"),
+    visualPanel: document.querySelector(".visual-panel"),
+    recordPanel: document.querySelector(".record-panel")
 };
 
 const filterButtons = Array.from(document.querySelectorAll(".filter-button"));
@@ -714,6 +717,7 @@ function padNumber(number) {
 }
 
 function getCharacterCollection(character) {
+    if (character.group === "GERMANY") return "GERMANY";
     if (character.group === "SWISS") return "SWISS";
     if (character.group === "ADMIN") return "ADMIN";
     if (character.group === "LOGS") return "LOGS";
@@ -783,6 +787,29 @@ function updateCollectionPresentation(collectionName) {
         button.hidden = isWorkLog || (isAdministrator ? !isAdministratorFilter : isAdministratorFilter);
     });
     workLogFilterButtons.forEach(function (button) { button.hidden = !isWorkLog; });
+}
+
+function updateEmptyCollectionState(collectionName) {
+    const isEmpty = getCollectionCharacterIds(collectionName).length === 0;
+    document.body.classList.toggle("empty-collection", isEmpty);
+    elements.collectionEmpty.hidden = !isEmpty;
+    elements.visualPanel.hidden = isEmpty;
+    elements.recordPanel.hidden = isEmpty;
+    if (isEmpty) {
+        elements.emptyResult.querySelector("strong").textContent = "등록된 기록이 없습니다";
+        elements.emptyResult.querySelector("p").textContent = "새 인물 기록이 등록되면 이 목록에 표시됩니다.";
+        elements.resetFilters.hidden = true;
+        elements.selectedRecordLabel.textContent = "00 / 00";
+        elements.selectionHint.hidden = true;
+        elements.indexHelpText.innerHTML = "독일 소속 기록을 위한 공간입니다.<br>현재 등록을 기다리고 있습니다.";
+        elements.footerEntityName.textContent = "GERMANY / NO RECORD";
+        elements.footerRecordPosition.textContent = "00 / 00";
+        document.title = "독일 기록 등록 대기 // MEPIRIT ARCHIVE";
+    } else {
+        elements.emptyResult.querySelector("strong").textContent = "일치하는 기록이 없습니다";
+        elements.emptyResult.querySelector("p").textContent = "다른 검색어나 분류를 선택해 주세요.";
+        elements.resetFilters.hidden = false;
+    }
 }
 
 function getRelationshipDisplayName(characterId) {
@@ -1631,6 +1658,7 @@ function setCollection(collectionName, announce) {
     });
     updateFilterCounts();
     applyFilters();
+    updateEmptyCollectionState(collectionName);
     const firstCharacterId = getCollectionCharacterIds()[0];
     if (firstCharacterId) showCharacter(firstCharacterId, announce);
     showRecordTab("overview", false);
