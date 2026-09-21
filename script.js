@@ -1027,7 +1027,7 @@ function renderDetailedRecord(character, characterId) {
         elements.archiveNoticeText.textContent = "스위스 보병장비 등록부를 바탕으로 정리한 램프 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
     } else if (character.class === "ADMINISTRATOR") {
         elements.archiveNoticeTitle.textContent = "PERSONNEL RECORD SOURCE";
-        elements.archiveNoticeText.textContent = "미합중국 메피릿 관리국 보병장비 관리부 인원기록을 바탕으로 정리한 관리요원 기록입니다.";
+        elements.archiveNoticeText.textContent = "메피릿 관리국 관리부 인사기록을 바탕으로 정리한 기록입니다.";
     } else {
         elements.archiveNoticeTitle.textContent = "ARCHIVE SOURCE";
         elements.archiveNoticeText.textContent = "미합중국 보병장비 인원 등록부를 바탕으로 정리한 인물 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
