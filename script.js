@@ -9,7 +9,7 @@ const characters = {
         summary: "허리 아래까지 내려오는 옅은 금빛 장발 끝에 청록빛이 스민 차분한 성격의 고참 메피릿.",
         sex: "여성",
         operationalPeriod: "1903년 제식 채용 → 제1차 세계대전 운용 → 제2차 세계대전까지 지속 운용",
-        origin: "미합중국, 매사추세츠주 스프링필드",
+        origin: "미국",
         classification: "볼트액션 소총",
         armament: [".30-06 Springfield 탄약 사용", "5발 내부 탄창", "볼트액션 작동방식"],
         appearance: {
@@ -39,7 +39,7 @@ const characters = {
         summary: "짙은 갈색 장발과 큼직한 갈색 눈을 지닌 활발하고 즉흥적인 메피릿. 평소에는 장난이 많지만 위험할 때는 빠르게 냉정해진다.",
         sex: "여성",
         operationalPeriod: "1911년 제식 채용 → 제1차 세계대전 → 제2차 세계대전 및 이후까지 장기간 운용",
-        origin: "미합중국, 코네티컷주 하트퍼드",
+        origin: "미국",
         classification: "반자동 권총",
         armament: [".45 ACP 탄약 사용", "7발 탄창", "쇼트 리코일 방식 반자동 권총"],
         appearance: {
@@ -70,7 +70,7 @@ const characters = {
         summary: "짙은 적갈색 머리와 밝은 갈색 눈을 지닌 책임감 강한 메피릿. 스스로 할 일을 찾고 주변을 챙기는 데 익숙하다.",
         sex: "여성",
         operationalPeriod: "1930년대 제식 채용 → 제2차 세계대전 본격 운용 → 전후까지 지속 사용",
-        origin: "미합중국, 매사추세츠주 스프링필드",
+        origin: "미국",
         classification: "반자동 소총",
         armament: [".30-06 Springfield 탄약 사용", "8발 엔블록 클립", "가스 작동식 반자동 방식"],
         appearance: {
@@ -100,7 +100,7 @@ const characters = {
         summary: "짙은 흑갈색 웨이브 머리와 선명한 청록색 눈을 지닌 사교적인 메피릿. 화려하고 세련된 분위기와 강한 존재감을 지녔다.",
         sex: "여성",
         operationalPeriod: "1920년대 후반 등장 → 제2차 세계대전 전후 본격 운용",
-        origin: "미합중국",
+        origin: "미국",
         classification: "기관단총",
         armament: [".45 ACP 탄약 사용", "20발·30발 박스탄창 및 드럼탄창 운용", "블로우백 방식 자동화기"],
         appearance: {
@@ -130,7 +130,7 @@ const characters = {
         summary: "밝은 밤색과 밀빛이 섞인 단발, 호박색 눈을 지닌 붙임성 좋은 메피릿. 사람과 분위기를 빠르게 읽고 자연스럽게 어울린다.",
         sex: "여성",
         operationalPeriod: "1940년대 초반 제식 채용 → 제2차 세계대전 본격 운용 → 전후까지 광범위하게 사용",
-        origin: "미합중국 / 미국 내 다수 생산업체",
+        origin: "미국",
         classification: "반자동 카빈",
         armament: [".30 Carbine 탄약 사용", "15발 박스탄창", "가스 작동식 반자동 방식"],
         appearance: {
@@ -160,7 +160,7 @@ const characters = {
         summary: "옅은 은회색 장발과 흐린 금색 눈, 잔잔한 미소를 지닌 온화하고 친절한 최고참 랜턴. 후배들을 자연스럽게 돌보며 필요할 때에만 조용히 엄격해진다.",
         sex: "여성",
         operationalPeriod: "1897년 모델 도입 → 제1차 세계대전 참호전형 운용 → 이후 전시기까지 군용 산탄총으로 사용",
-        origin: "미합중국, 코네티컷주 뉴헤이븐",
+        origin: "미국",
         classification: "펌프액션 산탄총",
         armament: ["12 게이지 산탄 사용", "슬라이드 액션과 외부 해머 구조", "참호전형 단축 총열·방열판·총검 장착부"],
         appearance: {
@@ -193,8 +193,8 @@ const characters = {
         summary: "미합중국 보병장비 (랜턴/램프)의 생활·행정·상담·외부활동을 총괄하는 전담 관리관. 온화하지만 안전과 원칙에 대해서는 확실하게 선을 긋는다.",
         sex: "여성",
         operationalPeriod: "현직 / 미합중국 메피릿 관리국 보병장비 관리부",
-        origin: "미합중국, 버지니아주 알링턴",
-        classification: "인간 관리요원",
+        origin: "미국",
+        classification: "ADMINISTRATOR",
         classificationLabel: "인원 분류",
         recordListTitle: "핵심 업무",
         tabLabels: { memory: "주요 업무", overall: "관리 방침" },
@@ -231,7 +231,7 @@ const characters = {
         sex: "남성",
         operationalPeriod: "다수 전쟁 참전 경력 / 현직 관리국 파견 근무",
         origin: "러시아",
-        classification: "파견 관리요원",
+        classification: "ADMINISTRATOR",
         classificationLabel: "인원 분류",
         recordListTitle: "관리 기록",
         tabLabels: { memory: "상담 기록", overall: "관리 방식" },
@@ -480,11 +480,7 @@ const relationships = {
         { target: "garand", address: "개런드", affinity: 94, firstImpression: "별도의 지시 없이도 필요한 일을 찾아 움직이는 책임감 강한 인물.", evaluation: "관리 업무를 가장 안정적으로 돕지만 과한 책임감으로 지치지 않도록 제지한다.", quote: "개런드, 맡은 일은 끝났어요. 나머지는 제가 할게요." },
         { target: "thompson", address: "톰슨", affinity: 84, firstImpression: "사람과 분위기를 움직일 줄 아는 자신감 넘치는 인물.", evaluation: "사교성과 현장 판단을 높게 평가하지만 일정 변경은 미리 알리도록 단단히 약속받는다.", quote: "톰슨, 좋은 계획이에요. 승인서가 먼저라는 점만 빼면요." },
         { target: "carbine", address: "카빈", affinity: 93, firstImpression: "낯선 사람도 자연스럽게 대화 안으로 이끄는 친화력 좋은 인물.", evaluation: "생활구역의 분위기와 작은 변화를 빠르게 전해주는 소중한 관찰자이자 조력자.", quote: "카빈, 오늘 식당 분위기는 어땠는지 들려줄래요?" },
-        { target: "m1897", address: "M1897", affinity: 90, firstImpression: "온화한 표정과 달리 출입구와 인원 위치를 먼저 확인하는 습관이 뚜렷했다.", evaluation: "안전 감각을 신뢰하지만 오래된 기억을 혼자 감당하지 않도록 정기적으로 상태를 확인한다.", quote: "M1897, 오늘 점검은 여기까지예요. 남은 시간은 쉬어도 됩니다." },
-        { target: "ivan", address: "IVAN 관리관", affinity: 64, relationType: "관리 업무 협조", firstImpression: "권한의 범위와 현장 질서를 냉정하게 구분하는 경험 많은 파견 관리관.", evaluation: "강압적인 방식을 경계하면서도 위기 대응 능력과 실무 판단은 인정한다. 아침 과각성과 공개 처벌 기록은 지속해서 확인할 필요가 있다고 본다.", quote: "IVAN 관리관, 결과뿐 아니라 과정도 관리 기록에 남겨야 합니다." }
-    ],
-    ivan: [
-        { target: "claire", address: "Claire 관리관", affinity: 64, relationType: "관리 업무 협조", firstImpression: "메피릿의 자율과 설명을 우선하는 방식이 지나치게 온건해 보이는 관리관.", evaluation: "방식에는 이견이 있지만 현장 정보와 생활 기록의 정확성은 신뢰한다. 자신의 처벌 방식을 감시하려는 태도 역시 상대의 직무라고 받아들인다.", quote: "Claire 관리관. 당신 방식이 통한다면 굳이 내 방식을 고집할 이유는 없습니다." }
+        { target: "m1897", address: "M1897", affinity: 90, firstImpression: "온화한 표정과 달리 출입구와 인원 위치를 먼저 확인하는 습관이 뚜렷했다.", evaluation: "안전 감각을 신뢰하지만 오래된 기억을 혼자 감당하지 않도록 정기적으로 상태를 확인한다.", quote: "M1897, 오늘 점검은 여기까지예요. 남은 시간은 쉬어도 됩니다." }
     ],
     m1897: [
         { target: "m1903", address: "스프링필드", affinity: 85, firstImpression: "조용히 풍경을 바라보면서도 주변 사람의 상태를 놓치지 않는 후배.", evaluation: "말이 적어도 침묵의 의미를 이해해 함께 오래 머물기 편한 동료.", quote: "스프링필드, 서두르지 않아도 괜찮아. 나는 여기 있을게." },
@@ -515,7 +511,7 @@ const characterThemes = Object.freeze({
     carbine: { accent: "#9dbc72", bright: "#d8efb9", rgb: "157 188 114" },
     m1897: { accent: "#b7add8", bright: "#e5dfff", rgb: "183 173 216" },
     claire: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
-    ivan: { accent: "#8f9eb9", bright: "#dce6f8", rgb: "143 158 185" },
+    ivan: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
     mp9: { accent: "#70cde9", bright: "#c5f2ff", rgb: "112 205 233" },
     mp9n: { accent: "#929fec", bright: "#d7ddff", rgb: "146 159 236" },
     logWeekly: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
@@ -528,7 +524,7 @@ const accessSessionKey = "mepirit-archive-authorized";
 const loginSecurityKey = "mepirit-archive-login-security";
 const securityPolicy = Object.freeze({ maxAttempts: 5, initialLockMs: 30000, maxLockMs: 300000, idleTimeoutMs: 900000, sessionTimeoutMs: 3600000 });
 let selectedCharacterId = characterOrder[0];
-let activeCollection = "US";
+let activeCollection = "NORTH_AMERICA";
 let activeFilter = "all";
 let activeRecordTab = "overview";
 let bootSequenceToken = 0;
@@ -686,6 +682,10 @@ const elements = {
     modalCaption: document.querySelector("#modalCaption"),
     closeImageButton: document.querySelector("#closeImageButton"),
     collectionEmpty: document.querySelector("#collectionEmpty"),
+    collectionEmptyKicker: document.querySelector("#collectionEmptyKicker"),
+    collectionEmptyCode: document.querySelector("#collectionEmptyCode"),
+    collectionEmptyTitle: document.querySelector("#collectionEmptyTitle"),
+    collectionEmptyDescription: document.querySelector("#collectionEmptyDescription"),
     visualPanel: document.querySelector(".visual-panel"),
     recordPanel: document.querySelector(".record-panel")
 };
@@ -717,11 +717,11 @@ function padNumber(number) {
 }
 
 function getCharacterCollection(character) {
-    if (character.group === "GERMANY") return "GERMANY";
-    if (character.group === "SWISS") return "SWISS";
+    if (["NORTH_AMERICA", "SOUTH_AMERICA", "EUROPE", "ASIA", "OCEANIA", "AFRICA"].includes(character.group)) return character.group;
+    if (character.group === "SWISS") return "EUROPE";
     if (character.group === "ADMIN") return "ADMIN";
     if (character.group === "LOGS") return "LOGS";
-    return "US";
+    return "NORTH_AMERICA";
 }
 
 function getCollectionCharacterIds(collectionName = activeCollection) {
@@ -789,6 +789,13 @@ function updateCollectionPresentation(collectionName) {
     workLogFilterButtons.forEach(function (button) { button.hidden = !isWorkLog; });
 }
 
+const emptyCollectionMeta = Object.freeze({
+    SOUTH_AMERICA: { index: "02", code: "SA", name: "남아메리카", footer: "SOUTH AMERICA" },
+    ASIA: { index: "04", code: "AS", name: "아시아", footer: "ASIA" },
+    OCEANIA: { index: "05", code: "OC", name: "오세아니아", footer: "OCEANIA" },
+    AFRICA: { index: "06", code: "AF", name: "아프리카", footer: "AFRICA" }
+});
+
 function updateEmptyCollectionState(collectionName) {
     const isEmpty = getCollectionCharacterIds(collectionName).length === 0;
     document.body.classList.toggle("empty-collection", isEmpty);
@@ -796,15 +803,21 @@ function updateEmptyCollectionState(collectionName) {
     elements.visualPanel.hidden = isEmpty;
     elements.recordPanel.hidden = isEmpty;
     if (isEmpty) {
+        const meta = emptyCollectionMeta[collectionName];
+        elements.collectionEmpty.dataset.index = meta.index;
+        elements.collectionEmptyKicker.textContent = `${meta.index} / CONTINENTAL ARCHIVE`;
+        elements.collectionEmptyCode.textContent = `${meta.code} / PERSONNEL DIRECTORY`;
+        elements.collectionEmptyTitle.textContent = `${meta.name} 기록 등록 대기`;
+        elements.collectionEmptyDescription.textContent = `아직 등록된 인물이 없습니다. ${meta.name} 소속 메피릿 기록은 자료가 추가되는 순서대로 이 구역에 보관됩니다.`;
         elements.emptyResult.querySelector("strong").textContent = "등록된 기록이 없습니다";
         elements.emptyResult.querySelector("p").textContent = "새 인물 기록이 등록되면 이 목록에 표시됩니다.";
         elements.resetFilters.hidden = true;
         elements.selectedRecordLabel.textContent = "00 / 00";
         elements.selectionHint.hidden = true;
-        elements.indexHelpText.innerHTML = "독일 소속 기록을 위한 공간입니다.<br>현재 등록을 기다리고 있습니다.";
-        elements.footerEntityName.textContent = "GERMANY / NO RECORD";
+        elements.indexHelpText.innerHTML = `${meta.name} 소속 기록을 위한 공간입니다.<br>현재 등록을 기다리고 있습니다.`;
+        elements.footerEntityName.textContent = `${meta.footer} / NO RECORD`;
         elements.footerRecordPosition.textContent = "00 / 00";
-        document.title = "독일 기록 등록 대기 // MEPIRIT ARCHIVE";
+        document.title = `${meta.name} 기록 등록 대기 // MEPIRIT ARCHIVE`;
     } else {
         elements.emptyResult.querySelector("strong").textContent = "일치하는 기록이 없습니다";
         elements.emptyResult.querySelector("p").textContent = "다른 검색어나 분류를 선택해 주세요.";
@@ -840,16 +853,19 @@ function createRosterRelationship(sourceId, targetId) {
 }
 
 function getRelationshipEntries(characterId) {
-    const directEntries = (relationships[characterId] || []).map(function (entry) {
+    if (characterId === "ivan") return [];
+    const directEntries = (relationships[characterId] || []).filter(function (entry) {
+        return entry.target !== "ivan";
+    }).map(function (entry) {
         return Object.assign({ relationType: "개별 기록", isRosterEntry: false }, entry);
     });
     const sourceCollection = getCharacterCollection(characters[characterId]);
-    if (sourceCollection !== "US" && sourceCollection !== "ADMIN") return directEntries;
+    if (sourceCollection !== "NORTH_AMERICA" && sourceCollection !== "ADMIN") return directEntries;
 
     const directTargets = new Set(directEntries.map(function (entry) { return entry.target; }));
-    const relationshipRoster = getCollectionCharacterIds("US").concat(getCollectionCharacterIds("ADMIN"));
+    const relationshipRoster = getCollectionCharacterIds("NORTH_AMERICA").concat(getCollectionCharacterIds("ADMIN"));
     const rosterEntries = relationshipRoster
-        .filter(function (targetId) { return targetId !== characterId && !directTargets.has(targetId); })
+        .filter(function (targetId) { return targetId !== "ivan" && targetId !== characterId && !directTargets.has(targetId); })
         .map(function (targetId) { return createRosterRelationship(characterId, targetId); });
     return directEntries.concat(rosterEntries);
 }
@@ -885,11 +901,14 @@ function renderRelationships(characterId) {
     const targetFragment = document.createDocumentFragment();
 
     elements.relationshipTitle.textContent = `${characterDisplayName} 관계 기록`;
-    elements.relationshipLead.textContent = `${characterDisplayName} 중심 관계망입니다. 핵심 기록 ${padNumber(directCount)}건과 미합중국 생활반 전체 명부를 함께 표시합니다.`;
+    elements.relationshipLead.textContent = entries.length === 0
+        ? `${characterDisplayName}의 관계 기록은 아직 작성되지 않았습니다. 관계가 확정되면 이 구역에 추가됩니다.`
+        : `${characterDisplayName} 중심 관계망입니다. 핵심 기록 ${padNumber(directCount)}건과 북아메리카 생활반 전체 명부를 함께 표시합니다.`;
     elements.relationshipCenter.textContent = characterDisplayName;
     elements.relationshipMap.setAttribute("aria-label", `${characterDisplayName} 중심 관계도`);
     elements.relationshipMap.classList.toggle("is-directory", entries.length > 6);
     elements.relationshipMap.classList.toggle("is-pair", entries.length === 1);
+    elements.relationshipMap.classList.toggle("is-empty", entries.length === 0);
     elements.relationshipMap.dataset.count = String(entries.length);
 
     function renderRelationshipCard(entry) {
