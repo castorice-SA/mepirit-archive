@@ -187,6 +187,7 @@ const characters = {
         code: "USMA-IEO-0247",
         designation: "United States Infantry Equipment Administrative Officer",
         class: "ADMINISTRATOR",
+        group: "ADMIN",
         height: "166cm",
         age: "29세",
         summary: "미합중국 보병장비 (랜턴/램프)의 생활·행정·상담·외부활동을 총괄하는 전담 관리관. 온화하지만 안전과 원칙에 대해서는 확실하게 선을 긋는다.",
@@ -752,17 +753,13 @@ const characterThemes = Object.freeze({
     logLeave: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
     logMaintenance: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" }
 });
-const passwordSalt = "mepirit-archive-v21-client-guard";
-const passwordHash = "9794bc307b4ff47ef2591c0f5bcdce6178b1ba23df43a1a3677627975b6cf65b";
 const accessSessionKey = "mepirit-archive-authorized";
-const loginSecurityKey = "mepirit-archive-login-security";
-const securityPolicy = Object.freeze({ maxAttempts: 5, initialLockMs: 30000, maxLockMs: 300000, idleTimeoutMs: 900000, sessionTimeoutMs: 3600000 });
+const securityPolicy = Object.freeze({ idleTimeoutMs: 900000, sessionTimeoutMs: 3600000 });
 let selectedCharacterId = characterOrder[0];
 let activeCollection = "US";
 let activeFilter = "all";
 let activeRecordTab = "overview";
 let bootSequenceToken = 0;
-let lockoutTimerId = 0;
 let sessionTimerId = 0;
 let idleTimerId = 0;
 let sessionExpiresAt = 0;
@@ -772,8 +769,6 @@ const elements = {
     loginScreen: document.querySelector("#loginScreen"),
     loginForm: document.querySelector("#loginForm"),
     loginCard: document.querySelector(".login-card"),
-    passwordInput: document.querySelector("#passwordInput"),
-    togglePassword: document.querySelector("#togglePassword"),
     loginSubmit: document.querySelector("#loginSubmit"),
     logoutButton: document.querySelector("#logoutButton"),
     loginMessage: document.querySelector("#loginMessage"),
@@ -945,6 +940,7 @@ function padNumber(number) {
 
 function getCharacterCollection(character) {
     if (character.group === "SWISS") return "SWISS";
+    if (character.group === "ADMIN") return "ADMIN";
     if (character.group === "LOGS") return "LOGS";
     return "US";
 }
@@ -967,19 +963,20 @@ function renderList(element, items) {
 
 function updateCollectionPresentation(collectionName) {
     const isWorkLog = collectionName === "LOGS";
+    const isAdministrator = collectionName === "ADMIN";
     document.body.classList.toggle("work-log-mode", isWorkLog);
     elements.indexKicker.textContent = isWorkLog ? "01 / WORK LOG INDEX" : "01 / ENTITY INDEX";
-    elements.indexTitle.textContent = isWorkLog ? "업무일지 색인" : "인물 색인";
+    elements.indexTitle.textContent = isWorkLog ? "업무일지 색인" : (isAdministrator ? "관리관 색인" : "인물 색인");
     elements.indexHelpText.innerHTML = isWorkLog
         ? "목록에서 업무일지를 선택하면<br>관리 업무 보고서를 열람할 수 있습니다."
-        : "목록에서 인물을 선택하면<br>보관된 기록을 열람할 수 있습니다.";
-    elements.characterList.setAttribute("aria-label", isWorkLog ? "클레어 업무일지" : "검색된 캐릭터");
-    elements.filterTabs.setAttribute("aria-label", isWorkLog ? "업무일지 기록 분류" : "선택한 보병장비의 하위 분류 필터");
-    elements.searchInput.placeholder = isWorkLog ? "일지 제목, 보고 번호, 내용 검색" : "이름, 식별 번호, 기록 검색";
-    elements.visualLabel.textContent = isWorkLog ? "ADMINISTRATOR RECORD" : "CHARACTER PORTRAIT";
-    elements.recordKicker.textContent = isWorkLog ? "03 / MANAGEMENT REPORT" : "03 / ENTITY DOSSIER";
-    elements.recordTitle.textContent = isWorkLog ? "업무 보고" : "인물 기록";
-    elements.documentTypeLabel.textContent = isWorkLog ? "MANAGEMENT / REPORT" : "ENTITY / GENERAL";
+        : (isAdministrator ? "목록에서 관리관을 선택하면<br>보관된 인사 기록을 열람할 수 있습니다." : "목록에서 인물을 선택하면<br>보관된 기록을 열람할 수 있습니다.");
+    elements.characterList.setAttribute("aria-label", isWorkLog ? "클레어 업무일지" : (isAdministrator ? "관리관 명부" : "검색된 캐릭터"));
+    elements.filterTabs.setAttribute("aria-label", isWorkLog ? "업무일지 기록 분류" : (isAdministrator ? "관리관 인사기록 분류" : "선택한 보병장비의 하위 분류 필터"));
+    elements.searchInput.placeholder = isWorkLog ? "일지 제목, 보고 번호, 내용 검색" : (isAdministrator ? "관리관 이름, 인사 번호, 기록 검색" : "이름, 식별 번호, 기록 검색");
+    elements.visualLabel.textContent = isWorkLog ? "ADMINISTRATOR RECORD" : (isAdministrator ? "ADMINISTRATOR PORTRAIT" : "CHARACTER PORTRAIT");
+    elements.recordKicker.textContent = isWorkLog ? "03 / MANAGEMENT REPORT" : (isAdministrator ? "03 / PERSONNEL DOSSIER" : "03 / ENTITY DOSSIER");
+    elements.recordTitle.textContent = isWorkLog ? "업무 보고" : (isAdministrator ? "관리관 기록" : "인물 기록");
+    elements.documentTypeLabel.textContent = isWorkLog ? "MANAGEMENT / REPORT" : (isAdministrator ? "PERSONNEL / ADMIN" : "ENTITY / GENERAL");
     elements.documentStamp.textContent = isWorkLog ? "결재 완료" : "열람 가능";
     elements.recordSummaryTitle.textContent = isWorkLog ? "보고 목적" : "기초 기록";
     elements.recordInfoTitle.textContent = isWorkLog ? "문서 정보" : "식별 정보";
@@ -1000,14 +997,15 @@ function updateCollectionPresentation(collectionName) {
     elements.overallTabButton.textContent = isWorkLog ? "최종 방침" : "종합";
     elements.relationshipsTabButton.textContent = isWorkLog ? "조치" : "관계";
     elements.footerEdition.innerHTML = isWorkLog
-        ? 'MANAGEMENT REPORT ARCHIVE <span aria-hidden="true">/</span> 03'
-        : 'ENTITY RECORD COLLECTION <span aria-hidden="true">/</span> 01';
-    elements.previousCharacter.setAttribute("aria-label", isWorkLog ? "이전 업무일지" : "이전 캐릭터");
-    elements.nextCharacter.setAttribute("aria-label", isWorkLog ? "다음 업무일지" : "다음 캐릭터");
-    elements.previousCharacter.title = isWorkLog ? "이전 업무일지 (↑)" : "이전 캐릭터 (↑)";
-    elements.nextCharacter.title = isWorkLog ? "다음 업무일지 (↓)" : "다음 캐릭터 (↓)";
+        ? 'MANAGEMENT REPORT ARCHIVE <span aria-hidden="true">/</span> 04'
+        : (isAdministrator ? 'ADMINISTRATOR PERSONNEL RECORD <span aria-hidden="true">/</span> 03' : 'ENTITY RECORD COLLECTION <span aria-hidden="true">/</span> 01');
+    elements.previousCharacter.setAttribute("aria-label", isWorkLog ? "이전 업무일지" : (isAdministrator ? "이전 관리관" : "이전 캐릭터"));
+    elements.nextCharacter.setAttribute("aria-label", isWorkLog ? "다음 업무일지" : (isAdministrator ? "다음 관리관" : "다음 캐릭터"));
+    elements.previousCharacter.title = isWorkLog ? "이전 업무일지 (↑)" : (isAdministrator ? "이전 관리관 (↑)" : "이전 캐릭터 (↑)");
+    elements.nextCharacter.title = isWorkLog ? "다음 업무일지 (↓)" : (isAdministrator ? "다음 관리관 (↓)" : "다음 캐릭터 (↓)");
     entityFilterButtons.forEach(function (button) {
-        button.hidden = isWorkLog || (collectionName === "SWISS" && button.dataset.filter === "ADMINISTRATOR");
+        const isAdministratorFilter = button.dataset.filter === "ADMINISTRATOR";
+        button.hidden = isWorkLog || (isAdministrator ? !isAdministratorFilter : isAdministratorFilter);
     });
     workLogFilterButtons.forEach(function (button) { button.hidden = !isWorkLog; });
 }
@@ -1043,10 +1041,12 @@ function getRelationshipEntries(characterId) {
     const directEntries = (relationships[characterId] || []).map(function (entry) {
         return Object.assign({ relationType: "개별 기록", isRosterEntry: false }, entry);
     });
-    if (getCharacterCollection(characters[characterId]) !== "US") return directEntries;
+    const sourceCollection = getCharacterCollection(characters[characterId]);
+    if (sourceCollection !== "US" && sourceCollection !== "ADMIN") return directEntries;
 
     const directTargets = new Set(directEntries.map(function (entry) { return entry.target; }));
-    const rosterEntries = getCollectionCharacterIds("US")
+    const relationshipRoster = getCollectionCharacterIds("US").concat(getCollectionCharacterIds("ADMIN"));
+    const rosterEntries = relationshipRoster
         .filter(function (targetId) { return targetId !== characterId && !directTargets.has(targetId); })
         .map(function (targetId) { return createRosterRelationship(characterId, targetId); });
     return directEntries.concat(rosterEntries);
@@ -1245,29 +1245,6 @@ function renderDetailedRecord(character, characterId) {
     }
 }
 
-async function hashPassword(value) {
-    const encoder = new TextEncoder();
-    const keyMaterial = await window.crypto.subtle.importKey("raw", encoder.encode(value), "PBKDF2", false, ["deriveBits"]);
-    const derivedBits = await window.crypto.subtle.deriveBits({
-        name: "PBKDF2",
-        hash: "SHA-256",
-        salt: encoder.encode(passwordSalt),
-        iterations: 120000
-    }, keyMaterial, 256);
-    return Array.from(new Uint8Array(derivedBits), function (byte) {
-        return byte.toString(16).padStart(2, "0");
-    }).join("");
-}
-
-function hashesMatch(first, second) {
-    if (first.length !== second.length) return false;
-    let difference = 0;
-    for (let index = 0; index < first.length; index += 1) {
-        difference |= first.charCodeAt(index) ^ second.charCodeAt(index);
-    }
-    return difference === 0;
-}
-
 function readJsonStorage(storage, key) {
     try {
         const value = storage.getItem(key);
@@ -1286,86 +1263,11 @@ function writeJsonStorage(storage, key, value) {
     }
 }
 
-function getLoginSecurityState() {
-    const stored = readJsonStorage(window.localStorage, loginSecurityKey);
-    if (!stored || typeof stored !== "object") return { attempts: 0, lockLevel: 0, lockUntil: 0, updatedAt: 0 };
-    if (Date.now() - Number(stored.updatedAt || 0) > 86400000) return { attempts: 0, lockLevel: 0, lockUntil: 0, updatedAt: 0 };
-    return {
-        attempts: Math.max(0, Number(stored.attempts) || 0),
-        lockLevel: Math.max(0, Number(stored.lockLevel) || 0),
-        lockUntil: Math.max(0, Number(stored.lockUntil) || 0),
-        updatedAt: Math.max(0, Number(stored.updatedAt) || 0)
-    };
-}
-
-function saveLoginSecurityState(state) {
-    state.updatedAt = Date.now();
-    writeJsonStorage(window.localStorage, loginSecurityKey, state);
-}
-
-function clearLoginSecurityState() {
-    window.clearInterval(lockoutTimerId);
-    lockoutTimerId = 0;
-    try { window.localStorage.removeItem(loginSecurityKey); } catch { /* Storage access may be disabled. */ }
-    elements.passwordInput.disabled = false;
-    elements.togglePassword.disabled = false;
-    elements.loginSubmit.disabled = false;
-}
-
 function formatRemainingTime(milliseconds) {
     const totalSeconds = Math.max(0, Math.ceil(milliseconds / 1000));
     const minutes = Math.floor(totalSeconds / 60);
     const seconds = totalSeconds % 60;
     return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-}
-
-function updateLoginLockout() {
-    const state = getLoginSecurityState();
-    const remaining = state.lockUntil - Date.now();
-    const locked = remaining > 0;
-    elements.passwordInput.disabled = locked;
-    elements.togglePassword.disabled = locked;
-    elements.loginSubmit.disabled = locked;
-    if (locked) {
-        elements.loginMessage.textContent = `SECURITY LOCK / ${formatRemainingTime(remaining)} 후 다시 시도하세요.`;
-        elements.loginMessage.classList.add("is-error");
-        return true;
-    }
-    if (state.lockUntil) {
-        state.lockUntil = 0;
-        saveLoginSecurityState(state);
-        elements.loginMessage.textContent = "잠금이 해제되었습니다. 비밀번호를 다시 입력해 주세요.";
-        elements.loginMessage.classList.remove("is-error");
-    }
-    window.clearInterval(lockoutTimerId);
-    lockoutTimerId = 0;
-    return false;
-}
-
-function startLoginLockoutCountdown() {
-    window.clearInterval(lockoutTimerId);
-    if (!updateLoginLockout()) return;
-    lockoutTimerId = window.setInterval(updateLoginLockout, 1000);
-}
-
-function recordFailedLogin() {
-    const state = getLoginSecurityState();
-    state.attempts += 1;
-    if (state.attempts >= securityPolicy.maxAttempts) {
-        state.attempts = 0;
-        state.lockLevel += 1;
-        const lockDuration = Math.min(securityPolicy.initialLockMs * (2 ** (state.lockLevel - 1)), securityPolicy.maxLockMs);
-        state.lockUntil = Date.now() + lockDuration;
-        saveLoginSecurityState(state);
-        startLoginLockoutCountdown();
-        return;
-    }
-    saveLoginSecurityState(state);
-    const remainingAttempts = securityPolicy.maxAttempts - state.attempts;
-    elements.loginMessage.textContent = `ACCESS DENIED / 남은 시도 ${remainingAttempts}회`;
-    elements.loginMessage.classList.add("is-error");
-    elements.loginSubmit.disabled = false;
-    elements.passwordInput.select();
 }
 
 function readAccessSession() {
@@ -1456,7 +1358,7 @@ function startPdaBoot() {
     const token = ++bootSequenceToken;
     const steps = [
         { progress: 8, text: "PDA 보안 채널을 초기화하는 중...", delay: 0 },
-        { progress: 34, text: "관리관 접근 권한을 확인하는 중...", delay: 320 },
+        { progress: 34, text: "관리국 접속 절차를 확인하는 중...", delay: 320 },
         { progress: 63, text: "국가별 보병장비 명단을 동기화하는 중...", delay: 670 },
         { progress: 86, text: "초상 및 관계 기록을 복호화하는 중...", delay: 1020 }
     ];
@@ -1528,7 +1430,7 @@ function unlockArchive(skipWelcome, expiresAt) {
     startPdaBoot();
 }
 
-function lockArchive(message = "AUTHORIZATION REQUIRED") {
+function lockArchive(message = "ACCESS TERMINAL READY") {
     bootSequenceToken += 1;
     stopSessionMonitoring();
     try { window.sessionStorage.removeItem(accessSessionKey); } catch { /* Storage access may be disabled. */ }
@@ -1545,13 +1447,8 @@ function lockArchive(message = "AUTHORIZATION REQUIRED") {
     elements.welcomeMessage.hidden = true;
     elements.pdaBootBar.style.width = "0";
     elements.pdaBootPercent.textContent = "000%";
-    elements.passwordInput.value = "";
-    elements.passwordInput.type = "password";
-    elements.togglePassword.textContent = "보기";
-    elements.togglePassword.setAttribute("aria-label", "비밀번호 표시");
-    elements.loginMessage.textContent = typeof message === "string" ? message : "AUTHORIZATION REQUIRED";
-    elements.loginMessage.classList.remove("is-error");
-    elements.loginCard.classList.remove("has-error");
+    elements.loginSubmit.disabled = false;
+    elements.loginMessage.textContent = typeof message === "string" ? message : "ACCESS TERMINAL READY";
     elements.loginScreen.classList.add("is-closing");
     elements.loginScreen.hidden = false;
 
@@ -1559,63 +1456,23 @@ function lockArchive(message = "AUTHORIZATION REQUIRED") {
         window.requestAnimationFrame(function () {
             elements.loginScreen.classList.remove("is-closing");
             window.setTimeout(function () {
-                elements.passwordInput.focus();
+                elements.loginSubmit.focus();
             }, 180);
         });
     });
 }
 
-async function handleLogin(event) {
+function handleLogin(event) {
     event.preventDefault();
-    if (updateLoginLockout()) return;
-    const submittedPassword = elements.passwordInput.value;
-
-    if (!submittedPassword) {
-        elements.loginMessage.textContent = "비밀번호를 입력해 주세요.";
-        elements.loginMessage.classList.add("is-error");
-        elements.passwordInput.focus();
-        return;
-    }
-
-    elements.loginMessage.textContent = "VERIFYING ACCESS...";
-    elements.loginMessage.classList.remove("is-error");
+    elements.loginMessage.textContent = "CONNECTING ARCHIVE...";
     elements.loginSubmit.disabled = true;
-    const submittedHash = await hashPassword(submittedPassword);
-
-    if (!hashesMatch(submittedHash, passwordHash)) {
-        elements.loginCard.classList.remove("has-error");
-        void elements.loginCard.offsetWidth;
-        elements.loginCard.classList.add("has-error");
-        recordFailedLogin();
-        return;
-    }
-
-    clearLoginSecurityState();
     const session = createAccessSession();
     elements.loginMessage.textContent = "ACCESS GRANTED";
     unlockArchive(false, session.expiresAt);
 }
 
 function initializeLogin() {
-    elements.loginForm.addEventListener("submit", function (event) {
-        handleLogin(event).catch(function () {
-            elements.loginMessage.textContent = "인증 처리 중 오류가 발생했습니다.";
-            elements.loginMessage.classList.add("is-error");
-            if (!updateLoginLockout()) elements.loginSubmit.disabled = false;
-        });
-    });
-    elements.passwordInput.addEventListener("input", function () {
-        if (updateLoginLockout()) return;
-        elements.loginMessage.textContent = "AUTHORIZATION REQUIRED";
-        elements.loginMessage.classList.remove("is-error");
-    });
-    elements.togglePassword.addEventListener("click", function () {
-        const showPassword = elements.passwordInput.type === "password";
-        elements.passwordInput.type = showPassword ? "text" : "password";
-        elements.togglePassword.textContent = showPassword ? "숨김" : "보기";
-        elements.togglePassword.setAttribute("aria-label", showPassword ? "비밀번호 숨기기" : "비밀번호 표시");
-        elements.passwordInput.focus();
-    });
+    elements.loginForm.addEventListener("submit", handleLogin);
     ["pointerdown", "keydown", "touchstart", "scroll"].forEach(function (eventName) {
         document.addEventListener(eventName, noteSessionActivity, { passive: true });
     });
@@ -1627,9 +1484,8 @@ function initializeLogin() {
         unlockArchive(true, session.expiresAt);
         return;
     }
-    startLoginLockoutCountdown();
     window.requestAnimationFrame(function () {
-        if (!elements.passwordInput.disabled) elements.passwordInput.focus();
+        elements.loginSubmit.focus();
     });
 }
 
@@ -1949,7 +1805,7 @@ elements.clearSearch.addEventListener("click", function () {
 });
 elements.resetFilters.addEventListener("click", resetFilters);
 elements.skipBootButton.addEventListener("click", function () { finishPdaBoot(); });
-elements.logoutButton.addEventListener("click", function () { lockArchive("AUTHORIZATION REQUIRED"); });
+elements.logoutButton.addEventListener("click", function () { lockArchive("ACCESS TERMINAL READY"); });
 elements.previousCharacter.addEventListener("click", function () { moveCharacter(-1); });
 elements.nextCharacter.addEventListener("click", function () { moveCharacter(1); });
 elements.openImageButton.addEventListener("click", openImageModal);
