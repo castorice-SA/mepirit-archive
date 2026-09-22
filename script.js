@@ -256,6 +256,41 @@ const characters = {
         image: "./images/ivan-profile.png",
         imagePosition: "center 28%"
     },
+    begleitpanzer57: {
+        name: "Begleitpanzer 57",
+        code: "DE-AFV-LP-BP57",
+        designation: "Begleitpanzer 57 AIFSV",
+        class: "LAMP",
+        group: "EUROPE",
+        height: "168cm",
+        summary: "짧은 흑갈색 단발과 호박색 눈을 지닌 독일 시제 보병 화력지원차량 램프. 앞에 나서기보다 동행자의 빈틈을 지키며 필요한 순간에 정확한 화력을 집중한다.",
+        sex: "여성",
+        operationalPeriod: "1970년대 후반 시제차량 개발 / 양산 및 제식 채용 이전 종료",
+        origin: "독일",
+        classification: "보병 화력지원차량 / 시제 장갑차",
+        recordListTitle: "차량 정보",
+        tabLabels: { memory: "시제 기록", overall: "취향" },
+        sectionCodes: { memory: "PROTOTYPE RECORD", overall: "PREFERENCES" },
+        armament: ["Thyssen-Henschel·Bofors 공동 개발", "Marder 계열 차체 기반", "Bofors 57mm L/70 Mk.1 자동포", "TOW 대전차미사일 발사기", "메피릿 분류 / LAMP"],
+        appearance: {
+            title: "168cm의 단정하고 균형 잡힌 체형",
+            items: ["턱선에 닿는 짧은 흑갈색 단발과 얇은 검은 머리띠.", "불빛을 머금은 듯한 선명한 호박색 눈.", "탄약을 닮은 금속 장식 두 개를 오른쪽 머리에 고정한다.", "검은 민소매 상의와 주름치마 위에 짙은 녹색 야전 재킷을 느슨하게 걸친다.", "표정 변화는 크지 않지만 시선이 늘 주변 사람과 출입구를 차례로 확인한다.", "움직임은 절제되어 있으나 결정을 내린 뒤에는 망설임 없이 빠르다."]
+        },
+        personality: {
+            title: "동행자의 빈틈을 먼저 살피는 현실적인 엄호자",
+            items: ["자신이 앞장서 주목받기보다 동행자가 움직일 공간을 만들어 주는 역할을 선호한다.", "상황을 지켜보다 필요한 순간에만 짧고 정확하게 의견을 낸다.", "한 가지 방식에 집착하지 않고 상대와 상황에 맞춰 화력과 거리를 바꾸는 데 익숙하다.", "장비와 사람 모두 각자의 역할이 분명해야 편안해하며 애매한 지시는 다시 확인한다.", "무모한 용기를 칭찬하기보다 무사히 돌아오는 계획을 더 높게 평가한다.", "차갑게 보일 만큼 침착하지만 자신이 맡은 사람을 뒤에 남겨두는 일은 거의 없다."]
+        },
+        memory: {
+            title: "시험장과 대기실에 머문 시제차량의 기억",
+            items: ["전장보다 시험주행로의 진동, 계측 장비의 불빛과 평가표가 넘겨지는 소리가 먼저 떠오른다.", "완성된 역할을 증명할 기회보다 가능성을 설명하고 기다리는 시간이 더 길었다.", "여러 목표를 상대할 수 있다는 장점이 오히려 역할이 불분명하다는 평가로 돌아온 기억을 갖고 있다.", "양산과 제식 채용으로 이어지지 못했다는 사실을 담담히 말하지만 ‘실패작’이라는 표현에는 분명히 선을 긋는다.", "현재에는 채택 여부보다 실제로 누군가에게 도움이 되었는지를 자신의 가치 기준으로 삼으려 한다."]
+        },
+        overall: {
+            title: "조용한 준비와 확실한 지원을 선호함",
+            items: ["소규모 팀 활동, 역할이 분명한 일정, 장비 손질과 사격 기록 정리를 좋아한다.", "사람이 적은 카페, 쓴 커피, 늦은 오후의 정비고처럼 차분한 공간을 편안하게 느낀다.", "설명 없는 대기, 의미 없는 성능 비교, 자신을 미완성품으로 단정하는 말을 싫어한다.", "외출에서는 목적지를 고집하지 않지만 동행자의 귀가 시간과 이동 경로는 반드시 확인한다."]
+        },
+        image: "./images/begleitpanzer57.png",
+        imagePosition: "center 32%"
+    },
     mp9: {
         name: "MP9",
         code: "CH-IE-LP-MP9",
@@ -500,7 +535,7 @@ const relationships = {
 
 const characterOrder = [
     "m1903", "m1911", "garand", "thompson", "carbine", "m1897", "claire", "ivan",
-    "mp9", "mp9n", "logWeekly", "logLeave", "logMaintenance"
+    "begleitpanzer57", "mp9", "mp9n", "logWeekly", "logLeave", "logMaintenance"
 ];
 const totalRecords = characterOrder.length;
 const characterThemes = Object.freeze({
@@ -512,6 +547,7 @@ const characterThemes = Object.freeze({
     m1897: { accent: "#b7add8", bright: "#e5dfff", rgb: "183 173 216" },
     claire: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
     ivan: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
+    begleitpanzer57: { accent: "#d88a46", bright: "#ffd0a0", rgb: "216 138 70" },
     mp9: { accent: "#70cde9", bright: "#c5f2ff", rgb: "112 205 233" },
     mp9n: { accent: "#929fec", bright: "#d7ddff", rgb: "146 159 236" },
     logWeekly: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
@@ -1022,6 +1058,9 @@ function renderDetailedRecord(character, characterId) {
     if (isWorkLog) {
         elements.archiveNoticeTitle.textContent = "FICTIONAL MANAGEMENT RECORD";
         elements.archiveNoticeText.textContent = "메피릿 세계관을 위한 허구의 관리국 내부 기록입니다. 업무 보고 양식의 표지·목적·관련 근거 구조를 PDA 기록 형식에 맞게 재구성했습니다.";
+    } else if (character.origin === "독일") {
+        elements.archiveNoticeTitle.textContent = "GERMAN ARCHIVE SOURCE";
+        elements.archiveNoticeText.textContent = "독일 보병장비 등록부를 바탕으로 정리한 램프 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
     } else if (character.group === "SWISS") {
         elements.archiveNoticeTitle.textContent = "SWISS ARCHIVE SOURCE";
         elements.archiveNoticeText.textContent = "스위스 보병장비 등록부를 바탕으로 정리한 램프 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
