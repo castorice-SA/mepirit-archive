@@ -1412,6 +1412,7 @@ function unlockArchive(skipWelcome, expiresAt) {
     elements.archiveApp.removeAttribute("inert");
     elements.archiveApp.setAttribute("aria-hidden", "false");
     document.body.classList.remove("is-locked");
+    hydrateArchiveImages();
     startSessionMonitoring(expiresAt);
 
     if (skipWelcome) {
@@ -1436,6 +1437,13 @@ function lockArchive(message = "AUTHORIZATION REQUIRED") {
     elements.archiveApp.setAttribute("inert", "");
     elements.archiveApp.setAttribute("aria-hidden", "true");
     document.body.classList.add("is-locked");
+    elements.characterList.querySelectorAll(".character-thumb img").forEach(function (image) {
+        image.removeAttribute("src");
+    });
+    elements.characterImage.removeAttribute("src");
+    elements.modalImage.removeAttribute("src");
+    elements.imageBackdrop.style.backgroundImage = "none";
+    elements.openImageButton.disabled = true;
     elements.loginCard.hidden = false;
     elements.pdaBoot.hidden = true;
     elements.welcomeMessage.hidden = true;
@@ -1562,7 +1570,7 @@ function renderCharacterList() {
         image.addEventListener("error", function () { image.hidden = true; });
         thumbnail.append(fallback);
         if (character.image) {
-            image.src = character.image;
+            image.dataset.src = character.image;
             thumbnail.append(image);
         }
         copy.className = "button-copy";
@@ -1586,8 +1594,17 @@ function getCharacterButtons() {
     return Array.from(elements.characterList.querySelectorAll(".character-button"));
 }
 
+function hydrateArchiveImages() {
+    elements.characterList.querySelectorAll(".character-thumb img[data-src]").forEach(function (image) {
+        image.hidden = false;
+        image.src = image.dataset.src;
+    });
+    setCharacterImage(characters[selectedCharacterId]);
+}
+
 function setCharacterImage(character) {
     function showAvailableImage() {
+        if (document.body.classList.contains("is-locked")) return;
         elements.characterImage.hidden = false;
         elements.imagePlaceholder.hidden = true;
         elements.openImageButton.disabled = false;
@@ -1603,6 +1620,13 @@ function setCharacterImage(character) {
     elements.characterImage.onerror = showMissingImage;
     elements.characterImage.alt = character.group === "LOGS" ? `${character.name} 업무일지 표지 이미지` : `${character.name} 메피릿 캐릭터`;
     elements.characterImage.style.objectPosition = character.imagePosition || "";
+    if (document.body.classList.contains("is-locked")) {
+        elements.characterImage.removeAttribute("src");
+        elements.modalImage.removeAttribute("src");
+        elements.imageBackdrop.style.backgroundImage = "none";
+        elements.openImageButton.disabled = true;
+        return;
+    }
     if (!character.image) {
         elements.characterImage.removeAttribute("src");
         elements.modalImage.removeAttribute("src");
