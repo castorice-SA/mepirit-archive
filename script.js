@@ -263,11 +263,11 @@ const characters = {
         class: "LAMP",
         group: "EUROPE",
         height: "168cm",
-        summary: "짧은 흑갈색 단발과 호박색 눈을 지닌 독일 시제 보병 화력지원차량 램프. 앞에 나서기보다 동행자의 빈틈을 지키며 필요한 순간에 정확한 화력을 집중한다.",
+        summary: "짧은 흑갈색 단발과 호박색 눈을 지닌 독일 시제 경전차 램프. 앞에 나서기보다 동행자의 빈틈을 지키며 필요한 순간에 정확한 화력을 집중한다.",
         sex: "여성",
         operationalPeriod: "1970년대 후반 시제차량 개발 / 양산 및 제식 채용 이전 종료",
         origin: "독일",
-        classification: "보병 화력지원차량 / 시제 장갑차",
+        classification: "경전차",
         recordListTitle: "차량 정보",
         tabLabels: { memory: "시제 기록", overall: "취향" },
         sectionCodes: { memory: "PROTOTYPE RECORD", overall: "PREFERENCES" },
@@ -290,6 +290,41 @@ const characters = {
         },
         image: "./images/begleitpanzer57.png",
         imagePosition: "center 32%"
+    },
+    u35: {
+        name: "U-35",
+        code: "DE-SM-LN-U35",
+        designation: "German Submarine U-35",
+        class: "LANTERN",
+        group: "EUROPE",
+        height: "기록 비공개",
+        summary: "'바이스 운터시'라 불리는 독일 잠수함 랜턴. 화려한 전적에 강한 자부심을 품고 있으며, 불리해질수록 집요하고 예상 밖의 전략으로 판을 뒤집으려 한다.",
+        sex: "여성",
+        operationalPeriod: "제1차 세계대전 U 35 / 제2차 세계대전 동명 U-35 기록",
+        origin: "독일",
+        classification: "잠수함",
+        recordListTitle: "기체 정보",
+        tabLabels: { memory: "항해 기록", overall: "특징" },
+        sectionCodes: { memory: "VOYAGE RECORD", overall: "CHARACTER NOTES" },
+        armament: ["별칭 / 바이스 운터시", "외형상 나이 / 20대 초중반", "기체 / 독일 U-35 잠수함", "메피릿 분류 / LANTERN"],
+        appearance: {
+            title: "20대 초중반으로 보이는 고고한 인상",
+            items: ["길게 흐르는 밝은 금발과 분홍빛 눈동자.", "금빛 장식이 달린 검은 해군 모자와 짙은 제복 재킷을 착용한다.", "뾰족한 귀와 차분한 표정 때문에 쉽게 다가가기 어려운 분위기가 난다.", "웃을 때도 시선을 쉽게 내리지 않지만 갑자기 들키면 표정이 금세 흔들린다."]
+        },
+        personality: {
+            title: "자부심이 강한 역전의 승부사",
+            items: ["수많은 선박을 침몰시켰다는 전적을 자랑스럽게 여기며 대다수 선박을 자신보다 약하게 본다.", "평소에는 고고하고 자신만만하지만 뒤처지거나 수세에 몰리면 오히려 집념을 불태운다.", "불리한 상황에서는 정면 승부 대신 상대가 예상하지 못한 경로와 협동 전술을 찾아낸다.", "놀이에서도 뜻밖의 수를 잘 내지만 가끔은 스스로를 위험에 빠뜨릴 만큼 과감해진다.", "숨어 있다가 누군가에게 발견되면 흠칫 놀라고는 불쾌한 척하며 당황을 감춘다."]
+        },
+        memory: {
+            title: "서로 다른 시대의 U-35 기록이 겹친 항해",
+            items: ["제1차 세계대전 U 35의 화려한 격침 기록을 자신의 가장 선명한 기억으로 품고 있다.", "제2차 세계대전의 동명 U-35와 울프팩 전술에 관한 기록도 그녀의 서사에 겹쳐 전해진다.", "독일이 불리하던 시기에도 해상에서 결과를 만들어냈다는 자부심이 크다.", "자신이 앞서 있다고 믿을 때보다 역전해야 할 이유가 생겼을 때 더 날카로워진다."]
+        },
+        overall: {
+            title: "물속에서는 뜻밖에 먼저 지치는 잠수함",
+            items: ["잠수함이라는 이름과 달리 바닷속에서 오래 머무는 일에는 약해 다른 잠수함과의 잠수 대결에서 종종 진다.", "패배를 인정하기 싫어 다음 판의 기습 경로부터 다시 계산한다.", "자신의 자존심을 건드리는 말에는 ‘어디 한번 고고하게 위를 보고 다녀보시죠. 그 아래에서 당신을 처박아버릴 테니.’라고 받아친다.", "승부가 끝나면 상대의 허점을 냉정하게 짚어 주면서도 자신의 실수는 한참 뒤에야 털어놓는다."]
+        },
+        image: "./images/u35.png",
+        imagePosition: "center 0%"
     },
     mp9: {
         name: "MP9",
@@ -535,7 +570,7 @@ const relationships = {
 
 const characterOrder = [
     "m1903", "m1911", "garand", "thompson", "carbine", "m1897", "claire", "ivan",
-    "begleitpanzer57", "mp9", "mp9n", "logWeekly", "logLeave", "logMaintenance"
+    "begleitpanzer57", "u35", "mp9", "mp9n", "logWeekly", "logLeave", "logMaintenance"
 ];
 const totalRecords = characterOrder.length;
 const characterThemes = Object.freeze({
@@ -548,6 +583,7 @@ const characterThemes = Object.freeze({
     claire: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
     ivan: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
     begleitpanzer57: { accent: "#d88a46", bright: "#ffd0a0", rgb: "216 138 70" },
+    u35: { accent: "#7eb9dc", bright: "#d1efff", rgb: "126 185 220" },
     mp9: { accent: "#70cde9", bright: "#c5f2ff", rgb: "112 205 233" },
     mp9n: { accent: "#929fec", bright: "#d7ddff", rgb: "146 159 236" },
     logWeekly: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
@@ -1060,7 +1096,7 @@ function renderDetailedRecord(character, characterId) {
         elements.archiveNoticeText.textContent = "메피릿 세계관을 위한 허구의 관리국 내부 기록입니다. 업무 보고 양식의 표지·목적·관련 근거 구조를 PDA 기록 형식에 맞게 재구성했습니다.";
     } else if (character.origin === "독일") {
         elements.archiveNoticeTitle.textContent = "GERMAN ARCHIVE SOURCE";
-        elements.archiveNoticeText.textContent = "독일 보병장비 등록부를 바탕으로 정리한 램프 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
+        elements.archiveNoticeText.textContent = "독일 메피릿 등록부를 바탕으로 정리한 인물 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
     } else if (character.group === "SWISS") {
         elements.archiveNoticeTitle.textContent = "SWISS ARCHIVE SOURCE";
         elements.archiveNoticeText.textContent = "스위스 보병장비 등록부를 바탕으로 정리한 램프 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
