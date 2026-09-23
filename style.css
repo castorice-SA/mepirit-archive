@@ -1,4 +1,11 @@
-/* MEPIRIT ARCHIVE — plain CSS, no external fonts or dependencies. */
+/* MEPIRIT ARCHIVE — plain CSS with a locally hosted signature font. */
+@font-face {
+    font-family: "Claire Signature";
+    src: url("./fonts/Sacramento-Regular.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
 :root {
     color-scheme: dark;
     --background: #070b14;
@@ -322,8 +329,8 @@ button:disabled { opacity: .35; cursor: default; }
 .work-log-approval-table > * { display: grid; place-items: center; min-height: 35px; padding: 7px; border-right: 1px solid #7f8588; border-bottom: 1px solid #7f8588; text-align: center; font-size: 11px; }
 .work-log-approval-table span { background: #d8d3c8; font-weight: 700; }
 .work-log-approval-table strong { min-height: 54px; font-weight: 500; }
-.work-log-approval-table .claire-signature { position: relative; display: inline-grid; place-items: center; padding: 4px 5px 9px; background: transparent; color: #17263b; font-family: "Segoe Script", "Lucida Handwriting", "Brush Script MT", cursive; font-size: 23px; font-style: italic; font-weight: 600; letter-spacing: -1.4px; line-height: 1; text-shadow: .35px .35px 0 #17263b; transform: rotate(-4deg); }
-.work-log-approval-table .claire-signature::after { content: ""; position: absolute; width: 68px; height: 11px; left: 50%; bottom: 2px; border-bottom: 1.5px solid #17263b; border-radius: 50%; opacity: .78; transform: translateX(-50%) rotate(-3deg); }
+.work-log-approval-table .claire-signature { position: relative; display: inline-grid; place-items: center; padding: 2px 6px 8px; background: transparent; color: #17263b; font-family: "Claire Signature", cursive; font-size: 39px; font-style: normal; font-weight: 400; letter-spacing: -.5px; line-height: .9; text-shadow: .25px 0 #17263b; transform: rotate(-5deg); }
+.work-log-approval-table .claire-signature::after { content: ""; position: absolute; width: 83px; height: 10px; left: 50%; bottom: 0; border-bottom: 1.4px solid #17263b; border-radius: 50%; opacity: .8; transform: translateX(-50%) rotate(-4deg); }
 .work-log-title-block { margin: 70px 0 48px; text-align: center; }
 .work-log-title-block > span { color: #69747d; font: 9px var(--mono); letter-spacing: 2.4px; }
 .work-log-title-block h3 { margin: 16px 0 0; padding: 17px 0; border-top: 3px double #243b55; border-bottom: 3px double #243b55; font-size: clamp(30px, 4vw, 48px); font-weight: 700; letter-spacing: .42em; text-indent: .42em; }
