@@ -24,8 +24,8 @@
     <link rel="image_src" href="https://castorice-sa.github.io/mepirit-archive/images/login-preview.png?v=2">
     <link rel="icon" href="data:,">
     <title>MEPIRIT ARCHIVE</title>
-    <link rel="stylesheet" href="./style.css?v=35">
-    <script src="./script.js?v=36" defer></script>
+    <link rel="stylesheet" href="./style.css?v=37">
+    <script src="./script.js?v=37" defer></script>
 </head>
 <body class="is-locked">
     <img src="./images/login-preview.png" width="1934" height="1088" alt="" aria-hidden="true" hidden>
@@ -202,20 +202,26 @@
                 </div>
                 <div class="record-content">
                     <div class="document-heading"><span id="documentTypeLabel">ENTITY / GENERAL</span><span class="document-stamp" id="documentStamp">열람 가능</span></div>
-                    <div class="record-tabs" role="tablist" aria-label="인물 상세 기록 분류">
-                        <button class="record-tab active" id="recordTabOverview" type="button" role="tab" aria-selected="true" aria-controls="recordOverview" data-record-tab="overview">개요</button>
-                        <button class="record-tab" id="recordTabAppearance" type="button" role="tab" aria-selected="false" aria-controls="recordAppearance" data-record-tab="appearance">외형</button>
-                        <button class="record-tab" id="recordTabPersonality" type="button" role="tab" aria-selected="false" aria-controls="recordPersonality" data-record-tab="personality">성향</button>
-                        <button class="record-tab" id="recordTabMemory" type="button" role="tab" aria-selected="false" aria-controls="recordMemory" data-record-tab="memory">전쟁 기억</button>
-                        <button class="record-tab" id="recordTabOverall" type="button" role="tab" aria-selected="false" aria-controls="recordOverall" data-record-tab="overall">종합</button>
-                        <button class="record-tab" id="recordTabRelationships" type="button" role="tab" aria-selected="false" aria-controls="recordRelationships" data-record-tab="relationships">관계</button>
+                    <div class="record-navigation" id="recordNavigation">
+                        <div class="record-tabs" role="tablist" aria-label="인물 상세 기록 분류">
+                            <button class="record-tab active" id="recordTabOverview" type="button" role="tab" aria-selected="true" aria-controls="recordOverview" data-record-tab="overview">개요</button>
+                            <button class="record-tab" id="recordTabAppearance" type="button" role="tab" aria-selected="false" aria-controls="recordAppearance" data-record-tab="appearance">외형</button>
+                            <button class="record-tab" id="recordTabPersonality" type="button" role="tab" aria-selected="false" aria-controls="recordPersonality" data-record-tab="personality">성향</button>
+                            <button class="record-tab" id="recordTabMemory" type="button" role="tab" aria-selected="false" aria-controls="recordMemory" data-record-tab="memory">전쟁 기억</button>
+                            <button class="record-tab" id="recordTabOverall" type="button" role="tab" aria-selected="false" aria-controls="recordOverall" data-record-tab="overall">종합</button>
+                            <button class="record-tab" id="recordTabRelationships" type="button" role="tab" aria-selected="false" aria-controls="recordRelationships" data-record-tab="relationships">관계</button>
+                        </div>
+                        <nav class="record-outline" id="recordOutline" aria-label="현재 기록 목차" hidden>
+                            <span class="record-outline-label">목차</span>
+                            <div class="record-outline-items" id="recordOutlineItems"></div>
+                        </nav>
                     </div>
                     <div class="record-tab-panel active" id="recordOverview" role="tabpanel" aria-labelledby="recordTabOverview" data-record-panel="overview">
-                        <section class="record-section summary-section">
+                        <section class="record-section summary-section" id="recordSummarySection">
                             <h3><span>01</span> <span id="recordSummaryTitle">기초 기록</span></h3>
                             <p id="characterSummary">허리 아래까지 내려오는 옅은 금빛 장발 끝에 청록빛이 스민 차분한 성격의 고참 메피릿.</p>
                         </section>
-                        <section class="record-section">
+                        <section class="record-section" id="recordInfoSection">
                             <h3><span>02</span> <span id="recordInfoTitle">식별 정보</span></h3>
                             <dl class="record-table">
                                 <dt id="recordCodeLabel">식별 번호</dt><dd id="recordCode">US-IE-LN-1903</dd>
@@ -229,7 +235,7 @@
                                 <dt id="recordPeriodLabel">활동 시기</dt><dd id="recordPeriod">1903년 제식 채용 → 제1차 세계대전 운용 → 제2차 세계대전까지 지속 운용</dd>
                             </dl>
                         </section>
-                        <section class="record-section armament-section">
+                        <section class="record-section armament-section" id="recordArmamentSection">
                             <h3><span>03</span> <span id="recordListTitle">주요 무장</span></h3>
                             <ul class="detail-list compact" id="recordArmament"></ul>
                         </section>
