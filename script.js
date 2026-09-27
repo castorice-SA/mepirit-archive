@@ -682,7 +682,6 @@ let selectedCharacterId = characterOrder[0];
 let activeCollection = "NORTH_AMERICA";
 let activeFilter = "all";
 let activeRecordTab = "overview";
-let outlineEntries = [];
 let bootSequenceToken = 0;
 let lockoutTimerId = 0;
 let sessionTimerId = 0;
@@ -736,8 +735,6 @@ const elements = {
     recordPanel: document.querySelector(".record-panel"),
     recordContent: document.querySelector(".record-content"),
     recordNavigation: document.querySelector("#recordNavigation"),
-    recordOutline: document.querySelector("#recordOutline"),
-    recordOutlineItems: document.querySelector("#recordOutlineItems"),
     imageBackdrop: document.querySelector("#imageBackdrop"),
     characterImage: document.querySelector("#characterImage"),
     imagePlaceholder: document.querySelector("#imagePlaceholder"),
@@ -1037,71 +1034,6 @@ function getReverseRelationship(sourceId, targetId) {
         : createRosterRelationship(targetId, sourceId);
 }
 
-function updateOutlinePosition() {
-    if (elements.recordOutline.hidden || outlineEntries.length === 0) return;
-    const readingLine = elements.recordNavigation.getBoundingClientRect().bottom + 14;
-    let currentIndex = 0;
-    outlineEntries.forEach(function (entry, index) {
-        if (entry.target.getBoundingClientRect().top <= readingLine) currentIndex = index;
-    });
-    if (elements.recordContent.scrollHeight > elements.recordContent.clientHeight &&
-        elements.recordContent.scrollTop + elements.recordContent.clientHeight >= elements.recordContent.scrollHeight - 2) {
-        currentIndex = outlineEntries.length - 1;
-    }
-    elements.recordOutlineItems.querySelectorAll(".record-outline-button").forEach(function (button, index) {
-        button.classList.toggle("active", index === currentIndex);
-        if (index === currentIndex) button.setAttribute("aria-current", "location");
-        else button.removeAttribute("aria-current");
-    });
-}
-
-function updateRecordOutline() {
-    const panel = recordTabPanels.find(function (item) { return item.dataset.recordPanel === activeRecordTab; });
-    const sections = [];
-    if (activeCollection !== "LOGS" && panel) {
-        if (activeRecordTab === "overview") {
-            panel.querySelectorAll(".record-section").forEach(function (section) {
-                sections.push({ target: section, label: section.querySelector("h3 span:last-child")?.textContent.trim() || "기록" });
-            });
-        } else if (activeRecordTab === "relationships") {
-            if (!elements.relationshipMap.hidden) sections.push({ target: elements.relationshipMap, label: "관계도" });
-            const selectedName = elements.relationshipCards.querySelector(".relationship-card-head strong")?.textContent.trim();
-            if (selectedName) sections.push({ target: elements.relationshipCards, label: `${selectedName} 기록` });
-        } else {
-            panel.querySelectorAll(".detail-list li").forEach(function (item, index) {
-                item.id = `record-${activeRecordTab}-${index + 1}`;
-                const excerpt = item.textContent.trim().replace(/\s+/g, " ");
-                sections.push({ target: item, label: excerpt.length > 16 ? `${excerpt.slice(0, 16)}…` : excerpt });
-            });
-        }
-    }
-    outlineEntries = sections.length > 1 ? sections : [];
-    const fragment = document.createDocumentFragment();
-    outlineEntries.forEach(function (entry, index) {
-        const button = document.createElement("button");
-        const number = document.createElement("span");
-        const label = document.createElement("span");
-        button.type = "button";
-        button.className = "record-outline-button";
-        button.setAttribute("aria-label", `${entry.label} 항목으로 이동`);
-        number.textContent = padNumber(index + 1);
-        label.textContent = entry.label;
-        button.append(number, label);
-        button.addEventListener("click", function () {
-            entry.target.tabIndex = -1;
-            entry.target.focus({ preventScroll: true });
-            entry.target.scrollIntoView({ block: "start", behavior: prefersReducedMotion.matches ? "auto" : "smooth" });
-            elements.recordOutlineItems.querySelectorAll(".record-outline-button").forEach(function (item) {
-                item.classList.toggle("active", item === button);
-            });
-        });
-        fragment.appendChild(button);
-    });
-    elements.recordOutlineItems.replaceChildren(fragment);
-    elements.recordOutline.hidden = outlineEntries.length === 0;
-    window.requestAnimationFrame(updateOutlinePosition);
-}
-
 function showRecordTab(tabName, focusTab, resetPosition = false) {
     activeRecordTab = tabName;
     recordTabButtons.forEach(function (button) {
@@ -1116,7 +1048,6 @@ function showRecordTab(tabName, focusTab, resetPosition = false) {
         panel.hidden = !isActive;
         panel.classList.toggle("active", isActive);
     });
-    updateRecordOutline();
     if (resetPosition) {
         elements.recordContent.scrollTop = 0;
         if (window.matchMedia("(max-width: 1199px)").matches) {
@@ -1199,7 +1130,6 @@ function renderRelationships(characterId) {
         reverseRecord.append(reverseSummary, reverseBody);
         card.appendChild(reverseRecord);
         elements.relationshipCards.replaceChildren(card);
-        if (activeRecordTab === "relationships") updateRecordOutline();
     }
 
     entries.forEach(function (entry, index) {
@@ -1872,7 +1802,6 @@ function showCharacter(characterId, announce) {
     document.title = document.body.classList.contains("is-locked")
         ? "MEPIRIT ARCHIVE | 관리관 인증"
         : `${character.name} // MEPIRIT ARCHIVE`;
-    updateRecordOutline();
     if (announce) {
         elements.selectionAnnouncement.textContent = `${character.name} ${character.group === "LOGS" ? "업무일지를" : "기록을"} 열었습니다.`;
         triggerPdaTransition();
@@ -2052,16 +1981,6 @@ recordTabButtons.forEach(function (button, index) {
         showRecordTab(recordTabButtons[nextIndex].dataset.recordTab, true, true);
     });
 });
-let outlineScrollFrame = 0;
-function scheduleOutlinePosition() {
-    if (outlineScrollFrame) return;
-    outlineScrollFrame = window.requestAnimationFrame(function () {
-        outlineScrollFrame = 0;
-        updateOutlinePosition();
-    });
-}
-elements.recordContent.addEventListener("scroll", scheduleOutlinePosition, { passive: true });
-window.addEventListener("scroll", scheduleOutlinePosition, { passive: true });
 elements.searchInput.addEventListener("input", applyFilters);
 elements.clearSearch.addEventListener("click", function () {
     elements.searchInput.value = "";
