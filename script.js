@@ -328,8 +328,9 @@ const characters = {
     },
     epel: {
         name: "에페스 에펠",
+        portraitTitle: "VK 45.01 (P)",
         code: "DE-AFV-LN-302",
-        designation: "VK45.01(P) · 포르쉐 구난전차 / 차량번호 302",
+        designation: "VK45.01(P) · 포르쉐 구난전차 / 차량번호 302 / 에페스 에펠",
         class: "LANTERN",
         group: "EUROPE",
         height: "169.2cm",
@@ -1843,7 +1844,7 @@ function showCharacter(characterId, announce) {
     const formattedPosition = `${padNumber(position)} / ${padNumber(collectionCharacterIds.length)}`;
     elements.frameRecordCode.textContent = character.code;
     elements.characterCode.textContent = character.code;
-    elements.characterName.textContent = character.name;
+    elements.characterName.textContent = character.portraitTitle || character.name;
     elements.characterDesignation.textContent = character.designation;
     elements.characterStatus.textContent = character.status || `ACTIVE / ${character.class}`;
     elements.profileHeight.textContent = character.height;
