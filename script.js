@@ -326,6 +326,87 @@ const characters = {
         image: "./images/u35.png",
         imagePosition: "center 0%"
     },
+    epel: {
+        name: "에페스 에펠",
+        code: "DE-AFV-LN-302",
+        designation: "VK45.01(P) · 포르쉐 구난전차 / 차량번호 302",
+        class: "LANTERN",
+        group: "EUROPE",
+        height: "169.2cm",
+        summary: "차량번호 302의 VK45.01(P)를 기원으로 하는 독일 랜턴. 포르쉐 구난전차로 개조되어 쿠르스크 전선에서 동료 전차들을 후송했다. 현재는 차분하고 협조적이며, 전쟁보다 삶과 가족의 가치를 소중히 여긴다.",
+        sex: "여성",
+        operationalPeriod: "제2차 세계대전 / 쿠르스크 전선 구난 활동 (설정 기록)",
+        origin: "독일",
+        classification: "구난전차 / VK45.01(P) 개조형",
+        recordListTitle: "기체·기술 기록",
+        tabLabels: { overall: "관리 기록" },
+        sectionCodes: { overall: "PREFERENCES / RISK ASSESSMENT" },
+        armament: [
+            "원형 / VK45.01(P), 통칭 포르쉐 티거. 차량번호 302.",
+            "개조 경위 / 운행 중 결함 사고를 겪은 뒤 포르쉐 구난전차로 개조되었다.",
+            "구난 임무 / 포탑과 주포 없이 전면에 기관총 한 정을 갖추고, 기동 불능 또는 수리가 필요한 전차를 후방으로 운송했다.",
+            "발견 상태 / 궤도 탈선과 차체 비틀림 등으로 운행할 수 없는 상태였다고 기록되어 있다.",
+            "개조 검토 / 제공된 기술문서에는 역사적 가치 보존을 위해 엘리펀트 모델로 변경될 가능성과 동축 기관총 확인 기록이 남아 있다.",
+            "기술 평가 / 해당 설정 문서는 하이브리드 엔진 기술을 현대적으로 재해석하기 어려운 로스트 테크놀로지로 평가한다.",
+            "보존 가치 / 같은 문서는 모델과 무관하게 충분한 역사적 가치를 인정하며, 독일의 움직일 수 있는 티거를 세 대로 기록한다."
+        ],
+        appearance: {
+            title: "169.2cm, 긴 곱슬머리와 서로 다른 빛의 눈",
+            items: [
+                "옅은 은빛이 감도는 긴 곱슬머리와 금빛·붉은빛의 오드아이가 인상적이다.",
+                "에페스 지크와 같은 오드아이를 지녔으며, 준수하고 부드러운 인상이다.",
+                "외모에는 과거 자신을 운용하던 최고참 전차병 플로리안의 부인에 대한 기억이 영향을 주었을 것으로 추정된다.",
+                "여러 옷차림을 자연스럽게 소화하지만, 아주 얇거나 아주 두터운 옷을 고르는 쪽으로 취향이 나뉜다."
+            ]
+        },
+        personality: {
+            title: "전쟁의 무의미함을 돌아보고 삶에 관심을 갖는 성향",
+            items: [
+                "에페스 지크와 달리 현재는 차분한 모습을 보인다.",
+                "지크의 증언에 따르면 과거에는 과격하고 화끈한 성격이었다. 소련 전선과 구난전차 재배치를 겪으며 변화했을 것으로 추정된다.",
+                "전쟁은 부질없는 것이라고 말하며, 삶이란 무엇인지와 그 가치에 깊은 흥미를 느낀다.",
+                "이러한 가치관 역시 사람을 죽이고 싶지 않아 했던 전차병들에게서 얻은 감정으로 추측된다.",
+                "평소 협조적인 태도를 보이며 가족을 무엇보다 소중하게 여긴다."
+            ]
+        },
+        memory: {
+            title: "쿠르스크 전선, 가족에게 돌아가고 싶었던 전차병들",
+            items: [
+                "전투 전날, 숲에 매복한 병사들은 커피 대신 보리로 만든 오르조를 마시며 농담을 주고받았다. 내일의 무사와 기적을 바라던 짧은 휴식이었다.",
+                "모닥불에 비친 여러 전차 가운데 포탑도 주포도 없는 구난전차가 서 있었다. 채택되지 못한 포르쉐의 차체를 재활용한 차량이었지만, 그 임무는 전차를 살려 후방으로 데려오는 일이었다.",
+                "탑승자들은 징집·전투 거부와 명령 불복종으로 형벌부대에 배치된 전차병들이었다. 사람을 죽이고 싶지 않았고, 가족을 다시 만나는 것을 바랐다.",
+                "운전수 미하엘은 아내의 사진을 보던 최고참 플로리안의 곁에 앉았다. 마르틴과 마티아스도 전차 상판에 둘러앉아 가족사진을 함께 보았다.",
+                "다가올 대규모 전투에서 살아남기 어렵다는 예감 속에서도, 네 사람은 그 순간을 즐길 수 있는 이야기만 나누었다.",
+                "동이 트자 전차들이 진격했고 총포탄과 비명, 유폭하는 전차의 모습이 뒤따랐다. 이들은 기동 불능이나 수리가 필요한 전차를 발견하면 망설이지 않고 연결하여 후방으로 후송했다.",
+                "다섯 대까지는 원활히 운송했다. 이후 눈이 녹아 물러진 지반에 운송 중인 전차의 무게가 더해지면서 궤도가 가라앉고 움직임이 봉쇄되었다.",
+                "가까워지는 포탄 소리와 함께 오른쪽에 포탄이 떨어졌다. 궤도가 끊어지고 폭압에 차체가 굴러 넘어가 큰 손상을 입었다.",
+                "에페스 에펠은 그 뒤의 기억은 나지 않는다고 말한다."
+            ]
+        },
+        overall: {
+            title: "가족을 최우선으로 여기는 랜턴 / 위험 등급 C",
+            items: [
+                "좋아하는 것 / 가족. 가족만큼 좋아하는 것은 없다고 말한다.",
+                "생활 태도 / 어떤 음식을 먹어도 불평이 없다. 랜턴의 자아와 육체를 처음 얻었을 때 옷차림이 누추했어도 크게 개의치 않았다.",
+                "주의 사항 / 가족에게 적대감을 드러내는 행동을 매우 불쾌하게 여긴다.",
+                "금기 / 자신을 파시즘으로 일반화하는 말에는 강한 공격성을 보인다. 제공된 관리 기록은 나치 독일 관련 발언을 삼가도록 명시한다.",
+                "잠재적 위험 등급 / C. 직접적인 전투 경험은 없지만 전격전의 기억을 갖고 있어, 반란을 주도하는 단체의 참모를 맡을 경우 변수가 될 수 있다고 평가된다.",
+                "평가 근거 / 파시즘에 회의적이고 평소 협조적이라는 점을 함께 고려해 C등급이 부여되었다."
+            ]
+        },
+        relationshipNotes: {
+            title: "에페스 지크 (차량번호 301) — 남매",
+            items: [
+                "에페스 지크와 에페스 에펠은 남매 사이로 확인되었다. 기술문서상 차량번호는 지크가 301, 에펠이 302이다.",
+                "두 사람은 같은 오드아이를 지녔다. 지크는 에펠이 과거에는 과격하고 화끈한 성격이었다고 증언했다.",
+                "에펠은 가족을 가장 소중하게 여기며, 가족을 향한 적대감에 민감하게 반응한다.",
+                "지크의 개별 인물 기록은 아직 등록되지 않았다. 호칭·친밀도·대화 기록은 자료가 제공되면 추가한다."
+            ]
+        },
+        sourceNote: "제공된 에페스 에펠 설정 자료와 이미지를 바탕으로 정리한 메피릿 세계관 인물 기록입니다. 기체·전쟁 관련 서술은 해당 설정의 기술문서와 기억을 따릅니다.",
+        image: "./images/epes-epel.png",
+        imagePosition: "center 12%"
+    },
     mp9: {
         name: "MP9",
         code: "CH-IE-LP-MP9",
@@ -570,7 +651,7 @@ const relationships = {
 
 const characterOrder = [
     "m1903", "m1911", "garand", "thompson", "carbine", "m1897", "claire", "ivan",
-    "begleitpanzer57", "u35", "mp9", "mp9n", "logWeekly", "logLeave", "logMaintenance"
+    "begleitpanzer57", "u35", "epel", "mp9", "mp9n", "logWeekly", "logLeave", "logMaintenance"
 ];
 const totalRecords = characterOrder.length;
 const characterThemes = Object.freeze({
@@ -584,6 +665,7 @@ const characterThemes = Object.freeze({
     ivan: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
     begleitpanzer57: { accent: "#d88a46", bright: "#ffd0a0", rgb: "216 138 70" },
     u35: { accent: "#7eb9dc", bright: "#d1efff", rgb: "126 185 220" },
+    epel: { accent: "#c5afd1", bright: "#f1e3f7", rgb: "197 175 209" },
     mp9: { accent: "#70cde9", bright: "#c5f2ff", rgb: "112 205 233" },
     mp9n: { accent: "#929fec", bright: "#d7ddff", rgb: "146 159 236" },
     logWeekly: { accent: "#e8c46f", bright: "#ffe5a1", rgb: "232 196 111" },
@@ -981,7 +1063,7 @@ function updateRecordOutline() {
                 sections.push({ target: section, label: section.querySelector("h3 span:last-child")?.textContent.trim() || "기록" });
             });
         } else if (activeRecordTab === "relationships") {
-            sections.push({ target: elements.relationshipMap, label: "관계도" });
+            if (!elements.relationshipMap.hidden) sections.push({ target: elements.relationshipMap, label: "관계도" });
             const selectedName = elements.relationshipCards.querySelector(".relationship-card-head strong")?.textContent.trim();
             if (selectedName) sections.push({ target: elements.relationshipCards, label: `${selectedName} 기록` });
         } else {
@@ -1046,12 +1128,15 @@ function renderRelationships(characterId) {
     const character = characters[characterId];
     const characterDisplayName = getRelationshipDisplayName(characterId);
     const entries = getRelationshipEntries(characterId);
+    const relationshipNotes = character.relationshipNotes;
     const directCount = entries.filter(function (entry) { return !entry.isRosterEntry; }).length;
     const targetFragment = document.createDocumentFragment();
 
     elements.relationshipTitle.textContent = `${characterDisplayName} 관계 기록`;
     elements.relationshipLead.textContent = entries.length === 0
-        ? `${characterDisplayName}의 관계 기록은 아직 작성되지 않았습니다. 관계가 확정되면 이 구역에 추가됩니다.`
+        ? (relationshipNotes
+            ? "제공된 자료에 확인된 가족 관계입니다. 상대의 개별 기록이 등록되면 관계도에 연결됩니다."
+            : `${characterDisplayName}의 관계 기록은 아직 작성되지 않았습니다. 관계가 확정되면 이 구역에 추가됩니다.`)
         : `${characterDisplayName} 중심 관계망입니다. 핵심 기록 ${padNumber(directCount)}건과 북아메리카 생활반 전체 명부를 함께 표시합니다.`;
     elements.relationshipCenter.textContent = characterDisplayName;
     elements.relationshipMap.setAttribute("aria-label", `${characterDisplayName} 중심 관계도`);
@@ -1059,6 +1144,7 @@ function renderRelationships(characterId) {
     elements.relationshipMap.classList.toggle("is-pair", entries.length === 1);
     elements.relationshipMap.classList.toggle("is-empty", entries.length === 0);
     elements.relationshipMap.dataset.count = String(entries.length);
+    elements.relationshipMap.hidden = entries.length === 0 && Boolean(relationshipNotes);
 
     function renderRelationshipCard(entry) {
         const targetDisplayName = getRelationshipDisplayName(entry.target);
@@ -1148,7 +1234,23 @@ function renderRelationships(characterId) {
 
     elements.relationshipTargets.replaceChildren(targetFragment);
     if (entries[0]) renderRelationshipCard(entries[0]);
-    else elements.relationshipCards.replaceChildren();
+    else {
+        elements.relationshipCards.replaceChildren();
+        if (relationshipNotes) {
+            const card = document.createElement("article");
+            const header = document.createElement("div");
+            const name = document.createElement("strong");
+            const list = document.createElement("ul");
+            card.className = "relationship-card active";
+            header.className = "relationship-card-head";
+            name.textContent = relationshipNotes.title;
+            list.className = "detail-list";
+            renderList(list, relationshipNotes.items);
+            header.appendChild(name);
+            card.append(header, list);
+            elements.relationshipCards.appendChild(card);
+        }
+    }
 }
 
 function renderDetailedRecord(character, characterId) {
@@ -1172,6 +1274,9 @@ function renderDetailedRecord(character, characterId) {
     if (isWorkLog) {
         elements.archiveNoticeTitle.textContent = "FICTIONAL MANAGEMENT RECORD";
         elements.archiveNoticeText.textContent = "메피릿 세계관을 위한 허구의 관리국 내부 기록입니다. 업무 보고 양식의 표지·목적·관련 근거 구조를 PDA 기록 형식에 맞게 재구성했습니다.";
+    } else if (character.sourceNote) {
+        elements.archiveNoticeTitle.textContent = "CHARACTER RECORD SOURCE";
+        elements.archiveNoticeText.textContent = character.sourceNote;
     } else if (character.origin === "독일") {
         elements.archiveNoticeTitle.textContent = "GERMAN ARCHIVE SOURCE";
         elements.archiveNoticeText.textContent = "독일 메피릿 등록부를 바탕으로 정리한 인물 기록입니다. 각 메피릿은 독립된 인격체로 기록됩니다.";
