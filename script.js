@@ -328,7 +328,7 @@ const characters = {
     },
     epel: {
         name: "에페스 에펠",
-        portraitTitle: "VK 45.01 (P)",
+        displayName: "VK 45.01 (P)",
         code: "DE-AFV-LN-302",
         designation: "VK45.01(P) · 포르쉐 구난전차 / 차량번호 302 / 에페스 에펠",
         class: "LANTERN",
@@ -1747,7 +1747,7 @@ function renderCharacterList() {
         button.style.setProperty("--card-accent", theme.accent);
         button.style.setProperty("--card-accent-bright", theme.bright);
         button.style.setProperty("--card-accent-rgb", theme.rgb);
-        button.setAttribute("aria-label", `${character.name} ${character.group === "LOGS" ? "업무일지" : "기록"} 열기`);
+        button.setAttribute("aria-label", `${character.displayName || character.name} ${character.group === "LOGS" ? "업무일지" : "기록"} 열기`);
         thumbnail.className = "character-thumb";
         fallback.className = "thumbnail-fallback";
         fallback.textContent = character.group === "LOGS" ? "LOG" : character.name.replace(/[^A-Za-z0-9]/g, "").slice(0, 3).toUpperCase();
@@ -1760,7 +1760,7 @@ function renderCharacterList() {
             thumbnail.append(image);
         }
         copy.className = "button-copy";
-        name.textContent = character.name;
+        name.textContent = character.displayName || character.name;
         code.textContent = character.code;
         role.className = "button-role";
         role.textContent = character.displayClass || character.class;
@@ -1844,7 +1844,7 @@ function showCharacter(characterId, announce) {
     const formattedPosition = `${padNumber(position)} / ${padNumber(collectionCharacterIds.length)}`;
     elements.frameRecordCode.textContent = character.code;
     elements.characterCode.textContent = character.code;
-    elements.characterName.textContent = character.portraitTitle || character.name;
+    elements.characterName.textContent = character.displayName || character.name;
     elements.characterDesignation.textContent = character.designation;
     elements.characterStatus.textContent = character.status || `ACTIVE / ${character.class}`;
     elements.profileHeight.textContent = character.height;
